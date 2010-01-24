@@ -1,0 +1,14 @@
+<% title "Users" %>
+<p>
+  <% for user in @users %>
+      User Name <%=h user.username %>
+      Email: <%=h user.email %>
+      <p>
+      <%= link_to "Show", user %>
+      <%= link_to "Edit", edit_user_path(user) %>
+      </p>
+
+  <% end %>
+</p>
+
+<p><%= link_to "New Suburb", new_user_path %></p>

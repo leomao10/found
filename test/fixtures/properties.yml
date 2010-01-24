@@ -1,0 +1,23 @@
+one:
+  number_of_bedrooms: 1
+  number_of_carparks: 1
+  number_of_bathrooms: 1
+  price: 1.5
+  bond: 1.5
+  max_tenants: 1
+  number_of_current_tenants: 1
+  furnished: false
+  purpose: MyString
+  type: MyString
+
+two:
+  number_of_bedrooms: 1
+  number_of_carparks: 1
+  number_of_bathrooms: 1
+  price: 1.5
+  bond: 1.5
+  max_tenants: 1
+  number_of_current_tenants: 1
+  furnished: false
+  purpose: MyString
+  type: MyString

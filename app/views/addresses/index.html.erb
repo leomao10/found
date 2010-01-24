@@ -1,0 +1,19 @@
+<% title "Addresses" %>
+
+<table>
+  <tr>
+    <th>Line1</th>
+    <th>Line2</th>
+  </tr>
+  <% for address in @addresses %>
+    <tr>
+      <td><%=h address.line1 %></td>
+      <td><%=h address.line2 %></td>
+      <td><%= link_to "Show", address %></td>
+      <td><%= link_to "Edit", edit_address_path(address) %></td>
+      <td><%= link_to "Destroy", address, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Address", new_address_path %></p>

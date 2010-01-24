@@ -1,0 +1,21 @@
+<% title "Carparks" %>
+
+<table>
+  <tr>
+    <th>Price</th>
+    <th>Bond</th>
+    <th>Type</th>
+  </tr>
+  <% for carpark in @carparks %>
+    <tr>
+      <td><%=h carpark.price %></td>
+      <td><%=h carpark.bond %></td>
+      <td><%=h carpark.type %></td>
+      <td><%= link_to "Show", carpark %></td>
+      <td><%= link_to "Edit", edit_carpark_path(carpark) %></td>
+      <td><%= link_to "Destroy", carpark, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Carpark", new_carpark_path %></p>

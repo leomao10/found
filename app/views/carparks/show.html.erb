@@ -1,0 +1,20 @@
+<% title "Carpark" %>
+
+<p>
+  <strong>Price:</strong>
+  <%=h @carpark.price %>
+</p>
+<p>
+  <strong>Bond:</strong>
+  <%=h @carpark.bond %>
+</p>
+<p>
+  <strong>Type:</strong>
+  <%=h @carpark.type %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_carpark_path(@carpark) %> |
+  <%= link_to "Destroy", @carpark, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", carparks_path %>
+</p>

@@ -1,0 +1,15 @@
+one:
+  title: MyString
+  description: MyText
+  available_from: 2010-01-24
+  expiry_date: 2010-01-24
+  inspection_time: MyString
+  negotiable: false
+
+two:
+  title: MyString
+  description: MyText
+  available_from: 2010-01-24
+  expiry_date: 2010-01-24
+  inspection_time: MyString
+  negotiable: false

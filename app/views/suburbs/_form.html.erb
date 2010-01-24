@@ -1,0 +1,20 @@
+<% form_for @suburb do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :area %><br />
+    <%= f.text_field :area %>
+  </p>
+  <p>
+    <%= f.label :state %><br />
+    <%= f.text_field :state %>
+  </p>
+  <p>
+    <%= f.label :postcode %><br />
+    <%= f.text_field :postcode %>
+  </p>
+  <p><%= f.submit "Submit" %></p>
+<% end %>

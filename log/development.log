@@ -1,0 +1,1997 @@
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (140.6ms)[0m   [0mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (250.0ms)[0m   [0;1mCREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (20100124054035)
+  [4;35;1mSQL (93.8ms)[0m   [0mCREATE TABLE `users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `username` varchar(255), `email` varchar(255), `crypted_password` varchar(255), `password_salt` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (62.5ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100124054035')[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (15.6ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mdescribe `users`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW KEYS FROM `users`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-01-24 17:03:58) [GET]
+
+ActionController::RoutingError (No route matches "/suburb" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  E:/Ruby19/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  E:/Ruby19/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  E:/Ruby19/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SuburbsController#index (for 127.0.0.1 at 2010-01-24 17:04:13) [GET]
+  [4;36;1mSuburb Load (0.0ms)[0m   [0;1mMysql::Error: Table 'found_development.suburbs' doesn't exist: SELECT * FROM `suburbs` [0m
+
+ActiveRecord::StatementInvalid (Mysql::Error: Table 'found_development.suburbs' doesn't exist: SELECT * FROM `suburbs` ):
+  app/controllers/suburbs_controller.rb:3:in `index'
+  <internal:prelude>:8:in `synchronize'
+  E:/Ruby19/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  E:/Ruby19/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  E:/Ruby19/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendered rescues/_trace (203.1ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (20100124054035)
+Migrating to CreateSuburbs (20100124060306)
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SuburbsController#index (for 127.0.0.1 at 2010-01-24 17:07:23) [GET]
+  [4;35;1mSuburb Load (0.0ms)[0m   [0mMysql::Error: Table 'found_development.suburbs' doesn't exist: SELECT * FROM `suburbs` [0m
+
+ActiveRecord::StatementInvalid (Mysql::Error: Table 'found_development.suburbs' doesn't exist: SELECT * FROM `suburbs` ):
+  app/controllers/suburbs_controller.rb:3:in `index'
+  <internal:prelude>:8:in `synchronize'
+  E:/Ruby19/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  E:/Ruby19/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  E:/Ruby19/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendered rescues/_trace (203.1ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SuburbsController#index (for 127.0.0.1 at 2010-01-24 17:10:04) [GET]
+  [4;36;1mSuburb Load (0.0ms)[0m   [0;1mMysql::Error: Table 'found_development.suburbs' doesn't exist: SELECT * FROM `suburbs` [0m
+
+ActiveRecord::StatementInvalid (Mysql::Error: Table 'found_development.suburbs' doesn't exist: SELECT * FROM `suburbs` ):
+  app/controllers/suburbs_controller.rb:3:in `index'
+  <internal:prelude>:8:in `synchronize'
+  E:/Ruby19/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  E:/Ruby19/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  E:/Ruby19/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendered rescues/_trace (187.5ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (109.4ms)[0m   [0;1mCREATE TABLE `suburbs` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `area` varchar(255), `state` varchar(255), `postcode` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;35;1mSQL (109.4ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100124060306')[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW FIELDS FROM `suburbs`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mdescribe `suburbs`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW KEYS FROM `suburbs`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mSQL (15.6ms)[0m   [0mdescribe `users`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW KEYS FROM `users`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SuburbsController#index (for 127.0.0.1 at 2010-01-24 17:10:14) [GET]
+  [4;35;1mSuburb Load (0.0ms)[0m   [0mSELECT * FROM `suburbs` [0m
+Rendering template within layouts/application
+Rendering suburbs/index
+Completed in 1781ms (View: 1750, DB: 0) | 200 OK [http://localhost/suburbs]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#new (for 127.0.0.1 at 2010-01-24 17:10:19) [GET]
+  [4;36;1mUser Columns (15.6ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+Rendering template within layouts/application
+Rendering users/new
+Rendered users/_form (0.0ms)
+Completed in 109ms (View: 62, DB: 16) | 200 OK [http://localhost/users/new]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#create (for 127.0.0.1 at 2010-01-24 17:10:32) [POST]
+  Parameters: {"authenticity_token"=>"Q2li5yNM2m9f5pgziBZk2WhTwT62vnRDIuB9pT7ijRQ=", "user"=>{"username"=>"leoliang", "email"=>"leoliang@163.com", "password"=>"leo1022"}, "commit"=>"Submit"}
+  [4;35;1mUser Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+
+NoMethodError (undefined method `persistence_token=' for #<User:0x25f54e0>):
+  authlogic (2.1.3) lib/authlogic/acts_as_authentic/persistence_token.rb:50:in `reset_persistence_token'
+  authlogic (2.1.3) lib/authlogic/acts_as_authentic/password.rb:192:in `after_password_set'
+  authlogic (2.1.3) lib/authlogic/acts_as_authentic/password.rb:231:in `password='
+  app/controllers/users_controller.rb:7:in `new'
+  app/controllers/users_controller.rb:7:in `create'
+  <internal:prelude>:8:in `synchronize'
+  E:/Ruby19/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  E:/Ruby19/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  E:/Ruby19/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendered rescues/_trace (203.1ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#index (for 127.0.0.1 at 2010-01-24 17:23:31) [GET]
+  [4;36;1mSuburb Load (0.0ms)[0m   [0;1mSELECT * FROM `suburbs` [0m
+Rendering template within layouts/application
+Rendering users/index
+
+ActionView::TemplateError (You have a nil object when you didn't expect it!
+You might have expected an instance of Array.
+The error occurred while evaluating nil.each) on line #3 of app/views/users/index.html.erb:
+1: <% title "Users" %>
+2: <p>
+3:   <% for user in @users %>
+4:       <td><%=h user.area %></td>
+5:       <td><%=h user.state %></td>
+6:       <td><%=h user.postcode %></td>
+
+    app/views/users/index.html.erb:3
+    <internal:prelude>:8:in `synchronize'
+    E:/Ruby19/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+    E:/Ruby19/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+    E:/Ruby19/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendered rescues/_trace (234.4ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#index (for 127.0.0.1 at 2010-01-24 17:24:07) [GET]
+  [4;35;1mUser Columns (15.6ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM `users` [0m
+Rendering template within layouts/application
+Rendering users/index
+
+ActionView::TemplateError (You have a nil object when you didn't expect it!
+You might have expected an instance of Array.
+The error occurred while evaluating nil.each) on line #3 of app/views/users/index.html.erb:
+1: <% title "Users" %>
+2: <p>
+3:   <% for user in @users %>
+4:       <td><%=h user.area %></td>
+5:       <td><%=h user.state %></td>
+6:       <td><%=h user.postcode %></td>
+
+    app/views/users/index.html.erb:3
+    <internal:prelude>:8:in `synchronize'
+    E:/Ruby19/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+    E:/Ruby19/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+    E:/Ruby19/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendered rescues/_trace (203.1ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#index (for 127.0.0.1 at 2010-01-24 17:24:10) [GET]
+  [4;35;1mUser Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM `users` [0m
+Rendering template within layouts/application
+Rendering users/index
+
+ActionView::TemplateError (You have a nil object when you didn't expect it!
+You might have expected an instance of Array.
+The error occurred while evaluating nil.each) on line #3 of app/views/users/index.html.erb:
+1: <% title "Users" %>
+2: <p>
+3:   <% for user in @users %>
+4:       <td><%=h user.area %></td>
+5:       <td><%=h user.state %></td>
+6:       <td><%=h user.postcode %></td>
+
+    app/views/users/index.html.erb:3
+    <internal:prelude>:8:in `synchronize'
+    E:/Ruby19/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+    E:/Ruby19/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+    E:/Ruby19/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendered rescues/_trace (203.1ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#index (for 127.0.0.1 at 2010-01-24 17:24:24) [GET]
+  [4;35;1mUser Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM `users` [0m
+Rendering template within layouts/application
+Rendering users/index
+Completed in 47ms (View: 16, DB: 0) | 200 OK [http://localhost/users]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#new (for 127.0.0.1 at 2010-01-24 17:24:28) [GET]
+  [4;35;1mUser Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+Rendering template within layouts/application
+Rendering users/new
+Rendered users/_form (15.6ms)
+Completed in 78ms (View: 31, DB: 0) | 200 OK [http://localhost/users/new]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#create (for 127.0.0.1 at 2010-01-24 17:24:39) [POST]
+  Parameters: {"authenticity_token"=>"Q2li5yNM2m9f5pgziBZk2WhTwT62vnRDIuB9pT7ijRQ=", "user"=>{"username"=>"leoliang", "email"=>"leoliang@163.com", "password"=>"leo1022", "password_confirmation"=>"leo1022"}, "commit"=>"Submit"}
+  [4;36;1mUser Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+WARNING: Can't mass-assign these protected attributes: password_confirmation
+
+NoMethodError (undefined method `persistence_token=' for #<User:0x24af400>):
+  authlogic (2.1.3) lib/authlogic/acts_as_authentic/persistence_token.rb:50:in `reset_persistence_token'
+  authlogic (2.1.3) lib/authlogic/acts_as_authentic/password.rb:192:in `after_password_set'
+  authlogic (2.1.3) lib/authlogic/acts_as_authentic/password.rb:231:in `password='
+  app/controllers/users_controller.rb:11:in `new'
+  app/controllers/users_controller.rb:11:in `create'
+  <internal:prelude>:8:in `synchronize'
+  E:/Ruby19/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  E:/Ruby19/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  E:/Ruby19/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendered rescues/_trace (281.2ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateSuburbs (20100124060306)
+  [4;36;1mSQL (46.9ms)[0m   [0;1mDROP TABLE `suburbs`[0m
+  [4;35;1mSQL (62.5ms)[0m   [0mDELETE FROM schema_migrations WHERE version = '20100124060306'[0m
+  [4;36;1mSQL (15.6ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mSQL (15.6ms)[0m   [0;1mdescribe `users`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW KEYS FROM `users`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (20100124054035)
+  [4;36;1mSQL (46.9ms)[0m   [0;1mDROP TABLE `users`[0m
+  [4;35;1mSQL (62.5ms)[0m   [0mDELETE FROM schema_migrations WHERE version = '20100124054035'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (20100124054035)
+  [4;36;1mSQL (109.4ms)[0m   [0;1mCREATE TABLE `users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `username` varchar(255), `email` varchar(255), `crypted_password` varchar(255), `password_salt` varchar(255), `persistence_token` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;35;1mSQL (78.1ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100124054035')[0m
+Migrating to CreateSuburbs (20100124060306)
+  [4;36;1mSQL (93.8ms)[0m   [0;1mCREATE TABLE `suburbs` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `area` varchar(255), `state` varchar(255), `postcode` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;35;1mSQL (62.5ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100124060306')[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (15.6ms)[0m   [0mSHOW FIELDS FROM `suburbs`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mdescribe `suburbs`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW KEYS FROM `suburbs`[0m
+  [4;36;1mSQL (15.6ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mdescribe `users`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW KEYS FROM `users`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#index (for 127.0.0.1 at 2010-01-24 17:34:27) [GET]
+  [4;35;1mUser Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM `users` [0m
+Rendering template within layouts/application
+Rendering users/index
+Completed in 62ms (View: 16, DB: 0) | 200 OK [http://localhost/users]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#new (for 127.0.0.1 at 2010-01-24 17:34:28) [GET]
+  [4;35;1mUser Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+Rendering template within layouts/application
+Rendering users/new
+Rendered users/_form (0.0ms)
+Completed in 78ms (View: 16, DB: 0) | 200 OK [http://localhost/users/new]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#create (for 127.0.0.1 at 2010-01-24 17:34:39) [POST]
+  Parameters: {"authenticity_token"=>"Q2li5yNM2m9f5pgziBZk2WhTwT62vnRDIuB9pT7ijRQ=", "user"=>{"username"=>"leoliang", "email"=>"leoliang@163.com", "password"=>"leo1022", "password_confirmation"=>"leo1022"}, "commit"=>"Submit"}
+  [4;36;1mUser Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+WARNING: Can't mass-assign these protected attributes: password, password_confirmation
+  [4;35;1mSQL (0.0ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT `users`.id FROM `users` WHERE (LOWER(`users`.`email`) = BINARY 'leoliang@163.com') LIMIT 1[0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT `users`.id FROM `users` WHERE (LOWER(`users`.`username`) = BINARY 'leoliang') LIMIT 1[0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT `users`.id FROM `users` WHERE (`users`.`persistence_token` = BINARY '3e6dfa0bacae41902493ec144b3dd53028be1f8a32cc7c2a526f390872f78b94f6ff29de7e339d7c822da698efe8b5086484d8b8b60122429ca82500c37fa8be') LIMIT 1[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mROLLBACK[0m
+Rendering template within layouts/application
+Rendering users/new
+Rendered users/_form (15.6ms)
+Completed in 62ms (View: 16, DB: 0) | 200 OK [http://localhost/users]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#create (for 127.0.0.1 at 2010-01-24 17:35:02) [POST]
+  Parameters: {"authenticity_token"=>"Q2li5yNM2m9f5pgziBZk2WhTwT62vnRDIuB9pT7ijRQ=", "user"=>{"username"=>"leoliang", "email"=>"leoliang@163.com", "password"=>"leoliang01", "password_confirmation"=>"leoliang01"}, "commit"=>"Submit"}
+  [4;36;1mUser Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+WARNING: Can't mass-assign these protected attributes: password, password_confirmation
+  [4;35;1mSQL (0.0ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT `users`.id FROM `users` WHERE (LOWER(`users`.`email`) = BINARY 'leoliang@163.com') LIMIT 1[0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT `users`.id FROM `users` WHERE (LOWER(`users`.`username`) = BINARY 'leoliang') LIMIT 1[0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT `users`.id FROM `users` WHERE (`users`.`persistence_token` = BINARY 'b76fa2537c8d02c82d80c4ea0cf966d2516a59d58e6258b260e4a36ff3ba2c89b2e1670e5da29e13dc8df23d8aea8b6f0d0c303ed0937f6fc4ceb3743da49881') LIMIT 1[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mROLLBACK[0m
+Rendering template within layouts/application
+Rendering users/new
+Rendered users/_form (15.6ms)
+Completed in 78ms (View: 16, DB: 0) | 200 OK [http://localhost/users]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#new (for 127.0.0.1 at 2010-01-24 17:35:08) [GET]
+  [4;36;1mUser Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+Rendering template within layouts/application
+Rendering users/new
+Rendered users/_form (0.0ms)
+Completed in 47ms (View: 16, DB: 0) | 200 OK [http://localhost/users/new]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (15.6ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#create (for 127.0.0.1 at 2010-01-24 17:41:19) [POST]
+  Parameters: {"authenticity_token"=>"Q2li5yNM2m9f5pgziBZk2WhTwT62vnRDIuB9pT7ijRQ=", "user"=>{"username"=>"", "email"=>"leoliang@163.co", "password"=>"", "password_confirmation"=>""}, "commit"=>"Submit"}
+  [4;35;1mUser Columns (109.4ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+WARNING: Can't mass-assign these protected attributes: password, password_confirmation
+  [4;36;1mSQL (0.0ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT `users`.id FROM `users` WHERE (LOWER(`users`.`email`) = BINARY 'leoliang@163.co') LIMIT 1[0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT `users`.id FROM `users` WHERE (LOWER(`users`.`username`) = BINARY '') LIMIT 1[0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT `users`.id FROM `users` WHERE (`users`.`persistence_token` = BINARY 'e8b7109e869e9747457f1eb4d959ce7c12313b55942136940da1bdea24c7ee4c1d32ec3b3570cf1405bdd328f66d666874b546a4275daa8875286aa366f88b6a') LIMIT 1[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mROLLBACK[0m
+Rendering template within layouts/application
+Rendering users/new
+Rendered users/_form (15.6ms)
+Completed in 172ms (View: 16, DB: 125) | 200 OK [http://localhost/users]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#create (for 127.0.0.1 at 2010-01-24 17:41:32) [POST]
+  Parameters: {"authenticity_token"=>"Q2li5yNM2m9f5pgziBZk2WhTwT62vnRDIuB9pT7ijRQ=", "user"=>{"username"=>"leomao", "email"=>"leoliang@163.co", "password"=>"leo1022", "password_confirmation"=>"leo1022"}, "commit"=>"Submit"}
+  [4;35;1mUser Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+WARNING: Can't mass-assign these protected attributes: password, password_confirmation
+  [4;36;1mSQL (0.0ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT `users`.id FROM `users` WHERE (LOWER(`users`.`email`) = BINARY 'leoliang@163.co') LIMIT 1[0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT `users`.id FROM `users` WHERE (LOWER(`users`.`username`) = BINARY 'leomao') LIMIT 1[0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT `users`.id FROM `users` WHERE (`users`.`persistence_token` = BINARY '1dbedd43019479d3bb7ccc5c23cd4ff00907768b7a041f1657a1a3a4f891df0aa194bc1ebaf3ecfd4a9592df2963670cde883b3425b54ffe51c510191c8c10d2') LIMIT 1[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mROLLBACK[0m
+Rendering template within layouts/application
+Rendering users/new
+Rendered users/_form (15.6ms)
+Completed in 62ms (View: 16, DB: 0) | 200 OK [http://localhost/users]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#create (for 127.0.0.1 at 2010-01-24 17:41:48) [POST]
+  Parameters: {"authenticity_token"=>"Q2li5yNM2m9f5pgziBZk2WhTwT62vnRDIuB9pT7ijRQ=", "user"=>{"username"=>"leomao", "email"=>"leoliang", "password"=>"leo11111", "password_confirmation"=>"leo1111"}, "commit"=>"Submit"}
+  [4;35;1mUser Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+WARNING: Can't mass-assign these protected attributes: password, password_confirmation
+  [4;36;1mSQL (0.0ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT `users`.id FROM `users` WHERE (LOWER(`users`.`email`) = BINARY 'leoliang') LIMIT 1[0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT `users`.id FROM `users` WHERE (LOWER(`users`.`username`) = BINARY 'leomao') LIMIT 1[0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT `users`.id FROM `users` WHERE (`users`.`persistence_token` = BINARY '690b1d376f62c8b3f2a0210a3a77a858eb0259953592b8ab3c6f70c7bbc11ebefd1f8fd7a0b5c633e3266303aa4e30a0601e3a2d5490afae1ece3bec773d7712') LIMIT 1[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mROLLBACK[0m
+Rendering template within layouts/application
+Rendering users/new
+Rendered users/_form (15.6ms)
+Completed in 62ms (View: 16, DB: 0) | 200 OK [http://localhost/users]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#create (for 127.0.0.1 at 2010-01-24 17:42:06) [POST]
+  Parameters: {"authenticity_token"=>"Q2li5yNM2m9f5pgziBZk2WhTwT62vnRDIuB9pT7ijRQ=", "user"=>{"username"=>"leomao", "email"=>"leoliang", "password"=>"leo1022", "password_confirmation"=>""}, "commit"=>"Submit"}
+  [4;35;1mUser Columns (15.6ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+WARNING: Can't mass-assign these protected attributes: password_confirmation
+  [4;36;1mSQL (0.0ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT `users`.id FROM `users` WHERE (LOWER(`users`.`email`) = BINARY 'leoliang') LIMIT 1[0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT `users`.id FROM `users` WHERE (LOWER(`users`.`username`) = BINARY 'leomao') LIMIT 1[0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT `users`.id FROM `users` WHERE (`users`.`persistence_token` = BINARY '2229f1e874107ea61a2e185abb5eaadcfebb6f87a928cfa14e7056304f04bb840deab0e2160da62527643ba44562b221ad709d3586609f85801f455bedcd11b6') LIMIT 1[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mROLLBACK[0m
+Rendering template within layouts/application
+Rendering users/new
+Rendered users/_form (109.4ms)
+Completed in 188ms (View: 141, DB: 16) | 200 OK [http://localhost/users]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#index (for 127.0.0.1 at 2010-01-24 17:55:49) [GET]
+  [4;35;1mUser Columns (15.6ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (15.6ms)[0m   [0;1mSELECT * FROM `users` [0m
+Rendering template within layouts/application
+Rendering users/index
+Completed in 62ms (View: 0, DB: 31) | 200 OK [http://localhost/users]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#new (for 127.0.0.1 at 2010-01-24 17:55:51) [GET]
+  [4;35;1mUser Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+Rendering template within layouts/application
+Rendering users/new
+Rendered users/_form (0.0ms)
+Completed in 47ms (View: 0, DB: 0) | 200 OK [http://localhost/users/new]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#create (for 127.0.0.1 at 2010-01-24 17:56:06) [POST]
+  Parameters: {"authenticity_token"=>"Q2li5yNM2m9f5pgziBZk2WhTwT62vnRDIuB9pT7ijRQ=", "user"=>{"username"=>"leoliang", "email"=>"leoliang@163.com", "password"=>"leoliang01", "password_confirmation"=>"leoliang01"}, "commit"=>"Submit"}
+  [4;36;1mUser Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+WARNING: Can't mass-assign these protected attributes: password_confirmation
+  [4;35;1mSQL (0.0ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT `users`.id FROM `users` WHERE (LOWER(`users`.`email`) = BINARY 'leoliang@163.com') LIMIT 1[0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT `users`.id FROM `users` WHERE (LOWER(`users`.`username`) = BINARY 'leoliang') LIMIT 1[0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT `users`.id FROM `users` WHERE (`users`.`persistence_token` = BINARY '622d27c42b002c71a529fd119c82a08507be7e64d4be4c162b6d4c8b3d6d93f785bbc9fc449bd92fbfd65ac084a47a1d15a2ae3693516f8fcf329ea86e90cd94') LIMIT 1[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mROLLBACK[0m
+Rendering template within layouts/application
+Rendering users/new
+Rendered users/_form (0.0ms)
+Completed in 47ms (View: 0, DB: 0) | 200 OK [http://localhost/users]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#create (for 127.0.0.1 at 2010-01-24 17:56:19) [POST]
+  Parameters: {"authenticity_token"=>"Q2li5yNM2m9f5pgziBZk2WhTwT62vnRDIuB9pT7ijRQ=", "user"=>{"username"=>"leoliang", "email"=>"leoliang@163.com", "password"=>"leoliang01", "password_confirmation"=>"leoliang01"}, "commit"=>"Submit"}
+  [4;36;1mUser Columns (15.6ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+WARNING: Can't mass-assign these protected attributes: password_confirmation
+  [4;35;1mSQL (0.0ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT `users`.id FROM `users` WHERE (LOWER(`users`.`email`) = BINARY 'leoliang@163.com') LIMIT 1[0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT `users`.id FROM `users` WHERE (LOWER(`users`.`username`) = BINARY 'leoliang') LIMIT 1[0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT `users`.id FROM `users` WHERE (`users`.`persistence_token` = BINARY '91b0dd3ed8f0878a26b9f0c9496a0b69e347e8702b9bb5d51acc945129063caccbda00ecd55b9527872a3f76888436aeb5bef57f49d7e2d977392e2e3eb3b77d') LIMIT 1[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mROLLBACK[0m
+Rendering template within layouts/application
+Rendering users/new
+Rendered users/_form (0.0ms)
+Completed in 78ms (View: 16, DB: 16) | 200 OK [http://localhost/users]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#index (for 127.0.0.1 at 2010-01-24 17:56:32) [GET]
+  [4;36;1mUser Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (15.6ms)[0m   [0mSELECT * FROM `users` [0m
+Rendering template within layouts/application
+Rendering users/index
+Completed in 47ms (View: 0, DB: 16) | 200 OK [http://localhost/users]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#new (for 127.0.0.1 at 2010-01-24 17:56:34) [GET]
+  [4;36;1mUser Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+Rendering template within layouts/application
+Rendering users/new
+Rendered users/_form (15.6ms)
+Completed in 47ms (View: 16, DB: 0) | 200 OK [http://localhost/users/new]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#create (for 127.0.0.1 at 2010-01-24 17:56:46) [POST]
+  Parameters: {"authenticity_token"=>"Q2li5yNM2m9f5pgziBZk2WhTwT62vnRDIuB9pT7ijRQ=", "user"=>{"username"=>"leoliang", "email"=>"leoliang@163.com", "password"=>"leoliang01", "password_confirmation"=>"leoliang01"}, "commit"=>"Submit"}
+  [4;35;1mUser Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT `users`.id FROM `users` WHERE (LOWER(`users`.`email`) = BINARY 'leoliang@163.com') LIMIT 1[0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT `users`.id FROM `users` WHERE (LOWER(`users`.`username`) = BINARY 'leoliang') LIMIT 1[0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT `users`.id FROM `users` WHERE (`users`.`persistence_token` = BINARY '31c0b25d42f1b020ce10fb0e79640fa7252afd28b1f928012d2fe01a7c88a96a73e1be5e2f801584e582d2e22e9d25ad6a8a462d699eb5686b2f35cd8ce8fac6') LIMIT 1[0m
+  [4;36;1mUser Create (0.0ms)[0m   [0;1mINSERT INTO `users` (`username`, `email`, `crypted_password`, `password_salt`, `persistence_token`, `created_at`, `updated_at`) VALUES('leoliang', 'leoliang@163.com', '0aa35d4f3c237c11ca5bae93a930e6f6dcbc52ef4a04ea09129feef34ebbfe206589da2a333ce663584f6caa95106768c7a6a31e4ef77d57bf411d56e2c4cd66', 'x32VclDzAmvx1FZWLoXV', '31c0b25d42f1b020ce10fb0e79640fa7252afd28b1f928012d2fe01a7c88a96a73e1be5e2f801584e582d2e22e9d25ad6a8a462d699eb5686b2f35cd8ce8fac6', '2010-01-24 06:56:46', '2010-01-24 06:56:46')[0m
+  [4;35;1mSQL (171.9ms)[0m   [0mCOMMIT[0m
+
+NameError (undefined local variable or method `root_url' for #<UsersController:0x2ffe240>):
+  app/controllers/users_controller.rb:14:in `create'
+  <internal:prelude>:8:in `synchronize'
+  E:/Ruby19/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  E:/Ruby19/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  E:/Ruby19/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendered rescues/_trace (484.4ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#index (for 127.0.0.1 at 2010-01-24 18:05:55) [GET]
+  [4;36;1mUser Columns (15.6ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM `users` [0m
+Rendering template within layouts/application
+Rendering users/index
+
+ActionView::TemplateError (undefined method `area' for #<User:0x3a696e0>) on line #4 of app/views/users/index.html.erb:
+1: <% title "Users" %>
+2: <p>
+3:   <% for user in @users %>
+4:       <td><%=h user.area %></td>
+5:       <td><%=h user.state %></td>
+6:       <td><%=h user.postcode %></td>
+7:       <td><%= link_to "Show", user %></td>
+
+    app/views/users/index.html.erb:4:in `block in _run_erb_app47views47users47index46html46erb'
+    app/views/users/index.html.erb:3:in `each'
+    app/views/users/index.html.erb:3
+    <internal:prelude>:8:in `synchronize'
+    E:/Ruby19/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+    E:/Ruby19/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+    E:/Ruby19/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendered rescues/_trace (156.2ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#index (for 127.0.0.1 at 2010-01-24 18:06:47) [GET]
+  [4;36;1mUser Columns (46.9ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM `users` [0m
+Rendering template within layouts/application
+Rendering users/index
+
+ActionView::TemplateError (undefined method `name' for #<User:0x33a86e0>) on line #4 of app/views/users/index.html.erb:
+1: <% title "Users" %>
+2: <p>
+3:   <% for user in @users %>
+4:       <td><%=h user.name %></td>
+5:       <td><%=h user.email %></td>
+6:       <td><%= link_to "Show", user %></td>
+7:       <td><%= link_to "Edit", edit_user_path(user) %></td>
+
+    app/views/users/index.html.erb:4:in `block in _run_erb_app47views47users47index46html46erb'
+    app/views/users/index.html.erb:3:in `each'
+    app/views/users/index.html.erb:3
+    <internal:prelude>:8:in `synchronize'
+    E:/Ruby19/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+    E:/Ruby19/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+    E:/Ruby19/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendered rescues/_trace (796.9ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#index (for 127.0.0.1 at 2010-01-24 18:07:06) [GET]
+  [4;36;1mUser Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM `users` [0m
+Rendering template within layouts/application
+Rendering users/index
+Completed in 62ms (View: 31, DB: 0) | 200 OK [http://localhost/users]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#index (for 127.0.0.1 at 2010-01-24 18:15:54) [GET]
+  [4;36;1mUser Columns (15.6ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM `users` [0m
+Rendering template within layouts/application
+Rendering users/index
+Completed in 78ms (View: 31, DB: 16) | 200 OK [http://localhost/users]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#index (for 127.0.0.1 at 2010-01-24 18:16:11) [GET]
+  [4;36;1mUser Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM `users` [0m
+Rendering template within layouts/application
+Rendering users/index
+Completed in 62ms (View: 31, DB: 0) | 200 OK [http://localhost/users]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UserSessionsController#new (for 127.0.0.1 at 2010-01-24 18:16:13) [GET]
+  [4;36;1mUser Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+Rendering template within layouts/application
+Rendering user_sessions/new
+Completed in 94ms (View: 47, DB: 0) | 200 OK [http://localhost/login]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#index (for 127.0.0.1 at 2010-01-24 18:16:23) [GET]
+  [4;35;1mUser Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM `users` [0m
+Rendering template within layouts/application
+Rendering users/index
+Completed in 47ms (View: 0, DB: 0) | 200 OK [http://localhost/users]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UserSessionsController#new (for 127.0.0.1 at 2010-01-24 18:16:41) [GET]
+  [4;35;1mUser Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+Rendering template within layouts/application
+Rendering user_sessions/new
+Completed in 47ms (View: 0, DB: 0) | 200 OK [http://localhost/login]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UserSessionsController#create (for 127.0.0.1 at 2010-01-24 18:16:55) [POST]
+  Parameters: {"authenticity_token"=>"Q2li5yNM2m9f5pgziBZk2WhTwT62vnRDIuB9pT7ijRQ=", "user_session"=>{"username"=>"leoliang", "password"=>"leoliang01"}, "commit"=>"Submit"}
+  [4;36;1mUser Columns (15.6ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (LOWER(`users`.username) = 'leoliang') LIMIT 1[0m
+Redirected to http://localhost:3000/
+Completed in 47ms (DB: 16) | 302 Found [http://localhost/user_sessions]
+  [4;36;1mSQL (15.6ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#index (for 127.0.0.1 at 2010-01-24 18:17:05) [GET]
+  [4;36;1mUser Columns (15.6ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM `users` [0m
+Rendering template within layouts/application
+Rendering users/index
+Completed in 62ms (View: 16, DB: 31) | 200 OK [http://localhost/users]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#index (for 127.0.0.1 at 2010-01-24 18:26:05) [GET]
+  [4;36;1mUser Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM `users` [0m
+Rendering template within layouts/application
+Rendering users/index
+
+ActionView::TemplateError (undefined method `definded?' for #<UsersController:0x306f3c0>) on line #12 of app/views/layouts/application.html.erb:
+9:   <body>
+10:     <div id="container">
+11:       <div id="user_nav">
+12:         <% if current_user %>
+13:           <%= link_to "Edit Profile", edit_user_path(:current) %> |
+14:           <%= link_to "Logout", logout_path(:current) %>
+15:         <% else %>
+
+    app/controllers/application_controller.rb:20:in `current_user'
+    (eval):2:in `current_user'
+    app/views/layouts/application.html.erb:12
+    <internal:prelude>:8:in `synchronize'
+    E:/Ruby19/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+    E:/Ruby19/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+    E:/Ruby19/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendered rescues/_trace (906.2ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#index (for 127.0.0.1 at 2010-01-24 18:26:22) [GET]
+  [4;36;1mUser Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM `users` [0m
+Rendering template within layouts/application
+Rendering users/index
+  [4;36;1mUser Load (15.6ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = '1') LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = '1') LIMIT 1[0m
+
+ActionView::TemplateError (undefined method `to_sym' for nil:NilClass) on line #14 of app/views/layouts/application.html.erb:
+11:       <div id="user_nav">
+12:         <% if current_user %>
+13:           <%= link_to "Edit Profile", edit_user_path(:current) %> |
+14:           <%= link_to "Logout", logout_path(:current) %>
+15:         <% else %>
+16:           <%= link_to "Register", new_user_path %> |
+17:           <%= link_to "Login", login_path %>
+
+    (eval):20:in `logout_path'
+    app/views/layouts/application.html.erb:14
+    <internal:prelude>:8:in `synchronize'
+    E:/Ruby19/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+    E:/Ruby19/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+    E:/Ruby19/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendered rescues/_trace (171.9ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#index (for 127.0.0.1 at 2010-01-24 18:27:33) [GET]
+  [4;36;1mUser Columns (15.6ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM `users` [0m
+Rendering template within layouts/application
+Rendering users/index
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = '1') LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = '1') LIMIT 1[0m
+Completed in 94ms (View: 47, DB: 16) | 200 OK [http://localhost/users]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#edit (for 127.0.0.1 at 2010-01-24 18:27:37) [GET]
+  Parameters: {"id"=>"current"}
+  [4;36;1mUser Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 0) [0m
+
+ActiveRecord::RecordNotFound (Couldn't find User with ID=current):
+  app/controllers/users_controller.rb:21:in `edit'
+  <internal:prelude>:8:in `synchronize'
+  E:/Ruby19/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  E:/Ruby19/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  E:/Ruby19/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendered rescues/_trace (125.0ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#edit (for 127.0.0.1 at 2010-01-24 18:29:51) [GET]
+  Parameters: {"id"=>"current"}
+  [4;36;1mUser Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = '1') LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = '1') LIMIT 1[0m
+Rendering template within layouts/application
+Rendering users/edit
+Rendered users/_form (0.0ms)
+Completed in 281ms (View: 78, DB: 0) | 200 OK [http://localhost/users/current/edit]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#edit (for 127.0.0.1 at 2010-01-24 18:29:54) [GET]
+  Parameters: {"id"=>"current"}
+  [4;35;1mUser Columns (15.6ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = '1') LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = '1') LIMIT 1[0m
+Rendering template within layouts/application
+Rendering users/edit
+Rendered users/_form (15.6ms)
+Completed in 188ms (View: 31, DB: 16) | 200 OK [http://localhost/users/current/edit]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#update (for 127.0.0.1 at 2010-01-24 18:30:06) [PUT]
+  Parameters: {"authenticity_token"=>"Q2li5yNM2m9f5pgziBZk2WhTwT62vnRDIuB9pT7ijRQ=", "user"=>{"username"=>"leoliang", "email"=>"leoliang@163.com", "password"=>"leoliang", "password_confirmation"=>"leoliang"}, "commit"=>"Submit", "id"=>"1"}
+  [4;36;1mUser Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = '1') LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = '1') LIMIT 1[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT `users`.id FROM `users` WHERE (`users`.`persistence_token` = BINARY 'd82241c19c7d786e5c6c1a4878f7512796797260e35fcd82bd18532fc1de7ac07f3f3fd572b7e3e8e223c5aa106649cc24f0a0628167aead8eccf56b35a0ad25' AND `users`.id <> 1) LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = '1') LIMIT 1[0m
+  [4;36;1mUser Update (0.0ms)[0m   [0;1mUPDATE `users` SET `password_salt` = 'zAKJL86sq4ilqj5dpHsM', `crypted_password` = '7b7d54c6cb913c8aa5f64e7a0c108e862a45f1aa1f019dc93f6df43d2607689f2cb57229c3967a7512172cdfaf4b23a21996e3f8acfd9a4d89859f991355cb27', `persistence_token` = 'd82241c19c7d786e5c6c1a4878f7512796797260e35fcd82bd18532fc1de7ac07f3f3fd572b7e3e8e223c5aa106649cc24f0a0628167aead8eccf56b35a0ad25', `updated_at` = '2010-01-24 07:30:06' WHERE `id` = 1[0m
+  [4;35;1mSQL (93.8ms)[0m   [0mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed in 281ms (DB: 94) | 302 Found [http://localhost/users/1]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#index (for 127.0.0.1 at 2010-01-24 18:30:11) [GET]
+  [4;36;1mUser Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM `users` [0m
+Rendering template within layouts/application
+Rendering users/index
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = '1') LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = '1') LIMIT 1[0m
+Completed in 188ms (View: 31, DB: 0) | 200 OK [http://localhost/users]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UserSessionsController#destory (for 127.0.0.1 at 2010-01-24 18:30:45) [GET]
+
+ActionController::UnknownAction (No action responded to destory. Actions: create, destroy, and new):
+  <internal:prelude>:8:in `synchronize'
+  E:/Ruby19/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  E:/Ruby19/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  E:/Ruby19/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UserSessionsController#destroy (for 127.0.0.1 at 2010-01-24 18:31:18) [GET]
+  [4;36;1mUser Columns (31.2ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = '1') LIMIT 1[0m
+Redirected to http://localhost:3000/
+Completed in 78ms (DB: 31) | 302 Found [http://localhost/logout]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#index (for 127.0.0.1 at 2010-01-24 18:31:22) [GET]
+  [4;36;1mUser Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM `users` [0m
+Rendering template within layouts/application
+Rendering users/index
+Completed in 62ms (View: 31, DB: 0) | 200 OK [http://localhost/users]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (15.6ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UserSessionsController#new (for 127.0.0.1 at 2010-01-24 18:31:24) [GET]
+  [4;36;1mUser Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+Rendering template within layouts/application
+Rendering user_sessions/new
+Completed in 62ms (View: 16, DB: 16) | 200 OK [http://localhost/login]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UserSessionsController#create (for 127.0.0.1 at 2010-01-24 18:31:26) [POST]
+  Parameters: {"authenticity_token"=>"Q2li5yNM2m9f5pgziBZk2WhTwT62vnRDIuB9pT7ijRQ=", "user_session"=>{"username"=>"leoliang@163.com", "password"=>"leoliang"}, "commit"=>"Submit"}
+  [4;35;1mUser Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (LOWER(`users`.username) = 'leoliang@163.com') LIMIT 1[0m
+Rendering template within layouts/application
+Rendering user_sessions/new
+Completed in 62ms (View: 16, DB: 0) | 200 OK [http://localhost/user_sessions]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UserSessionsController#create (for 127.0.0.1 at 2010-01-24 18:31:37) [POST]
+  Parameters: {"authenticity_token"=>"Q2li5yNM2m9f5pgziBZk2WhTwT62vnRDIuB9pT7ijRQ=", "user_session"=>{"username"=>"leoliang", "password"=>"leo1022"}, "commit"=>"Submit"}
+  [4;35;1mUser Columns (15.6ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (LOWER(`users`.username) = 'leoliang') LIMIT 1[0m
+Rendering template within layouts/application
+Rendering user_sessions/new
+Completed in 62ms (View: 16, DB: 16) | 200 OK [http://localhost/user_sessions]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UserSessionsController#create (for 127.0.0.1 at 2010-01-24 18:31:42) [POST]
+  Parameters: {"authenticity_token"=>"Q2li5yNM2m9f5pgziBZk2WhTwT62vnRDIuB9pT7ijRQ=", "user_session"=>{"username"=>"leoliang", "password"=>"leoliang"}, "commit"=>"Submit"}
+  [4;35;1mUser Columns (15.6ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (LOWER(`users`.username) = 'leoliang') LIMIT 1[0m
+Redirected to http://localhost:3000/
+Completed in 47ms (DB: 16) | 302 Found [http://localhost/user_sessions]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (20100124054035)
+Migrating to CreateSuburbs (20100124060306)
+Migrating to AddUsersPasswordResetField (20100124073325)
+  [4;36;1mSQL (234.4ms)[0m   [0;1mALTER TABLE `users` ADD `perishable_token` varchar(255) DEFAULT '' NOT NULL[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (20100124054035)
+Migrating to CreateSuburbs (20100124060306)
+Migrating to AddUsersPasswordResetField (20100124073325)
+  [4;36;1mSQL (0.0ms)[0m   [0;1mMysql::Error: Duplicate column name 'perishable_token': ALTER TABLE `users` ADD `perishable_token` varchar(255) DEFAULT '' NOT NULL[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (20100124054035)
+Migrating to CreateSuburbs (20100124060306)
+Migrating to AddUsersPasswordResetField (20100124073325)
+  [4;36;1mSQL (0.0ms)[0m   [0;1mMysql::Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '{:default=>"", :null=>false}' at line 1: ALTER TABLE `users` ADD `perishable_token` {:default=>"", :null=>false}[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (20100124054035)
+Migrating to CreateSuburbs (20100124060306)
+Migrating to AddUsersPasswordResetField (20100124073325)
+  [4;36;1mSQL (0.0ms)[0m   [0;1mMysql::Error: Duplicate column name 'perishable_token': ALTER TABLE `users` ADD `perishable_token` varchar(255) DEFAULT '' NOT NULL[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (125.0ms)[0m   [0mCREATE TABLE `suburbs` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `area` varchar(255), `state` varchar(255), `postcode` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (78.1ms)[0m   [0mCREATE TABLE `users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `username` varchar(255), `email` varchar(255), `crypted_password` varchar(255), `password_salt` varchar(255), `persistence_token` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (78.1ms)[0m   [0mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (250.0ms)[0m   [0;1mCREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)[0m
+  [4;35;1mSQL (15.6ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSELECT version FROM `schema_migrations`[0m
+  [4;35;1mSQL (78.1ms)[0m   [0mINSERT INTO `schema_migrations` (version) VALUES ('20100124060306')[0m
+  [4;36;1mSQL (78.1ms)[0m   [0;1mINSERT INTO `schema_migrations` (version) VALUES ('20100124054035')[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#index (for 127.0.0.1 at 2010-01-24 19:39:11) [GET]
+  [4;35;1mUser Columns (46.9ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM `users` [0m
+Rendering template within layouts/application
+Rendering users/index
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = '1') LIMIT 1[0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+Completed in 203ms (View: 125, DB: 47) | 200 OK [http://localhost/users]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#index (for 127.0.0.1 at 2010-01-24 19:39:39) [GET]
+  [4;35;1mUser Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM `users` [0m
+Rendering template within layouts/application
+Rendering users/index
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = '1') LIMIT 1[0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+Completed in 62ms (View: 31, DB: 0) | 200 OK [http://localhost/users]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UserSessionsController#new (for 127.0.0.1 at 2010-01-24 19:39:42) [GET]
+  [4;35;1mUser Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+Rendering template within layouts/application
+Rendering user_sessions/new
+
+ActionView::TemplateError (undefined local variable or method `new_password_reset_path' for #<ActionView::Base:0x3b01e00>) on line #12 of app/views/user_sessions/new.html.erb:
+9:   <p>
+10:     <%= f.label :password %><br />
+11:     <%= f.password_field :password %>
+12:     <%= link_to "forgot password", new_password_reset_path %>
+13:   </p>
+14:   <p><%= f.submit "Submit" %></p>
+15: <% end %>
+
+    app/views/user_sessions/new.html.erb:12:in `block in _run_erb_app47views47user_sessions47new46html46erb'
+    searchlogic (2.4.1) lib/searchlogic/rails_helpers.rb:72:in `fields_for'
+    searchlogic (2.4.1) lib/searchlogic/rails_helpers.rb:61:in `form_for'
+    app/views/user_sessions/new.html.erb:3
+    <internal:prelude>:8:in `synchronize'
+    E:/Ruby19/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+    E:/Ruby19/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+    E:/Ruby19/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendered rescues/_trace (156.2ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UserSessionsController#new (for 127.0.0.1 at 2010-01-24 19:41:31) [GET]
+  [4;36;1mUser Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+Rendering template within layouts/application
+Rendering user_sessions/new
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = '1') LIMIT 1[0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+Completed in 62ms (View: 16, DB: 0) | 200 OK [http://localhost/login]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UserSessionsController#create (for 127.0.0.1 at 2010-01-24 19:41:33) [POST]
+  Parameters: {"authenticity_token"=>"Q2li5yNM2m9f5pgziBZk2WhTwT62vnRDIuB9pT7ijRQ=", "user_session"=>{"username"=>"leoliang@163.com", "password"=>"leoliang"}, "commit"=>"Submit"}
+  [4;35;1mUser Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (LOWER(`users`.username) = 'leoliang@163.com') LIMIT 1[0m
+Rendering template within layouts/application
+Rendering user_sessions/new
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = '1') LIMIT 1[0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+Completed in 172ms (View: 16, DB: 0) | 200 OK [http://localhost/user_sessions]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#new (for 127.0.0.1 at 2010-01-24 19:41:44) [GET]
+
+NoMethodError (undefined method `beofre_filter' for PasswordResetsController:Class):
+  app/controllers/password_resets_controller.rb:3:in `<class:PasswordResetsController>'
+  app/controllers/password_resets_controller.rb:1:in `<top (required)>'
+  <internal:prelude>:8:in `synchronize'
+  E:/Ruby19/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  E:/Ruby19/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  E:/Ruby19/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendered rescues/_trace (453.1ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PasswordResetsController#new (for 127.0.0.1 at 2010-01-24 19:42:11) [GET]
+
+NameError (undefined local variable or method `currect_user' for #<PasswordResetsController:0x3af75a0>):
+  app/controllers/application_controller.rb:34:in `require_no_user'
+  <internal:prelude>:8:in `synchronize'
+  E:/Ruby19/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  E:/Ruby19/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  E:/Ruby19/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendered rescues/_trace (125.0ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PasswordResetsController#new (for 127.0.0.1 at 2010-01-24 19:42:46) [GET]
+  [4;35;1mUser Columns (15.6ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = '1') LIMIT 1[0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering password_resets/new
+
+ActionView::TemplateError (password_reset_url failed to generate from {:controller=>"password_resets", :action=>"show"} - you may have ambiguous routes, or you may need to supply additional parameters for this route.  content_url has the following required parameters: ["password_resets", :id] - are they all satisfied?) on line #6 of app/views/password_resets/new.html.erb:
+3: <p>Fill out the form below and instructions to reset your password will be emailed to you:</p>
+4: <br/>
+5: 
+6: <% form_tag password_reset_path do %>
+7:   <label>Email:</label><br/>
+8:   <% text_field_tag "email" %><br/>
+9: 
+
+    (eval):16:in `password_reset_path'
+    app/views/password_resets/new.html.erb:6
+    <internal:prelude>:8:in `synchronize'
+    E:/Ruby19/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+    E:/Ruby19/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+    E:/Ruby19/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendered rescues/_trace (171.9ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PasswordResetsController#new (for 127.0.0.1 at 2010-01-24 19:44:37) [GET]
+  [4;36;1mUser Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = '1') LIMIT 1[0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering password_resets/new
+Completed in 578ms (View: 453, DB: 0) | 200 OK [http://localhost/password_resets/new]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PasswordResetsController#new (for 127.0.0.1 at 2010-01-24 19:44:57) [GET]
+  [4;35;1mUser Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = '1') LIMIT 1[0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering password_resets/new
+Completed in 188ms (View: 31, DB: 0) | 200 OK [http://localhost/password_resets/new]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#index (for 127.0.0.1 at 2010-01-24 19:45:14) [GET]
+  [4;36;1mUser Columns (15.6ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM `users` [0m
+Rendering template within layouts/application
+Rendering users/index
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = '1') LIMIT 1[0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+Completed in 62ms (View: 16, DB: 16) | 200 OK [http://localhost/users]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#index (for 127.0.0.1 at 2010-01-24 19:45:20) [GET]
+  [4;36;1mUser Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM `users` [0m
+Rendering template within layouts/application
+Rendering users/index
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = '1') LIMIT 1[0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+Completed in 78ms (View: 31, DB: 0) | 200 OK [http://localhost/users]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UserSessionsController#new (for 127.0.0.1 at 2010-01-24 19:45:54) [GET]
+  [4;36;1mUser Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+Rendering template within layouts/application
+Rendering user_sessions/new
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = '1') LIMIT 1[0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+Completed in 62ms (View: 16, DB: 0) | 200 OK [http://localhost/login]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UserSessionsController#create (for 127.0.0.1 at 2010-01-24 19:46:03) [POST]
+  Parameters: {"authenticity_token"=>"Q2li5yNM2m9f5pgziBZk2WhTwT62vnRDIuB9pT7ijRQ=", "user_session"=>{"username"=>"leoliang", "password"=>"leoliang"}, "commit"=>"Submit"}
+  [4;35;1mUser Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (LOWER(`users`.username) = 'leoliang') LIMIT 1[0m
+Rendering template within layouts/application
+Rendering user_sessions/new
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = '1') LIMIT 1[0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+Completed in 62ms (View: 16, DB: 0) | 200 OK [http://localhost/user_sessions]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#new (for 127.0.0.1 at 2010-01-24 19:46:09) [GET]
+  [4;35;1mUser Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = '1') LIMIT 1[0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering users/new
+Rendered users/_form (0.0ms)
+Completed in 62ms (View: 0, DB: 0) | 200 OK [http://localhost/users/new]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PasswordResetsController#create (for 127.0.0.1 at 2010-01-24 19:46:13) [POST]
+  Parameters: {"authenticity_token"=>"Q2li5yNM2m9f5pgziBZk2WhTwT62vnRDIuB9pT7ijRQ=", "email"=>"leoliang_climber", "commit"=>"Reset your password"}
+  [4;36;1mUser Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = '1') LIMIT 1[0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`email` = 'leoliang_climber') LIMIT 1[0m
+Rendering template within layouts/application
+Rendering password_resets/new
+Completed in 62ms (View: 0, DB: 0) | 200 OK [http://localhost/password_resets]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#new (for 127.0.0.1 at 2010-01-24 19:46:18) [GET]
+  [4;36;1mUser Columns (15.6ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = '1') LIMIT 1[0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering users/new
+Rendered users/_form (15.6ms)
+Completed in 62ms (View: 16, DB: 16) | 200 OK [http://localhost/users/new]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#create (for 127.0.0.1 at 2010-01-24 19:46:34) [POST]
+  Parameters: {"authenticity_token"=>"Q2li5yNM2m9f5pgziBZk2WhTwT62vnRDIuB9pT7ijRQ=", "user"=>{"username"=>"leoliang", "email"=>"leoliang_climber@hotmail.com", "password"=>"leo1022", "password_confirmation"=>"leo1022"}, "commit"=>"Submit"}
+  [4;35;1mUser Columns (15.6ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = '1') LIMIT 1[0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT `users`.id FROM `users` WHERE (LOWER(`users`.`email`) = BINARY 'leoliang_climber@hotmail.com') LIMIT 1[0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT `users`.id FROM `users` WHERE (LOWER(`users`.`username`) = BINARY 'leoliang') LIMIT 1[0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT `users`.id FROM `users` WHERE (`users`.`persistence_token` = BINARY 'cb71b30f464137242ad3a4e540be6c8e4927ed5758d2268cd6ab0ef575f1f88d184fbfebe958826a313bb526235abe6b8b2efc74862e7b02fdbcde56b9d37998') LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = '1') LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;36;1mUser Create (0.0ms)[0m   [0;1mINSERT INTO `users` (`username`, `email`, `crypted_password`, `password_salt`, `persistence_token`, `created_at`, `updated_at`) VALUES('leoliang', 'leoliang_climber@hotmail.com', '0aa8b626c5ab32d4aa992e7ade9b91e24d50787fb7cad56ebbad9de8ac855766fb6ad727769ee8d401e6f115ef6fe015272934e97f80404694029f05b7a46db5', 'XYc9m6RWjjgCrHQ-1exd', 'cb71b30f464137242ad3a4e540be6c8e4927ed5758d2268cd6ab0ef575f1f88d184fbfebe958826a313bb526235abe6b8b2efc74862e7b02fdbcde56b9d37998', '2010-01-24 08:46:34', '2010-01-24 08:46:34')[0m
+  [4;35;1mSQL (125.0ms)[0m   [0mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed in 188ms (DB: 141) | 302 Found [http://localhost/users]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#index (for 127.0.0.1 at 2010-01-24 19:46:42) [GET]
+  [4;36;1mUser Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM `users` [0m
+Rendering template within layouts/application
+Rendering users/index
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`persistence_token` = 'cb71b30f464137242ad3a4e540be6c8e4927ed5758d2268cd6ab0ef575f1f88d184fbfebe958826a313bb526235abe6b8b2efc74862e7b02fdbcde56b9d37998') LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`persistence_token` = 'cb71b30f464137242ad3a4e540be6c8e4927ed5758d2268cd6ab0ef575f1f88d184fbfebe958826a313bb526235abe6b8b2efc74862e7b02fdbcde56b9d37998') LIMIT 1[0m
+Completed in 62ms (View: 31, DB: 0) | 200 OK [http://localhost/users]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UserSessionsController#destroy (for 127.0.0.1 at 2010-01-24 19:46:48) [GET]
+  [4;36;1mUser Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`persistence_token` = 'cb71b30f464137242ad3a4e540be6c8e4927ed5758d2268cd6ab0ef575f1f88d184fbfebe958826a313bb526235abe6b8b2efc74862e7b02fdbcde56b9d37998') LIMIT 1[0m
+Redirected to http://localhost:3000/
+Completed in 47ms (DB: 0) | 302 Found [http://localhost/logout]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#index (for 127.0.0.1 at 2010-01-24 19:46:53) [GET]
+  [4;36;1mUser Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM `users` [0m
+Rendering template within layouts/application
+Rendering users/index
+Completed in 62ms (View: 31, DB: 0) | 200 OK [http://localhost/users]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UserSessionsController#new (for 127.0.0.1 at 2010-01-24 19:47:01) [GET]
+  [4;36;1mUser Columns (15.6ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+Rendering template within layouts/application
+Rendering user_sessions/new
+Completed in 47ms (View: 0, DB: 16) | 200 OK [http://localhost/login]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UserSessionsController#create (for 127.0.0.1 at 2010-01-24 19:47:13) [POST]
+  Parameters: {"authenticity_token"=>"Q2li5yNM2m9f5pgziBZk2WhTwT62vnRDIuB9pT7ijRQ=", "user_session"=>{"username"=>"leoliang", "password"=>"leo1022"}, "commit"=>"Submit"}
+  [4;35;1mUser Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (LOWER(`users`.username) = 'leoliang') LIMIT 1[0m
+Redirected to http://localhost:3000/
+Completed in 156ms (DB: 0) | 302 Found [http://localhost/user_sessions]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#index (for 127.0.0.1 at 2010-01-24 19:47:18) [GET]
+  [4;35;1mUser Columns (15.6ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM `users` [0m
+Rendering template within layouts/application
+Rendering users/index
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = '1') LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = '1') LIMIT 1[0m
+Completed in 78ms (View: 31, DB: 16) | 200 OK [http://localhost/users]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UserSessionsController#destroy (for 127.0.0.1 at 2010-01-24 19:47:23) [GET]
+  [4;35;1mUser Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = '1') LIMIT 1[0m
+Redirected to http://localhost:3000/
+Completed in 62ms (DB: 0) | 302 Found [http://localhost/logout]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#index (for 127.0.0.1 at 2010-01-24 19:47:26) [GET]
+  [4;35;1mUser Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM `users` [0m
+Rendering template within layouts/application
+Rendering users/index
+Completed in 62ms (View: 31, DB: 0) | 200 OK [http://localhost/users]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UserSessionsController#new (for 127.0.0.1 at 2010-01-24 19:47:31) [GET]
+  [4;35;1mUser Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+Rendering template within layouts/application
+Rendering user_sessions/new
+Completed in 47ms (View: 0, DB: 0) | 200 OK [http://localhost/login]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (15.6ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PasswordResetsController#new (for 127.0.0.1 at 2010-01-24 19:47:32) [GET]
+  [4;36;1mUser Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+Rendering template within layouts/application
+Rendering password_resets/new
+Completed in 62ms (View: 0, DB: 16) | 200 OK [http://localhost/password_resets/new]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PasswordResetsController#create (for 127.0.0.1 at 2010-01-24 19:47:40) [POST]
+  Parameters: {"authenticity_token"=>"Q2li5yNM2m9f5pgziBZk2WhTwT62vnRDIuB9pT7ijRQ=", "email"=>"leoliang_climber@hotmail.com", "commit"=>"Reset your password"}
+  [4;35;1mUser Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`email` = 'leoliang_climber@hotmail.com') LIMIT 1[0m
+
+NoMethodError (undefined method `reset_perishable_token!' for #<User:0x328dd20>):
+  app/models/user.rb:5:in `deliver_password_reset_instructions!'
+  app/controllers/password_resets_controller.rb:11:in `create'
+  <internal:prelude>:8:in `synchronize'
+  E:/Ruby19/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  E:/Ruby19/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  E:/Ruby19/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendered rescues/_trace (109.4ms)
+Rendered rescues/_request_and_response (15.6ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PasswordResetsController#index (for 127.0.0.1 at 2010-01-24 19:50:27) [GET]
+  [4;35;1mUser Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+
+ActionController::UnknownAction (No action responded to index. Actions: create, edit, new, and update):
+  <internal:prelude>:8:in `synchronize'
+  E:/Ruby19/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  E:/Ruby19/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  E:/Ruby19/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#index (for 127.0.0.1 at 2010-01-24 19:50:42) [GET]
+  [4;36;1mUser Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM `users` [0m
+Rendering template within layouts/application
+Rendering users/index
+Completed in 62ms (View: 31, DB: 0) | 200 OK [http://localhost/users]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UserSessionsController#new (for 127.0.0.1 at 2010-01-24 19:50:44) [GET]
+  [4;36;1mUser Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+Rendering template within layouts/application
+Rendering user_sessions/new
+Completed in 62ms (View: 16, DB: 0) | 200 OK [http://localhost/login]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UserSessionsController#new (for 127.0.0.1 at 2010-01-24 19:50:44) [GET]
+  [4;35;1mUser Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+Rendering template within layouts/application
+Rendering user_sessions/new
+Completed in 156ms (View: 0, DB: 0) | 200 OK [http://localhost/login]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PasswordResetsController#new (for 127.0.0.1 at 2010-01-24 19:50:48) [GET]
+  [4;36;1mUser Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+Rendering template within layouts/application
+Rendering password_resets/new
+Completed in 62ms (View: 16, DB: 0) | 200 OK [http://localhost/password_resets/new]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PasswordResetsController#create (for 127.0.0.1 at 2010-01-24 19:50:52) [POST]
+  Parameters: {"authenticity_token"=>"Q2li5yNM2m9f5pgziBZk2WhTwT62vnRDIuB9pT7ijRQ=", "email"=>"leoliang_climber@hotmail.com", "commit"=>"Reset your password"}
+  [4;35;1mUser Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`email` = 'leoliang_climber@hotmail.com') LIMIT 1[0m
+
+NoMethodError (undefined method `reset_perishable_token!' for #<User:0x39c1fa0>):
+  app/models/user.rb:5:in `deliver_password_reset_instructions!'
+  app/controllers/password_resets_controller.rb:11:in `create'
+  <internal:prelude>:8:in `synchronize'
+  E:/Ruby19/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  E:/Ruby19/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  E:/Ruby19/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendered rescues/_trace (125.0ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-01-24 19:59:00) [GET]
+
+ActionController::RoutingError (No route matches "/password_reset/new" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  E:/Ruby19/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  E:/Ruby19/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  E:/Ruby19/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PasswordResetsController#new (for 127.0.0.1 at 2010-01-24 19:59:07) [GET]
+  [4;35;1mUser Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+Rendering template within layouts/application
+Rendering password_resets/new
+Completed in 62ms (View: 16, DB: 0) | 200 OK [http://localhost/password_resets/new]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PasswordResetsController#create (for 127.0.0.1 at 2010-01-24 19:59:15) [POST]
+  Parameters: {"authenticity_token"=>"Q2li5yNM2m9f5pgziBZk2WhTwT62vnRDIuB9pT7ijRQ=", "email"=>"leoliang_climber@hotmail.com", "commit"=>"Reset your password"}
+  [4;36;1mUser Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`email` = 'leoliang_climber@hotmail.com') LIMIT 1[0m
+
+NoMethodError (undefined method `reset_perishable_token!' for #<User:0x30f5fa0>):
+  app/models/user.rb:5:in `deliver_password_reset_instructions!'
+  app/controllers/password_resets_controller.rb:11:in `create'
+  <internal:prelude>:8:in `synchronize'
+  E:/Ruby19/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  E:/Ruby19/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  E:/Ruby19/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendered rescues/_trace (109.4ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PasswordResetsController#new (for 127.0.0.1 at 2010-01-24 20:03:58) [GET]
+  [4;36;1mUser Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+Rendering template within layouts/application
+Rendering password_resets/new
+Completed in 47ms (View: 0, DB: 0) | 200 OK [http://localhost/password_resets/new]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PasswordResetsController#create (for 127.0.0.1 at 2010-01-24 20:04:02) [POST]
+  Parameters: {"authenticity_token"=>"Q2li5yNM2m9f5pgziBZk2WhTwT62vnRDIuB9pT7ijRQ=", "email"=>"leoliang_climber@hotmail.com", "commit"=>"Reset your password"}
+  [4;35;1mUser Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`email` = 'leoliang_climber@hotmail.com') LIMIT 1[0m
+
+NoMethodError (undefined method `reset_perishable_token!' for #<User:0x1e86de0>):
+  app/models/user.rb:5:in `deliver_password_reset_instructions!'
+  app/controllers/password_resets_controller.rb:11:in `create'
+  <internal:prelude>:8:in `synchronize'
+  E:/Ruby19/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  E:/Ruby19/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  E:/Ruby19/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendered rescues/_trace (968.8ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (20100124054035)
+Migrating to CreateSuburbs (20100124060306)
+Migrating to AddUsersPasswordResetField (20100124073325)
+  [4;36;1mSQL (281.2ms)[0m   [0;1mALTER TABLE `users` ADD `perishable_token` varchar(255) DEFAULT '' NOT NULL[0m
+  [4;35;1mSQL (234.4ms)[0m   [0mCREATE INDEX `index_users_on_perishable_token` ON `users` (`perishable_token`)[0m
+  [4;36;1mSQL (281.2ms)[0m   [0;1mCREATE INDEX `index_users_on_email` ON `users` (`email`)[0m
+  [4;35;1mSQL (62.5ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100124073325')[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW FIELDS FROM `suburbs`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mdescribe `suburbs`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW KEYS FROM `suburbs`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mdescribe `users`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW KEYS FROM `users`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PasswordResetsController#new (for 127.0.0.1 at 2010-01-24 20:07:02) [GET]
+  [4;35;1mUser Columns (15.6ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+Rendering template within layouts/application
+Rendering password_resets/new
+Completed in 47ms (View: 0, DB: 16) | 200 OK [http://localhost/password_resets/new]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PasswordResetsController#create (for 127.0.0.1 at 2010-01-24 20:07:04) [POST]
+  Parameters: {"authenticity_token"=>"Q2li5yNM2m9f5pgziBZk2WhTwT62vnRDIuB9pT7ijRQ=", "email"=>"leoliang_climber@hotmail.com", "commit"=>"Reset your password"}
+  [4;36;1mUser Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (15.6ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`email` = 'leoliang_climber@hotmail.com') LIMIT 1[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Update (0.0ms)[0m   [0mUPDATE `users` SET `perishable_token` = 'bjFaow6g6fDDIZeKIMTi', `updated_at` = '2010-01-24 09:07:04' WHERE `id` = 1[0m
+  [4;36;1mSQL (109.4ms)[0m   [0;1mCOMMIT[0m
+Sent mail to leoliang_climber@hotmail.com
+
+Date: Sun, 24 Jan 2010 20:07:05 +1100
+From: Found Your house Notifier <noreply@FoundYourHouse.com>
+To: leoliang_climber@hotmail.com
+Subject: Password Reset Instructions
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+A request to reset your password has been made. If you did not make this request, simply ignore this email. If you did make this request just click the link below:
+http:///password_resets/bjFaow6g6fDDIZeKIMTi/edit
+If the above URL does not work try copying and pasting it into your browser. If you continue to have problem please feel free to contact us.
+Redirected to http://localhost:3000/
+Completed in 61812ms (DB: 125) | 302 Found [http://localhost/password_resets]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#index (for 127.0.0.1 at 2010-01-24 20:08:34) [GET]
+  [4;35;1mUser Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM `users` [0m
+Rendering template within layouts/application
+Rendering users/index
+Completed in 78ms (View: 31, DB: 0) | 200 OK [http://localhost/users]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#index (for 127.0.0.1 at 2010-01-24 22:04:25) [GET]
+  [4;36;1mUser Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM `users` [0m
+Rendering template within layouts/application
+Rendering users/index
+Completed in 2562ms (View: 2500, DB: 0) | 200 OK [http://localhost/users]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#new (for 127.0.0.1 at 2010-01-24 22:04:30) [GET]
+  [4;36;1mUser Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+Rendering template within layouts/application
+Rendering users/new
+Rendered users/_form (15.6ms)
+Completed in 94ms (View: 47, DB: 0) | 200 OK [http://localhost/users/new]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#create (for 127.0.0.1 at 2010-01-24 22:04:48) [POST]
+  Parameters: {"authenticity_token"=>"5XuSUfWQnf0fRWOPpaqZWOvJNV273UZy/+hrFxl+AdY=", "user"=>{"username"=>"leomao", "email"=>"leoliang@163.com", "password"=>"leo1022", "password_confirmation"=>"leo1022"}, "commit"=>"Submit"}
+  [4;35;1mUser Columns (15.6ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT `users`.id FROM `users` WHERE (LOWER(`users`.`email`) = BINARY 'leoliang@163.com') LIMIT 1[0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT `users`.id FROM `users` WHERE (LOWER(`users`.`username`) = BINARY 'leomao') LIMIT 1[0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT `users`.id FROM `users` WHERE (`users`.`persistence_token` = BINARY '9ca3a6f3072c7c189ebef2766a66cea570d5dbaaaf9a6a4509df00bcd39301bf3253efab28e1ba31bc2ec703c60236d94478a34905f74b861806d5314303e7f8') LIMIT 1[0m
+  [4;36;1mUser Create (0.0ms)[0m   [0;1mINSERT INTO `users` (`username`, `email`, `crypted_password`, `password_salt`, `persistence_token`, `created_at`, `updated_at`, `perishable_token`) VALUES('leomao', 'leoliang@163.com', 'ba92c4a9cf9a67b39217c8329602eaa1041fb0ef9f5ffda48021f575c968fede864d73f649cbf125f29258dc5b742b4bce2ef5aeee070e1767f769eac61e8aa1', '4CwfZNxQJjGNQU3hHWBT', '9ca3a6f3072c7c189ebef2766a66cea570d5dbaaaf9a6a4509df00bcd39301bf3253efab28e1ba31bc2ec703c60236d94478a34905f74b861806d5314303e7f8', '2010-01-24 11:04:48', '2010-01-24 11:04:48', 'J5NuMjqkV7P7lA-iMHKS')[0m
+  [4;35;1mSQL (109.4ms)[0m   [0mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed in 344ms (DB: 125) | 302 Found [http://localhost/users]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#index (for 127.0.0.1 at 2010-01-24 22:04:52) [GET]
+  [4;36;1mUser Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM `users` [0m
+Rendering template within layouts/application
+Rendering users/index
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`persistence_token` = '9ca3a6f3072c7c189ebef2766a66cea570d5dbaaaf9a6a4509df00bcd39301bf3253efab28e1ba31bc2ec703c60236d94478a34905f74b861806d5314303e7f8') LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`persistence_token` = '9ca3a6f3072c7c189ebef2766a66cea570d5dbaaaf9a6a4509df00bcd39301bf3253efab28e1ba31bc2ec703c60236d94478a34905f74b861806d5314303e7f8') LIMIT 1[0m
+Completed in 109ms (View: 62, DB: 0) | 200 OK [http://localhost/users/]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#edit (for 127.0.0.1 at 2010-01-24 22:04:57) [GET]
+  Parameters: {"id"=>"current"}
+  [4;36;1mUser Columns (15.6ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`persistence_token` = '9ca3a6f3072c7c189ebef2766a66cea570d5dbaaaf9a6a4509df00bcd39301bf3253efab28e1ba31bc2ec703c60236d94478a34905f74b861806d5314303e7f8') LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`persistence_token` = '9ca3a6f3072c7c189ebef2766a66cea570d5dbaaaf9a6a4509df00bcd39301bf3253efab28e1ba31bc2ec703c60236d94478a34905f74b861806d5314303e7f8') LIMIT 1[0m
+Rendering template within layouts/application
+Rendering users/edit
+Rendered users/_form (0.0ms)
+Completed in 78ms (View: 31, DB: 16) | 200 OK [http://localhost/users/current/edit]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UserSessionsController#destroy (for 127.0.0.1 at 2010-01-24 22:05:02) [GET]
+  [4;35;1mUser Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`persistence_token` = '9ca3a6f3072c7c189ebef2766a66cea570d5dbaaaf9a6a4509df00bcd39301bf3253efab28e1ba31bc2ec703c60236d94478a34905f74b861806d5314303e7f8') LIMIT 1[0m
+Redirected to http://localhost:3000/
+Completed in 62ms (DB: 0) | 302 Found [http://localhost/logout]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#index (for 127.0.0.1 at 2010-01-24 22:05:05) [GET]
+  [4;35;1mUser Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM `users` [0m
+Rendering template within layouts/application
+Rendering users/index
+Completed in 78ms (View: 47, DB: 0) | 200 OK [http://localhost/users]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UserSessionsController#new (for 127.0.0.1 at 2010-01-24 22:06:29) [GET]
+  [4;35;1mUser Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+Rendering template within layouts/application
+Rendering user_sessions/new
+Completed in 219ms (View: 172, DB: 0) | 200 OK [http://localhost/login]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PasswordResetsController#new (for 127.0.0.1 at 2010-01-24 22:06:35) [GET]
+  [4;36;1mUser Columns (15.6ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+Rendering template within layouts/application
+Rendering password_resets/new
+Completed in 78ms (View: 31, DB: 16) | 200 OK [http://localhost/password_resets/new]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PasswordResetsController#create (for 127.0.0.1 at 2010-01-24 22:06:41) [POST]
+  Parameters: {"authenticity_token"=>"5XuSUfWQnf0fRWOPpaqZWOvJNV273UZy/+hrFxl+AdY=", "email"=>"leoliang_climber@hotmail.com", "commit"=>"Reset your password"}
+  [4;35;1mUser Columns (15.6ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`email` = 'leoliang_climber@hotmail.com') LIMIT 1[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Update (0.0ms)[0m   [0;1mUPDATE `users` SET `perishable_token` = 'd0-yQZjrfj2r37Fi50BB', `updated_at` = '2010-01-24 11:06:41' WHERE `id` = 1[0m
+  [4;35;1mSQL (218.8ms)[0m   [0mCOMMIT[0m
+Sent mail to leoliang_climber@hotmail.com
+
+Date: Sun, 24 Jan 2010 22:06:41 +1100
+From: Found Your house Notifier <noreply@FoundYourHouse.com>
+To: leoliang_climber@hotmail.com
+Subject: Password Reset Instructions
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+A request to reset your password has been made. If you did not make this request, simply ignore this email. If you did make this request just click the link below:
+http:///password_resets/d0-yQZjrfj2r37Fi50BB/edit
+If the above URL does not work try copying and pasting it into your browser. If you continue to have problem please feel free to contact us.
+Redirected to http://localhost:3000/
+Completed in 61844ms (DB: 234) | 302 Found [http://localhost/password_resets]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PostsController#index (for 127.0.0.1 at 2010-01-24 22:18:37) [GET]
+  [4;36;1mPost Load (0.0ms)[0m   [0;1mMysql::Error: Table 'found_development.posts' doesn't exist: SELECT * FROM `posts` [0m
+
+ActiveRecord::StatementInvalid (Mysql::Error: Table 'found_development.posts' doesn't exist: SELECT * FROM `posts` ):
+  app/controllers/posts_controller.rb:3:in `index'
+  <internal:prelude>:8:in `synchronize'
+  E:/Ruby19/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  E:/Ruby19/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  E:/Ruby19/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendered rescues/_trace (140.6ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (20100124054035)
+Migrating to CreateSuburbs (20100124060306)
+Migrating to AddUsersPasswordResetField (20100124073325)
+Migrating to CreatePosts (20100124111816)
+  [4;36;1mSQL (109.4ms)[0m   [0;1mCREATE TABLE `posts` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `title` varchar(255), `description` text, `available_from` date, `expiry_date` date, `inspection_time` varchar(255), `negotiable` tinyint(1), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;35;1mSQL (125.0ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100124111816')[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (15.6ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW FIELDS FROM `posts`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mdescribe `posts`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW KEYS FROM `posts`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW FIELDS FROM `suburbs`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mdescribe `suburbs`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW KEYS FROM `suburbs`[0m
+  [4;35;1mSQL (15.6ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mdescribe `users`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW KEYS FROM `users`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PostsController#index (for 127.0.0.1 at 2010-01-24 22:19:35) [GET]
+  [4;35;1mPost Load (15.6ms)[0m   [0mSELECT * FROM `posts` [0m
+Rendering template within layouts/application
+Rendering posts/index
+  [4;36;1mUser Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+Completed in 94ms (View: 62, DB: 16) | 200 OK [http://localhost/posts]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PostsController#new (for 127.0.0.1 at 2010-01-24 22:19:50) [GET]
+  [4;35;1mPost Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `posts`[0m
+Rendering template within layouts/application
+Rendering posts/new
+Rendered posts/_form (1812.5ms)
+  [4;36;1mUser Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+Completed in 2172ms (View: 2156, DB: 0) | 200 OK [http://localhost/posts/new]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (15.6ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreatePosts (20100124111816)
+  [4;36;1mSQL (46.9ms)[0m   [0;1mDROP TABLE `posts`[0m
+  [4;35;1mSQL (62.5ms)[0m   [0mDELETE FROM schema_migrations WHERE version = '20100124111816'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW FIELDS FROM `suburbs`[0m
+  [4;36;1mSQL (15.6ms)[0m   [0;1mdescribe `suburbs`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW KEYS FROM `suburbs`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mSQL (15.6ms)[0m   [0mdescribe `users`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW KEYS FROM `users`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (20100124054035)
+Migrating to CreateSuburbs (20100124060306)
+Migrating to AddUsersPasswordResetField (20100124073325)
+Migrating to CreatePosts (20100124111816)
+  [4;36;1mSQL (78.1ms)[0m   [0;1mCREATE TABLE `posts` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `title` varchar(255), `description` text, `available_from` date, `expiry_date` date, `inspection_time` varchar(255), `negotiable` tinyint(1), `postable_id` int(11), `postable_type` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;35;1mSQL (78.1ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100124111816')[0m
+Migrating to CreateProperties (20100124112416)
+  [4;36;1mSQL (78.1ms)[0m   [0;1mCREATE TABLE `properties` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `number_of_bedrooms` int(11), `number_of_carparks` int(11), `number_of_bathrooms` int(11), `price` float, `bond` float, `max_tenants` int(11), `number_of_current_tenants` int(11), `furnished` tinyint(1), `purpose` varchar(255), `type` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;35;1mSQL (62.5ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100124112416')[0m
+  [4;36;1mSQL (15.6ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW FIELDS FROM `posts`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mdescribe `posts`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW KEYS FROM `posts`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW FIELDS FROM `properties`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mdescribe `properties`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW KEYS FROM `properties`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW FIELDS FROM `suburbs`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mdescribe `suburbs`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW KEYS FROM `suburbs`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mSQL (15.6ms)[0m   [0mdescribe `users`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW KEYS FROM `users`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-01-24 22:40:57) [GET]
+
+ActionController::RoutingError (No route matches "/property" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  E:/Ruby19/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  E:/Ruby19/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  E:/Ruby19/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#index (for 127.0.0.1 at 2010-01-24 22:41:01) [GET]
+  [4;35;1mProperty Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `properties`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mProperty Columns (15.6ms)[0m   [0mSHOW FIELDS FROM `properties`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+
+NoMethodError (undefined method `PURPOSE' for #<Class:0x39091e0>):
+  searchlogic (2.4.1) lib/searchlogic/named_scopes/conditions.rb:88:in `method_missing'
+  searchlogic (2.4.1) lib/searchlogic/named_scopes/association_conditions.rb:19:in `method_missing'
+  searchlogic (2.4.1) lib/searchlogic/named_scopes/association_ordering.rb:27:in `method_missing'
+  searchlogic (2.4.1) lib/searchlogic/named_scopes/ordering.rb:30:in `method_missing'
+  searchlogic (2.4.1) lib/searchlogic/named_scopes/or_conditions.rb:28:in `method_missing'
+  E:/Ruby19/lib/ruby/gems/1.9.1/gems/mislav-will_paginate-2.3.11/lib/will_paginate/finder.rb:170:in `method_missing_with_paginate'
+  app/models/property.rb:3:in `<class:Property>'
+  app/models/property.rb:1:in `<top (required)>'
+  app/controllers/properties_controller.rb:3:in `index'
+  <internal:prelude>:8:in `synchronize'
+  E:/Ruby19/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  E:/Ruby19/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  E:/Ruby19/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendered rescues/_trace (140.6ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#index (for 127.0.0.1 at 2010-01-24 22:41:52) [GET]
+  [4;35;1mProperty Load (0.0ms)[0m   [0mSELECT * FROM `properties` [0m
+Rendering template within layouts/application
+Rendering properties/index
+  [4;36;1mUser Columns (15.6ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+Completed in 375ms (View: 47, DB: 16) | 200 OK [http://localhost/properties]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SuburbsController#index (for 127.0.0.1 at 2010-01-24 22:55:15) [GET]
+  [4;35;1mSuburb Load (0.0ms)[0m   [0mSELECT * FROM `suburbs` [0m
+Rendering template within layouts/application
+Rendering suburbs/index
+  [4;36;1mUser Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+Completed in 203ms (View: 172, DB: 0) | 200 OK [http://localhost/suburbs]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SuburbsController#new (for 127.0.0.1 at 2010-01-24 22:55:18) [GET]
+  [4;35;1mSuburb Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `suburbs`[0m
+Rendering template within layouts/application
+Rendering suburbs/new
+Rendered suburbs/_form (0.0ms)
+  [4;36;1mUser Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+Completed in 141ms (View: 109, DB: 0) | 200 OK [http://localhost/suburbs/new]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (20100124054035)
+Migrating to CreateSuburbs (20100124060306)
+Migrating to AddUsersPasswordResetField (20100124073325)
+Migrating to CreatePosts (20100124111816)
+Migrating to CreateProperties (20100124112416)
+Migrating to CreateCarparks (20100124114337)
+  [4;36;1mSQL (109.4ms)[0m   [0;1mCREATE TABLE `carparks` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `price` float, `bond` float, `type` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;35;1mSQL (62.5ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100124114337')[0m
+Migrating to CreateAddresses (20100124114554)
+  [4;36;1mSQL (78.1ms)[0m   [0;1mCREATE TABLE `addresses` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `line1` varchar(255), `line2` varchar(255), `addressable_id` int(11), `addressable_type` varchar(255), `suburb_id` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;35;1mSQL (46.9ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100124114554')[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (15.6ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (31.2ms)[0m   [0mSHOW FIELDS FROM `addresses`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mdescribe `addresses`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW KEYS FROM `addresses`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW FIELDS FROM `carparks`[0m
+  [4;35;1mSQL (15.6ms)[0m   [0mdescribe `carparks`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW KEYS FROM `carparks`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW FIELDS FROM `posts`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mdescribe `posts`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW KEYS FROM `posts`[0m
+  [4;36;1mSQL (15.6ms)[0m   [0;1mSHOW FIELDS FROM `properties`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mdescribe `properties`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW KEYS FROM `properties`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW FIELDS FROM `suburbs`[0m
+  [4;36;1mSQL (15.6ms)[0m   [0;1mdescribe `suburbs`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW KEYS FROM `suburbs`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mdescribe `users`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW KEYS FROM `users`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (20100124054035)
+Migrating to CreateSuburbs (20100124060306)
+Migrating to AddUsersPasswordResetField (20100124073325)
+Migrating to CreatePosts (20100124111816)
+Migrating to CreateProperties (20100124112416)
+Migrating to CreateCarparks (20100124114337)
+Migrating to CreateAddresses (20100124114554)
+Migrating to AddNameToSuburb (20100124115827)
+  [4;36;1mSQL (187.5ms)[0m   [0;1mALTER TABLE `suburbs` ADD `name` varchar(255)[0m
+  [4;35;1mSQL (62.5ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100124115827')[0m
+  [4;36;1mSQL (15.6ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW FIELDS FROM `addresses`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mdescribe `addresses`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW KEYS FROM `addresses`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW FIELDS FROM `carparks`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mdescribe `carparks`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW KEYS FROM `carparks`[0m
+  [4;35;1mSQL (15.6ms)[0m   [0mSHOW FIELDS FROM `posts`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mdescribe `posts`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW KEYS FROM `posts`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW FIELDS FROM `properties`[0m
+  [4;35;1mSQL (15.6ms)[0m   [0mdescribe `properties`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW KEYS FROM `properties`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW FIELDS FROM `suburbs`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mdescribe `suburbs`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW KEYS FROM `suburbs`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mdescribe `users`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW KEYS FROM `users`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SuburbsController#new (for 127.0.0.1 at 2010-01-24 23:03:27) [GET]
+  [4;35;1mSuburb Columns (15.6ms)[0m   [0mSHOW FIELDS FROM `suburbs`[0m
+Rendering template within layouts/application
+Rendering suburbs/new
+Rendered suburbs/_form (0.0ms)
+  [4;36;1mUser Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+Completed in 94ms (View: 62, DB: 16) | 200 OK [http://localhost/suburbs/new]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SuburbsController#create (for 127.0.0.1 at 2010-01-24 23:04:07) [POST]
+  Parameters: {"authenticity_token"=>"5XuSUfWQnf0fRWOPpaqZWOvJNV273UZy/+hrFxl+AdY=", "suburb"=>{"name"=>"Hurstville", "area"=>"Southern", "state"=>"N.S.W", "postcode"=>"2121"}, "commit"=>"Submit"}
+  [4;35;1mSuburb Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `suburbs`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSuburb Create (0.0ms)[0m   [0mINSERT INTO `suburbs` (`area`, `state`, `postcode`, `created_at`, `updated_at`, `name`) VALUES('Southern', 'N.S.W', 2121, '2010-01-24 12:04:07', '2010-01-24 12:04:07', 'Hurstville')[0m
+  [4;36;1mSQL (187.5ms)[0m   [0;1mCOMMIT[0m
+Redirected to http://localhost:3000/suburbs/1
+Completed in 219ms (DB: 188) | 302 Found [http://localhost/suburbs]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SuburbsController#show (for 127.0.0.1 at 2010-01-24 23:04:07) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mSuburb Columns (15.6ms)[0m   [0mSHOW FIELDS FROM `suburbs`[0m
+  [4;36;1mSuburb Load (0.0ms)[0m   [0;1mSELECT * FROM `suburbs` WHERE (`suburbs`.`id` = 1) [0m
+Rendering template within layouts/application
+Rendering suburbs/show
+  [4;35;1mUser Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+Completed in 94ms (View: 62, DB: 16) | 200 OK [http://localhost/suburbs/1]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SuburbsController#index (for 127.0.0.1 at 2010-01-24 23:04:11) [GET]
+  [4;36;1mSuburb Load (0.0ms)[0m   [0;1mSELECT * FROM `suburbs` [0m
+Rendering template within layouts/application
+Rendering suburbs/index
+  [4;35;1mSuburb Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `suburbs`[0m
+  [4;36;1mUser Columns (15.6ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+Completed in 78ms (View: 47, DB: 16) | 200 OK [http://localhost/suburbs]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SuburbsController#index (for 127.0.0.1 at 2010-01-24 23:04:44) [GET]
+  [4;35;1mSuburb Load (0.0ms)[0m   [0mSELECT * FROM `suburbs` [0m
+Rendering template within layouts/application
+Rendering suburbs/index
+  [4;36;1mSuburb Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `suburbs`[0m
+  [4;35;1mUser Columns (15.6ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+Completed in 109ms (View: 62, DB: 16) | 200 OK [http://localhost/suburbs]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SearchesController#index (for 127.0.0.1 at 2010-01-24 23:19:44) [GET]
+
+NameError (uninitialized constant SearchesController::Search):
+  app/controllers/searches_controller.rb:3:in `index'
+  <internal:prelude>:8:in `synchronize'
+  E:/Ruby19/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  E:/Ruby19/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  E:/Ruby19/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendered rescues/_trace (109.4ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SearchesController#index (for 127.0.0.1 at 2010-01-25 00:21:39) [GET]
+
+NameError (uninitialized constant SearchesController::Search):
+  app/controllers/searches_controller.rb:4:in `index'
+  <internal:prelude>:8:in `synchronize'
+  E:/Ruby19/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  E:/Ruby19/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  E:/Ruby19/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendered rescues/_trace (718.8ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)

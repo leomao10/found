@@ -1,0 +1,9 @@
+one:
+  price: 1.5
+  bond: 1.5
+  type: MyString
+
+two:
+  price: 1.5
+  bond: 1.5
+  type: MyString

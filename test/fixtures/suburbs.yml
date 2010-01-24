@@ -1,0 +1,9 @@
+one:
+  area: MyString
+  state: MyString
+  postcode: 1
+
+two:
+  area: MyString
+  state: MyString
+  postcode: 1
