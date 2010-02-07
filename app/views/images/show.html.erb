@@ -1,0 +1,12 @@
+<% title "Image" %>
+
+  <%= image_tag @image.photo.url %>
+  <%= image_tag @image.photo.url(:medium) %>
+  <%= image_tag @image.photo.url(:thumb) %>
+
+
+<p>
+  <%= link_to "Edit", edit_image_path(@image) %> |
+  <%= link_to "Destroy", @image, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", images_path %>
+</p>

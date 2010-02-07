@@ -1,31 +1,218 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us">
   <head>
-    <title><%= h(yield(:title) || "Untitled") %></title>
-    <%= stylesheet_link_tag 'application' %>
-    <%= yield(:head) %>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <title>Found Your Home</title>
+    <meta name="keywords" content="" />
+    <%= stylesheet_link_tag 'application', 'jquery-ui-1.7.2.custom' %>
+    <%= javascript_include_tag 'jquery-1.3.2.min', 'jquery-ui-1.7.2.custom.min' %>
+
+    <script type="text/javascript" language="Javascript" charset="UTF-8">
+      <!--[CDATA[
+      // ]]-->
+    </script>
   </head>
-  <body>
-    <div id="container">
-      <div id="user_nav">
-        <% if current_user %>
-          <%= link_to "Edit Profile", edit_user_path(:current) %> |
-          <%= link_to "Logout", logout_path %>
-        <% else %>
-          <%= link_to "Register", new_user_path %> |
-          <%= link_to "Login", login_path %>
-        <% end %>
+  <body id="body" onload="window.focus();">
+    <div id="top_bar">
+      <div class="inner">
+        <div class="general_nav">
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Place An Ad</a></li>
+            <li><a href="#">My Account</a></li>
+            <li><a href="#">Rental Guides</a></li>
+          </ul>
+        </div>
+        <div class="member_nav">
+          <ul>
+            <% if current_user %>
+              <li><%= link_to "Edit Profile", edit_user_path(:current) %></li>
+              <li><%= link_to "Logout", logout_path %></li>
+            <% else %>
+              <li><%= link_to "Register", new_user_path %></li>
+              <li><%= link_to "Login", login_path %></li>
+            <% end %>
+          </ul>
+        </div>
       </div>
-      <%- flash.each do |name, msg| -%>
-        <%= content_tag :div, msg, :id => "flash_#{name}" %>
-      <%- end -%>
-
-      <%- if show_title? -%>
-        <h1><%=h yield(:title) %></h1>
-      <%- end -%>
-
-      <%= yield %>
     </div>
+    <div id="page_body">
+      <div id="header">
+        <div id="logo"></div>
+        <div class="text">
+          <h1>Welcome!<br />You're new, aren't you?</h1>
+          <h2>FOUND YOUR HOME is a respectful community of young people who look for their next home. We provide the best tools and resource to help you to find your next stay.</h2>
+          <h3>Go ahead, start looking...</h3>
+        </div>
+      </div>
+      <div id="content">
+        <div id="search">
+          <div class="tabs">
+            <ul>
+              <li class="highlight"><a href="#"><span>Rent</span></a></li>
+              <li><a href="#"><span>Share</span></a></li>
+              <li><a href="#"><span>Furniture</span></a></li>
+              <li><a href="#"><span>Carspace</span></a></li>
+            </ul>
+          </div>
+          <div class="search_panel">
+            <form>
+              <div class="inner">
+                <div class="main">
+                  <input type="text" class="keywords" />
+                  <input type="submit" value="Search" class="search" />
+                </div>
+                <label><input type="checkbox" class="checkbox" /> Include surrounding suburbs</label>
+                <div class="more_options">
+                  <label class="slider_required" min="0" max="2000" step="50">
+                    <input value="200" type="hidden" class="min" /><input value="700" type="hidden" class="max" />
+                    <span class="text">Price Range: </span>$<span class="value"></span><span class="bar"></span>
+                  </label>
+                  <label class="slider_required bedroom" min="0" max="10">
+                    <input value="1" type="hidden" class="min" /><input value="3" type="hidden" class="max" />
+                    <span class="text">Bedroom: </span><span class="value"></span><span class="bar"></span>
+                  </label>
+                  <label class="slider_required bathroom" min="0" max="4">
+                    <input value="1" type="hidden" class="min" /><input value="2" type="hidden" class="max" />
+                    <span class="text">Bathroom: </span><span class="value"></span><span class="bar"></span>
+                  </label>
+                  <label class="slider_required carpark" min="0" max="4">
+                    <input value="1" type="hidden" class="min" /><input value="2" type="hidden" class="max" />
+                    <span class="text">Carspace: </span><span class="value"></span><span class="bar"></span>
+                  </label>
+                  <label class="property_type">
+                    <span class="text">Property type: </span>
+                    <span class="bar">
+                      <select>
+                        <option value="">Any</option>
+                        <option value="">House</option>
+                        <option value="">Townhouse</option>
+                        <option value="">Unit/Apartment</option>
+                        <option value="">Terrace</option>
+                      </select>
+                    </span>
+                  </label>
+                </div>
+                <a href="#" class="more" hide="Hide search criterias" show="Show more search criterias">Show more search criterias</a>
+              </div>
+            </form>
+          </div>
+        </div>
+        <%= yield %>
+        <div id="search_result">
+          <div class="paginate">
+            <div class="top">
+              <ul>
+                <li><a href="#"><span>1</span></a></li>
+                <li><a href="#"><span>2</span></a></li>
+              </ul>
+            </div>
+            <ul class="list">
+              <li class="item">
+                <h4 class="title">Burwood</h4>
+                <div class="preview">
+                  <div class="picture">Some picture</div>
+                  <div class="info"><ul>
+                      <li><span class="label"></span><span class="value">$40 per week</span></li>
+                      <li><span class="label"></span><span class="value">fasdfasdfasdfsadf</span></li>
+                    </ul></div>
+                </div>
+              </li>
+            </ul>
+            <div class="bottom">
+            </div>
+          </div>
+          <div id="googlemap">google map
+          </div>
+        </div>
+      </div>
+      <div id="footer">
+        <ul>
+          <li><a href="#">Agent Admin</a></li>
+          <li><a href="#">Sign up Your Agency</a></li>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Search Real Estate Agents</a></li>
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="#">Advertising</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms &amp; Conditions</a></li>
+          <li><a href="#">Disclaimer</a></li>
+        </ul>
+      </div>
+    </div>
+    <script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAAYLuaqB7qMuVmZct0bNAhVRToMsSLBLYOIGCFpHF2BQfOB79_-BR2PDljF3gNcHkI6rzbMOOf_XFw1g" type="text/javascript"></script>
+    <script type="text/javascript" language="Javascript" charset="UTF-8">
+      <!--[CDATA[
+      jQuery(function($){
+        // *** search box ***
+        $('label.slider_required').each(function(){
+          var _this = this, opts = {};
+          opts.min = parseInt($(_this).attr('min'));
+          opts.max = parseInt($(_this).attr('max'));
+          opts.range = true;
+          opts.slide = function(event, ui) {
+            $('span.value', _this).text(ui.values[0] + ' - ' + ui.values[1]);
+          }
+          if ($(_this).attr('step')) opts.step = parseInt($(_this).attr('step'));
+          opts.values = [$('input.min', _this).val(), $('input.max', _this).val()];
+          $('span.bar', _this).slider(opts);
+          $('span.value', _this).text($('input.min', _this).val() + ' - ' + $('input.max', _this).val());
+        });
+        $('a.more').each(function(e){
+          var _this = this, $more = $('div.more_options');
+          var show = function(){
+            $(_this).text($(_this).attr('hide'));
+            $('div.more_options').slideDown();
+          };
+          var hide = function(){
+            $(_this).text($(_this).attr('show'));
+            $more.slideUp();
+          };
+          if ($(_this).attr('show') == $(_this).text())
+            $(_this).toggle(show, hide);
+          else
+            $(_this).toggle(hide, show);
+          return false;
+        });
+        // *** google map ***
+
+        function showAddresses(addresses) {
+          if (GBrowserIsCompatible()) {
+            // init the map within div element
+            map = new GMap2($('#googlemap').get(0));
+            // init the geo coder to get the geo point
+            geocoder = new GClientGeocoder();
+            geocoder.getLatLng(
+            'burwood, NSW',
+            function(point) {
+              if (point) {
+                // must set the center first
+                map.setCenter(point, 15);
+              }
+            });
+            var ui = map.getDefaultUI();
+            ui.controls.smallzoomcontrol3d = true;
+            map.setUI(ui);
+
+            // some more controllers
+            //map.addControl(new GMapTypeControl());
+            $(addresses).each(function(index, address) {
+              geocoder.getLatLng(
+              address,
+              function(point) {
+                if (point) {
+                  var marker = new GMarker(point);
+                  map.addOverlay(marker);
+                }
+              });
+            });
+          }
+        }
+        showAddresses(['13-17 Oxford St, Burwood, NSW', 'Hornsey St, Burwood, NSW']);
+      });
+      // ]]-->
+    </script>
   </body>
 </html>
+

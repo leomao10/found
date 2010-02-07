@@ -8,7 +8,11 @@
   <strong>Line2:</strong>
   <%=h @address.line2 %>
 </p>
-
+<%unless @address.suburb.nil?%>
+  <fieldset>
+    <%= render :partial=>"suburbs/detail", :locals => {:suburb => @address.suburb}  %>
+  </fieldset>
+<% end %>
 <p>
   <%= link_to "Edit", edit_address_path(@address) %> |
   <%= link_to "Destroy", @address, :confirm => 'Are you sure?', :method => :delete %> |

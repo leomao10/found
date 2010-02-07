@@ -1,0 +1,5 @@
+<% title "Welcomes" %>
+<% form_for @search do |f| %>
+  <%= render :partial => "property_searches/form", :locals => { :f => f }%>
+  <%= f.submit "Search" %>
+<% end %>

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100124115827) do
+ActiveRecord::Schema.define(:version => 20100127235412) do
 
   create_table "addresses", :force => true do |t|
     t.string   "line1"
@@ -25,6 +25,17 @@ ActiveRecord::Schema.define(:version => 20100124115827) do
     t.float    "price"
     t.float    "bond"
     t.string   "type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "images", :force => true do |t|
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
+    t.integer  "imagable_id"
+    t.string   "imagable_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -52,7 +63,19 @@ ActiveRecord::Schema.define(:version => 20100124115827) do
     t.integer  "number_of_current_tenants"
     t.boolean  "furnished"
     t.string   "purpose"
-    t.string   "type"
+    t.string   "prop_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "property_searches", :force => true do |t|
+    t.string   "keywords"
+    t.integer  "min_price"
+    t.integer  "max_price"
+    t.integer  "num_of_bedrooms"
+    t.integer  "num_of_bathrooms"
+    t.integer  "num_of_carparks"
+    t.string   "property_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

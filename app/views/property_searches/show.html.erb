@@ -1,0 +1,14 @@
+<% form_for @search do |f| %>
+  <%= render :partial => 'form', :locals => { :f => f } %>
+  <%= f.submit "Search" %>
+<% end %>
+
+<% if not @posts.empty? %>
+  <div class="result_set">
+    <% for post in @posts %>
+      <%= render :partial => "/posts/abstract", :locals=>{ :post => post } %>
+    <% end %>
+  </div>
+<% else %>
+  Could Not Found Any Record
+<% end %>

@@ -1,45 +1,6 @@
 <% title "Property" %>
 
-<p>
-  <strong>Number Of Bedrooms:</strong>
-  <%=h @property.number_of_bedrooms %>
-</p>
-<p>
-  <strong>Number Of Carparks:</strong>
-  <%=h @property.number_of_carparks %>
-</p>
-<p>
-  <strong>Number Of Bathrooms:</strong>
-  <%=h @property.number_of_bathrooms %>
-</p>
-<p>
-  <strong>Price:</strong>
-  <%=h @property.price %>
-</p>
-<p>
-  <strong>Bond:</strong>
-  <%=h @property.bond %>
-</p>
-<p>
-  <strong>Max Tenants:</strong>
-  <%=h @property.max_tenants %>
-</p>
-<p>
-  <strong>Number Of Current Tenants:</strong>
-  <%=h @property.number_of_current_tenants %>
-</p>
-<p>
-  <strong>Furnished:</strong>
-  <%=h @property.furnished %>
-</p>
-<p>
-  <strong>Purpose:</strong>
-  <%=h @property.purpose %>
-</p>
-<p>
-  <strong>Type:</strong>
-  <%=h @property.type %>
-</p>
+<%= render :partial => "detail", :locals => { :property => @property } %>
 
 <p>
   <%= link_to "Edit", edit_property_path(@property) %> |

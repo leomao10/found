@@ -1,0 +1,15 @@
+one:
+  min_price: 1.5
+  max_price: 1.5
+  num_of_bedrooms: 1
+  num_of_bathrooms: 
+  num_of_carspace: 
+  property_type: MyString
+
+two:
+  min_price: 1.5
+  max_price: 1.5
+  num_of_bedrooms: 1
+  num_of_bathrooms: 
+  num_of_carspace: 
+  property_type: MyString

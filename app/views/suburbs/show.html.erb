@@ -1,17 +1,6 @@
 <% title "Suburb" %>
 
-<p>
-  <strong>Area:</strong>
-  <%=h @suburb.area %>
-</p>
-<p>
-  <strong>State:</strong>
-  <%=h @suburb.state %>
-</p>
-<p>
-  <strong>Postcode:</strong>
-  <%=h @suburb.postcode %>
-</p>
+<%= render :partial=>"detail", :locals => {:suburb => @suburb}  %>
 
 <p>
   <%= link_to "Edit", edit_suburb_path(@suburb) %> |

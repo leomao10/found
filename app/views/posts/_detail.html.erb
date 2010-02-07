@@ -1,0 +1,31 @@
+<p>
+  <strong>Title:</strong>
+  <%=h post.title %>
+</p>
+<p>
+  <strong>Description:</strong>
+  <%=h post.description %>
+</p>
+<p>
+  <strong>Available From:</strong>
+  <%=h post.available_from %>
+</p>
+<p>
+  <strong>Expiry Date:</strong>
+  <%=h post.expiry_date %>
+</p>
+<p>
+  <strong>Inspection Time:</strong>
+  <%=h post.inspection_time %>
+</p>
+<p>
+  <strong>Negotiable:</strong>
+  <%=h post.negotiable %>
+</p>
+
+<% postable = post.postable %>
+<% unless postable.nil? %>  
+  <% dir_name = postable.class.table_name %>
+  <% local = postable.class.class_name.downcase%>
+  <%= render :partial => "/" + dir_name + "/detail", :locals => { local.to_sym => postable } %>
+<% end %>
