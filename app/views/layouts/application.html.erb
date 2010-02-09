@@ -19,14 +19,14 @@
         <div class="general_nav">
           <ul>
             <li><a href="#">Home</a></li>
-            <li><a href="#">Place An Ad</a></li>
-            <li><a href="#">My Account</a></li>
+            <li><%= link_to "Place An Ad", new_post_path %></li>
             <li><a href="#">Rental Guides</a></li>
           </ul>
         </div>
         <div class="member_nav">
           <ul>
             <% if current_user %>
+              <li><a href="#">My Account</a></li>
               <li><%= link_to "Edit Profile", edit_user_path(:current) %></li>
               <li><%= link_to "Logout", logout_path %></li>
             <% else %>
@@ -47,58 +47,6 @@
         </div>
       </div>
       <div id="content">
-        <div id="search">
-          <div class="tabs">
-            <ul>
-              <li class="highlight"><a href="#"><span>Rent</span></a></li>
-              <li><a href="#"><span>Share</span></a></li>
-              <li><a href="#"><span>Furniture</span></a></li>
-              <li><a href="#"><span>Carspace</span></a></li>
-            </ul>
-          </div>
-          <div class="search_panel">
-            <form>
-              <div class="inner">
-                <div class="main">
-                  <input type="text" class="keywords" />
-                  <input type="submit" value="Search" class="search" />
-                </div>
-                <label><input type="checkbox" class="checkbox" /> Include surrounding suburbs</label>
-                <div class="more_options">
-                  <label class="slider_required" min="0" max="2000" step="50">
-                    <input value="200" type="hidden" class="min" /><input value="700" type="hidden" class="max" />
-                    <span class="text">Price Range: </span>$<span class="value"></span><span class="bar"></span>
-                  </label>
-                  <label class="slider_required bedroom" min="0" max="10">
-                    <input value="1" type="hidden" class="min" /><input value="3" type="hidden" class="max" />
-                    <span class="text">Bedroom: </span><span class="value"></span><span class="bar"></span>
-                  </label>
-                  <label class="slider_required bathroom" min="0" max="4">
-                    <input value="1" type="hidden" class="min" /><input value="2" type="hidden" class="max" />
-                    <span class="text">Bathroom: </span><span class="value"></span><span class="bar"></span>
-                  </label>
-                  <label class="slider_required carpark" min="0" max="4">
-                    <input value="1" type="hidden" class="min" /><input value="2" type="hidden" class="max" />
-                    <span class="text">Carspace: </span><span class="value"></span><span class="bar"></span>
-                  </label>
-                  <label class="property_type">
-                    <span class="text">Property type: </span>
-                    <span class="bar">
-                      <select>
-                        <option value="">Any</option>
-                        <option value="">House</option>
-                        <option value="">Townhouse</option>
-                        <option value="">Unit/Apartment</option>
-                        <option value="">Terrace</option>
-                      </select>
-                    </span>
-                  </label>
-                </div>
-                <a href="#" class="more" hide="Hide search criterias" show="Show more search criterias">Show more search criterias</a>
-              </div>
-            </form>
-          </div>
-        </div>
         <%= yield %>
         <div id="search_result">
           <div class="paginate">

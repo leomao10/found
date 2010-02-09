@@ -1,33 +1,45 @@
-<%= f.error_messages %>
-<fieldset id="Basic">
-  <p>
-    <%= f.label :keywords %><br />
-    <%= f.text_field :keywords %>
-  </p>
-</fieldset>
-<fieldset id="Advance">
-  <p>
-    <%= f.label :min_price %><br />
-    <%= f.text_field :min_price %>
-  </p>
-  <p>
-    <%= f.label :max_price %><br />
-    <%= f.text_field :max_price %>
-  </p>
-  <p>
-    <%= f.label :num_of_bedrooms %><br />
-    <%= f.text_field :num_of_bedrooms %>
-  </p>
-  <p>
-    <%= f.label :num_of_bathrooms %><br />
-    <%= f.text_field :num_of_bathrooms %>
-  </p>
-  <p>
-    <%= f.label :num_of_carparks %><br />
-    <%= f.text_field :num_of_carparks %>
-  </p>
-  <p>
-    <%= f.label :property_type %><br />
-    <%= f.text_field :property_type %>
-  </p>
-</fieldset>
+<div class="inner">
+  <%= f.error_messages %>
+  <div class="main">
+    <%= f.text_field :keywords, :class=>"keywords" %>
+    <%= f.submit "Search", :class=>"search" %>
+  </div>
+  <label><input type="checkbox" class="checkbox" /> Include surrounding suburbs</label>
+  <div class="more_options">
+    <label class="slider_required" min="0" max="2000" step="50">
+      <%= f.hidden_field :min_price, :value=>"200", :type=>"hidden", :class=>"min" %>
+      <%= f.hidden_field :max_price, :value=>"700", :type=>"hidden", :class=>"max" %>
+      <span class="text">Price Range: </span>$<span class="value"></span><span class="bar"></span>
+    </label>
+    <label class="slider_required bedroom" min="0" max="10">
+      <%= f.hidden_field :min_of_bedrooms, :value=>"1", :type=>"hidden", :class=>"min" %>
+      <%= f.hidden_field :max_of_bedrooms, :value=>"3", :type=>"hidden", :class=>"max" %>
+      <span class="text">Bedroom: </span><span class="value"></span><span class="bar"></span>
+    </label>
+    <label class="slider_required bathroom" min="0" max="4">
+      <%= f.hidden_field :min_of_bathrooms, :value=>"1", :type=>"hidden", :class=>"min" %>
+      <%= f.hidden_field :max_of_bathrooms, :value=>"2", :type=>"hidden", :class=>"max" %>
+      <span class="text">Bathroom: </span><span class="value"></span><span class="bar"></span>
+    </label>
+    <label class="slider_required carpark" min="0" max="4">
+      <%= f.hidden_field :min_of_carparks, :value=>"1", :type=>"hidden", :class=>"min" %>
+      <%= f.hidden_field :max_of_carparks, :value=>"2", :type=>"hidden", :class=>"max" %>
+      <span class="text">Carspace: </span><span class="value"></span><span class="bar"></span>
+    </label>
+    <label class="property_type">
+      <%= f.label :property_type, :class=>"text" %>
+      <span >Property type: </span>
+      <span class="bar">
+        <%= f.text_field :property_type %>
+        <select>
+          <option value="">Any</option>
+          <option value="">House</option>
+          <option value="">Townhouse</option>
+          <option value="">Unit/Apartment</option>
+          <option value="">Terrace</option>
+        </select>
+      </span>
+    </label>
+  </div>
+  <a href="#" class="more" hide="Hide search criterias" show="Show more search criterias">Show more search criterias</a>
+</div>

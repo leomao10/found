@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100127235412) do
+ActiveRecord::Schema.define(:version => 20100209125159) do
 
   create_table "addresses", :force => true do |t|
     t.string   "line1"
@@ -72,12 +72,15 @@ ActiveRecord::Schema.define(:version => 20100127235412) do
     t.string   "keywords"
     t.integer  "min_price"
     t.integer  "max_price"
-    t.integer  "num_of_bedrooms"
-    t.integer  "num_of_bathrooms"
-    t.integer  "num_of_carparks"
     t.string   "property_type"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "min_of_bathrooms"
+    t.integer  "max_of_bathrooms"
+    t.integer  "min_of_bedrooms"
+    t.integer  "max_of_bedrooms"
+    t.integer  "min_of_carparks"
+    t.integer  "max_of_carparks"
   end
 
   create_table "suburbs", :force => true do |t|

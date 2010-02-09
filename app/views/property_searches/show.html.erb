@@ -1,8 +1,18 @@
-<% form_for @search do |f| %>
-  <%= render :partial => 'form', :locals => { :f => f } %>
-  <%= f.submit "Search" %>
-<% end %>
-
+<div id="search">
+  <div class="tabs">
+    <ul>
+      <li class="highlight"><a href="#"><span>Rent</span></a></li>
+      <li><a href="#"><span>Share</span></a></li>
+      <li><a href="#"><span>Furniture</span></a></li>
+      <li><a href="#"><span>Carspace</span></a></li>
+    </ul>
+  </div>
+  <div class="search_panel">
+    <% form_for @search do |f| %>
+      <%= render :partial => 'form', :locals => { :f => f } %>
+    <% end %>
+  </div>
+</div>
 <% if not @posts.empty? %>
   <div class="result_set">
     <% for post in @posts %>
