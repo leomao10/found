@@ -1,0 +1,14 @@
+<div class="top">
+  <%= will_paginate posts %>
+</div>
+<ul class="list">
+  <% for post in posts %>
+    <li class="item">
+      <%= render :partial => "abstract", :locals => { :post => post } %>
+    </li>
+  <% end %>
+</ul>
+<div class="bottom">
+  <%= will_paginate posts %>
+</div>
+<div id="googlemap">google map</div>

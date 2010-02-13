@@ -7,11 +7,8 @@
     <meta name="keywords" content="" />
     <%= stylesheet_link_tag 'application', 'jquery-ui-1.7.2.custom' %>
     <%= javascript_include_tag 'jquery-1.3.2.min', 'jquery-ui-1.7.2.custom.min' %>
-
-    <script type="text/javascript" language="Javascript" charset="UTF-8">
-      <!--[CDATA[
-      // ]]-->
-    </script>
+    <script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAAYLuaqB7qMuVmZct0bNAhVRToMsSLBLYOIGCFpHF2BQfOB79_-BR2PDljF3gNcHkI6rzbMOOf_XFw1g" type="text/javascript"></script>
+    <%= javascript_include_tag 'application' %>
   </head>
   <body id="body" onload="window.focus();">
     <div id="top_bar">
@@ -48,32 +45,6 @@
       </div>
       <div id="content">
         <%= yield %>
-        <div id="search_result">
-          <div class="paginate">
-            <div class="top">
-              <ul>
-                <li><a href="#"><span>1</span></a></li>
-                <li><a href="#"><span>2</span></a></li>
-              </ul>
-            </div>
-            <ul class="list">
-              <li class="item">
-                <h4 class="title">Burwood</h4>
-                <div class="preview">
-                  <div class="picture">Some picture</div>
-                  <div class="info"><ul>
-                      <li><span class="label"></span><span class="value">$40 per week</span></li>
-                      <li><span class="label"></span><span class="value">fasdfasdfasdfsadf</span></li>
-                    </ul></div>
-                </div>
-              </li>
-            </ul>
-            <div class="bottom">
-            </div>
-          </div>
-          <div id="googlemap">google map
-          </div>
-        </div>
       </div>
       <div id="footer">
         <ul>
@@ -89,78 +60,6 @@
         </ul>
       </div>
     </div>
-    <script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAAYLuaqB7qMuVmZct0bNAhVRToMsSLBLYOIGCFpHF2BQfOB79_-BR2PDljF3gNcHkI6rzbMOOf_XFw1g" type="text/javascript"></script>
-    <script type="text/javascript" language="Javascript" charset="UTF-8">
-      <!--[CDATA[
-      jQuery(function($){
-        // *** search box ***
-        $('label.slider_required').each(function(){
-          var _this = this, opts = {};
-          opts.min = parseInt($(_this).attr('min'));
-          opts.max = parseInt($(_this).attr('max'));
-          opts.range = true;
-          opts.slide = function(event, ui) {
-            $('span.value', _this).text(ui.values[0] + ' - ' + ui.values[1]);
-          }
-          if ($(_this).attr('step')) opts.step = parseInt($(_this).attr('step'));
-          opts.values = [$('input.min', _this).val(), $('input.max', _this).val()];
-          $('span.bar', _this).slider(opts);
-          $('span.value', _this).text($('input.min', _this).val() + ' - ' + $('input.max', _this).val());
-        });
-        $('a.more').each(function(e){
-          var _this = this, $more = $('div.more_options');
-          var show = function(){
-            $(_this).text($(_this).attr('hide'));
-            $('div.more_options').slideDown();
-          };
-          var hide = function(){
-            $(_this).text($(_this).attr('show'));
-            $more.slideUp();
-          };
-          if ($(_this).attr('show') == $(_this).text())
-            $(_this).toggle(show, hide);
-          else
-            $(_this).toggle(hide, show);
-          return false;
-        });
-        // *** google map ***
-
-        function showAddresses(addresses) {
-          if (GBrowserIsCompatible()) {
-            // init the map within div element
-            map = new GMap2($('#googlemap').get(0));
-            // init the geo coder to get the geo point
-            geocoder = new GClientGeocoder();
-            geocoder.getLatLng(
-            'burwood, NSW',
-            function(point) {
-              if (point) {
-                // must set the center first
-                map.setCenter(point, 15);
-              }
-            });
-            var ui = map.getDefaultUI();
-            ui.controls.smallzoomcontrol3d = true;
-            map.setUI(ui);
-
-            // some more controllers
-            //map.addControl(new GMapTypeControl());
-            $(addresses).each(function(index, address) {
-              geocoder.getLatLng(
-              address,
-              function(point) {
-                if (point) {
-                  var marker = new GMarker(point);
-                  map.addOverlay(marker);
-                }
-              });
-            });
-          }
-        }
-        showAddresses(['13-17 Oxford St, Burwood, NSW', 'Hornsey St, Burwood, NSW']);
-      });
-      // ]]-->
-    </script>
   </body>
 </html>
 

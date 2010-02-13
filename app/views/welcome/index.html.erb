@@ -13,4 +13,13 @@
       <%= render :partial => "property_searches/form", :locals => { :f => f }%>
     <% end %>
   </div>
+  <% if not @posts.nil? %>
+    <div class="search_result">
+      <% if not @posts.empty? %>
+        <%= render :partial => "posts/list", :locals => { :posts => @posts } %>
+      <% else %>
+        Could Not Found Any Record
+      <% end %>
+    </div>
+  <% end %>
 </div>

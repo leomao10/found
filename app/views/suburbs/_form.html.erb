@@ -10,7 +10,7 @@
   </p>
   <p>
     <%= f.label :state %><br />
-    <%= f.text_field :state %>
+    <%= f.collection_select :state, Suburb::STATES, :to_s, :upcase %>
   </p>
   <p>
     <%= f.label :postcode %><br />

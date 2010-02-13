@@ -1,28 +1,4 @@
-<p>
-  <strong>Title:</strong>
-  <%=h post.title %>
-</p>
-<p>
-  <strong>Description:</strong>
-  <%=h post.description %>
-</p>
-<p>
-  <strong>Available From:</strong>
-  <%=h post.available_from %>
-</p>
-<p>
-  <strong>Expiry Date:</strong>
-  <%=h post.expiry_date %>
-</p>
-<p>
-  <strong>Inspection Time:</strong>
-  <%=h post.inspection_time %>
-</p>
-<p>
-  <strong>Negotiable:</strong>
-  <%=h post.negotiable %>
-</p>
-
+<h4 class="title"><%=h post.title %></h4>
 <% postable = post.postable %>
 <% unless postable.nil? %>
   <% dir_name = postable.class.table_name %>

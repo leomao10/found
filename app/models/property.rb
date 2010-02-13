@@ -1,7 +1,7 @@
 class Property < ActiveRecord::Base
   #Constants
-  PURPOSE = %w[share rent]
-  TYPE = %w[unit acreage townhouse terrace house]
+  PURPOSES = %w[share rent]
+  TYPES = %w[unit acreage townhouse terrace house]
 
   #Association
   has_one :post, :as => :postable

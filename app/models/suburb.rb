@@ -1,4 +1,6 @@
 class Suburb < ActiveRecord::Base
+  STATES = %w[NSW QLD ACT]
+  
   #Attribute accessiblity
   attr_accessible :name, :area, :state, :postcode
 
