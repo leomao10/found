@@ -1,7 +1,8 @@
 require 'test_helper'
 
 class SearchTest < ActiveSupport::TestCase
-  def test_should_be_valid
-    assert Search.new.valid?
+  # Replace this with your real tests.
+  test "the truth" do
+    assert true
   end
 end

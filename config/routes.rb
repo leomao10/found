@@ -1,7 +1,7 @@
 ActionController::Routing::Routes.draw do |map|
   map.resources :images
-
   map.resources :property_searches
+  map.resources :searches
   map.resources :addresses
   map.resources :carparks
   map.resources :properties

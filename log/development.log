@@ -9585,3 +9585,1099 @@ Rendered posts/_list (16.0ms)
   [4;35;1mUser Columns (16.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
 Completed in 485ms (View: 406, DB: 32) | 200 OK [http://localhost/posts?page=2]
   [4;36;1mPropertySearch Columns (15.0ms)[0m   [0;1mSHOW FIELDS FROM `property_searches`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (16.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WelcomeController#index (for 127.0.0.1 at 2010-02-16 21:25:42) [GET]
+  [4;36;1mPropertySearch Columns (47.0ms)[0m   [0;1mSHOW FIELDS FROM `property_searches`[0m
+Rendering template within layouts/application
+Rendering welcome/index
+Rendered property_searches/_form (47.0ms)
+  [4;35;1mUser Columns (47.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+Completed in 1969ms (View: 1828, DB: 110) | 200 OK [http://localhost/]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertySearchesController#create (for 127.0.0.1 at 2010-02-16 21:25:53) [POST]
+  Parameters: {"commit"=>"Search", "authenticity_token"=>"UAZ298U2HqJMETWiwNpKI3BNx8uS0kamRxzj6l7hXmM=", "property_search"=>{"min_of_bedrooms"=>"1", "max_of_bathrooms"=>"2", "property_type"=>"", "max_of_bedrooms"=>"3", "min_of_carparks"=>"1", "max_of_carparks"=>"2", "max_price"=>"700", "min_of_bathrooms"=>"1", "min_price"=>"200", "keywords"=>"2134"}}
+  [4;36;1mPropertySearch Columns (16.0ms)[0m   [0;1mSHOW FIELDS FROM `property_searches`[0m
+Redirected to http://localhost:3000/property_searches/show
+Completed in 47ms (DB: 16) | 302 Found [http://localhost/property_searches]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertySearchesController#show (for 127.0.0.1 at 2010-02-16 21:25:53) [GET]
+  Parameters: {"id"=>"show"}
+  [4;35;1mPropertySearch Columns (16.0ms)[0m   [0mSHOW FIELDS FROM `property_searches`[0m
+  [4;36;1mProperty Columns (31.0ms)[0m   [0;1mSHOW FIELDS FROM `properties`[0m
+  [4;35;1mProperty Load (0.0ms)[0m   [0mSELECT * FROM `properties` WHERE ((properties.price <= 700.0) AND ((properties.number_of_carparks >= 1) AND ((properties.number_of_bedrooms <= 3) AND ((properties.price >= 200.0) AND ((properties.number_of_bathrooms <= 2) AND ((properties.number_of_bedrooms >= 1) AND ((properties.number_of_carparks <= 2) AND (properties.number_of_bathrooms >= 1)))))))) [0m
+  [4;36;1mPost Columns (63.0ms)[0m   [0;1mSHOW FIELDS FROM `posts`[0m
+  [4;35;1mAddress Columns (94.0ms)[0m   [0mSHOW FIELDS FROM `addresses`[0m
+  [4;36;1mSuburb Columns (47.0ms)[0m   [0;1mSHOW FIELDS FROM `suburbs`[0m
+Rendering template within layouts/application
+Rendering property_searches/show
+Rendered property_searches/_form (15.0ms)
+  [4;35;1mSQL (0.0ms)[0m   [0mSELECT count(*) AS count_all FROM `posts` INNER JOIN `properties` ON `properties`.id = `posts`.postable_id AND `posts`.postable_type = 'Property' INNER JOIN `addresses` ON `addresses`.addressable_id = `properties`.id AND `addresses`.addressable_type = 'Property' INNER JOIN `suburbs` ON `suburbs`.id = `addresses`.suburb_id WHERE ((posts.postable_type = 'Property') AND (((suburbs.name LIKE '%2134%') OR (suburbs.area LIKE '%2134%') OR (suburbs.state LIKE '%2134%') OR (suburbs.postcode LIKE '%2134%')) AND (posts.postable_type = 'Property'))) [0m
+  [4;36;1mUser Columns (15.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+Completed in 1266ms (View: 282, DB: 266) | 200 OK [http://localhost/property_searches/show]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PostsController#new (for 127.0.0.1 at 2010-02-16 21:26:38) [GET]
+  [4;35;1mPost Columns (15.0ms)[0m   [0mSHOW FIELDS FROM `posts`[0m
+Rendering template within layouts/application
+Rendering posts/new
+Rendered posts/_form (1297.0ms)
+  [4;36;1mUser Columns (16.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+Completed in 1437ms (View: 1390, DB: 31) | 200 OK [http://localhost/posts/new]
+  [4;35;1mPropertySearch Columns (16.0ms)[0m   [0mSHOW FIELDS FROM `property_searches`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PostsController#new (for 127.0.0.1 at 2010-02-16 21:29:03) [GET]
+  [4;36;1mPost Columns (15.0ms)[0m   [0;1mSHOW FIELDS FROM `posts`[0m
+Rendering template within layouts/application
+Rendering posts/new
+Rendered posts/_form (79.0ms)
+  [4;35;1mUser Columns (16.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+Completed in 312ms (View: 250, DB: 31) | 200 OK [http://localhost/posts/new]
+  [4;36;1mPropertySearch Columns (15.0ms)[0m   [0;1mSHOW FIELDS FROM `property_searches`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PostsController#new (for 127.0.0.1 at 2010-02-16 21:29:27) [GET]
+  [4;35;1mPost Columns (16.0ms)[0m   [0mSHOW FIELDS FROM `posts`[0m
+Rendering template within layouts/application
+Rendering posts/new
+Rendered posts/_form (63.0ms)
+  [4;36;1mUser Columns (15.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+Completed in 172ms (View: 110, DB: 31) | 200 OK [http://localhost/posts/new]
+  [4;35;1mPropertySearch Columns (16.0ms)[0m   [0mSHOW FIELDS FROM `property_searches`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PostsController#new (for 127.0.0.1 at 2010-02-16 21:29:31) [GET]
+  [4;36;1mPost Columns (15.0ms)[0m   [0;1mSHOW FIELDS FROM `posts`[0m
+Rendering template within layouts/application
+Rendering posts/new
+Rendered posts/_form (47.0ms)
+  [4;35;1mUser Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+Completed in 156ms (View: 125, DB: 15) | 200 OK [http://localhost/posts/new]
+  [4;36;1mPropertySearch Columns (16.0ms)[0m   [0;1mSHOW FIELDS FROM `property_searches`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (62.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (16.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (20100124054035)
+Migrating to CreateSuburbs (20100124060306)
+Migrating to AddUsersPasswordResetField (20100124073325)
+Migrating to CreatePosts (20100124111816)
+Migrating to CreateProperties (20100124112416)
+Migrating to CreateCarparks (20100124114337)
+Migrating to CreateAddresses (20100124114554)
+Migrating to AddNameToSuburb (20100124115827)
+Migrating to CreatePropertySearches (20100126044312)
+Migrating to ChangeColumnForProperty (20100126073625)
+Migrating to CreateImages (20100127235412)
+Migrating to ChangeColumnsOfPropertySearch (20100209125159)
+Migrating to ChangeReferenceForAddress (20100216103345)
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (16.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (20100124054035)
+Migrating to CreateSuburbs (20100124060306)
+Migrating to AddUsersPasswordResetField (20100124073325)
+Migrating to CreatePosts (20100124111816)
+Migrating to CreateProperties (20100124112416)
+Migrating to CreateCarparks (20100124114337)
+Migrating to CreateAddresses (20100124114554)
+Migrating to AddNameToSuburb (20100124115827)
+Migrating to CreatePropertySearches (20100126044312)
+Migrating to ChangeColumnForProperty (20100126073625)
+Migrating to CreateImages (20100127235412)
+Migrating to ChangeColumnsOfPropertySearch (20100209125159)
+Migrating to ChangeReferenceForAddress (20100216103345)
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (20100124054035)
+Migrating to CreateSuburbs (20100124060306)
+Migrating to AddUsersPasswordResetField (20100124073325)
+Migrating to CreatePosts (20100124111816)
+Migrating to CreateProperties (20100124112416)
+Migrating to CreateCarparks (20100124114337)
+Migrating to CreateAddresses (20100124114554)
+Migrating to AddNameToSuburb (20100124115827)
+Migrating to CreatePropertySearches (20100126044312)
+Migrating to ChangeColumnForProperty (20100126073625)
+Migrating to CreateImages (20100127235412)
+Migrating to ChangeColumnsOfPropertySearch (20100209125159)
+Migrating to ChangeReferenceForAddress (20100216103345)
+  [4;36;1mSQL (0.0ms)[0m   [0;1mMysql::Error: Can't DROP 'addressable'; check that column/key exists: ALTER TABLE `addresses` DROP `addressable`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PostsController#new (for 127.0.0.1 at 2010-02-16 22:17:08) [GET]
+  [4;35;1mPost Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `posts`[0m
+Rendering template within layouts/application
+Rendering posts/new
+Rendered posts/_form (78.0ms)
+  [4;36;1mUser Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+Completed in 187ms (View: 140, DB: 0) | 200 OK [http://localhost/posts/new]
+  [4;35;1mPropertySearch Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `property_searches`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (20100124054035)
+Migrating to CreateSuburbs (20100124060306)
+Migrating to AddUsersPasswordResetField (20100124073325)
+Migrating to CreatePosts (20100124111816)
+Migrating to CreateProperties (20100124112416)
+Migrating to CreateCarparks (20100124114337)
+Migrating to CreateAddresses (20100124114554)
+Migrating to AddNameToSuburb (20100124115827)
+Migrating to CreatePropertySearches (20100126044312)
+Migrating to ChangeColumnForProperty (20100126073625)
+Migrating to CreateImages (20100127235412)
+Migrating to ChangeColumnsOfPropertySearch (20100209125159)
+Migrating to ChangeReferenceForAddress (20100216103345)
+  [4;36;1mSQL (171.0ms)[0m   [0;1mALTER TABLE `addresses` DROP `addressable_id`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mMysql::Error: Can't DROP 'addressalbe_type'; check that column/key exists: ALTER TABLE `addresses` DROP `addressalbe_type`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (20100124054035)
+Migrating to CreateSuburbs (20100124060306)
+Migrating to AddUsersPasswordResetField (20100124073325)
+Migrating to CreatePosts (20100124111816)
+Migrating to CreateProperties (20100124112416)
+Migrating to CreateCarparks (20100124114337)
+Migrating to CreateAddresses (20100124114554)
+Migrating to AddNameToSuburb (20100124115827)
+Migrating to CreatePropertySearches (20100126044312)
+Migrating to ChangeColumnForProperty (20100126073625)
+Migrating to CreateImages (20100127235412)
+Migrating to ChangeColumnsOfPropertySearch (20100209125159)
+Migrating to ChangeReferenceForAddress (20100216103345)
+  [4;36;1mSQL (0.0ms)[0m   [0;1mMysql::Error: Can't DROP 'addressable_id'; check that column/key exists: ALTER TABLE `addresses` DROP `addressable_id`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (20100124054035)
+Migrating to CreateSuburbs (20100124060306)
+Migrating to AddUsersPasswordResetField (20100124073325)
+Migrating to CreatePosts (20100124111816)
+Migrating to CreateProperties (20100124112416)
+Migrating to CreateCarparks (20100124114337)
+Migrating to CreateAddresses (20100124114554)
+Migrating to AddNameToSuburb (20100124115827)
+Migrating to CreatePropertySearches (20100126044312)
+Migrating to ChangeColumnForProperty (20100126073625)
+Migrating to CreateImages (20100127235412)
+Migrating to ChangeColumnsOfPropertySearch (20100209125159)
+Migrating to ChangeReferenceForAddress (20100216103345)
+  [4;36;1mSQL (171.0ms)[0m   [0;1mALTER TABLE `addresses` DROP `addressable_type`[0m
+  [4;35;1mSQL (47.0ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100216103345')[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (16.0ms)[0m   [0mSHOW FIELDS FROM `addresses`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mdescribe `addresses`[0m
+  [4;35;1mSQL (16.0ms)[0m   [0mSHOW KEYS FROM `addresses`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW FIELDS FROM `carparks`[0m
+  [4;35;1mSQL (15.0ms)[0m   [0mdescribe `carparks`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW KEYS FROM `carparks`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW FIELDS FROM `images`[0m
+  [4;36;1mSQL (16.0ms)[0m   [0;1mdescribe `images`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW KEYS FROM `images`[0m
+  [4;36;1mSQL (16.0ms)[0m   [0;1mSHOW FIELDS FROM `posts`[0m
+  [4;35;1mSQL (15.0ms)[0m   [0mdescribe `posts`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW KEYS FROM `posts`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW FIELDS FROM `properties`[0m
+  [4;36;1mSQL (16.0ms)[0m   [0;1mdescribe `properties`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW KEYS FROM `properties`[0m
+  [4;36;1mSQL (15.0ms)[0m   [0;1mSHOW FIELDS FROM `property_searches`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mdescribe `property_searches`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW KEYS FROM `property_searches`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW FIELDS FROM `suburbs`[0m
+  [4;36;1mSQL (16.0ms)[0m   [0;1mdescribe `suburbs`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW KEYS FROM `suburbs`[0m
+  [4;36;1mSQL (15.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mdescribe `users`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW KEYS FROM `users`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mPropertySearch Columns (15.0ms)[0m   [0;1mSHOW FIELDS FROM `property_searches`[0m
+  [4;35;1mSearch Columns (0.0ms)[0m   [0mMysql::Error: Table 'found_development.searches' doesn't exist: SHOW FIELDS FROM `searches`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (20100124054035)
+Migrating to CreateSuburbs (20100124060306)
+Migrating to AddUsersPasswordResetField (20100124073325)
+Migrating to CreatePosts (20100124111816)
+Migrating to CreateProperties (20100124112416)
+Migrating to CreateCarparks (20100124114337)
+Migrating to CreateAddresses (20100124114554)
+Migrating to AddNameToSuburb (20100124115827)
+Migrating to CreatePropertySearches (20100126044312)
+Migrating to ChangeColumnForProperty (20100126073625)
+Migrating to CreateImages (20100127235412)
+Migrating to ChangeColumnsOfPropertySearch (20100209125159)
+Migrating to ChangeReferenceForAddress (20100216103345)
+Migrating to CreateSearches (20100216113117)
+  [4;36;1mSQL (62.0ms)[0m   [0;1mCREATE TABLE `searches` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `keyword` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;35;1mSQL (47.0ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100216113117')[0m
+  [4;36;1mSQL (16.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (15.0ms)[0m   [0mSHOW FIELDS FROM `addresses`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mdescribe `addresses`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW KEYS FROM `addresses`[0m
+  [4;36;1mSQL (16.0ms)[0m   [0;1mSHOW FIELDS FROM `carparks`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mdescribe `carparks`[0m
+  [4;36;1mSQL (16.0ms)[0m   [0;1mSHOW KEYS FROM `carparks`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW FIELDS FROM `images`[0m
+  [4;36;1mSQL (15.0ms)[0m   [0;1mdescribe `images`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW KEYS FROM `images`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW FIELDS FROM `posts`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mdescribe `posts`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW KEYS FROM `posts`[0m
+  [4;35;1mSQL (16.0ms)[0m   [0mSHOW FIELDS FROM `properties`[0m
+  [4;36;1mSQL (15.0ms)[0m   [0;1mdescribe `properties`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW KEYS FROM `properties`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW FIELDS FROM `property_searches`[0m
+  [4;35;1mSQL (16.0ms)[0m   [0mdescribe `property_searches`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW KEYS FROM `property_searches`[0m
+  [4;35;1mSQL (15.0ms)[0m   [0mSHOW FIELDS FROM `searches`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mdescribe `searches`[0m
+  [4;35;1mSQL (16.0ms)[0m   [0mSHOW KEYS FROM `searches`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW FIELDS FROM `suburbs`[0m
+  [4;35;1mSQL (16.0ms)[0m   [0mdescribe `suburbs`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW KEYS FROM `suburbs`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mdescribe `users`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW KEYS FROM `users`[0m
+  [4;36;1mSearch Columns (16.0ms)[0m   [0;1mSHOW FIELDS FROM `searches`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mPropertySearch Columns (31.0ms)[0m   [0mSHOW FIELDS FROM `property_searches`[0m
+  [4;36;1mSearch Columns (16.0ms)[0m   [0;1mSHOW FIELDS FROM `searches`[0m
+  [4;35;1mPost Columns (16.0ms)[0m   [0mSHOW FIELDS FROM `posts`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSearch Columns (16.0ms)[0m   [0;1mSHOW FIELDS FROM `searches`[0m
+  [4;35;1mPost Columns (15.0ms)[0m   [0mSHOW FIELDS FROM `posts`[0m
+  [4;36;1mAddress Columns (16.0ms)[0m   [0;1mSHOW FIELDS FROM `addresses`[0m
+  [4;35;1mSuburb Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `suburbs`[0m
+  [4;36;1mPost Load (0.0ms)[0m   [0;1mMysql::Error: Unknown column 'addresses.post_id' in 'on clause': SELECT `posts`.* FROM `posts` INNER JOIN `addresses` ON addresses.post_id = posts.id INNER JOIN `suburbs` ON `suburbs`.id = `addresses`.suburb_id WHERE ((suburbs.name LIKE '%2134%') OR (suburbs.area LIKE '%2134%') OR (suburbs.state LIKE '%2134%') OR (suburbs.postcode LIKE '%2134%')) [0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (20100124054035)
+Migrating to CreateSuburbs (20100124060306)
+Migrating to AddUsersPasswordResetField (20100124073325)
+Migrating to CreatePosts (20100124111816)
+Migrating to CreateProperties (20100124112416)
+Migrating to CreateCarparks (20100124114337)
+Migrating to CreateAddresses (20100124114554)
+Migrating to AddNameToSuburb (20100124115827)
+Migrating to CreatePropertySearches (20100126044312)
+Migrating to ChangeColumnForProperty (20100126073625)
+Migrating to CreateImages (20100127235412)
+Migrating to ChangeColumnsOfPropertySearch (20100209125159)
+Migrating to ChangeReferenceForAddress (20100216103345)
+Migrating to CreateSearches (20100216113117)
+Migrating to AddReferenceForAddress (20100216122556)
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (20100124054035)
+Migrating to CreateSuburbs (20100124060306)
+Migrating to AddUsersPasswordResetField (20100124073325)
+Migrating to CreatePosts (20100124111816)
+Migrating to CreateProperties (20100124112416)
+Migrating to CreateCarparks (20100124114337)
+Migrating to CreateAddresses (20100124114554)
+Migrating to AddNameToSuburb (20100124115827)
+Migrating to CreatePropertySearches (20100126044312)
+Migrating to ChangeColumnForProperty (20100126073625)
+Migrating to CreateImages (20100127235412)
+Migrating to ChangeColumnsOfPropertySearch (20100209125159)
+Migrating to ChangeReferenceForAddress (20100216103345)
+Migrating to CreateSearches (20100216113117)
+Migrating to AddReferenceForAddress (20100216122556)
+  [4;36;1mSQL (125.0ms)[0m   [0;1mALTER TABLE `addresses` ADD `post_id` int(11)[0m
+  [4;35;1mSQL (47.0ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100216122556')[0m
+  [4;36;1mSQL (16.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (16.0ms)[0m   [0mSHOW FIELDS FROM `addresses`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mdescribe `addresses`[0m
+  [4;35;1mSQL (15.0ms)[0m   [0mSHOW KEYS FROM `addresses`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW FIELDS FROM `carparks`[0m
+  [4;35;1mSQL (16.0ms)[0m   [0mdescribe `carparks`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW KEYS FROM `carparks`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW FIELDS FROM `images`[0m
+  [4;36;1mSQL (15.0ms)[0m   [0;1mdescribe `images`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW KEYS FROM `images`[0m
+  [4;36;1mSQL (16.0ms)[0m   [0;1mSHOW FIELDS FROM `posts`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mdescribe `posts`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW KEYS FROM `posts`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW FIELDS FROM `properties`[0m
+  [4;36;1mSQL (15.0ms)[0m   [0;1mdescribe `properties`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW KEYS FROM `properties`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW FIELDS FROM `property_searches`[0m
+  [4;35;1mSQL (16.0ms)[0m   [0mdescribe `property_searches`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW KEYS FROM `property_searches`[0m
+  [4;35;1mSQL (16.0ms)[0m   [0mSHOW FIELDS FROM `searches`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mdescribe `searches`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW KEYS FROM `searches`[0m
+  [4;36;1mSQL (15.0ms)[0m   [0;1mSHOW FIELDS FROM `suburbs`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mdescribe `suburbs`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW KEYS FROM `suburbs`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mSQL (15.0ms)[0m   [0;1mdescribe `users`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW KEYS FROM `users`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (16.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mSearch Columns (16.0ms)[0m   [0mSHOW FIELDS FROM `searches`[0m
+  [4;36;1mPost Columns (16.0ms)[0m   [0;1mSHOW FIELDS FROM `posts`[0m
+  [4;35;1mAddress Columns (16.0ms)[0m   [0mSHOW FIELDS FROM `addresses`[0m
+  [4;36;1mSuburb Columns (16.0ms)[0m   [0;1mSHOW FIELDS FROM `suburbs`[0m
+  [4;35;1mPost Load (0.0ms)[0m   [0mSELECT `posts`.* FROM `posts` INNER JOIN `addresses` ON addresses.post_id = posts.id INNER JOIN `suburbs` ON `suburbs`.id = `addresses`.suburb_id WHERE ((suburbs.name LIKE '%2134%') OR (suburbs.area LIKE '%2134%') OR (suburbs.state LIKE '%2134%') OR (suburbs.postcode LIKE '%2134%')) [0m
+  [4;36;1mPropertySearch Columns (62.0ms)[0m   [0;1mSHOW FIELDS FROM `property_searches`[0m
+  [4;35;1mProperty Columns (15.0ms)[0m   [0mSHOW FIELDS FROM `properties`[0m
+  [4;36;1mSQL (16.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mSearch Columns (15.0ms)[0m   [0mSHOW FIELDS FROM `searches`[0m
+  [4;36;1mPropertySearch Columns (16.0ms)[0m   [0;1mSHOW FIELDS FROM `property_searches`[0m
+  [4;35;1mProperty Columns (16.0ms)[0m   [0mSHOW FIELDS FROM `properties`[0m
+  [4;36;1mProperty Load (0.0ms)[0m   [0;1mSELECT * FROM `properties` WHERE ((properties.number_of_carparks >= NULL) AND ((properties.number_of_bedrooms <= NULL) AND ((properties.price >= NULL) AND ((properties.prop_type IS NULL) AND ((properties.number_of_bathrooms <= NULL) AND ((properties.number_of_bedrooms >= NULL) AND ((properties.number_of_carparks <= NULL) AND ((properties.number_of_bathrooms >= NULL) AND (properties.price <= NULL))))))))) [0m
+  [4;35;1mPost Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `posts`[0m
+  [4;36;1mPost Load (0.0ms)[0m   [0;1mSELECT * FROM `posts` WHERE (posts.postable_type = 'Property') [0m
+  [4;35;1mProperty Load (0.0ms)[0m   [0mSELECT * FROM `properties` WHERE ((properties.number_of_carparks >= NULL) AND ((properties.number_of_bedrooms <= NULL) AND ((properties.price >= NULL) AND ((properties.prop_type IS NULL) AND ((properties.number_of_bathrooms <= NULL) AND ((properties.number_of_bedrooms >= NULL) AND ((properties.number_of_carparks <= NULL) AND ((properties.number_of_bathrooms >= NULL) AND (properties.price <= NULL))))))))) [0m
+  [4;36;1mProperty Load (0.0ms)[0m   [0;1mSELECT * FROM `properties` WHERE ((properties.number_of_carparks >= NULL) AND ((properties.number_of_bedrooms <= NULL) AND ((properties.price >= NULL) AND ((properties.prop_type IS NULL) AND ((properties.number_of_bathrooms <= NULL) AND ((properties.number_of_bedrooms >= NULL) AND ((properties.number_of_carparks <= NULL) AND ((properties.number_of_bathrooms >= NULL) AND (properties.price <= NULL))))))))) [0m
+  [4;35;1mAddress Columns (16.0ms)[0m   [0mSHOW FIELDS FROM `addresses`[0m
+  [4;36;1mSuburb Columns (16.0ms)[0m   [0;1mSHOW FIELDS FROM `suburbs`[0m
+  [4;35;1mPost Load (16.0ms)[0m   [0mSELECT * FROM `posts` WHERE (posts.postable_type = 'Property') [0m
+  [4;36;1mPost Load (0.0ms)[0m   [0;1mSELECT `posts`.* FROM `posts` INNER JOIN `addresses` ON addresses.post_id = posts.id INNER JOIN `suburbs` ON `suburbs`.id = `addresses`.suburb_id WHERE ((suburbs.name LIKE '%2134%') OR (suburbs.area LIKE '%2134%') OR (suburbs.state LIKE '%2134%') OR (suburbs.postcode LIKE '%2134%')) [0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WelcomeController#index (for 127.0.0.1 at 2010-02-17 23:39:59) [GET]
+  [4;36;1mPropertySearch Columns (78.0ms)[0m   [0;1mSHOW FIELDS FROM `property_searches`[0m
+Rendering template within layouts/application
+Rendering welcome/index
+Rendered property_searches/_form (109.0ms)
+  [4;35;1mUser Columns (63.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+Completed in 3531ms (View: 3015, DB: 141) | 200 OK [http://localhost/]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WelcomeController#index (for 127.0.0.1 at 2010-02-17 23:59:46) [GET]
+  [4;36;1mPropertySearch Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `property_searches`[0m
+Rendering template within layouts/application
+Rendering welcome/index
+
+ActionView::TemplateError (undefined method `setup_person' for #<ActionView::Base:0x4746fe0>) on line #12 of app/views/welcome/index.html.erb:
+9:     </ul>
+10:   </div>
+11:   <div class="search_panel">
+12:     <% form_for setup_person(@search) do |f| %>
+13:       <%= render :partial => "searches/form", :locals => { :f => f }%>
+14:     <% end %>
+15:   </div>
+
+    app/views/welcome/index.html.erb:12
+
+Rendered rescues/_trace (218.0ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WelcomeController#index (for 127.0.0.1 at 2010-02-18 00:00:35) [GET]
+  [4;35;1mPropertySearch Columns (16.0ms)[0m   [0mSHOW FIELDS FROM `property_searches`[0m
+Rendering template within layouts/application
+Rendering welcome/index
+
+ActionView::TemplateError (undefined method `property_search' for #<PropertySearch:0x48e3a4c>) on line #12 of app/views/welcome/index.html.erb:
+9:     </ul>
+10:   </div>
+11:   <div class="search_panel">
+12:     <% form_for setup_search(@search) do |f| %>
+13:       <%= render :partial => "searches/form", :locals => { :f => f }%>
+14:     <% end %>
+15:   </div>
+
+    app/helpers/application_helper.rb:5:in `setup_search'
+    app/helpers/application_helper.rb:4:in `setup_search'
+    app/views/welcome/index.html.erb:12
+
+Rendered rescues/_trace (187.0ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WelcomeController#index (for 127.0.0.1 at 2010-02-18 00:01:53) [GET]
+  [4;36;1mSearch Columns (63.0ms)[0m   [0;1mSHOW FIELDS FROM `searches`[0m
+Rendering template within layouts/application
+Rendering welcome/index
+
+ActionView::TemplateError (You have a nil object when you didn't expect it!
+You might have expected an instance of Array.
+The error occurred while evaluating nil.empty?) on line #12 of app/views/welcome/index.html.erb:
+9:     </ul>
+10:   </div>
+11:   <div class="search_panel">
+12:     <% form_for setup_search(@search) do |f| %>
+13:       <%= render :partial => "searches/form", :locals => { :f => f }%>
+14:     <% end %>
+15:   </div>
+
+    app/helpers/application_helper.rb:5:in `setup_search'
+    app/helpers/application_helper.rb:4:in `setup_search'
+    app/views/welcome/index.html.erb:12
+
+Rendered rescues/_trace (406.0ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WelcomeController#index (for 127.0.0.1 at 2010-02-18 00:05:26) [GET]
+  [4;35;1mSearch Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `searches`[0m
+
+NoMethodError (undefined method `build' for nil:NilClass):
+  app/controllers/welcome_controller.rb:4:in `index'
+
+Rendered rescues/_trace (141.0ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSearch Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `searches`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WelcomeController#index (for 127.0.0.1 at 2010-02-18 00:10:49) [GET]
+  [4;36;1mSearch Columns (16.0ms)[0m   [0;1mSHOW FIELDS FROM `searches`[0m
+  [4;35;1mPropertySearch Columns (31.0ms)[0m   [0mSHOW FIELDS FROM `property_searches`[0m
+Rendering template within layouts/application
+Rendering welcome/index
+
+ActionView::TemplateError (no block given) on line #12 of app/views/welcome/index.html.erb:
+9:     </ul>
+10:   </div>
+11:   <div class="search_panel">
+12:     <% form_for setup_search(@search) do |f| %>
+13:       <%= render :partial => "searches/form", :locals => { :f => f }%>
+14:     <% end %>
+15:   </div>
+
+    app/helpers/application_helper.rb:4:in `setup_search'
+    app/views/welcome/index.html.erb:12
+
+Rendered rescues/_trace (188.0ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WelcomeController#index (for 127.0.0.1 at 2010-02-18 00:11:28) [GET]
+  [4;36;1mSearch Columns (31.0ms)[0m   [0;1mSHOW FIELDS FROM `searches`[0m
+  [4;35;1mPropertySearch Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `property_searches`[0m
+Rendering template within layouts/application
+Rendering welcome/index
+Rendered property_searches/_form (31.0ms)
+Rendered searches/_form (63.0ms)
+  [4;36;1mUser Columns (16.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+Completed in 328ms (View: 203, DB: 47) | 200 OK [http://localhost/]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#create (for 127.0.0.1 at 2010-02-18 00:11:39) [POST]
+  Parameters: {"search"=>{"property_search_attributes"=>{"min_of_bedrooms"=>"1", "max_of_bathrooms"=>"2", "max_of_bedrooms"=>"3", "property_type"=>"", "min_of_carparks"=>"1", "max_of_carparks"=>"2", "max_price"=>"700", "min_price"=>"200", "min_of_bathrooms"=>"1"}, "keyword"=>"2134"}, "commit"=>"Search", "authenticity_token"=>"g8/9s0y5/oIF+LMKuZViR//0wlxJgYaE0TL+BZZvHbg="}
+
+NameError (uninitialized constant SearchesController):
+  
+
+Rendered rescues/_trace (125.0ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#create (for 127.0.0.1 at 2010-02-18 00:14:24) [POST]
+  Parameters: {"search"=>{"property_search_attributes"=>{"min_of_bedrooms"=>"1", "max_of_bathrooms"=>"2", "max_of_bedrooms"=>"3", "property_type"=>"", "min_of_carparks"=>"1", "max_of_carparks"=>"2", "max_price"=>"700", "min_price"=>"200", "min_of_bathrooms"=>"1"}, "keyword"=>"2134"}, "commit"=>"Search", "authenticity_token"=>"g8/9s0y5/oIF+LMKuZViR//0wlxJgYaE0TL+BZZvHbg="}
+
+NameError (uninitialized constant SearchesController):
+  
+
+Rendered rescues/_trace (141.0ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#create (for 127.0.0.1 at 2010-02-18 00:14:57) [POST]
+  Parameters: {"search"=>{"property_search_attributes"=>{"min_of_bedrooms"=>"1", "max_of_bathrooms"=>"2", "max_of_bedrooms"=>"3", "property_type"=>"", "min_of_carparks"=>"1", "max_of_carparks"=>"2", "max_price"=>"700", "min_price"=>"200", "min_of_bathrooms"=>"1"}, "keyword"=>"2134"}, "commit"=>"Search", "authenticity_token"=>"g8/9s0y5/oIF+LMKuZViR//0wlxJgYaE0TL+BZZvHbg="}
+
+NameError (uninitialized constant SearchesController):
+  
+
+Rendered rescues/_trace (109.0ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mPropertySearch Columns (31.0ms)[0m   [0mSHOW FIELDS FROM `property_searches`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WelcomeController#index (for 127.0.0.1 at 2010-02-18 00:22:44) [GET]
+  [4;35;1mSearch Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `searches`[0m
+  [4;36;1mPropertySearch Columns (16.0ms)[0m   [0;1mSHOW FIELDS FROM `property_searches`[0m
+Rendering template within layouts/application
+Rendering welcome/index
+Rendered property_searches/_form (31.0ms)
+Rendered searches/_form (31.0ms)
+  [4;35;1mUser Columns (15.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+Completed in 328ms (View: 157, DB: 31) | 200 OK [http://localhost/]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#create (for 127.0.0.1 at 2010-02-18 00:22:49) [POST]
+  Parameters: {"search"=>{"property_search_attributes"=>{"min_of_bedrooms"=>"1", "max_of_bathrooms"=>"2", "max_of_bedrooms"=>"3", "property_type"=>"", "min_of_carparks"=>"1", "max_of_carparks"=>"2", "max_price"=>"700", "min_price"=>"200", "min_of_bathrooms"=>"1"}, "keyword"=>"2134"}, "commit"=>"Search", "authenticity_token"=>"g8/9s0y5/oIF+LMKuZViR//0wlxJgYaE0TL+BZZvHbg="}
+
+NameError (uninitialized constant SearchesController):
+  
+
+Rendered rescues/_trace (454.0ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#create (for 127.0.0.1 at 2010-02-18 00:24:31) [POST]
+  Parameters: {"search"=>{"property_search_attributes"=>{"min_of_bedrooms"=>"1", "max_of_bathrooms"=>"2", "max_of_bedrooms"=>"3", "property_type"=>"", "min_of_carparks"=>"1", "max_of_carparks"=>"2", "max_price"=>"700", "min_price"=>"200", "min_of_bathrooms"=>"1"}, "keyword"=>"2134"}, "commit"=>"Search", "authenticity_token"=>"g8/9s0y5/oIF+LMKuZViR//0wlxJgYaE0TL+BZZvHbg="}
+
+NameError (uninitialized constant SearchesController):
+  
+
+Rendered rescues/_trace (109.0ms)
+Rendered rescues/_request_and_response (16.0ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#create (for 127.0.0.1 at 2010-02-18 00:25:01) [POST]
+  Parameters: {"search"=>{"property_search_attributes"=>{"min_of_bedrooms"=>"1", "max_of_bathrooms"=>"2", "max_of_bedrooms"=>"3", "property_type"=>"", "min_of_carparks"=>"1", "max_of_carparks"=>"2", "max_price"=>"700", "min_price"=>"200", "min_of_bathrooms"=>"1"}, "keyword"=>"2134"}, "commit"=>"Search", "authenticity_token"=>"g8/9s0y5/oIF+LMKuZViR//0wlxJgYaE0TL+BZZvHbg="}
+
+NameError (uninitialized constant SearchesController):
+  
+
+Rendered rescues/_trace (125.0ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SearchesController#create (for 127.0.0.1 at 2010-02-18 00:28:51) [POST]
+  Parameters: {"search"=>{"property_search_attributes"=>{"min_of_bedrooms"=>"1", "max_of_bathrooms"=>"2", "max_of_bedrooms"=>"3", "property_type"=>"", "min_of_carparks"=>"1", "max_of_carparks"=>"2", "max_price"=>"700", "min_price"=>"200", "min_of_bathrooms"=>"1"}, "keyword"=>"2134"}, "commit"=>"Search", "authenticity_token"=>"g8/9s0y5/oIF+LMKuZViR//0wlxJgYaE0TL+BZZvHbg="}
+  [4;36;1mSearch Columns (15.0ms)[0m   [0;1mSHOW FIELDS FROM `searches`[0m
+  [4;35;1mPropertySearch Columns (15.0ms)[0m   [0mSHOW FIELDS FROM `property_searches`[0m
+Redirected to http://localhost:3000/searches/show
+Completed in 141ms (DB: 30) | 302 Found [http://localhost/searches]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SearchesController#show (for 127.0.0.1 at 2010-02-18 00:28:51) [GET]
+  Parameters: {"id"=>"show"}
+  [4;36;1mSearch Columns (15.0ms)[0m   [0;1mSHOW FIELDS FROM `searches`[0m
+
+NoMethodError (undefined method `search_by_address' for #<Search:0x46e8530>):
+  app/models/search.rb:22:in `posts'
+  app/controllers/searches_controller.rb:14:in `show'
+
+Rendered rescues/_trace (141.0ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mPropertySearch Columns (16.0ms)[0m   [0mSHOW FIELDS FROM `property_searches`[0m
+  [4;36;1mSQL (15.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SearchesController#create (for 127.0.0.1 at 2010-02-18 00:29:58) [POST]
+  Parameters: {"search"=>{"property_search_attributes"=>{"min_of_bedrooms"=>"1", "max_of_bathrooms"=>"2", "max_of_bedrooms"=>"3", "property_type"=>"", "min_of_carparks"=>"1", "max_of_carparks"=>"2", "max_price"=>"700", "min_price"=>"200", "min_of_bathrooms"=>"1"}, "keyword"=>"2134"}, "commit"=>"Search", "authenticity_token"=>"g8/9s0y5/oIF+LMKuZViR//0wlxJgYaE0TL+BZZvHbg="}
+  [4;36;1mSearch Columns (15.0ms)[0m   [0;1mSHOW FIELDS FROM `searches`[0m
+  [4;35;1mPropertySearch Columns (16.0ms)[0m   [0mSHOW FIELDS FROM `property_searches`[0m
+Redirected to http://localhost:3000/searches/show
+Completed in 94ms (DB: 46) | 302 Found [http://localhost/searches]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SearchesController#show (for 127.0.0.1 at 2010-02-18 00:29:59) [GET]
+  Parameters: {"id"=>"show"}
+  [4;36;1mSearch Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `searches`[0m
+  [4;35;1mPost Columns (47.0ms)[0m   [0mSHOW FIELDS FROM `posts`[0m
+  [4;36;1mAddress Columns (47.0ms)[0m   [0;1mSHOW FIELDS FROM `addresses`[0m
+  [4;35;1mSuburb Columns (47.0ms)[0m   [0mSHOW FIELDS FROM `suburbs`[0m
+
+NameError (undefined local variable or method `search_by_propety' for #<Search:0x47963d8>):
+  app/models/search.rb:22:in `posts'
+  app/controllers/searches_controller.rb:14:in `show'
+
+Rendered rescues/_trace (141.0ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mPropertySearch Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `property_searches`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SearchesController#show (for 127.0.0.1 at 2010-02-18 00:30:18) [GET]
+  Parameters: {"id"=>"show"}
+  [4;35;1mSearch Columns (15.0ms)[0m   [0mSHOW FIELDS FROM `searches`[0m
+  [4;36;1mPost Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `posts`[0m
+  [4;35;1mAddress Columns (31.0ms)[0m   [0mSHOW FIELDS FROM `addresses`[0m
+  [4;36;1mSuburb Columns (16.0ms)[0m   [0;1mSHOW FIELDS FROM `suburbs`[0m
+  [4;35;1mPropertySearch Columns (15.0ms)[0m   [0mSHOW FIELDS FROM `property_searches`[0m
+  [4;36;1mProperty Columns (31.0ms)[0m   [0;1mSHOW FIELDS FROM `properties`[0m
+  [4;35;1mProperty Load (0.0ms)[0m   [0mSELECT * FROM `properties` WHERE ((properties.number_of_bedrooms >= 1) AND ((properties.number_of_carparks <= 2) AND ((properties.number_of_bathrooms >= 1) AND ((properties.price <= 700.0) AND ((properties.number_of_carparks >= 1) AND ((properties.number_of_bedrooms <= 3) AND ((properties.price >= 200.0) AND (properties.number_of_bathrooms <= 2)))))))) [0m
+  [4;36;1mPost Load (0.0ms)[0m   [0;1mSELECT `posts`.* FROM `posts` INNER JOIN `addresses` ON addresses.post_id = posts.id INNER JOIN `suburbs` ON `suburbs`.id = `addresses`.suburb_id WHERE ((suburbs.name LIKE '%2134%') OR (suburbs.area LIKE '%2134%') OR (suburbs.state LIKE '%2134%') OR (suburbs.postcode LIKE '%2134%')) [0m
+  [4;35;1mPost Load (0.0ms)[0m   [0mSELECT * FROM `posts` WHERE (posts.postable_type = 'Property') [0m
+Rendering template within layouts/application
+Rendering welcome/index
+Rendered property_searches/_form (15.0ms)
+Rendered searches/_form (15.0ms)
+  [4;36;1mUser Columns (15.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+Completed in 1688ms (View: 126, DB: 123) | 200 OK [http://localhost/searches/show]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SearchesController#create (for 127.0.0.1 at 2010-02-18 00:30:35) [POST]
+  Parameters: {"search"=>{"property_search_attributes"=>{"min_of_bedrooms"=>"1", "max_of_bathrooms"=>"2", "max_of_bedrooms"=>"3", "property_type"=>"", "min_of_carparks"=>"1", "max_of_carparks"=>"2", "max_price"=>"700", "min_price"=>"200", "min_of_bathrooms"=>"1"}, "keyword"=>"2134"}, "commit"=>"Search", "authenticity_token"=>"g8/9s0y5/oIF+LMKuZViR//0wlxJgYaE0TL+BZZvHbg="}
+  [4;35;1mSearch Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `searches`[0m
+  [4;36;1mPropertySearch Columns (47.0ms)[0m   [0;1mSHOW FIELDS FROM `property_searches`[0m
+Redirected to http://localhost:3000/searches/show
+Completed in 156ms (DB: 47) | 302 Found [http://localhost/searches]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SearchesController#show (for 127.0.0.1 at 2010-02-18 00:30:35) [GET]
+  Parameters: {"id"=>"show"}
+  [4;35;1mSearch Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `searches`[0m
+  [4;36;1mPost Columns (15.0ms)[0m   [0;1mSHOW FIELDS FROM `posts`[0m
+  [4;35;1mAddress Columns (16.0ms)[0m   [0mSHOW FIELDS FROM `addresses`[0m
+  [4;36;1mSuburb Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `suburbs`[0m
+  [4;35;1mPropertySearch Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `property_searches`[0m
+  [4;36;1mProperty Columns (16.0ms)[0m   [0;1mSHOW FIELDS FROM `properties`[0m
+  [4;35;1mProperty Load (0.0ms)[0m   [0mSELECT * FROM `properties` WHERE ((properties.number_of_bedrooms >= 1) AND ((properties.number_of_carparks <= 2) AND ((properties.number_of_bathrooms >= 1) AND ((properties.price <= 700.0) AND ((properties.number_of_carparks >= 1) AND ((properties.number_of_bedrooms <= 3) AND ((properties.price >= 200.0) AND (properties.number_of_bathrooms <= 2)))))))) [0m
+  [4;36;1mPost Load (15.0ms)[0m   [0;1mSELECT `posts`.* FROM `posts` INNER JOIN `addresses` ON addresses.post_id = posts.id INNER JOIN `suburbs` ON `suburbs`.id = `addresses`.suburb_id WHERE ((suburbs.name LIKE '%2134%') OR (suburbs.area LIKE '%2134%') OR (suburbs.state LIKE '%2134%') OR (suburbs.postcode LIKE '%2134%')) [0m
+  [4;35;1mPost Load (0.0ms)[0m   [0mSELECT * FROM `posts` WHERE (posts.postable_type = 'Property') [0m
+Rendering template within layouts/application
+Rendering welcome/index
+Rendered property_searches/_form (16.0ms)
+Rendered searches/_form (16.0ms)
+  [4;36;1mUser Columns (16.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+Completed in 1031ms (View: 125, DB: 78) | 200 OK [http://localhost/searches/show]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-02-18 00:31:27) [GET]
+
+ActionController::RoutingError (No route matches "/p;osts" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PostsController#new (for 127.0.0.1 at 2010-02-18 00:31:34) [GET]
+  [4;35;1mPost Columns (16.0ms)[0m   [0mSHOW FIELDS FROM `posts`[0m
+Rendering template within layouts/application
+Rendering posts/new
+Rendered posts/_form (2703.0ms)
+  [4;36;1mUser Columns (16.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+Completed in 2921ms (View: 2843, DB: 32) | 200 OK [http://localhost/posts/new]
+  [4;35;1mSearch Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `searches`[0m
+  [4;36;1mPropertySearch Columns (31.0ms)[0m   [0;1mSHOW FIELDS FROM `property_searches`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (15.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PostsController#index (for 127.0.0.1 at 2010-02-18 00:32:30) [GET]
+  [4;35;1mPost Load (0.0ms)[0m   [0mSELECT * FROM `posts` LIMIT 0, 1[0m
+  [4;36;1mPost Columns (15.0ms)[0m   [0;1mSHOW FIELDS FROM `posts`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSELECT count(*) AS count_all FROM `posts` [0m
+Rendering template within layouts/application
+Rendering posts/index
+Rendered posts/_abstract (31.0ms)
+Rendered posts/_list (63.0ms)
+  [4;36;1mUser Columns (16.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+Completed in 515ms (View: 437, DB: 46) | 200 OK [http://localhost/posts]
+  [4;35;1mSearch Columns (16.0ms)[0m   [0mSHOW FIELDS FROM `searches`[0m
+  [4;36;1mPropertySearch Columns (16.0ms)[0m   [0;1mSHOW FIELDS FROM `property_searches`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WelcomeController#index (for 127.0.0.1 at 2010-02-18 00:38:58) [GET]
+Redirected to http://localhost:3000/search/new
+Completed in 16ms (DB: 0) | 302 Found [http://localhost/]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-02-18 00:38:58) [GET]
+
+ActionController::RoutingError (No route matches "/search/new" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-02-18 00:39:26) [GET]
+
+ActionController::RoutingError (No route matches "/search/new" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-02-18 00:39:28) [GET]
+
+ActionController::RoutingError (No route matches "/search/new" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-02-18 00:39:59) [GET]
+
+ActionController::RoutingError (No route matches "/search/new" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-02-18 00:40:01) [GET]
+
+ActionController::RoutingError (No route matches "/search/new" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (16.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WelcomeController#index (for 127.0.0.1 at 2010-02-18 00:40:05) [GET]
+Redirected to http://localhost:3000/searches/new
+Completed in 15ms (DB: 16) | 302 Found [http://localhost/]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SearchesController#new (for 127.0.0.1 at 2010-02-18 00:40:05) [GET]
+  [4;35;1mSearch Columns (16.0ms)[0m   [0mSHOW FIELDS FROM `searches`[0m
+  [4;36;1mPropertySearch Columns (16.0ms)[0m   [0;1mSHOW FIELDS FROM `property_searches`[0m
+Rendering template within layouts/application
+Rendering welcome/index
+Rendered property_searches/_form (15.0ms)
+Rendered searches/_form (31.0ms)
+  [4;35;1mUser Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+Completed in 422ms (View: 234, DB: 32) | 200 OK [http://localhost/searches/new]
+  [4;36;1mPost Load (0.0ms)[0m   [0;1mSELECT * FROM `posts` [0m
+  [4;35;1mPost Columns (16.0ms)[0m   [0mSHOW FIELDS FROM `posts`[0m
+  [4;36;1mAddress Load (16.0ms)[0m   [0;1mSELECT * FROM `addresses` [0m
+  [4;35;1mAddress Columns (63.0ms)[0m   [0mSHOW FIELDS FROM `addresses`[0m
+  [4;36;1mSQL (109.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mBEGIN[0m
+  [4;36;1mAddress Create (0.0ms)[0m   [0;1mINSERT INTO `addresses` (`line1`, `line2`, `updated_at`, `suburb_id`, `post_id`, `created_at`) VALUES('13-17', 'Oxford Street', '2010-02-17 13:42:44', NULL, NULL, '2010-02-17 13:42:44')[0m
+  [4;35;1mSQL (47.0ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSuburb Load (0.0ms)[0m   [0;1mSELECT * FROM `suburbs` [0m
+  [4;35;1mSuburb Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `suburbs`[0m
+  [4;36;1mSQL (16.0ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSuburb Create (15.0ms)[0m   [0mINSERT INTO `suburbs` (`name`, `updated_at`, `postcode`, `area`, `state`, `created_at`) VALUES('Burwood', '2010-02-17 13:44:27', 2134, 'Inner West', 'NSW', '2010-02-17 13:44:27')[0m
+  [4;36;1mAddress Update (0.0ms)[0m   [0;1mUPDATE `addresses` SET `suburb_id` = 1, `updated_at` = '2010-02-17 13:44:27' WHERE `id` = 1[0m
+  [4;35;1mSQL (47.0ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSuburb Load (0.0ms)[0m   [0;1mSELECT * FROM `suburbs` [0m
+  [4;35;1mPost Load (0.0ms)[0m   [0mSELECT * FROM `posts` LIMIT 1[0m
+  [4;36;1mAddress Load (0.0ms)[0m   [0;1mSELECT * FROM `addresses` WHERE (`addresses`.post_id = 1) LIMIT 1[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mBEGIN[0m
+  [4;36;1mAddress Update (0.0ms)[0m   [0;1mUPDATE `addresses` SET `updated_at` = '2010-02-17 13:45:07', `post_id` = 1 WHERE `id` = 1[0m
+  [4;35;1mSQL (47.0ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SearchesController#create (for 127.0.0.1 at 2010-02-18 00:45:20) [POST]
+  Parameters: {"search"=>{"property_search_attributes"=>{"min_of_bedrooms"=>"1", "max_of_bathrooms"=>"2", "max_of_bedrooms"=>"3", "property_type"=>"", "min_of_carparks"=>"1", "max_of_carparks"=>"2", "max_price"=>"700", "min_price"=>"200", "min_of_bathrooms"=>"1"}, "keyword"=>"2134"}, "commit"=>"Search", "authenticity_token"=>"g8/9s0y5/oIF+LMKuZViR//0wlxJgYaE0TL+BZZvHbg="}
+  [4;36;1mSearch Columns (15.0ms)[0m   [0;1mSHOW FIELDS FROM `searches`[0m
+  [4;35;1mPropertySearch Columns (16.0ms)[0m   [0mSHOW FIELDS FROM `property_searches`[0m
+Redirected to http://localhost:3000/searches/show
+Completed in 375ms (DB: 31) | 302 Found [http://localhost/searches]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SearchesController#show (for 127.0.0.1 at 2010-02-18 00:45:21) [GET]
+  Parameters: {"id"=>"show"}
+  [4;36;1mSearch Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `searches`[0m
+  [4;35;1mPost Columns (16.0ms)[0m   [0mSHOW FIELDS FROM `posts`[0m
+  [4;36;1mAddress Columns (16.0ms)[0m   [0;1mSHOW FIELDS FROM `addresses`[0m
+  [4;35;1mSuburb Columns (15.0ms)[0m   [0mSHOW FIELDS FROM `suburbs`[0m
+  [4;36;1mPropertySearch Columns (16.0ms)[0m   [0;1mSHOW FIELDS FROM `property_searches`[0m
+  [4;35;1mProperty Columns (31.0ms)[0m   [0mSHOW FIELDS FROM `properties`[0m
+  [4;36;1mProperty Load (0.0ms)[0m   [0;1mSELECT * FROM `properties` WHERE ((properties.number_of_bedrooms >= 1) AND ((properties.number_of_carparks <= 2) AND ((properties.number_of_bathrooms >= 1) AND ((properties.price <= 700.0) AND ((properties.number_of_carparks >= 1) AND ((properties.number_of_bedrooms <= 3) AND ((properties.price >= 200.0) AND (properties.number_of_bathrooms <= 2)))))))) [0m
+  [4;35;1mPost Load (0.0ms)[0m   [0mSELECT `posts`.* FROM `posts` INNER JOIN `addresses` ON addresses.post_id = posts.id INNER JOIN `suburbs` ON `suburbs`.id = `addresses`.suburb_id WHERE ((suburbs.name LIKE '%2134%') OR (suburbs.area LIKE '%2134%') OR (suburbs.state LIKE '%2134%') OR (suburbs.postcode LIKE '%2134%')) [0m
+  [4;36;1mPost Load (0.0ms)[0m   [0;1mSELECT * FROM `posts` WHERE (posts.postable_type = 'Property') [0m
+Rendering template within layouts/application
+Rendering welcome/index
+Rendered property_searches/_form (31.0ms)
+Rendered searches/_form (47.0ms)
+  [4;35;1mUser Columns (15.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+Completed in 1234ms (View: 235, DB: 109) | 200 OK [http://localhost/searches/show]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSearch Columns (62.0ms)[0m   [0;1mSHOW FIELDS FROM `searches`[0m
+  [4;35;1mSearch Columns (47.0ms)[0m   [0mSHOW FIELDS FROM `searches`[0m
+  [4;36;1mPost Columns (32.0ms)[0m   [0;1mSHOW FIELDS FROM `posts`[0m
+  [4;35;1mAddress Columns (31.0ms)[0m   [0mSHOW FIELDS FROM `addresses`[0m
+  [4;36;1mSuburb Columns (16.0ms)[0m   [0;1mSHOW FIELDS FROM `suburbs`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SearchesController#create (for 127.0.0.1 at 2010-02-18 00:48:18) [POST]
+  Parameters: {"search"=>{"property_search_attributes"=>{"min_of_bedrooms"=>"1", "max_of_bathrooms"=>"2", "max_of_bedrooms"=>"3", "property_type"=>"", "min_of_carparks"=>"1", "max_of_carparks"=>"2", "max_price"=>"700", "min_price"=>"200", "min_of_bathrooms"=>"1"}, "keyword"=>"2134"}, "commit"=>"Search", "authenticity_token"=>"g8/9s0y5/oIF+LMKuZViR//0wlxJgYaE0TL+BZZvHbg="}
+  [4;36;1mSearch Columns (16.0ms)[0m   [0;1mSHOW FIELDS FROM `searches`[0m
+  [4;35;1mPropertySearch Columns (16.0ms)[0m   [0mSHOW FIELDS FROM `property_searches`[0m
+Redirected to http://localhost:3000/searches/show
+Completed in 125ms (DB: 32) | 302 Found [http://localhost/searches]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SearchesController#show (for 127.0.0.1 at 2010-02-18 00:48:19) [GET]
+  Parameters: {"id"=>"show"}
+  [4;36;1mSearch Columns (31.0ms)[0m   [0;1mSHOW FIELDS FROM `searches`[0m
+  [4;35;1mPost Columns (31.0ms)[0m   [0mSHOW FIELDS FROM `posts`[0m
+  [4;36;1mAddress Columns (16.0ms)[0m   [0;1mSHOW FIELDS FROM `addresses`[0m
+  [4;35;1mSuburb Columns (15.0ms)[0m   [0mSHOW FIELDS FROM `suburbs`[0m
+  [4;36;1mPropertySearch Columns (15.0ms)[0m   [0;1mSHOW FIELDS FROM `property_searches`[0m
+  [4;35;1mProperty Columns (15.0ms)[0m   [0mSHOW FIELDS FROM `properties`[0m
+  [4;36;1mProperty Load (16.0ms)[0m   [0;1mSELECT * FROM `properties` WHERE ((properties.number_of_bedrooms >= 1) AND ((properties.number_of_carparks <= 2) AND ((properties.number_of_bathrooms >= 1) AND ((properties.price <= 700.0) AND ((properties.number_of_carparks >= 1) AND ((properties.number_of_bedrooms <= 3) AND ((properties.price >= 200.0) AND (properties.number_of_bathrooms <= 2)))))))) [0m
+  [4;35;1mPost Load (0.0ms)[0m   [0mSELECT `posts`.* FROM `posts` INNER JOIN `addresses` ON addresses.post_id = posts.id INNER JOIN `suburbs` ON `suburbs`.id = `addresses`.suburb_id WHERE ((suburbs.name LIKE '%2134%') OR (suburbs.area LIKE '%2134%') OR (suburbs.state LIKE '%2134%') OR (suburbs.postcode LIKE '%2134%')) [0m
+  [4;36;1mPost Load (0.0ms)[0m   [0;1mSELECT * FROM `posts` WHERE (posts.postable_type = 'Property') [0m
+Rendering template within layouts/application
+Rendering welcome/index
+Rendered property_searches/_form (32.0ms)
+Rendered searches/_form (63.0ms)
+  [4;35;1mUser Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+Completed in 1031ms (View: 188, DB: 139) | 200 OK [http://localhost/searches/show]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#new (for 127.0.0.1 at 2010-02-18 00:51:41) [GET]
+  [4;36;1mProperty Columns (16.0ms)[0m   [0;1mSHOW FIELDS FROM `properties`[0m
+Rendering template within layouts/application
+Rendering properties/new
+Rendered properties/_form (860.0ms)
+  [4;35;1mUser Columns (31.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+Completed in 1375ms (View: 1203, DB: 47) | 200 OK [http://localhost/properties/new]
+  [4;36;1mSearch Columns (32.0ms)[0m   [0;1mSHOW FIELDS FROM `searches`[0m
+  [4;35;1mPropertySearch Columns (15.0ms)[0m   [0mSHOW FIELDS FROM `property_searches`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#create (for 127.0.0.1 at 2010-02-18 00:52:11) [POST]
+  Parameters: {"commit"=>"Submit", "property"=>{"prop_type"=>"unit", "purpose"=>"share", "price"=>"650", "number_of_bedrooms"=>"2", "max_tenants"=>"3", "bond"=>"1300", "number_of_current_tenants"=>"4", "furnished"=>"0", "number_of_carparks"=>"3", "number_of_bathrooms"=>"2"}, "authenticity_token"=>"g8/9s0y5/oIF+LMKuZViR//0wlxJgYaE0TL+BZZvHbg="}
+  [4;36;1mProperty Columns (16.0ms)[0m   [0;1mSHOW FIELDS FROM `properties`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mBEGIN[0m
+  [4;36;1mProperty Create (0.0ms)[0m   [0;1mINSERT INTO `properties` (`prop_type`, `purpose`, `updated_at`, `number_of_bedrooms`, `price`, `bond`, `max_tenants`, `number_of_current_tenants`, `number_of_carparks`, `furnished`, `number_of_bathrooms`, `created_at`) VALUES('unit', 'share', '2010-02-17 13:52:12', 2, 650.0, 1300.0, 3, 4, 3, 0, 2, '2010-02-17 13:52:12')[0m
+  [4;35;1mSQL (62.0ms)[0m   [0mCOMMIT[0m
+Redirected to http://localhost:3000/properties/2
+Completed in 203ms (DB: 78) | 302 Found [http://localhost/properties]
+  [4;36;1mSearch Columns (16.0ms)[0m   [0;1mSHOW FIELDS FROM `searches`[0m
+  [4;35;1mPropertySearch Columns (31.0ms)[0m   [0mSHOW FIELDS FROM `property_searches`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PropertiesController#show (for 127.0.0.1 at 2010-02-18 00:52:12) [GET]
+  Parameters: {"id"=>"2"}
+  [4;36;1mProperty Columns (15.0ms)[0m   [0;1mSHOW FIELDS FROM `properties`[0m
+  [4;35;1mProperty Load (16.0ms)[0m   [0mSELECT * FROM `properties` WHERE (`properties`.`id` = 2) [0m
+Rendering template within layouts/application
+Rendering properties/show
+Rendered properties/_detail (31.0ms)
+  [4;36;1mUser Columns (16.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+Completed in 329ms (View: 250, DB: 47) | 200 OK [http://localhost/properties/2]
+  [4;35;1mSearch Columns (15.0ms)[0m   [0mSHOW FIELDS FROM `searches`[0m
+  [4;36;1mPropertySearch Columns (16.0ms)[0m   [0;1mSHOW FIELDS FROM `property_searches`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mPost Load (0.0ms)[0m   [0;1mSELECT * FROM `posts` LIMIT 1[0m
+  [4;35;1mPost Columns (16.0ms)[0m   [0mSHOW FIELDS FROM `posts`[0m
+  [4;36;1mProperty Load (0.0ms)[0m   [0;1mSELECT * FROM `properties` LIMIT 1[0m
+  [4;35;1mProperty Columns (16.0ms)[0m   [0mSHOW FIELDS FROM `properties`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mPost Update (0.0ms)[0m   [0mUPDATE `posts` SET `postable_id` = 1, `postable_type` = 'Property', `updated_at` = '2010-02-17 13:53:12' WHERE `id` = 1[0m
+  [4;36;1mSQL (31.0ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WelcomeController#index (for 127.0.0.1 at 2010-02-18 00:53:18) [GET]
+Redirected to http://localhost:3000/searches/new
+Completed in 0ms (DB: 0) | 302 Found [http://localhost/]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SearchesController#new (for 127.0.0.1 at 2010-02-18 00:53:19) [GET]
+  [4;35;1mSearch Columns (31.0ms)[0m   [0mSHOW FIELDS FROM `searches`[0m
+  [4;36;1mPropertySearch Columns (16.0ms)[0m   [0;1mSHOW FIELDS FROM `property_searches`[0m
+Rendering template within layouts/application
+Rendering welcome/index
+Rendered property_searches/_form (47.0ms)
+Rendered searches/_form (78.0ms)
+  [4;35;1mUser Columns (15.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+Completed in 422ms (View: 282, DB: 62) | 200 OK [http://localhost/searches/new]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SearchesController#create (for 127.0.0.1 at 2010-02-18 00:53:25) [POST]
+  Parameters: {"search"=>{"property_search_attributes"=>{"min_of_bedrooms"=>"1", "max_of_bathrooms"=>"2", "max_of_bedrooms"=>"3", "property_type"=>"", "min_of_carparks"=>"1", "max_of_carparks"=>"2", "max_price"=>"700", "min_price"=>"200", "min_of_bathrooms"=>"1"}, "keyword"=>"2134"}, "commit"=>"Search", "authenticity_token"=>"g8/9s0y5/oIF+LMKuZViR//0wlxJgYaE0TL+BZZvHbg="}
+  [4;36;1mSearch Columns (15.0ms)[0m   [0;1mSHOW FIELDS FROM `searches`[0m
+  [4;35;1mPropertySearch Columns (31.0ms)[0m   [0mSHOW FIELDS FROM `property_searches`[0m
+Redirected to http://localhost:3000/searches/show
+Completed in 141ms (DB: 46) | 302 Found [http://localhost/searches]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SearchesController#show (for 127.0.0.1 at 2010-02-18 00:53:25) [GET]
+  Parameters: {"id"=>"show"}
+  [4;36;1mSearch Columns (16.0ms)[0m   [0;1mSHOW FIELDS FROM `searches`[0m
+  [4;35;1mPost Columns (15.0ms)[0m   [0mSHOW FIELDS FROM `posts`[0m
+  [4;36;1mAddress Columns (16.0ms)[0m   [0;1mSHOW FIELDS FROM `addresses`[0m
+  [4;35;1mSuburb Columns (16.0ms)[0m   [0mSHOW FIELDS FROM `suburbs`[0m
+  [4;36;1mPropertySearch Columns (16.0ms)[0m   [0;1mSHOW FIELDS FROM `property_searches`[0m
+  [4;35;1mProperty Columns (15.0ms)[0m   [0mSHOW FIELDS FROM `properties`[0m
+  [4;36;1mProperty Load (0.0ms)[0m   [0;1mSELECT * FROM `properties` WHERE ((properties.number_of_bedrooms >= 1) AND ((properties.number_of_carparks <= 2) AND ((properties.number_of_bathrooms >= 1) AND ((properties.price <= 700.0) AND ((properties.number_of_carparks >= 1) AND ((properties.number_of_bedrooms <= 3) AND ((properties.price >= 200.0) AND (properties.number_of_bathrooms <= 2)))))))) [0m
+  [4;35;1mPost Load (0.0ms)[0m   [0mSELECT `posts`.* FROM `posts` INNER JOIN `addresses` ON addresses.post_id = posts.id INNER JOIN `suburbs` ON `suburbs`.id = `addresses`.suburb_id WHERE ((suburbs.name LIKE '%2134%') OR (suburbs.area LIKE '%2134%') OR (suburbs.state LIKE '%2134%') OR (suburbs.postcode LIKE '%2134%')) [0m
+  [4;36;1mPost Load (0.0ms)[0m   [0;1mSELECT * FROM `posts` WHERE (posts.postable_type = 'Property') [0m
+Rendering template within layouts/application
+Rendering welcome/index
+Rendered property_searches/_form (15.0ms)
+Rendered searches/_form (31.0ms)
+
+ActionView::TemplateError (Missing template searches/_abstract.erb in view path app/views) on line #7 of app/views/posts/_list.html.erb:
+4: <ul class="list">
+5:   <% for post in posts %>
+6:     <li class="item">
+7:       <%= render :partial => "abstract", :locals => { :post => post } %>
+8:     </li>
+9:   <% end %>
+10: </ul>
+
+    app/views/posts/_list.html.erb:7
+    app/views/posts/_list.html.erb:5:in `each'
+    app/views/posts/_list.html.erb:5
+    app/views/welcome/index.html.erb:19
+    app/controllers/searches_controller.rb:22:in `show'
+
+Rendered rescues/_trace (250.0ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SearchesController#create (for 127.0.0.1 at 2010-02-18 00:55:36) [POST]
+  Parameters: {"search"=>{"property_search_attributes"=>{"min_of_bedrooms"=>"1", "max_of_bathrooms"=>"2", "max_of_bedrooms"=>"3", "property_type"=>"", "min_of_carparks"=>"1", "max_of_carparks"=>"2", "max_price"=>"700", "min_price"=>"200", "min_of_bathrooms"=>"1"}, "keyword"=>"2134"}, "commit"=>"Search", "authenticity_token"=>"g8/9s0y5/oIF+LMKuZViR//0wlxJgYaE0TL+BZZvHbg="}
+  [4;35;1mSearch Columns (47.0ms)[0m   [0mSHOW FIELDS FROM `searches`[0m
+  [4;36;1mPropertySearch Columns (31.0ms)[0m   [0;1mSHOW FIELDS FROM `property_searches`[0m
+Redirected to http://localhost:3000/searches/show
+Completed in 281ms (DB: 78) | 302 Found [http://localhost/searches]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SearchesController#show (for 127.0.0.1 at 2010-02-18 00:55:37) [GET]
+  Parameters: {"id"=>"show"}
+  [4;35;1mSearch Columns (16.0ms)[0m   [0mSHOW FIELDS FROM `searches`[0m
+  [4;36;1mPost Columns (16.0ms)[0m   [0;1mSHOW FIELDS FROM `posts`[0m
+  [4;35;1mAddress Columns (16.0ms)[0m   [0mSHOW FIELDS FROM `addresses`[0m
+  [4;36;1mSuburb Columns (31.0ms)[0m   [0;1mSHOW FIELDS FROM `suburbs`[0m
+  [4;35;1mPropertySearch Columns (16.0ms)[0m   [0mSHOW FIELDS FROM `property_searches`[0m
+  [4;36;1mProperty Columns (16.0ms)[0m   [0;1mSHOW FIELDS FROM `properties`[0m
+  [4;35;1mProperty Load (0.0ms)[0m   [0mSELECT * FROM `properties` WHERE ((properties.number_of_bedrooms >= 1) AND ((properties.number_of_carparks <= 2) AND ((properties.number_of_bathrooms >= 1) AND ((properties.price <= 700.0) AND ((properties.number_of_carparks >= 1) AND ((properties.number_of_bedrooms <= 3) AND ((properties.price >= 200.0) AND (properties.number_of_bathrooms <= 2)))))))) [0m
+  [4;36;1mPost Load (0.0ms)[0m   [0;1mSELECT `posts`.* FROM `posts` INNER JOIN `addresses` ON addresses.post_id = posts.id INNER JOIN `suburbs` ON `suburbs`.id = `addresses`.suburb_id WHERE ((suburbs.name LIKE '%2134%') OR (suburbs.area LIKE '%2134%') OR (suburbs.state LIKE '%2134%') OR (suburbs.postcode LIKE '%2134%')) [0m
+  [4;35;1mPost Load (0.0ms)[0m   [0mSELECT * FROM `posts` WHERE (posts.postable_type = 'Property') [0m
+Rendering template within layouts/application
+Rendering welcome/index
+Rendered property_searches/_form (32.0ms)
+Rendered searches/_form (32.0ms)
+  [4;36;1mProperty Load (0.0ms)[0m   [0;1mSELECT * FROM `properties` WHERE (`properties`.`id` = 1) [0m
+Rendered properties/_abstract (31.0ms)
+Rendered posts/_abstract (62.0ms)
+Rendered posts/_list (62.0ms)
+  [4;35;1mUser Columns (31.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+Completed in 1812ms (View: 234, DB: 142) | 200 OK [http://localhost/searches/show]

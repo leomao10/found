@@ -1,28 +1,22 @@
 <% form_for @post do |f| %>
   <%= f.error_messages %>
   <p>
-    <%= f.label :title %><br />
-    <%= f.text_field :title %>
+    <%= f.label :title %>  <%= f.text_field :title %>
   </p>
   <p>
-    <%= f.label :description %><br />
-    <%= f.text_area :description %>
+    <%= f.label :description %> <%= f.text_area :description %>
   </p>
   <p>
-    <%= f.label :available_from %><br />
-    <%= f.date_select :available_from %>
+    <%= f.label :available_from %> <%= f.date_select :available_from %>
   </p>
   <p>
-    <%= f.label :expiry_date %><br />
-    <%= f.date_select :expiry_date %>
+    <%= f.label :expiry_date %> <%= f.date_select :expiry_date %>
   </p>
   <p>
-    <%= f.label :inspection_time %><br />
-    <%= f.text_field :inspection_time %>
+    <%= f.label :inspection_time %> <%= f.text_field :inspection_time %>
   </p>
   <p>
-    <%= f.label :negotiable %><br />
-    <%= f.check_box :negotiable %>
+    <%= f.label :negotiable %> <%= f.check_box :negotiable %>
   </p>
   <p><%= f.submit "Submit" %></p>
 <% end %>

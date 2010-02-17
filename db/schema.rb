@@ -9,16 +9,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100209125159) do
+ActiveRecord::Schema.define(:version => 20100216122556) do
 
   create_table "addresses", :force => true do |t|
     t.string   "line1"
     t.string   "line2"
-    t.integer  "addressable_id"
-    t.string   "addressable_type"
     t.integer  "suburb_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "post_id"
   end
 
   create_table "carparks", :force => true do |t|
@@ -81,6 +80,12 @@ ActiveRecord::Schema.define(:version => 20100209125159) do
     t.integer  "max_of_bedrooms"
     t.integer  "min_of_carparks"
     t.integer  "max_of_carparks"
+  end
+
+  create_table "searches", :force => true do |t|
+    t.string   "keyword"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "suburbs", :force => true do |t|

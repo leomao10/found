@@ -4,7 +4,7 @@
 <ul class="list">
   <% for post in posts %>
     <li class="item">
-      <%= render :partial => "abstract", :locals => { :post => post } %>
+      <%= render :partial => "/posts/abstract", :locals => { :post => post } %>
     </li>
   <% end %>
 </ul>
