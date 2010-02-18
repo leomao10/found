@@ -10,7 +10,7 @@
   </div>
   <div class="search_panel">
     <% form_for @search do |f| %>
-      <%= render :partial => "property_searches/form", :locals => { :f => f }%>
+      <%= render :partial => "searches/form", :locals => { :f => f }%>
     <% end %>
   </div>
   <% if not @posts.nil? %>

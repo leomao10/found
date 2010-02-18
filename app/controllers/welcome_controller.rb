@@ -1,5 +1,5 @@
 class WelcomeController < ApplicationController
   def index
-    @search = PropertySearch.new
+    redirect_to :controller => "searches", :action => "new"
   end
 end

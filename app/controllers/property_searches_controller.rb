@@ -11,6 +11,7 @@ class PropertySearchesController < ApplicationController
     else
       @search ||= PropertySearch.new
     end
+    
     @posts = @search.posts
   end
 end

@@ -3,6 +3,7 @@ class Address < ActiveRecord::Base
   attr_accessible :line1, :line2, :suburb
 
   #Association
+  belongs_to :post
   belongs_to :suburb
-  belongs_to :addressable, :polymorphic => true
+  
 end
