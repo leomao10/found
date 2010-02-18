@@ -1,83 +1,83 @@
 body {
-  background-color: #4B7399;
-  font-family: Verdana, Helvetica, Arial;
-  font-size: 14px;
+    background-color: #4B7399;
+    font-family: Verdana, Helvetica, Arial;
+    font-size: 14px;
 }
 
 a img {
-  border: none;
+    border: none;
 }
 
 a {
-  color: #0000FF;
+    color: #0000FF;
 }
 
 .clear {
-  clear: both;
-  height: 0;
-  overflow: hidden;
+    clear: both;
+    height: 0;
+    overflow: hidden;
 }
 
 #container {
-  width: 75%;
-  margin: 0 auto;
-  background-color: #FFF;
-  padding: 20px 40px;
-  border: solid 1px black;
-  margin-top: 20px;
+    width: 75%;
+    margin: 0 auto;
+    background-color: #FFF;
+    padding: 20px 40px;
+    border: solid 1px black;
+    margin-top: 20px;
 }
 
 #flash_notice, #flash_error {
-  padding: 5px 8px;
-  margin: 10px 0;
+    padding: 5px 8px;
+    margin: 10px 0;
 }
 
 #flash_notice {
-  background-color: #CFC;
-  border: solid 1px #6C6;
+    background-color: #CFC;
+    border: solid 1px #6C6;
 }
 
 #flash_error {
-  background-color: #FCC;
-  border: solid 1px #C66;
+    background-color: #FCC;
+    border: solid 1px #C66;
 }
 
 .fieldWithErrors {
-  display: inline;
+    display: inline;
 }
 
 #errorExplanation {
-  width: 400px;
-  border: 2px solid #CF0000;
-  padding: 0px;
-  padding-bottom: 12px;
-  margin-bottom: 20px;
-  background-color: #f0f0f0;
+    width: 400px;
+    border: 2px solid #CF0000;
+    padding: 0px;
+    padding-bottom: 12px;
+    margin-bottom: 20px;
+    background-color: #f0f0f0;
 }
 
 #errorExplanation h2 {
-  text-align: left;
-  font-weight: bold;
-  padding: 5px 5px 5px 15px;
-  font-size: 12px;
-  margin: 0;
-  background-color: #c00;
-  color: #fff;
+    text-align: left;
+    font-weight: bold;
+    padding: 5px 5px 5px 15px;
+    font-size: 12px;
+    margin: 0;
+    background-color: #c00;
+    color: #fff;
 }
 
 #errorExplanation p {
-  color: #333;
-  margin-bottom: 0;
-  padding: 8px;
+    color: #333;
+    margin-bottom: 0;
+    padding: 8px;
 }
 
 #errorExplanation ul {
-  margin: 2px 24px;
+    margin: 2px 24px;
 }
 
 #errorExplanation ul li {
-  font-size: 12px;
-  list-style: disc;
+    font-size: 12px;
+    list-style: disc;
 }
 
 /* basic style for all fonts */
@@ -294,45 +294,45 @@ div#search div.search_panel div.more_options {
 div#search_result {
     background: #FFFFFF;
     -moz-border-radius: 5px;
-	margin: 5px 0;
-	padding: 10px;
+    margin: 5px 0;
+    padding: 10px;
 }
 div#search_result div.paginate {
-	display: inline-block;
-	margin-right: 1%;
+    display: inline-block;
+    margin-right: 1%;
     width: 30%;
-	background: #ECF1F4;
+    background: #ECF1F4;
     -moz-border-radius: 5px;
 }
 div#search_result div.paginate ul.list {
-	margin: 0;
-	padding: 5px;
+    margin: 0;
+    padding: 5px;
 }
 div#search_result div.paginate ul.list li.item {
-	list-style: none;
-	background: #FFFFFF;
+    list-style: none;
+    background: #FFFFFF;
 }
 div#search_result div.paginate ul.list li.item h4 {
-	font-size: 14px;
-	color: #32B0D9;
+    font-size: 14px;
+    color: #32B0D9;
 }
 div#search_result div.paginate ul.list li.item div.preview {
 }
 div#search_result div.paginate ul.list li.item div.preview div.picture {
-	display: inline-block;
-	width: 30%;
+    display: inline-block;
+    width: 30%;
 }
 div#search_result div.paginate ul.list li.item div.preview div.info {
-	display: inline-block;
-	width: 60%;
+    display: inline-block;
+    width: 60%;
 }
 
 div#googlemap {
-	vertical-align: top;
-	display: inline-block;
+    vertical-align: top;
+    display: inline-block;
     width: 68%;
-	min-height: 500px;
-	background: #ECF1F4;
+    min-height: 500px;
+    background: #ECF1F4;
     -moz-border-radius: 5px;
 }
 /* footer section */
@@ -354,4 +354,57 @@ div#footer a {
 }
 div#footer a:hover {
     color: #7C8083;
+}
+
+#page_body #content .full_container input {
+    font-size:14px;
+    font-family:Arial, Helvetica, sans-serif;
+    line-height:16px;
+    width: 96%;
+    height: 18px;
+    border:1px groove;
+    background: #FFFFFF;
+
+}
+
+#page_body  #content .full_container .form_line .field_20 {
+    float: left;
+    height: 40px;
+    margin-right: 10px;
+}
+
+#page_body  #content .full_container .form_line .field_20 {width: 20%;}
+
+#page_body  #content .full_container .form_line {
+    float: left;
+    height: 40px;
+    width: 100%;
+}
+
+label {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 11px;
+    font-weight: bold;
+    line-height: 9px;
+    color: #666;
+    text-decoration: none;
+    display: block;
+    padding-left: 3px;
+}
+
+#page_body  #content .full_container .form_line label {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 11px;
+    font-weight: bold;
+    color: #666;
+    text-decoration: none;
+    display: block;
+    padding-left: 3px;
+}
+
+.form_line {
+    float: left;
+    min-height: 30px;
+    padding-bottom: 5px;
+    width: 100%;
 }
