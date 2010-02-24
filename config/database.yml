@@ -1,29 +1,29 @@
 development:
-  adapter: postgresql
+  adapter: mysql
   encoding: utf8
   reconnect: false
   database: found_development
   pool: 5
-  username: rails
-  password: rails
+  username: root
+  password: 
   host: localhost
   
 test:
-  adapter: postgresql
+  adapter: mysql
   encoding: utf8
   reconnect: false
   database: found_test
   pool: 5
-  username: rails
-  password: rails
+  username: root
+  password: 
   host: localhost
 
 production:
-  adapter: postgresql
+  adapter: mysql
   encoding: utf8
   reconnect: false
   database: found_production
   pool: 5
-  username: rails
-  password: rails
+  username: root
+  password: 
   host: localhost
