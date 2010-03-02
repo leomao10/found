@@ -145,8 +145,7 @@ $(document).ready(function() {
 
 
 
-
-
+//side jquery content start from here
 
 
 
@@ -217,3 +216,6 @@ jQuery(function($){
     }
     showAddresses(['13-17 Oxford St, Burwood, NSW', 'Hornsey St, Burwood, NSW']);
 });
+
+
+
