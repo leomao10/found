@@ -1,0 +1,1502 @@
+  [4;36;1mSQL (16.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_encoding TO 'utf8'[0m
+
+
+Processing WelcomeController#index (for 127.0.0.1 at 2010-03-02 21:07:21) [GET]
+Redirected to http://localhost:3000/searches/new
+Completed in 0ms (DB: 16) | 302 Found [http://localhost/]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_encoding TO 'utf8'[0m
+
+
+Processing SearchesController#new (for 127.0.0.1 at 2010-03-02 21:07:21) [GET]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mRuntimeError: ERROR	C42P01	Mrelation "searches" does not exist	P245	F.\src\backend\catalog\namespace.c	L276	RRangeVarGetRelid: SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"searches"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+
+ActiveRecord::StatementInvalid (RuntimeError: ERROR	C42P01	Mrelation "searches" does not exist	P245	F.\src\backend\catalog\namespace.c	L276	RRangeVarGetRelid:             SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+              FROM pg_attribute a LEFT JOIN pg_attrdef d
+                ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+             WHERE a.attrelid = '"searches"'::regclass
+               AND a.attnum > 0 AND NOT a.attisdropped
+             ORDER BY a.attnum
+):
+  app/controllers/searches_controller.rb:3:in `new'
+  app/controllers/searches_controller.rb:3:in `new'
+
+Rendered rescues/_trace (63.0ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_encoding TO 'utf8'[0m
+  [4;35;1mSQL (32.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (20100124054035)
+  [4;36;1mSQL (0.0ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (672.0ms)[0m   [0mCREATE TABLE "users" ("id" serial primary key, "username" character varying(255), "email" character varying(255), "crypted_password" character varying(255), "password_salt" character varying(255), "persistence_token" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100124054035')[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mCOMMIT[0m
+Migrating to CreateSuburbs (20100124060306)
+  [4;36;1mSQL (0.0ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (94.0ms)[0m   [0mCREATE TABLE "suburbs" ("id" serial primary key, "area" character varying(255), "state" character varying(255), "postcode" integer, "created_at" timestamp, "updated_at" timestamp) [0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100124060306')[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mCOMMIT[0m
+Migrating to AddUsersPasswordResetField (20100124073325)
+  [4;36;1mSQL (0.0ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (16.0ms)[0m   [0mALTER TABLE "users" ADD COLUMN "perishable_token" character varying(255)[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mALTER TABLE "users" ALTER COLUMN "perishable_token" SET DEFAULT E''[0m
+  [4;35;1mSQL (16.0ms)[0m   [0mUPDATE "users" SET "perishable_token"=E'' WHERE "perishable_token" IS NULL[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mALTER TABLE "users" ALTER "perishable_token" SET NOT NULL[0m
+  [4;35;1mSQL (46.0ms)[0m   [0mCREATE INDEX "index_users_on_perishable_token" ON "users" ("perishable_token")[0m
+  [4;36;1mSQL (32.0ms)[0m   [0;1mCREATE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100124073325')[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mCOMMIT[0m
+Migrating to CreatePosts (20100124111816)
+  [4;35;1mSQL (0.0ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (94.0ms)[0m   [0;1mCREATE TABLE "posts" ("id" serial primary key, "title" character varying(255), "description" text, "available_from" date, "expiry_date" date, "inspection_time" character varying(255), "negotiable" boolean, "postable_id" integer, "postable_type" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+  [4;35;1mSQL (0.0ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100124111816')[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mCOMMIT[0m
+Migrating to CreateProperties (20100124112416)
+  [4;35;1mSQL (16.0ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (109.0ms)[0m   [0;1mCREATE TABLE "properties" ("id" serial primary key, "number_of_bedrooms" integer, "number_of_carparks" integer, "number_of_bathrooms" integer, "price" float, "bond" float, "max_tenants" integer, "number_of_current_tenants" integer, "furnished" boolean, "purpose" character varying(255), "type" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+  [4;35;1mSQL (0.0ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100124112416')[0m
+  [4;36;1mSQL (16.0ms)[0m   [0;1mCOMMIT[0m
+Migrating to CreateCarparks (20100124114337)
+  [4;35;1mSQL (0.0ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (47.0ms)[0m   [0;1mCREATE TABLE "carparks" ("id" serial primary key, "price" float, "bond" float, "type" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+  [4;35;1mSQL (0.0ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100124114337')[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mCOMMIT[0m
+Migrating to CreateAddresses (20100124114554)
+  [4;35;1mSQL (0.0ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mRuntimeError: ERROR	C42P07	Mrelation "addresses" already exists	F.\src\backend\catalog\heap.c	L866	Rheap_create_with_catalog: CREATE TABLE "addresses" ("id" serial primary key, "line1" character varying(255), "line2" character varying(255), "addressable_id" integer, "addressable_type" character varying(255), "suburb_id" integer, "created_at" timestamp, "updated_at" timestamp) [0m
+  [4;35;1mSQL (0.0ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_encoding TO 'utf8'[0m
+  [4;35;1mSQL (31.0ms)[0m   [0mCREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) [0m
+  [4;36;1mSQL (32.0ms)[0m   [0;1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (20100124054035)
+  [4;36;1mSQL (0.0ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (78.0ms)[0m   [0mCREATE TABLE "users" ("id" serial primary key, "username" character varying(255), "email" character varying(255), "crypted_password" character varying(255), "password_salt" character varying(255), "persistence_token" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+  [4;36;1mSQL (16.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100124054035')[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mCOMMIT[0m
+Migrating to CreateSuburbs (20100124060306)
+  [4;36;1mSQL (0.0ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (78.0ms)[0m   [0mCREATE TABLE "suburbs" ("id" serial primary key, "area" character varying(255), "state" character varying(255), "postcode" integer, "created_at" timestamp, "updated_at" timestamp) [0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100124060306')[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mCOMMIT[0m
+Migrating to AddUsersPasswordResetField (20100124073325)
+  [4;36;1mSQL (15.0ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mALTER TABLE "users" ADD COLUMN "perishable_token" character varying(255)[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mALTER TABLE "users" ALTER COLUMN "perishable_token" SET DEFAULT E''[0m
+  [4;35;1mSQL (16.0ms)[0m   [0mUPDATE "users" SET "perishable_token"=E'' WHERE "perishable_token" IS NULL[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mALTER TABLE "users" ALTER "perishable_token" SET NOT NULL[0m
+  [4;35;1mSQL (31.0ms)[0m   [0mCREATE INDEX "index_users_on_perishable_token" ON "users" ("perishable_token")[0m
+  [4;36;1mSQL (32.0ms)[0m   [0;1mCREATE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100124073325')[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mCOMMIT[0m
+Migrating to CreatePosts (20100124111816)
+  [4;35;1mSQL (0.0ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (63.0ms)[0m   [0;1mCREATE TABLE "posts" ("id" serial primary key, "title" character varying(255), "description" text, "available_from" date, "expiry_date" date, "inspection_time" character varying(255), "negotiable" boolean, "postable_id" integer, "postable_type" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+  [4;35;1mSQL (0.0ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100124111816')[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mCOMMIT[0m
+Migrating to CreateProperties (20100124112416)
+  [4;35;1mSQL (15.0ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (125.0ms)[0m   [0;1mCREATE TABLE "properties" ("id" serial primary key, "number_of_bedrooms" integer, "number_of_carparks" integer, "number_of_bathrooms" integer, "price" float, "bond" float, "max_tenants" integer, "number_of_current_tenants" integer, "furnished" boolean, "purpose" character varying(255), "type" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+  [4;35;1mSQL (0.0ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100124112416')[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mCOMMIT[0m
+Migrating to CreateCarparks (20100124114337)
+  [4;35;1mSQL (0.0ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (31.0ms)[0m   [0;1mCREATE TABLE "carparks" ("id" serial primary key, "price" float, "bond" float, "type" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+  [4;35;1mSQL (0.0ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100124114337')[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mCOMMIT[0m
+Migrating to CreateAddresses (20100124114554)
+  [4;35;1mSQL (0.0ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (62.0ms)[0m   [0;1mCREATE TABLE "addresses" ("id" serial primary key, "line1" character varying(255), "line2" character varying(255), "addressable_id" integer, "addressable_type" character varying(255), "suburb_id" integer, "created_at" timestamp, "updated_at" timestamp) [0m
+  [4;35;1mSQL (0.0ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100124114554')[0m
+  [4;36;1mSQL (16.0ms)[0m   [0;1mCOMMIT[0m
+Migrating to AddNameToSuburb (20100124115827)
+  [4;35;1mSQL (0.0ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mALTER TABLE "suburbs" ADD COLUMN "name" character varying(255)[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100124115827')[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mCOMMIT[0m
+Migrating to CreatePropertySearches (20100126044312)
+  [4;35;1mSQL (0.0ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (62.0ms)[0m   [0;1mCREATE TABLE "property_searches" ("id" serial primary key, "keywords" character varying(255), "min_price" integer, "max_price" integer, "num_of_bedrooms" integer, "num_of_bathrooms" integer, "num_of_carparks" integer, "property_type" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+  [4;35;1mSQL (0.0ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100126044312')[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mCOMMIT[0m
+Migrating to ChangeColumnForProperty (20100126073625)
+  [4;35;1mSQL (16.0ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mALTER TABLE "properties" RENAME COLUMN "type" TO "prop_type"[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100126073625')[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mCOMMIT[0m
+Migrating to CreateImages (20100127235412)
+  [4;35;1mSQL (15.0ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (78.0ms)[0m   [0;1mCREATE TABLE "images" ("id" serial primary key, "photo_file_name" character varying(255), "photo_content_type" character varying(255), "photo_file_size" integer, "photo_updated_at" timestamp, "imagable_id" integer, "imagable_type" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+  [4;35;1mSQL (0.0ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100127235412')[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mCOMMIT[0m
+Migrating to ChangeColumnsOfPropertySearch (20100209125159)
+  [4;35;1mSQL (0.0ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mALTER TABLE "property_searches" ADD COLUMN "min_of_bathrooms" integer[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mALTER TABLE "property_searches" ADD COLUMN "max_of_bathrooms" integer[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mALTER TABLE "property_searches" ADD COLUMN "min_of_bedrooms" integer[0m
+  [4;35;1mSQL (16.0ms)[0m   [0mALTER TABLE "property_searches" ADD COLUMN "max_of_bedrooms" integer[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mALTER TABLE "property_searches" ADD COLUMN "min_of_carparks" integer[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mALTER TABLE "property_searches" ADD COLUMN "max_of_carparks" integer[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mALTER TABLE "property_searches" DROP "num_of_bathrooms"[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mALTER TABLE "property_searches" DROP "num_of_bedrooms"[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mALTER TABLE "property_searches" DROP "num_of_carparks"[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100209125159')[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mCOMMIT[0m
+Migrating to ChangeReferenceForAddress (20100216103345)
+  [4;35;1mSQL (0.0ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mALTER TABLE "addresses" DROP "addressable_id"[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mALTER TABLE "addresses" DROP "addressable_type"[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100216103345')[0m
+  [4;35;1mSQL (16.0ms)[0m   [0mCOMMIT[0m
+Migrating to CreateSearches (20100216113117)
+  [4;36;1mSQL (0.0ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (47.0ms)[0m   [0mCREATE TABLE "searches" ("id" serial primary key, "keyword" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100216113117')[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mCOMMIT[0m
+Migrating to AddReferenceForAddress (20100216122556)
+  [4;36;1mSQL (15.0ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mALTER TABLE "addresses" ADD COLUMN "post_id" integer[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100216122556')[0m
+  [4;35;1mSQL (16.0ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_encoding TO 'utf8'[0m
+
+
+Processing SearchesController#new (for 127.0.0.1 at 2010-03-02 21:12:25) [GET]
+Rendering template within layouts/application
+Rendering welcome/index
+Rendered property_searches/_form (15.0ms)
+Rendered searches/_form (15.0ms)
+Completed in 1282ms (View: 1188, DB: 0) | 200 OK [http://localhost/searches/new]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_encoding TO 'utf8'[0m
+
+
+Processing SearchesController#create (for 127.0.0.1 at 2010-03-02 21:13:05) [POST]
+  Parameters: {"search"=>{"property_search_attributes"=>{"min_of_bedrooms"=>"1", "max_of_bathrooms"=>"2", "max_of_bedrooms"=>"3", "property_type"=>"", "min_of_carparks"=>"1", "max_of_carparks"=>"2", "max_price"=>"700", "min_price"=>"200", "min_of_bathrooms"=>"1"}, "keyword"=>"address"}, "commit"=>"Search", "authenticity_token"=>"VJKxj5IJDz5ZU68ru2H5Femd8hNfPjCx8xeDYa+zaBU="}
+Redirected to http://localhost:3000/searches/show
+Completed in 31ms (DB: 0) | 302 Found [http://localhost/searches]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'panic'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'notice'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_encoding TO 'utf8'[0m
+
+
+Processing SearchesController#show (for 127.0.0.1 at 2010-03-02 21:13:06) [GET]
+  Parameters: {"id"=>"show"}
+  [4;36;1mProperty Load (15.0ms)[0m   [0;1mSELECT * FROM "properties" WHERE ((properties.number_of_bedrooms >= 1) AND ((properties.number_of_carparks <= 2) AND ((properties.number_of_bathrooms >= 1) AND ((properties.price <= 700.0) AND ((properties.number_of_carparks >= 1) AND ((properties.number_of_bedrooms <= 3) AND ((properties.price >= 200.0) AND (properties.number_of_bathrooms <= 2)))))))) [0m
+  [4;35;1mPost Load (0.0ms)[0m   [0mRuntimeError: ERROR	C42883	Moperator does not exist: integer ~~* unknown	HNo operator matches the given name and argument type(s). You might need to add explicit type casts.	P288	F.\src\backend\parser\parse_oper.c	L766	Rop_error: SELECT "posts".* FROM "posts" INNER JOIN "addresses" ON addresses.post_id = posts.id INNER JOIN "suburbs" ON "suburbs".id = "addresses".suburb_id WHERE ((suburbs.name ILIKE E'%address%') OR (suburbs.area ILIKE E'%address%') OR (suburbs.state ILIKE E'%address%') OR (suburbs.postcode ILIKE E'%address%')) [0m
+
+ActiveRecord::StatementInvalid (RuntimeError: ERROR	C42883	Moperator does not exist: integer ~~* unknown	HNo operator matches the given name and argument type(s). You might need to add explicit type casts.	P288	F.\src\backend\parser\parse_oper.c	L766	Rop_error: SELECT "posts".* FROM "posts"   INNER JOIN "addresses" ON addresses.post_id = posts.id  INNER JOIN "suburbs" ON "suburbs".id = "addresses".suburb_id  WHERE ((suburbs.name ILIKE E'%address%') OR (suburbs.area ILIKE E'%address%') OR (suburbs.state ILIKE E'%address%') OR (suburbs.postcode ILIKE E'%address%')) ):
+  C:1:in `__send__'
+  C:1:in `with_scope'
+  C:1:in `&'
+  app/models/search.rb:22:in `posts'
+  app/controllers/searches_controller.rb:21:in `show'
+
+Rendered rescues/_trace (31.0ms)
+Rendered rescues/_request_and_response (16.0ms)
+Rendering rescues/layout (internal_server_error)
+/!\ FAILSAFE /!\  Tue Mar 02 21:41:16 +1100 2010
+  Status: 500 Internal Server Error
+  FATAL	C3D000	Mdatabase "amazon_development" does not exist	F.\src\backend\utils\init\postinit.c	L421	RInitPostgres
+    C:/Ruby/lib/ruby/gems/1.8/gems/postgres-pr-0.6.3/lib/postgres-pr/connection.rb:81:in `initialize'
+    C:/Ruby/lib/ruby/gems/1.8/gems/postgres-pr-0.6.3/lib/postgres-pr/connection.rb:55:in `loop'
+    C:/Ruby/lib/ruby/gems/1.8/gems/postgres-pr-0.6.3/lib/postgres-pr/connection.rb:55:in `initialize'
+    C:/Ruby/lib/ruby/gems/1.8/gems/postgres-pr-0.6.3/lib/postgres-pr/postgres-compat.rb:23:in `new'
+    C:/Ruby/lib/ruby/gems/1.8/gems/postgres-pr-0.6.3/lib/postgres-pr/postgres-compat.rb:23:in `initialize'
+    C:/Ruby/lib/ruby/gems/1.8/gems/activerecord-2.3.5/lib/active_record/connection_adapters/postgresql_adapter.rb:968:in `connect'
+    C:/Ruby/lib/ruby/gems/1.8/gems/activerecord-2.3.5/lib/active_record/connection_adapters/postgresql_adapter.rb:968:in `connect'
+    C:/Ruby/lib/ruby/gems/1.8/gems/activerecord-2.3.5/lib/active_record/connection_adapters/postgresql_adapter.rb:217:in `initialize'
+    C:/Ruby/lib/ruby/gems/1.8/gems/activerecord-2.3.5/lib/active_record/connection_adapters/postgresql_adapter.rb:37:in `new'
+    C:/Ruby/lib/ruby/gems/1.8/gems/activerecord-2.3.5/lib/active_record/connection_adapters/postgresql_adapter.rb:37:in `postgresql_connection'
+    C:/Ruby/lib/ruby/gems/1.8/gems/activerecord-2.3.5/lib/active_record/connection_adapters/abstract/connection_pool.rb:223:in `send'
+    C:/Ruby/lib/ruby/gems/1.8/gems/activerecord-2.3.5/lib/active_record/connection_adapters/abstract/connection_pool.rb:223:in `new_connection'
+    C:/Ruby/lib/ruby/gems/1.8/gems/activerecord-2.3.5/lib/active_record/connection_adapters/abstract/connection_pool.rb:245:in `checkout_new_connection'
+    C:/Ruby/lib/ruby/gems/1.8/gems/activerecord-2.3.5/lib/active_record/connection_adapters/abstract/connection_pool.rb:188:in `checkout'
+    C:/Ruby/lib/ruby/gems/1.8/gems/activerecord-2.3.5/lib/active_record/connection_adapters/abstract/connection_pool.rb:184:in `loop'
+    C:/Ruby/lib/ruby/gems/1.8/gems/activerecord-2.3.5/lib/active_record/connection_adapters/abstract/connection_pool.rb:184:in `checkout'
+    C:/Ruby/lib/ruby/1.8/monitor.rb:242:in `synchronize'
+    C:/Ruby/lib/ruby/gems/1.8/gems/activerecord-2.3.5/lib/active_record/connection_adapters/abstract/connection_pool.rb:183:in `checkout'
+    C:/Ruby/lib/ruby/gems/1.8/gems/activerecord-2.3.5/lib/active_record/connection_adapters/abstract/connection_pool.rb:98:in `connection'
+    C:/Ruby/lib/ruby/gems/1.8/gems/activerecord-2.3.5/lib/active_record/connection_adapters/abstract/connection_pool.rb:326:in `retrieve_connection'
+    C:/Ruby/lib/ruby/gems/1.8/gems/activerecord-2.3.5/lib/active_record/connection_adapters/abstract/connection_specification.rb:123:in `retrieve_connection'
+    C:/Ruby/lib/ruby/gems/1.8/gems/activerecord-2.3.5/lib/active_record/connection_adapters/abstract/connection_specification.rb:115:in `connection'
+    C:/Ruby/lib/ruby/gems/1.8/gems/activerecord-2.3.5/lib/active_record/query_cache.rb:9:in `cache'
+    C:/Ruby/lib/ruby/gems/1.8/gems/activerecord-2.3.5/lib/active_record/query_cache.rb:28:in `call'
+    C:/Ruby/lib/ruby/gems/1.8/gems/activerecord-2.3.5/lib/active_record/connection_adapters/abstract/connection_pool.rb:361:in `call'
+    C:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/string_coercion.rb:25:in `call'
+    C:/Ruby/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/head.rb:9:in `call'
+    C:/Ruby/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/methodoverride.rb:24:in `call'
+    C:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/params_parser.rb:15:in `call'
+    C:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/session/cookie_store.rb:93:in `call'
+    C:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/failsafe.rb:26:in `call'
+    C:/Ruby/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/lock.rb:11:in `call'
+    C:/Ruby/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/lock.rb:11:in `synchronize'
+    C:/Ruby/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/lock.rb:11:in `call'
+    C:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/dispatcher.rb:114:in `call'
+    C:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/reloader.rb:34:in `run'
+    C:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/dispatcher.rb:108:in `call'
+    C:/Ruby/lib/ruby/gems/1.8/gems/rails-2.3.5/lib/rails/rack/static.rb:31:in `call'
+    C:/Ruby/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/urlmap.rb:46:in `call'
+    C:/Ruby/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/urlmap.rb:40:in `each'
+    C:/Ruby/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/urlmap.rb:40:in `call'
+    C:/Ruby/lib/ruby/gems/1.8/gems/rails-2.3.5/lib/rails/rack/log_tailer.rb:17:in `call'
+    C:/Ruby/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/content_length.rb:13:in `call'
+    C:/Ruby/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/chunked.rb:15:in `call'
+    C:/Ruby/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/handler/mongrel.rb:64:in `process'
+    C:/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel.rb:159:in `process_client'
+    C:/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel.rb:158:in `each'
+    C:/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel.rb:158:in `process_client'
+    C:/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel.rb:285:in `run'
+    C:/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel.rb:285:in `initialize'
+    C:/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel.rb:285:in `new'
+    C:/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel.rb:285:in `run'
+    C:/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel.rb:268:in `initialize'
+    C:/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel.rb:268:in `new'
+    C:/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel.rb:268:in `run'
+    C:/Ruby/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/handler/mongrel.rb:34:in `run'
+    C:/Ruby/lib/ruby/gems/1.8/gems/rails-2.3.5/lib/commands/server.rb:111
+    C:/Ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+    C:/Ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `require'
+    script/server:3
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mMysql::Error: query: not connected: CREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mMysql::Error: query: not connected: CREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mMysql::Error: query: not connected: CREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (156.0ms)[0m   [0mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (188.0ms)[0m   [0;1mCREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (20100124054035)
+  [4;35;1mSQL (47.0ms)[0m   [0mCREATE TABLE `users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `username` varchar(255), `email` varchar(255), `crypted_password` varchar(255), `password_salt` varchar(255), `persistence_token` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (15.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100124054035')[0m
+Migrating to CreateSuburbs (20100124060306)
+  [4;35;1mSQL (47.0ms)[0m   [0mCREATE TABLE `suburbs` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `area` varchar(255), `state` varchar(255), `postcode` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (15.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100124060306')[0m
+Migrating to AddUsersPasswordResetField (20100124073325)
+  [4;35;1mSQL (125.0ms)[0m   [0mALTER TABLE `users` ADD `perishable_token` varchar(255) DEFAULT '' NOT NULL[0m
+  [4;36;1mSQL (109.0ms)[0m   [0;1mCREATE INDEX `index_users_on_perishable_token` ON `users` (`perishable_token`)[0m
+  [4;35;1mSQL (141.0ms)[0m   [0mCREATE INDEX `index_users_on_email` ON `users` (`email`)[0m
+  [4;36;1mSQL (31.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100124073325')[0m
+Migrating to CreatePosts (20100124111816)
+  [4;35;1mSQL (47.0ms)[0m   [0mCREATE TABLE `posts` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `title` varchar(255), `description` text, `available_from` date, `expiry_date` date, `inspection_time` varchar(255), `negotiable` tinyint(1), `postable_id` int(11), `postable_type` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (16.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100124111816')[0m
+Migrating to CreateProperties (20100124112416)
+  [4;35;1mSQL (62.0ms)[0m   [0mCREATE TABLE `properties` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `number_of_bedrooms` int(11), `number_of_carparks` int(11), `number_of_bathrooms` int(11), `price` float, `bond` float, `max_tenants` int(11), `number_of_current_tenants` int(11), `furnished` tinyint(1), `purpose` varchar(255), `type` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (94.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100124112416')[0m
+Migrating to CreateCarparks (20100124114337)
+  [4;35;1mSQL (94.0ms)[0m   [0mCREATE TABLE `carparks` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `price` float, `bond` float, `type` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (15.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100124114337')[0m
+Migrating to CreateAddresses (20100124114554)
+  [4;35;1mSQL (47.0ms)[0m   [0mCREATE TABLE `addresses` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `line1` varchar(255), `line2` varchar(255), `addressable_id` int(11), `addressable_type` varchar(255), `suburb_id` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (16.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100124114554')[0m
+Migrating to AddNameToSuburb (20100124115827)
+  [4;35;1mSQL (109.0ms)[0m   [0mALTER TABLE `suburbs` ADD `name` varchar(255)[0m
+  [4;36;1mSQL (16.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100124115827')[0m
+Migrating to CreatePropertySearches (20100126044312)
+  [4;35;1mSQL (47.0ms)[0m   [0mCREATE TABLE `property_searches` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `keywords` varchar(255), `min_price` int(11), `max_price` int(11), `num_of_bedrooms` int(11), `num_of_bathrooms` int(11), `num_of_carparks` int(11), `property_type` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (16.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100126044312')[0m
+Migrating to ChangeColumnForProperty (20100126073625)
+  [4;35;1mSQL (15.0ms)[0m   [0mSHOW FIELDS FROM `properties`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW COLUMNS FROM `properties` LIKE 'type'[0m
+  [4;35;1mSQL (31.0ms)[0m   [0mALTER TABLE `properties` CHANGE `type` `prop_type` varchar(255) DEFAULT NULL[0m
+  [4;36;1mSQL (31.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100126073625')[0m
+Migrating to CreateImages (20100127235412)
+  [4;35;1mSQL (63.0ms)[0m   [0mCREATE TABLE `images` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `photo_file_name` varchar(255), `photo_content_type` varchar(255), `photo_file_size` int(11), `photo_updated_at` datetime, `imagable_id` int(11), `imagable_type` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (15.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100127235412')[0m
+Migrating to ChangeColumnsOfPropertySearch (20100209125159)
+  [4;35;1mSQL (125.0ms)[0m   [0mALTER TABLE `property_searches` ADD `min_of_bathrooms` int(11)[0m
+  [4;36;1mSQL (125.0ms)[0m   [0;1mALTER TABLE `property_searches` ADD `max_of_bathrooms` int(11)[0m
+  [4;35;1mSQL (187.0ms)[0m   [0mALTER TABLE `property_searches` ADD `min_of_bedrooms` int(11)[0m
+  [4;36;1mSQL (110.0ms)[0m   [0;1mALTER TABLE `property_searches` ADD `max_of_bedrooms` int(11)[0m
+  [4;35;1mSQL (125.0ms)[0m   [0mALTER TABLE `property_searches` ADD `min_of_carparks` int(11)[0m
+  [4;36;1mSQL (93.0ms)[0m   [0;1mALTER TABLE `property_searches` ADD `max_of_carparks` int(11)[0m
+  [4;35;1mSQL (141.0ms)[0m   [0mALTER TABLE `property_searches` DROP `num_of_bathrooms`[0m
+  [4;36;1mSQL (109.0ms)[0m   [0;1mALTER TABLE `property_searches` DROP `num_of_bedrooms`[0m
+  [4;35;1mSQL (125.0ms)[0m   [0mALTER TABLE `property_searches` DROP `num_of_carparks`[0m
+  [4;36;1mSQL (16.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100209125159')[0m
+Migrating to ChangeReferenceForAddress (20100216103345)
+  [4;35;1mSQL (109.0ms)[0m   [0mALTER TABLE `addresses` DROP `addressable_id`[0m
+  [4;36;1mSQL (188.0ms)[0m   [0;1mALTER TABLE `addresses` DROP `addressable_type`[0m
+  [4;35;1mSQL (15.0ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100216103345')[0m
+Migrating to CreateSearches (20100216113117)
+  [4;36;1mSQL (47.0ms)[0m   [0;1mCREATE TABLE `searches` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `keyword` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;35;1mSQL (15.0ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100216113117')[0m
+Migrating to AddReferenceForAddress (20100216122556)
+  [4;36;1mSQL (110.0ms)[0m   [0;1mALTER TABLE `addresses` ADD `post_id` int(11)[0m
+  [4;35;1mSQL (15.0ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100216122556')[0m
+  [4;36;1mSQL (16.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW FIELDS FROM `addresses`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mdescribe `addresses`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW KEYS FROM `addresses`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW FIELDS FROM `carparks`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mdescribe `carparks`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW KEYS FROM `carparks`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW FIELDS FROM `images`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mdescribe `images`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW KEYS FROM `images`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW FIELDS FROM `posts`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mdescribe `posts`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW KEYS FROM `posts`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW FIELDS FROM `properties`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mdescribe `properties`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW KEYS FROM `properties`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW FIELDS FROM `property_searches`[0m
+  [4;35;1mSQL (16.0ms)[0m   [0mdescribe `property_searches`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW KEYS FROM `property_searches`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW FIELDS FROM `searches`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mdescribe `searches`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW KEYS FROM `searches`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW FIELDS FROM `suburbs`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mdescribe `suburbs`[0m
+  [4;36;1mSQL (15.0ms)[0m   [0;1mSHOW KEYS FROM `suburbs`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mdescribe `users`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW KEYS FROM `users`[0m
+/!\ FAILSAFE /!\  Tue Mar 02 21:47:54 +1100 2010
+  Status: 500 Internal Server Error
+  FATAL	C3D000	Mdatabase "amazon_development" does not exist	F.\src\backend\utils\init\postinit.c	L421	RInitPostgres
+    C:/Ruby/lib/ruby/gems/1.8/gems/postgres-pr-0.6.3/lib/postgres-pr/connection.rb:81:in `initialize'
+    C:/Ruby/lib/ruby/gems/1.8/gems/postgres-pr-0.6.3/lib/postgres-pr/connection.rb:55:in `loop'
+    C:/Ruby/lib/ruby/gems/1.8/gems/postgres-pr-0.6.3/lib/postgres-pr/connection.rb:55:in `initialize'
+    C:/Ruby/lib/ruby/gems/1.8/gems/postgres-pr-0.6.3/lib/postgres-pr/postgres-compat.rb:23:in `new'
+    C:/Ruby/lib/ruby/gems/1.8/gems/postgres-pr-0.6.3/lib/postgres-pr/postgres-compat.rb:23:in `initialize'
+    C:/Ruby/lib/ruby/gems/1.8/gems/activerecord-2.3.5/lib/active_record/connection_adapters/postgresql_adapter.rb:968:in `connect'
+    C:/Ruby/lib/ruby/gems/1.8/gems/activerecord-2.3.5/lib/active_record/connection_adapters/postgresql_adapter.rb:968:in `connect'
+    C:/Ruby/lib/ruby/gems/1.8/gems/activerecord-2.3.5/lib/active_record/connection_adapters/postgresql_adapter.rb:217:in `initialize'
+    C:/Ruby/lib/ruby/gems/1.8/gems/activerecord-2.3.5/lib/active_record/connection_adapters/postgresql_adapter.rb:37:in `new'
+    C:/Ruby/lib/ruby/gems/1.8/gems/activerecord-2.3.5/lib/active_record/connection_adapters/postgresql_adapter.rb:37:in `postgresql_connection'
+    C:/Ruby/lib/ruby/gems/1.8/gems/activerecord-2.3.5/lib/active_record/connection_adapters/abstract/connection_pool.rb:223:in `send'
+    C:/Ruby/lib/ruby/gems/1.8/gems/activerecord-2.3.5/lib/active_record/connection_adapters/abstract/connection_pool.rb:223:in `new_connection'
+    C:/Ruby/lib/ruby/gems/1.8/gems/activerecord-2.3.5/lib/active_record/connection_adapters/abstract/connection_pool.rb:245:in `checkout_new_connection'
+    C:/Ruby/lib/ruby/gems/1.8/gems/activerecord-2.3.5/lib/active_record/connection_adapters/abstract/connection_pool.rb:188:in `checkout'
+    C:/Ruby/lib/ruby/gems/1.8/gems/activerecord-2.3.5/lib/active_record/connection_adapters/abstract/connection_pool.rb:184:in `loop'
+    C:/Ruby/lib/ruby/gems/1.8/gems/activerecord-2.3.5/lib/active_record/connection_adapters/abstract/connection_pool.rb:184:in `checkout'
+    C:/Ruby/lib/ruby/1.8/monitor.rb:242:in `synchronize'
+    C:/Ruby/lib/ruby/gems/1.8/gems/activerecord-2.3.5/lib/active_record/connection_adapters/abstract/connection_pool.rb:183:in `checkout'
+    C:/Ruby/lib/ruby/gems/1.8/gems/activerecord-2.3.5/lib/active_record/connection_adapters/abstract/connection_pool.rb:98:in `connection'
+    C:/Ruby/lib/ruby/gems/1.8/gems/activerecord-2.3.5/lib/active_record/connection_adapters/abstract/connection_pool.rb:326:in `retrieve_connection'
+    C:/Ruby/lib/ruby/gems/1.8/gems/activerecord-2.3.5/lib/active_record/connection_adapters/abstract/connection_specification.rb:123:in `retrieve_connection'
+    C:/Ruby/lib/ruby/gems/1.8/gems/activerecord-2.3.5/lib/active_record/connection_adapters/abstract/connection_specification.rb:115:in `connection'
+    C:/Ruby/lib/ruby/gems/1.8/gems/activerecord-2.3.5/lib/active_record/query_cache.rb:9:in `cache'
+    C:/Ruby/lib/ruby/gems/1.8/gems/activerecord-2.3.5/lib/active_record/query_cache.rb:28:in `call'
+    C:/Ruby/lib/ruby/gems/1.8/gems/activerecord-2.3.5/lib/active_record/connection_adapters/abstract/connection_pool.rb:361:in `call'
+    C:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/string_coercion.rb:25:in `call'
+    C:/Ruby/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/head.rb:9:in `call'
+    C:/Ruby/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/methodoverride.rb:24:in `call'
+    C:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/params_parser.rb:15:in `call'
+    C:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/session/cookie_store.rb:93:in `call'
+    C:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/failsafe.rb:26:in `call'
+    C:/Ruby/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/lock.rb:11:in `call'
+    C:/Ruby/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/lock.rb:11:in `synchronize'
+    C:/Ruby/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/lock.rb:11:in `call'
+    C:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/dispatcher.rb:114:in `call'
+    C:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/reloader.rb:34:in `run'
+    C:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/dispatcher.rb:108:in `call'
+    C:/Ruby/lib/ruby/gems/1.8/gems/rails-2.3.5/lib/rails/rack/static.rb:31:in `call'
+    C:/Ruby/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/urlmap.rb:46:in `call'
+    C:/Ruby/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/urlmap.rb:40:in `each'
+    C:/Ruby/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/urlmap.rb:40:in `call'
+    C:/Ruby/lib/ruby/gems/1.8/gems/rails-2.3.5/lib/rails/rack/log_tailer.rb:17:in `call'
+    C:/Ruby/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/content_length.rb:13:in `call'
+    C:/Ruby/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/chunked.rb:15:in `call'
+    C:/Ruby/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/handler/mongrel.rb:64:in `process'
+    C:/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel.rb:159:in `process_client'
+    C:/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel.rb:158:in `each'
+    C:/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel.rb:158:in `process_client'
+    C:/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel.rb:285:in `run'
+    C:/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel.rb:285:in `initialize'
+    C:/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel.rb:285:in `new'
+    C:/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel.rb:285:in `run'
+    C:/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel.rb:268:in `initialize'
+    C:/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel.rb:268:in `new'
+    C:/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel.rb:268:in `run'
+    C:/Ruby/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/handler/mongrel.rb:34:in `run'
+    C:/Ruby/lib/ruby/gems/1.8/gems/rails-2.3.5/lib/commands/server.rb:111
+    C:/Ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+    C:/Ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `require'
+    script/server:3
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SearchesController#new (for 127.0.0.1 at 2010-03-02 21:48:46) [GET]
+  [4;36;1mSearch Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `searches`[0m
+  [4;35;1mPropertySearch Columns (15.0ms)[0m   [0mSHOW FIELDS FROM `property_searches`[0m
+Rendering template within layouts/application
+Rendering welcome/index
+Rendered property_searches/_form (16.0ms)
+Rendered searches/_form (47.0ms)
+  [4;36;1mUser Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+Completed in 188ms (View: 110, DB: 15) | 200 OK [http://localhost/searches/new]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SearchesController#create (for 127.0.0.1 at 2010-03-02 21:48:52) [POST]
+  Parameters: {"search"=>{"property_search_attributes"=>{"min_of_bedrooms"=>"1", "max_of_bathrooms"=>"2", "max_of_bedrooms"=>"3", "property_type"=>"", "min_of_carparks"=>"1", "max_of_carparks"=>"2", "max_price"=>"700", "min_price"=>"200", "min_of_bathrooms"=>"1"}, "keyword"=>"address"}, "commit"=>"Search", "authenticity_token"=>"VJKxj5IJDz5ZU68ru2H5Femd8hNfPjCx8xeDYa+zaBU="}
+  [4;35;1mSearch Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `searches`[0m
+  [4;36;1mPropertySearch Columns (15.0ms)[0m   [0;1mSHOW FIELDS FROM `property_searches`[0m
+Redirected to http://localhost:3000/searches/show
+Completed in 93ms (DB: 15) | 302 Found [http://localhost/searches]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SearchesController#show (for 127.0.0.1 at 2010-03-02 21:48:52) [GET]
+  Parameters: {"id"=>"show"}
+  [4;35;1mSearch Columns (16.0ms)[0m   [0mSHOW FIELDS FROM `searches`[0m
+  [4;36;1mPost Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `posts`[0m
+  [4;35;1mAddress Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `addresses`[0m
+  [4;36;1mSuburb Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `suburbs`[0m
+  [4;35;1mPropertySearch Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `property_searches`[0m
+  [4;36;1mProperty Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `properties`[0m
+  [4;35;1mProperty Load (0.0ms)[0m   [0mSELECT * FROM `properties` WHERE ((properties.number_of_carparks <= 2) AND ((properties.number_of_bathrooms >= 1) AND ((properties.price <= 700.0) AND ((properties.number_of_carparks >= 1) AND ((properties.number_of_bedrooms <= 3) AND ((properties.price >= 200.0) AND ((properties.number_of_bathrooms <= 2) AND (properties.number_of_bedrooms >= 1)))))))) [0m
+  [4;36;1mPost Load (0.0ms)[0m   [0;1mSELECT `posts`.* FROM `posts` INNER JOIN `addresses` ON addresses.post_id = posts.id INNER JOIN `suburbs` ON `suburbs`.id = `addresses`.suburb_id WHERE ((suburbs.name LIKE '%address%') OR (suburbs.area LIKE '%address%') OR (suburbs.state LIKE '%address%') OR (suburbs.postcode LIKE '%address%')) [0m
+  [4;35;1mPost Load (0.0ms)[0m   [0mSELECT * FROM `posts` WHERE (posts.postable_type = 'Property') [0m
+Rendering template within layouts/application
+Rendering welcome/index
+Rendered property_searches/_form (0.0ms)
+Rendered searches/_form (0.0ms)
+  [4;36;1mUser Columns (15.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+Completed in 218ms (View: 32, DB: 31) | 200 OK [http://localhost/searches/show]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#new (for 127.0.0.1 at 2010-03-02 21:49:24) [GET]
+  [4;35;1mUser Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+Rendering template within layouts/application
+Rendering users/new
+Rendered users/_form (0.0ms)
+Completed in 188ms (View: 94, DB: 0) | 200 OK [http://localhost/users/new]
+  [4;36;1mSearch Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `searches`[0m
+  [4;35;1mPropertySearch Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `property_searches`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#create (for 127.0.0.1 at 2010-03-02 21:49:39) [POST]
+  Parameters: {"user"=>{"password_confirmation"=>"0258gre", "username"=>"psp8023", "password"=>"0258gre", "email"=>"0258g@hotmail.com"}, "commit"=>"Submit", "authenticity_token"=>"VJKxj5IJDz5ZU68ru2H5Femd8hNfPjCx8xeDYa+zaBU="}
+  [4;36;1mUser Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mBEGIN[0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT `users`.id FROM `users` WHERE (LOWER(`users`.`email`) = BINARY '0258g@hotmail.com') LIMIT 1[0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT `users`.id FROM `users` WHERE (LOWER(`users`.`username`) = BINARY 'psp8023') LIMIT 1[0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT `users`.id FROM `users` WHERE (`users`.`persistence_token` = BINARY '8d8ab901a7ad0b3cdcb9c453e863736c85aed74a0119a22c32ad73cf64e6a570c9520aca8a18881d42060f2651a75f8b05862d2073d406963c611401377c973d') LIMIT 1[0m
+  [4;35;1mUser Create (0.0ms)[0m   [0mINSERT INTO `users` (`updated_at`, `crypted_password`, `perishable_token`, `username`, `password_salt`, `persistence_token`, `email`, `created_at`) VALUES('2010-03-02 10:49:41', 'a444a0430940d023ca3ccb392282e2e9fb4f5fc3db008ef2c4de8c926632c2c28e6b508ea5004bcb442265a02a173b880e5aae20d6c011c9882c6f075f0a84f1', 'PLvhNKDTpB-DJoCfGFYn', 'psp8023', 'KhvSKhM3SHID-JJx9ETa', '8d8ab901a7ad0b3cdcb9c453e863736c85aed74a0119a22c32ad73cf64e6a570c9520aca8a18881d42060f2651a75f8b05862d2073d406963c611401377c973d', '0258g@hotmail.com', '2010-03-02 10:49:41')[0m
+  [4;36;1mSQL (32.0ms)[0m   [0;1mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed in 1625ms (DB: 32) | 302 Found [http://localhost/users]
+  [4;35;1mSearch Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `searches`[0m
+  [4;36;1mPropertySearch Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `property_searches`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WelcomeController#index (for 127.0.0.1 at 2010-03-02 21:49:41) [GET]
+Redirected to http://localhost:3000/searches/new
+Completed in 0ms (DB: 0) | 302 Found [http://localhost/]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SearchesController#new (for 127.0.0.1 at 2010-03-02 21:49:41) [GET]
+  [4;35;1mSearch Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `searches`[0m
+  [4;36;1mPropertySearch Columns (16.0ms)[0m   [0;1mSHOW FIELDS FROM `property_searches`[0m
+Rendering template within layouts/application
+Rendering welcome/index
+Rendered property_searches/_form (0.0ms)
+Rendered searches/_form (0.0ms)
+  [4;35;1mUser Columns (15.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`persistence_token` = '8d8ab901a7ad0b3cdcb9c453e863736c85aed74a0119a22c32ad73cf64e6a570c9520aca8a18881d42060f2651a75f8b05862d2073d406963c611401377c973d') LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`persistence_token` = '8d8ab901a7ad0b3cdcb9c453e863736c85aed74a0119a22c32ad73cf64e6a570c9520aca8a18881d42060f2651a75f8b05862d2073d406963c611401377c973d') LIMIT 1[0m
+Completed in 94ms (View: 47, DB: 31) | 200 OK [http://localhost/searches/new]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PostsController#new (for 127.0.0.1 at 2010-03-02 21:50:01) [GET]
+  [4;36;1mPost Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `posts`[0m
+Rendering template within layouts/application
+Rendering posts/new
+Rendered posts/_form (687.0ms)
+  [4;35;1mUser Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`persistence_token` = '8d8ab901a7ad0b3cdcb9c453e863736c85aed74a0119a22c32ad73cf64e6a570c9520aca8a18881d42060f2651a75f8b05862d2073d406963c611401377c973d') LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`persistence_token` = '8d8ab901a7ad0b3cdcb9c453e863736c85aed74a0119a22c32ad73cf64e6a570c9520aca8a18881d42060f2651a75f8b05862d2073d406963c611401377c973d') LIMIT 1[0m
+Completed in 750ms (View: 750, DB: 0) | 200 OK [http://localhost/posts/new]
+  [4;36;1mSearch Columns (16.0ms)[0m   [0;1mSHOW FIELDS FROM `searches`[0m
+  [4;35;1mPropertySearch Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `property_searches`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PostsController#new (for 127.0.0.1 at 2010-03-02 21:53:10) [GET]
+  [4;36;1mPost Columns (15.0ms)[0m   [0;1mSHOW FIELDS FROM `posts`[0m
+Rendering template within layouts/application
+Rendering posts/new
+Rendered posts/_form (47.0ms)
+  [4;35;1mUser Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`persistence_token` = '8d8ab901a7ad0b3cdcb9c453e863736c85aed74a0119a22c32ad73cf64e6a570c9520aca8a18881d42060f2651a75f8b05862d2073d406963c611401377c973d') LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`persistence_token` = '8d8ab901a7ad0b3cdcb9c453e863736c85aed74a0119a22c32ad73cf64e6a570c9520aca8a18881d42060f2651a75f8b05862d2073d406963c611401377c973d') LIMIT 1[0m
+Completed in 156ms (View: 125, DB: 15) | 200 OK [http://localhost/posts/new]
+  [4;36;1mSearch Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `searches`[0m
+  [4;35;1mPropertySearch Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `property_searches`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PostsController#new (for 127.0.0.1 at 2010-03-02 21:53:53) [GET]
+  [4;36;1mPost Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `posts`[0m
+Rendering template within layouts/application
+Rendering posts/new
+Rendered posts/_form (47.0ms)
+  [4;35;1mUser Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`persistence_token` = '8d8ab901a7ad0b3cdcb9c453e863736c85aed74a0119a22c32ad73cf64e6a570c9520aca8a18881d42060f2651a75f8b05862d2073d406963c611401377c973d') LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`persistence_token` = '8d8ab901a7ad0b3cdcb9c453e863736c85aed74a0119a22c32ad73cf64e6a570c9520aca8a18881d42060f2651a75f8b05862d2073d406963c611401377c973d') LIMIT 1[0m
+Completed in 110ms (View: 94, DB: 0) | 200 OK [http://localhost/posts/new]
+  [4;36;1mSearch Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `searches`[0m
+  [4;35;1mPropertySearch Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `property_searches`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PostsController#new (for 127.0.0.1 at 2010-03-02 21:54:38) [GET]
+  [4;36;1mPost Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `posts`[0m
+Rendering template within layouts/application
+Rendering posts/new
+Rendered posts/_form (94.0ms)
+  [4;35;1mUser Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`persistence_token` = '8d8ab901a7ad0b3cdcb9c453e863736c85aed74a0119a22c32ad73cf64e6a570c9520aca8a18881d42060f2651a75f8b05862d2073d406963c611401377c973d') LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`persistence_token` = '8d8ab901a7ad0b3cdcb9c453e863736c85aed74a0119a22c32ad73cf64e6a570c9520aca8a18881d42060f2651a75f8b05862d2073d406963c611401377c973d') LIMIT 1[0m
+Completed in 156ms (View: 141, DB: 0) | 200 OK [http://localhost/posts/new]
+  [4;36;1mSearch Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `searches`[0m
+  [4;35;1mPropertySearch Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `property_searches`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PostsController#new (for 127.0.0.1 at 2010-03-02 21:54:50) [GET]
+  [4;36;1mPost Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `posts`[0m
+Rendering template within layouts/application
+Rendering posts/new
+Rendered posts/_form (47.0ms)
+  [4;35;1mUser Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`persistence_token` = '8d8ab901a7ad0b3cdcb9c453e863736c85aed74a0119a22c32ad73cf64e6a570c9520aca8a18881d42060f2651a75f8b05862d2073d406963c611401377c973d') LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`persistence_token` = '8d8ab901a7ad0b3cdcb9c453e863736c85aed74a0119a22c32ad73cf64e6a570c9520aca8a18881d42060f2651a75f8b05862d2073d406963c611401377c973d') LIMIT 1[0m
+Completed in 94ms (View: 78, DB: 0) | 200 OK [http://localhost/posts/new]
+  [4;36;1mSearch Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `searches`[0m
+  [4;35;1mPropertySearch Columns (16.0ms)[0m   [0mSHOW FIELDS FROM `property_searches`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PostsController#new (for 127.0.0.1 at 2010-03-02 21:55:04) [GET]
+  [4;36;1mPost Columns (16.0ms)[0m   [0;1mSHOW FIELDS FROM `posts`[0m
+Rendering template within layouts/application
+Rendering posts/new
+Rendered posts/_form (78.0ms)
+  [4;35;1mUser Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`persistence_token` = '8d8ab901a7ad0b3cdcb9c453e863736c85aed74a0119a22c32ad73cf64e6a570c9520aca8a18881d42060f2651a75f8b05862d2073d406963c611401377c973d') LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`persistence_token` = '8d8ab901a7ad0b3cdcb9c453e863736c85aed74a0119a22c32ad73cf64e6a570c9520aca8a18881d42060f2651a75f8b05862d2073d406963c611401377c973d') LIMIT 1[0m
+Completed in 188ms (View: 172, DB: 16) | 200 OK [http://localhost/posts/new]
+  [4;36;1mSearch Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `searches`[0m
+  [4;35;1mPropertySearch Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `property_searches`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PostsController#new (for 127.0.0.1 at 2010-03-02 22:02:18) [GET]
+  [4;36;1mPost Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `posts`[0m
+Rendering template within layouts/application
+Rendering posts/new
+Rendered posts/_form (47.0ms)
+  [4;35;1mUser Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`persistence_token` = '8d8ab901a7ad0b3cdcb9c453e863736c85aed74a0119a22c32ad73cf64e6a570c9520aca8a18881d42060f2651a75f8b05862d2073d406963c611401377c973d') LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`persistence_token` = '8d8ab901a7ad0b3cdcb9c453e863736c85aed74a0119a22c32ad73cf64e6a570c9520aca8a18881d42060f2651a75f8b05862d2073d406963c611401377c973d') LIMIT 1[0m
+Completed in 94ms (View: 78, DB: 0) | 200 OK [http://localhost/posts/new]
+  [4;36;1mSearch Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `searches`[0m
+  [4;35;1mPropertySearch Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `property_searches`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PostsController#new (for 127.0.0.1 at 2010-03-02 22:03:35) [GET]
+  [4;36;1mPost Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `posts`[0m
+Rendering template within layouts/application
+Rendering posts/new
+Rendered posts/_form (140.0ms)
+  [4;35;1mUser Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`persistence_token` = '8d8ab901a7ad0b3cdcb9c453e863736c85aed74a0119a22c32ad73cf64e6a570c9520aca8a18881d42060f2651a75f8b05862d2073d406963c611401377c973d') LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`persistence_token` = '8d8ab901a7ad0b3cdcb9c453e863736c85aed74a0119a22c32ad73cf64e6a570c9520aca8a18881d42060f2651a75f8b05862d2073d406963c611401377c973d') LIMIT 1[0m
+Completed in 187ms (View: 187, DB: 0) | 200 OK [http://localhost/posts/new]
+  [4;36;1mSearch Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `searches`[0m
+  [4;35;1mPropertySearch Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `property_searches`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UserSessionsController#destroy (for 127.0.0.1 at 2010-03-02 22:07:44) [GET]
+  [4;36;1mUser Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`persistence_token` = '8d8ab901a7ad0b3cdcb9c453e863736c85aed74a0119a22c32ad73cf64e6a570c9520aca8a18881d42060f2651a75f8b05862d2073d406963c611401377c973d') LIMIT 1[0m
+Redirected to http://localhost:3000/
+Completed in 47ms (DB: 0) | 302 Found [http://localhost/logout]
+  [4;36;1mSearch Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `searches`[0m
+  [4;35;1mPropertySearch Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `property_searches`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WelcomeController#index (for 127.0.0.1 at 2010-03-02 22:07:44) [GET]
+Redirected to http://localhost:3000/searches/new
+Completed in 0ms (DB: 0) | 302 Found [http://localhost/]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SearchesController#new (for 127.0.0.1 at 2010-03-02 22:07:44) [GET]
+  [4;36;1mSearch Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `searches`[0m
+  [4;35;1mPropertySearch Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `property_searches`[0m
+Rendering template within layouts/application
+Rendering welcome/index
+Rendered property_searches/_form (15.0ms)
+Rendered searches/_form (15.0ms)
+  [4;36;1mUser Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+Completed in 109ms (View: 94, DB: 0) | 200 OK [http://localhost/searches/new]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PostsController#new (for 127.0.0.1 at 2010-03-02 22:07:48) [GET]
+  [4;35;1mPost Columns (16.0ms)[0m   [0mSHOW FIELDS FROM `posts`[0m
+Rendering template within layouts/application
+Rendering posts/new
+Rendered posts/_form (47.0ms)
+  [4;36;1mUser Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+Completed in 78ms (View: 62, DB: 16) | 200 OK [http://localhost/posts/new]
+  [4;35;1mSearch Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `searches`[0m
+  [4;36;1mPropertySearch Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `property_searches`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PostsController#new (for 127.0.0.1 at 2010-03-02 22:09:49) [GET]
+  [4;35;1mPost Columns (15.0ms)[0m   [0mSHOW FIELDS FROM `posts`[0m
+Rendering template within layouts/application
+Rendering posts/new
+Rendered posts/_form (47.0ms)
+  [4;36;1mUser Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+Completed in 125ms (View: 94, DB: 15) | 200 OK [http://localhost/posts/new]
+  [4;35;1mSearch Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `searches`[0m
+  [4;36;1mPropertySearch Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `property_searches`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PostsController#new (for 127.0.0.1 at 2010-03-02 22:11:22) [GET]
+  [4;35;1mPost Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `posts`[0m
+Rendering template within layouts/application
+Rendering posts/new
+Rendered posts/_form (31.0ms)
+  [4;36;1mUser Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+Completed in 94ms (View: 78, DB: 0) | 200 OK [http://localhost/posts/new]
+  [4;35;1mSearch Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `searches`[0m
+  [4;36;1mPropertySearch Columns (16.0ms)[0m   [0;1mSHOW FIELDS FROM `property_searches`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PostsController#new (for 127.0.0.1 at 2010-03-02 22:19:05) [GET]
+  [4;35;1mPost Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `posts`[0m
+Rendering template within layouts/application
+Rendering posts/new
+Rendered posts/_form (47.0ms)
+  [4;36;1mUser Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+Completed in 125ms (View: 109, DB: 0) | 200 OK [http://localhost/posts/new]
+  [4;35;1mSearch Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `searches`[0m
+  [4;36;1mPropertySearch Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `property_searches`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PostsController#new (for 127.0.0.1 at 2010-03-02 22:19:49) [GET]
+  [4;35;1mPost Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `posts`[0m
+Rendering template within layouts/application
+Rendering posts/new
+Rendered posts/_form (31.0ms)
+  [4;36;1mUser Columns (16.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+Completed in 94ms (View: 62, DB: 16) | 200 OK [http://localhost/posts/new]
+  [4;35;1mSearch Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `searches`[0m
+  [4;36;1mPropertySearch Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `property_searches`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PostsController#new (for 127.0.0.1 at 2010-03-02 22:22:11) [GET]
+  [4;35;1mPost Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `posts`[0m
+Rendering template within layouts/application
+Rendering posts/new
+Rendered posts/_form (47.0ms)
+  [4;36;1mUser Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+Completed in 125ms (View: 109, DB: 0) | 200 OK [http://localhost/posts/new]
+  [4;35;1mSearch Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `searches`[0m
+  [4;36;1mPropertySearch Columns (16.0ms)[0m   [0;1mSHOW FIELDS FROM `property_searches`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PostsController#new (for 127.0.0.1 at 2010-03-02 22:22:19) [GET]
+  [4;35;1mPost Columns (16.0ms)[0m   [0mSHOW FIELDS FROM `posts`[0m
+Rendering template within layouts/application
+Rendering posts/new
+Rendered posts/_form (31.0ms)
+  [4;36;1mUser Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+Completed in 78ms (View: 62, DB: 16) | 200 OK [http://localhost/posts/new]
+  [4;35;1mSearch Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `searches`[0m
+  [4;36;1mPropertySearch Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `property_searches`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-03-02 22:23:03) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/images/on.png" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-03-02 22:23:03) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/images/off.png" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-03-02 22:23:03) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/images/slider_right.png" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-03-02 22:23:03) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/images/slider_center.png" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-03-02 22:23:03) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/images/slider_left.png" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PostsController#new (for 127.0.0.1 at 2010-03-02 22:23:47) [GET]
+  [4;35;1mPost Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `posts`[0m
+Rendering template within layouts/application
+Rendering posts/new
+Rendered posts/_form (31.0ms)
+  [4;36;1mUser Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+Completed in 93ms (View: 78, DB: 0) | 200 OK [http://localhost/posts/new]
+  [4;35;1mSearch Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `searches`[0m
+  [4;36;1mPropertySearch Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `property_searches`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PostsController#new (for 127.0.0.1 at 2010-03-02 22:24:28) [GET]
+  [4;35;1mPost Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `posts`[0m
+Rendering template within layouts/application
+Rendering posts/new
+Rendered posts/_form (125.0ms)
+  [4;36;1mUser Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+Completed in 234ms (View: 203, DB: 0) | 200 OK [http://localhost/posts/new]
+  [4;35;1mSearch Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `searches`[0m
+  [4;36;1mPropertySearch Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `property_searches`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-03-02 22:24:30) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/images/on.png" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-03-02 22:24:30) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/images/off.png" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-03-02 22:24:30) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/images/slider_left.png" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-03-02 22:24:30) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/images/slider_center.png" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-03-02 22:24:30) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/images/slider_right.png" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-03-02 22:24:56) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/images/on.png" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PostsController#new (for 127.0.0.1 at 2010-03-02 22:26:13) [GET]
+  [4;35;1mPost Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `posts`[0m
+Rendering template within layouts/application
+Rendering posts/new
+Rendered posts/_form (31.0ms)
+  [4;36;1mUser Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+Completed in 93ms (View: 78, DB: 0) | 200 OK [http://localhost/posts/new]
+  [4;35;1mSearch Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `searches`[0m
+  [4;36;1mPropertySearch Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `property_searches`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-03-02 22:26:16) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/images/on.png" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-03-02 22:26:17) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/images/slider_center.png" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PostsController#new (for 127.0.0.1 at 2010-03-02 22:26:29) [GET]
+  [4;35;1mPost Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `posts`[0m
+Rendering template within layouts/application
+Rendering posts/new
+Rendered posts/_form (32.0ms)
+  [4;36;1mUser Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+Completed in 141ms (View: 63, DB: 0) | 200 OK [http://localhost/posts/new]
+  [4;35;1mSearch Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `searches`[0m
+  [4;36;1mPropertySearch Columns (16.0ms)[0m   [0;1mSHOW FIELDS FROM `property_searches`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-03-02 22:26:31) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/images/on.png" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PostsController#new (for 127.0.0.1 at 2010-03-02 22:28:53) [GET]
+  [4;35;1mPost Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `posts`[0m
+Rendering template within layouts/application
+Rendering posts/new
+Rendered posts/_form (32.0ms)
+  [4;36;1mUser Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+Completed in 78ms (View: 63, DB: 0) | 200 OK [http://localhost/posts/new]
+  [4;35;1mSearch Columns (16.0ms)[0m   [0mSHOW FIELDS FROM `searches`[0m
+  [4;36;1mPropertySearch Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `property_searches`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-03-02 22:28:55) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/images/on.png" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PostsController#new (for 127.0.0.1 at 2010-03-02 22:29:33) [GET]
+  [4;35;1mPost Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `posts`[0m
+Rendering template within layouts/application
+Rendering posts/new
+Rendered posts/_form (31.0ms)
+  [4;36;1mUser Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+Completed in 93ms (View: 78, DB: 0) | 200 OK [http://localhost/posts/new]
+  [4;35;1mSearch Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `searches`[0m
+  [4;36;1mPropertySearch Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `property_searches`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-03-02 22:29:34) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/images/on.png" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PostsController#new (for 127.0.0.1 at 2010-03-02 22:30:12) [GET]
+  [4;35;1mPost Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `posts`[0m
+Rendering template within layouts/application
+Rendering posts/new
+Rendered posts/_form (31.0ms)
+  [4;36;1mUser Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+Completed in 171ms (View: 156, DB: 0) | 200 OK [http://localhost/posts/new]
+  [4;35;1mSearch Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `searches`[0m
+  [4;36;1mPropertySearch Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `property_searches`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-03-02 22:30:16) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/images/on.png" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PostsController#new (for 127.0.0.1 at 2010-03-02 22:31:00) [GET]
+  [4;35;1mPost Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `posts`[0m
+Rendering template within layouts/application
+Rendering posts/new
+Rendered posts/_form (31.0ms)
+  [4;36;1mUser Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+Completed in 110ms (View: 110, DB: 0) | 200 OK [http://localhost/posts/new]
+  [4;35;1mSearch Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `searches`[0m
+  [4;36;1mPropertySearch Columns (15.0ms)[0m   [0;1mSHOW FIELDS FROM `property_searches`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-03-02 22:31:03) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/images/on.png" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PostsController#new (for 127.0.0.1 at 2010-03-02 22:31:20) [GET]
+  [4;35;1mPost Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `posts`[0m
+Rendering template within layouts/application
+Rendering posts/new
+Rendered posts/_form (31.0ms)
+  [4;36;1mUser Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+Completed in 78ms (View: 63, DB: 0) | 200 OK [http://localhost/posts/new]
+  [4;35;1mSearch Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `searches`[0m
+  [4;36;1mPropertySearch Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `property_searches`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-03-02 22:31:23) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/images/on.png" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PostsController#new (for 127.0.0.1 at 2010-03-02 22:31:52) [GET]
+  [4;35;1mPost Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `posts`[0m
+Rendering template within layouts/application
+Rendering posts/new
+Rendered posts/_form (47.0ms)
+  [4;36;1mUser Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+Completed in 156ms (View: 78, DB: 0) | 200 OK [http://localhost/posts/new]
+  [4;35;1mSearch Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `searches`[0m
+  [4;36;1mPropertySearch Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `property_searches`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PostsController#new (for 127.0.0.1 at 2010-03-02 22:33:09) [GET]
+  [4;35;1mPost Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `posts`[0m
+Rendering template within layouts/application
+Rendering posts/new
+Rendered posts/_form (32.0ms)
+  [4;36;1mUser Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+Completed in 94ms (View: 78, DB: 0) | 200 OK [http://localhost/posts/new]
+  [4;35;1mSearch Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `searches`[0m
+  [4;36;1mPropertySearch Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `property_searches`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PostsController#new (for 127.0.0.1 at 2010-03-02 22:34:58) [GET]
+  [4;35;1mPost Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `posts`[0m
+Rendering template within layouts/application
+Rendering posts/new
+Rendered posts/_form (32.0ms)
+  [4;36;1mUser Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+Completed in 94ms (View: 78, DB: 0) | 200 OK [http://localhost/posts/new]
+  [4;35;1mSearch Columns (15.0ms)[0m   [0mSHOW FIELDS FROM `searches`[0m
+  [4;36;1mPropertySearch Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `property_searches`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PostsController#new (for 127.0.0.1 at 2010-03-02 22:35:26) [GET]
+  [4;35;1mPost Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `posts`[0m
+Rendering template within layouts/application
+Rendering posts/new
+Rendered posts/_form (31.0ms)
+  [4;36;1mUser Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+Completed in 125ms (View: 94, DB: 0) | 200 OK [http://localhost/posts/new]
+  [4;35;1mSearch Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `searches`[0m
+  [4;36;1mPropertySearch Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `property_searches`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PostsController#new (for 127.0.0.1 at 2010-03-02 22:36:07) [GET]
+  [4;35;1mPost Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `posts`[0m
+Rendering template within layouts/application
+Rendering posts/new
+Rendered posts/_form (31.0ms)
+  [4;36;1mUser Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+Completed in 94ms (View: 78, DB: 0) | 200 OK [http://localhost/posts/new]
+  [4;35;1mSearch Columns (16.0ms)[0m   [0mSHOW FIELDS FROM `searches`[0m
+  [4;36;1mPropertySearch Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `property_searches`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PostsController#new (for 127.0.0.1 at 2010-03-02 22:36:24) [GET]
+  [4;35;1mPost Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `posts`[0m
+Rendering template within layouts/application
+Rendering posts/new
+Rendered posts/_form (32.0ms)
+  [4;36;1mUser Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+Completed in 156ms (View: 140, DB: 0) | 200 OK [http://localhost/posts/new]
+  [4;35;1mSearch Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `searches`[0m
+  [4;36;1mPropertySearch Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `property_searches`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PostsController#new (for 127.0.0.1 at 2010-03-02 22:37:23) [GET]
+  [4;35;1mPost Columns (16.0ms)[0m   [0mSHOW FIELDS FROM `posts`[0m
+Rendering template within layouts/application
+Rendering posts/new
+Rendered posts/_form (31.0ms)
+  [4;36;1mUser Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+Completed in 94ms (View: 78, DB: 16) | 200 OK [http://localhost/posts/new]
+  [4;35;1mSearch Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `searches`[0m
+  [4;36;1mPropertySearch Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `property_searches`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PostsController#new (for 127.0.0.1 at 2010-03-02 22:38:01) [GET]
+  [4;35;1mPost Columns (15.0ms)[0m   [0mSHOW FIELDS FROM `posts`[0m
+Rendering template within layouts/application
+Rendering posts/new
+Rendered posts/_form (141.0ms)
+  [4;36;1mUser Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+Completed in 187ms (View: 172, DB: 15) | 200 OK [http://localhost/posts/new]
+  [4;35;1mSearch Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `searches`[0m
+  [4;36;1mPropertySearch Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `property_searches`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PostsController#new (for 127.0.0.1 at 2010-03-02 22:38:20) [GET]
+  [4;35;1mPost Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `posts`[0m
+Rendering template within layouts/application
+Rendering posts/new
+Rendered posts/_form (31.0ms)
+  [4;36;1mUser Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+Completed in 94ms (View: 78, DB: 0) | 200 OK [http://localhost/posts/new]
+  [4;35;1mSearch Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `searches`[0m
+  [4;36;1mPropertySearch Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `property_searches`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PostsController#new (for 127.0.0.1 at 2010-03-02 22:39:33) [GET]
+  [4;35;1mPost Columns (15.0ms)[0m   [0mSHOW FIELDS FROM `posts`[0m
+Rendering template within layouts/application
+Rendering posts/new
+Rendered posts/_form (110.0ms)
+  [4;36;1mUser Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+Completed in 156ms (View: 141, DB: 15) | 200 OK [http://localhost/posts/new]
+  [4;35;1mSearch Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `searches`[0m
+  [4;36;1mPropertySearch Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `property_searches`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PostsController#new (for 127.0.0.1 at 2010-03-02 22:40:29) [GET]
+  [4;35;1mPost Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `posts`[0m
+Rendering template within layouts/application
+Rendering posts/new
+Rendered posts/_form (31.0ms)
+  [4;36;1mUser Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+Completed in 93ms (View: 78, DB: 0) | 200 OK [http://localhost/posts/new]
+  [4;35;1mSearch Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `searches`[0m
+  [4;36;1mPropertySearch Columns (16.0ms)[0m   [0;1mSHOW FIELDS FROM `property_searches`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PostsController#new (for 127.0.0.1 at 2010-03-02 22:41:22) [GET]
+  [4;35;1mPost Columns (16.0ms)[0m   [0mSHOW FIELDS FROM `posts`[0m
+Rendering template within layouts/application
+Rendering posts/new
+Rendered posts/_form (31.0ms)
+  [4;36;1mUser Columns (16.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+Completed in 79ms (View: 47, DB: 32) | 200 OK [http://localhost/posts/new]
+  [4;35;1mSearch Columns (15.0ms)[0m   [0mSHOW FIELDS FROM `searches`[0m
+  [4;36;1mPropertySearch Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `property_searches`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PostsController#new (for 127.0.0.1 at 2010-03-02 22:43:00) [GET]
+  [4;35;1mPost Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `posts`[0m
+Rendering template within layouts/application
+Rendering posts/new
+Rendered posts/_form (31.0ms)
+  [4;36;1mUser Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+Completed in 78ms (View: 62, DB: 0) | 200 OK [http://localhost/posts/new]
+  [4;35;1mSearch Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `searches`[0m
+  [4;36;1mPropertySearch Columns (16.0ms)[0m   [0;1mSHOW FIELDS FROM `property_searches`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PostsController#new (for 127.0.0.1 at 2010-03-02 22:43:40) [GET]
+  [4;35;1mPost Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `posts`[0m
+Rendering template within layouts/application
+Rendering posts/new
+Rendered posts/_form (47.0ms)
+  [4;36;1mUser Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+Completed in 94ms (View: 78, DB: 0) | 200 OK [http://localhost/posts/new]
+  [4;35;1mSearch Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `searches`[0m
+  [4;36;1mPropertySearch Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `property_searches`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (16.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PostsController#new (for 127.0.0.1 at 2010-03-02 22:44:36) [GET]
+  [4;35;1mPost Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `posts`[0m
+Rendering template within layouts/application
+Rendering posts/new
+Rendered posts/_form (31.0ms)
+  [4;36;1mUser Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+Completed in 125ms (View: 109, DB: 16) | 200 OK [http://localhost/posts/new]
+  [4;35;1mSearch Columns (16.0ms)[0m   [0mSHOW FIELDS FROM `searches`[0m
+  [4;36;1mPropertySearch Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `property_searches`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PostsController#new (for 127.0.0.1 at 2010-03-02 22:45:00) [GET]
+  [4;35;1mPost Columns (16.0ms)[0m   [0mSHOW FIELDS FROM `posts`[0m
+Rendering template within layouts/application
+Rendering posts/new
+Rendered posts/_form (31.0ms)
+  [4;36;1mUser Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+Completed in 78ms (View: 62, DB: 16) | 200 OK [http://localhost/posts/new]
+  [4;35;1mSearch Columns (16.0ms)[0m   [0mSHOW FIELDS FROM `searches`[0m
+  [4;36;1mPropertySearch Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `property_searches`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PostsController#new (for 127.0.0.1 at 2010-03-02 22:48:23) [GET]
+  [4;35;1mPost Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `posts`[0m
+Rendering template within layouts/application
+Rendering posts/new
+Rendered posts/_form (110.0ms)
+  [4;36;1mUser Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+Completed in 156ms (View: 141, DB: 0) | 200 OK [http://localhost/posts/new]
+  [4;35;1mSearch Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `searches`[0m
+  [4;36;1mPropertySearch Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `property_searches`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PostsController#new (for 127.0.0.1 at 2010-03-02 22:51:01) [GET]
+  [4;35;1mPost Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `posts`[0m
+Rendering template within layouts/application
+Rendering posts/new
+Rendered posts/_form (47.0ms)
+  [4;36;1mUser Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+Completed in 94ms (View: 79, DB: 0) | 200 OK [http://localhost/posts/new]
+  [4;35;1mSearch Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `searches`[0m
+  [4;36;1mPropertySearch Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `property_searches`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PostsController#new (for 127.0.0.1 at 2010-03-02 22:52:11) [GET]
+  [4;35;1mPost Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `posts`[0m
+Rendering template within layouts/application
+Rendering posts/new
+Rendered posts/_form (125.0ms)
+  [4;36;1mUser Columns (16.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+Completed in 172ms (View: 140, DB: 16) | 200 OK [http://localhost/posts/new]
+  [4;35;1mSearch Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `searches`[0m
+  [4;36;1mPropertySearch Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `property_searches`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PostsController#new (for 127.0.0.1 at 2010-03-02 22:52:32) [GET]
+  [4;35;1mPost Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `posts`[0m
+Rendering template within layouts/application
+Rendering posts/new
+Rendered posts/_form (31.0ms)
+  [4;36;1mUser Columns (16.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+Completed in 94ms (View: 62, DB: 16) | 200 OK [http://localhost/posts/new]
+  [4;35;1mSearch Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `searches`[0m
+  [4;36;1mPropertySearch Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `property_searches`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PostsController#create (for 127.0.0.1 at 2010-03-02 22:52:50) [POST]
+  Parameters: {"commit"=>"Submit", "authenticity_token"=>"VJKxj5IJDz5ZU68ru2H5Femd8hNfPjCx8xeDYa+zaBU=", "post"=>{"available_from"=>"03/10/2010", "inspection_time"=>"", "title"=>"HOUSE", "expiry_date"=>"03/09/2010", "description"=>"", "negotiable"=>"1"}}
+  [4;35;1mPost Columns (15.0ms)[0m   [0mSHOW FIELDS FROM `posts`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mPost Create (0.0ms)[0m   [0mINSERT INTO `posts` (`available_from`, `postable_id`, `updated_at`, `title`, `inspection_time`, `postable_type`, `expiry_date`, `description`, `negotiable`, `created_at`) VALUES('2010-03-10', NULL, '2010-03-02 11:52:50', 'HOUSE', '', NULL, '2010-03-09', '', 1, '2010-03-02 11:52:50')[0m
+  [4;36;1mSQL (32.0ms)[0m   [0;1mCOMMIT[0m
+Redirected to http://localhost:3000/posts/1
+Completed in 141ms (DB: 47) | 302 Found [http://localhost/posts]
+  [4;35;1mSearch Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `searches`[0m
+  [4;36;1mPropertySearch Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `property_searches`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PostsController#show (for 127.0.0.1 at 2010-03-02 22:52:51) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mPost Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `posts`[0m
+  [4;36;1mPost Load (0.0ms)[0m   [0;1mSELECT * FROM `posts` WHERE (`posts`.`id` = 1) [0m
+Rendering template within layouts/application
+Rendering posts/show
+Rendered posts/_detail (0.0ms)
+  [4;35;1mUser Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+Completed in 94ms (View: 78, DB: 0) | 200 OK [http://localhost/posts/1]
+  [4;36;1mSearch Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `searches`[0m
+  [4;35;1mPropertySearch Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `property_searches`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PostsController#edit (for 127.0.0.1 at 2010-03-02 22:52:58) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mPost Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `posts`[0m
+  [4;35;1mPost Load (0.0ms)[0m   [0mSELECT * FROM `posts` WHERE (`posts`.`id` = 1) [0m
+Rendering template within layouts/application
+Rendering posts/edit
+Rendered posts/_form (47.0ms)
+  [4;36;1mUser Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+Completed in 125ms (View: 109, DB: 0) | 200 OK [http://localhost/posts/1/edit]
+  [4;35;1mSearch Columns (16.0ms)[0m   [0mSHOW FIELDS FROM `searches`[0m
+  [4;36;1mPropertySearch Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `property_searches`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PostsController#index (for 127.0.0.1 at 2010-03-02 22:53:08) [GET]
+  [4;35;1mPost Load (0.0ms)[0m   [0mSELECT * FROM `posts` LIMIT 0, 1[0m
+  [4;36;1mPost Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `posts`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSELECT count(*) AS count_all FROM `posts` [0m
+Rendering template within layouts/application
+Rendering posts/index
+Rendered posts/_abstract (16.0ms)
+Rendered posts/_list (16.0ms)
+  [4;36;1mUser Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+Completed in 94ms (View: 78, DB: 0) | 200 OK [http://localhost/posts]
+  [4;35;1mSearch Columns (15.0ms)[0m   [0mSHOW FIELDS FROM `searches`[0m
+  [4;36;1mPropertySearch Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `property_searches`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WelcomeController#index (for 127.0.0.1 at 2010-03-02 22:53:43) [GET]
+Redirected to http://localhost:3000/searches/new
+Completed in 0ms (DB: 0) | 302 Found [http://localhost/]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SearchesController#new (for 127.0.0.1 at 2010-03-02 22:53:43) [GET]
+  [4;35;1mSearch Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `searches`[0m
+  [4;36;1mPropertySearch Columns (16.0ms)[0m   [0;1mSHOW FIELDS FROM `property_searches`[0m
+Rendering template within layouts/application
+Rendering welcome/index
+Rendered property_searches/_form (0.0ms)
+Rendered searches/_form (0.0ms)
+  [4;35;1mUser Columns (16.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+Completed in 140ms (View: 93, DB: 32) | 200 OK [http://localhost/searches/new]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SearchesController#create (for 127.0.0.1 at 2010-03-02 22:54:22) [POST]
+  Parameters: {"search"=>{"property_search_attributes"=>{"min_of_bedrooms"=>"1", "max_of_bathrooms"=>"2", "max_of_bedrooms"=>"3", "property_type"=>"", "min_of_carparks"=>"1", "max_of_carparks"=>"2", "max_price"=>"700", "min_price"=>"200", "min_of_bathrooms"=>"1"}, "keyword"=>""}, "commit"=>"Search", "authenticity_token"=>"VJKxj5IJDz5ZU68ru2H5Femd8hNfPjCx8xeDYa+zaBU="}
+  [4;36;1mSearch Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `searches`[0m
+  [4;35;1mPropertySearch Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `property_searches`[0m
+Redirected to http://localhost:3000/searches/show
+Completed in 31ms (DB: 0) | 302 Found [http://localhost/searches]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SearchesController#show (for 127.0.0.1 at 2010-03-02 22:54:22) [GET]
+  Parameters: {"id"=>"show"}
+  [4;36;1mSearch Columns (15.0ms)[0m   [0;1mSHOW FIELDS FROM `searches`[0m
+  [4;35;1mPost Load (0.0ms)[0m   [0mSELECT * FROM `posts` [0m
+  [4;36;1mPropertySearch Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `property_searches`[0m
+  [4;35;1mProperty Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `properties`[0m
+  [4;36;1mProperty Load (0.0ms)[0m   [0;1mSELECT * FROM `properties` WHERE ((properties.number_of_carparks <= 2) AND ((properties.number_of_bathrooms >= 1) AND ((properties.price <= 700.0) AND ((properties.number_of_carparks >= 1) AND ((properties.number_of_bedrooms <= 3) AND ((properties.price >= 200.0) AND ((properties.number_of_bathrooms <= 2) AND (properties.number_of_bedrooms >= 1)))))))) [0m
+  [4;35;1mPost Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `posts`[0m
+  [4;36;1mPost Load (0.0ms)[0m   [0;1mSELECT * FROM `posts` WHERE (posts.postable_type = 'Property') [0m
+Rendering template within layouts/application
+Rendering welcome/index
+Rendered property_searches/_form (16.0ms)
+Rendered searches/_form (16.0ms)
+  [4;35;1mUser Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+Completed in 125ms (View: 47, DB: 15) | 200 OK [http://localhost/searches/show]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SearchesController#create (for 127.0.0.1 at 2010-03-02 22:54:55) [POST]
+  Parameters: {"search"=>{"property_search_attributes"=>{"min_of_bedrooms"=>"1", "max_of_bathrooms"=>"2", "max_of_bedrooms"=>"3", "property_type"=>"", "min_of_carparks"=>"1", "max_of_carparks"=>"2", "max_price"=>"700", "min_price"=>"200", "min_of_bathrooms"=>"1"}, "keyword"=>""}, "commit"=>"Search", "authenticity_token"=>"VJKxj5IJDz5ZU68ru2H5Femd8hNfPjCx8xeDYa+zaBU="}
+  [4;36;1mSearch Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `searches`[0m
+  [4;35;1mPropertySearch Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `property_searches`[0m
+Redirected to http://localhost:3000/searches/show
+Completed in 94ms (DB: 0) | 302 Found [http://localhost/searches]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SearchesController#show (for 127.0.0.1 at 2010-03-02 22:54:55) [GET]
+  Parameters: {"id"=>"show"}
+  [4;36;1mSearch Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `searches`[0m
+  [4;35;1mPost Load (0.0ms)[0m   [0mSELECT * FROM `posts` [0m
+  [4;36;1mPropertySearch Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `property_searches`[0m
+  [4;35;1mProperty Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `properties`[0m
+  [4;36;1mProperty Load (0.0ms)[0m   [0;1mSELECT * FROM `properties` WHERE ((properties.number_of_carparks <= 2) AND ((properties.number_of_bathrooms >= 1) AND ((properties.price <= 700.0) AND ((properties.number_of_carparks >= 1) AND ((properties.number_of_bedrooms <= 3) AND ((properties.price >= 200.0) AND ((properties.number_of_bathrooms <= 2) AND (properties.number_of_bedrooms >= 1)))))))) [0m
+  [4;35;1mPost Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `posts`[0m
+  [4;36;1mPost Load (0.0ms)[0m   [0;1mSELECT * FROM `posts` WHERE (posts.postable_type = 'Property') [0m
+Rendering template within layouts/application
+Rendering welcome/index
+Rendered property_searches/_form (0.0ms)
+Rendered searches/_form (0.0ms)
+  [4;35;1mUser Columns (16.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+Completed in 110ms (View: 31, DB: 16) | 200 OK [http://localhost/searches/show]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PostsController#new (for 127.0.0.1 at 2010-03-02 22:55:06) [GET]
+  [4;36;1mPost Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `posts`[0m
+Rendering template within layouts/application
+Rendering posts/new
+Rendered posts/_form (31.0ms)
+  [4;35;1mUser Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+Completed in 94ms (View: 79, DB: 0) | 200 OK [http://localhost/posts/new]
+  [4;36;1mSearch Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `searches`[0m
+  [4;35;1mPropertySearch Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `property_searches`[0m

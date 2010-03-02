@@ -1,22 +1,46 @@
-<% form_for @post do |f| %>
-  <%= f.error_messages %>
-  <p>
-    <%= f.label :title %>  <%= f.text_field :title %>
-  </p>
-  <p>
-    <%= f.label :description %> <%= f.text_area :description %>
-  </p>
-  <p>
-    <%= f.label :available_from %> <%= f.date_select :available_from %>
-  </p>
-  <p>
-    <%= f.label :expiry_date %> <%= f.date_select :expiry_date %>
-  </p>
-  <p>
-    <%= f.label :inspection_time %> <%= f.text_field :inspection_time %>
-  </p>
-  <p>
-    <%= f.label :negotiable %> <%= f.check_box :negotiable %>
-  </p>
-  <p><%= f.submit "Submit" %></p>
+<div class ="full_container">
+  <% form_for @post do |f| %>
+    <%= f.error_messages %>
+    <div class="form_line">
+      <div class="field_20">
+        <%= f.label :title %>
+        <%= f.text_field :title %>
+      </div>
+    </div>
+    <div class="form_line" style="height: 320px;">
+      <div class="field_20">
+        <%= f.label :description %>
+        <%= f.text_area :description %>
+      </div>
+    </div>
+    <div class="form_line">
+      <div class="field_20">
+        <%= f.label :available_from %>
+        <%= f.text_field :available_from , :class => "startdatepick",:id => "post_start_date", :end_date => "post_end_date"%>
+      </div>
+    </div>
+    <div class="form_line">
+      <div class="field_20">
+        <%= f.label :expiry_date %>
+        <%= f.text_field :expiry_date, :class => "enddatepick",:id => "post_end_date", :end_date => "post_start_date"%>
+      </div>
+    </div>
+    <div class="form_line">
+      <div class="field_20">
+        <%= f.label :inspection_time %> <%= f.text_field :inspection_time %>
+      </div>
+    </div>
+  <div class="form_line" >
+      
+       <label>negotiable </label>
+        <%= f.check_box :negotiable %>
+     
+    </div>
+     <div class="form_line">
+      <div class="field_20">
+        <label></label>
+      <%= f.submit "Submit" %>
+      </div>
+    </div>
+  </div>
 <% end %>
