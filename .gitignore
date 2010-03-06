@@ -1,5 +1,7 @@
-/nbproject/*
-
-/tmp/**/*
-/db/schema.db
-/.git
+.DS_Store
+log/*.log
+tmp/**/*
+db/*.sqlite3
+nbproject/*
+coverage/*
+*.db

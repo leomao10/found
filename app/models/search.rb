@@ -1,14 +1,18 @@
 class Search < ActiveRecord::Base
   has_one :property_search
-  accepts_nested_attributes_for :property_search
+  accepts_nested_attributes_for :property_search, :allow_destroy => true
+
+  def after_initialize
+    build_property_search if property_search.nil?
+  end
 
   def search_by_property
-    property_search ||= PropertySearch.new
     properties = property_search.properties
-    property_ids = properties.each do |p|
+    return [] if properties.empty?
+    property_ids = properties.each{ |p|
       p.id
-    end
-    Post.postable_type_eq("Property").postable_id_in(property_ids)
+    }
+    Post.postable_type_eq("Property").postable_id_eq_any(property_ids)
   end
 
   def search_address_like(arg)
@@ -20,6 +24,6 @@ class Search < ActiveRecord::Base
   end
 
   def posts
-    @posts ||= (search_address_like(keyword) & search_by_property)
+    @posts = (search_address_like(keyword) & search_by_property)
   end
 end

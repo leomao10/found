@@ -330,7 +330,7 @@ div#page_body {
 	background: #dcdcdc;
 }
 
-#page_body #content .full_container input {
+#page_body #content_body .full_container input {
     font-size:14px;
     font-family:Arial, Helvetica, sans-serif;
     line-height:16px;
@@ -340,15 +340,15 @@ div#page_body {
     background: #FFFFFF;
 }
 
-#page_body  #content .full_container .form_line .field_20 {
+#page_body  #content_body .full_container .form_line .field_20 {
     float: left;
     height: 40px;
     margin-right: 10px;
 }
 
-#page_body  #content .full_container .form_line .field_20 {width: 20%;}
+#page_body  #content_body .full_container .form_line .field_20 {width: 20%;}
 
-#page_body  #content .full_container .form_line {
+#page_body  #content_body .full_container .form_line {
     float: left;
     height: 40px;
     width: 100%;
@@ -501,7 +501,7 @@ label {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 11px;
     font-weight: bold;
-    color: #666;
+   
     text-decoration: none;
     display: block;
     padding-left: 3px;
@@ -537,3 +537,4 @@ div#footer a {
 div#footer a:hover {
     color: #7C8083;
 }
+

@@ -51,4 +51,24 @@ Rails::Initializer.run do |config|
   # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}')]
   # config.i18n.default_locale = :de
   config.action_controller.session_store = :active_record_store
+  config.action_mailer.delivery_method = :smtp  # :smtp for live, test for test
+  config.action_mailer.perform_deliveries = true # true for live, false for test
+  config.action_mailer.raise_delivery_errors = true
+
+  config.action_mailer.smtp_settings = {
+
+    :enable_starttls_auto => true,
+    :address  => "smtp.gmail.com",
+    :port => 25,
+    
+    :authentication => :plain,
+    :user_name => "stevenzhou2011@gmail.com",
+    :password => "19820825gre",
+  }
+
+
+
+# The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
+# config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}')]
+# config.i18n.default_locale = :de
 end

@@ -137,6 +137,7 @@ $(document).ready(function() {
 });
  
 
+
 // *** google map ***
 function showAddress(address) {
     if (GBrowserIsCompatible()) {
@@ -168,6 +169,11 @@ function showAddress(address) {
             });
     }
 }
+
+//side jquery content start from here
+$(document).ready(function(){
+    datapick_config();
+});
 
 jQuery(function($){
     // *** search box ***
@@ -207,3 +213,15 @@ jQuery(function($){
         return false;
     });
 });
+
+
+
+
+
+
+
+
+
+
+
+
