@@ -5,5 +5,8 @@ class Address < ActiveRecord::Base
   #Association
   belongs_to :post
   belongs_to :suburb
-  
+
+  def to_s
+    [line1,line2,suburb.name,suburb.state].join(",")
+  end
 end

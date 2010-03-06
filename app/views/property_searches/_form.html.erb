@@ -1,34 +1,26 @@
 <label class="slider_required" min="0" max="2000" step="50">
-  <%= f.hidden_field :min_price, :value=>"200", :type=>"hidden", :class=>"min" %>
-  <%= f.hidden_field :max_price, :value=>"700", :type=>"hidden", :class=>"max" %>
+  <%= f.hidden_field :min_price, :type=>"hidden", :class=>"min" %>
+  <%= f.hidden_field :max_price, :type=>"hidden", :class=>"max" %>
   <span class="text">Price Range: </span>$<span class="value"></span><span class="bar"></span>
 </label>
 <label class="slider_required bedroom" min="0" max="10">
-  <%= f.hidden_field :min_of_bedrooms, :value=>"1", :type=>"hidden", :class=>"min" %>
-  <%= f.hidden_field :max_of_bedrooms, :value=>"3", :type=>"hidden", :class=>"max" %>
+  <%= f.hidden_field :min_of_bedrooms, :type=>"hidden", :class=>"min" %>
+  <%= f.hidden_field :max_of_bedrooms, :type=>"hidden", :class=>"max" %>
   <span class="text">Bedroom: </span><span class="value"></span><span class="bar"></span>
 </label>
 <label class="slider_required bathroom" min="0" max="4">
-  <%= f.hidden_field :min_of_bathrooms, :value=>"1", :type=>"hidden", :class=>"min" %>
-  <%= f.hidden_field :max_of_bathrooms, :value=>"2", :type=>"hidden", :class=>"max" %>
+  <%= f.hidden_field :min_of_bathrooms, :type=>"hidden", :class=>"min" %>
+  <%= f.hidden_field :max_of_bathrooms, :type=>"hidden", :class=>"max" %>
   <span class="text">Bathroom: </span><span class="value"></span><span class="bar"></span>
 </label>
 <label class="slider_required carpark" min="0" max="4">
-  <%= f.hidden_field :min_of_carparks, :value=>"1", :type=>"hidden", :class=>"min" %>
-  <%= f.hidden_field :max_of_carparks, :value=>"2", :type=>"hidden", :class=>"max" %>
+  <%= f.hidden_field :min_of_carparks, :type=>"hidden", :class=>"min" %>
+  <%= f.hidden_field :max_of_carparks, :type=>"hidden", :class=>"max" %>
   <span class="text">Carspace: </span><span class="value"></span><span class="bar"></span>
 </label>
 <label class="property_type">
-  <%= f.label :property_type, :class=>"text" %>
-  <span >Property type: </span>
+  <span class="text" >Property type: </span>
   <span class="bar">
-    <%= f.text_field :property_type %>
-    <select>
-      <option value="">Any</option>
-      <option value="">House</option>
-      <option value="">Townhouse</option>
-      <option value="">Unit/Apartment</option>
-      <option value="">Terrace</option>
-    </select>
+    <%= f.collection_select :property_type, Property::TYPES, :to_s, :upcase, {:prompt => true} %>
   </span>
 </label>

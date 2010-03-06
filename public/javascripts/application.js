@@ -9,7 +9,11 @@ format.js {render :layout => false}
 end
 */
 
-jQuery.ajaxSetup({ 'beforeSend': function(xhr) {xhr.setRequestHeader("Accept", "text/javascript")} })
+jQuery.ajaxSetup({
+    'beforeSend': function(xhr) {
+        xhr.setRequestHeader("Accept", "text/javascript")
+    }
+})
 
 function _ajax_request(url, data, callback, type, method) {
     if (jQuery.isFunction(data)) {
@@ -22,7 +26,7 @@ function _ajax_request(url, data, callback, type, method) {
         data: data,
         success: callback,
         dataType: type
-        });
+    });
 }
 
 jQuery.extend({
@@ -40,13 +44,13 @@ Use the class ajaxForm in your form declaration
 <% form_for @comment,:html => {:class => "ajaxForm"} do |f| -%>
 */
 jQuery.fn.submitWithAjax = function() {
-  this.unbind('submit', false);
-  this.submit(function() {
-    $.post(this.action, $(this).serialize(), null, "script");
-    return false;
-  })
+    this.unbind('submit', false);
+    this.submit(function() {
+        $.post(this.action, $(this).serialize(), null, "script");
+        return false;
+    })
 
-  return this;
+    return this;
 };
 
 /*
@@ -55,12 +59,12 @@ Use the class get in your link declaration
 <%= link_to 'My link', my_path(),:class => "get" %>
 */
 jQuery.fn.getWithAjax = function() {
-  this.unbind('click', false);
-  this.click(function() {
-    $.get($(this).attr("href"), $(this).serialize(), null, "script");
-    return false;
-  })
-  return this;
+    this.unbind('click', false);
+    this.click(function() {
+        $.get($(this).attr("href"), $(this).serialize(), null, "script");
+        return false;
+    })
+    return this;
 };
 
 /*
@@ -69,12 +73,12 @@ Use the class post in your link declaration
 <%= link_to 'My link', my_new_path(),:class => "post" %>
 */
 jQuery.fn.postWithAjax = function() {
-  this.unbind('click', false);
-  this.click(function() {
-    $.post($(this).attr("href"), $(this).serialize(), null, "script");
-    return false;
-  })
-  return this;
+    this.unbind('click', false);
+    this.click(function() {
+        $.post($(this).attr("href"), $(this).serialize(), null, "script");
+        return false;
+    })
+    return this;
 };
 
 /*
@@ -83,12 +87,12 @@ Use the class put in your link declaration
 <%= link_to 'My link', my_update_path(data),:class => "put",:method => :put %>
 */
 jQuery.fn.putWithAjax = function() {
-  this.unbind('click', false);
-  this.click(function() {
-    $.put($(this).attr("href"), $(this).serialize(), null, "script");
-    return false;
-  })
-  return this;
+    this.unbind('click', false);
+    this.click(function() {
+        $.put($(this).attr("href"), $(this).serialize(), null, "script");
+        return false;
+    })
+    return this;
 };
 
 /*
@@ -97,13 +101,13 @@ Use the class delete in your link declaration
 <%= link_to 'My link', my_destroy_path(data),:class => "delete",:method => :delete %>
 */
 jQuery.fn.deleteWithAjax = function() {
-  this.removeAttr('onclick');
-  this.unbind('click', false);
-  this.click(function() {
-    $.delete_($(this).attr("href"), $(this).serialize(), null, "script");
-    return false;
-  })
-  return this;
+    this.removeAttr('onclick');
+    this.unbind('click', false);
+    this.click(function() {
+        $.delete_($(this).attr("href"), $(this).serialize(), null, "script");
+        return false;
+    })
+    return this;
 };
 
 /*
@@ -119,36 +123,51 @@ function ajaxLinks(){
 }
 
 $(document).ready(function() {
-// All non-GET requests will add the authenticity token
- $(document).ajaxSend(function(event, request, settings) {
-       if (typeof(window.AUTH_TOKEN) == "undefined") return;
-       // IE6 fix for http://dev.jquery.com/ticket/3155
-       if (settings.type == 'GET' || settings.type == 'get') return;
+    // All non-GET requests will add the authenticity token
+    $(document).ajaxSend(function(event, request, settings) {
+        if (typeof(window.AUTH_TOKEN) == "undefined") return;
+        // IE6 fix for http://dev.jquery.com/ticket/3155
+        if (settings.type == 'GET' || settings.type == 'get') return;
 
-       settings.data = settings.data || "";
-       settings.data += (settings.data ? "&" : "") + "authenticity_token=" + encodeURIComponent(window.AUTH_TOKEN);
-     });
+        settings.data = settings.data || "";
+        settings.data += (settings.data ? "&" : "") + "authenticity_token=" + encodeURIComponent(window.AUTH_TOKEN);
+    });
 
-  ajaxLinks();
+    ajaxLinks();
 });
  
 
+// *** google map ***
+function showAddress(address) {
+    if (GBrowserIsCompatible()) {
+        // init the map within div element
+        map = new GMap2($('#googlemap').get(0));
+        // init the geo coder to get the geo point
+        geocoder = new GClientGeocoder();
+        geocoder.getLatLng(
+            'burwood, NSW',
+            function(point) {
+                if (point) {
+                    // must set the center first
+                    map.setCenter(point, 15);
+                }
+            });
+        var ui = map.getDefaultUI();
+        ui.controls.smallzoomcontrol3d = true;
+        map.setUI(ui);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        // some more controllers
+        //map.addControl(new GMapTypeControl());
+        geocoder.getLatLng(
+            address,
+            function(point) {
+                if (point) {
+                    var marker = new GMarker(point);
+                    map.addOverlay(marker);
+                }
+            });
+    }
+}
 
 jQuery(function($){
     // *** search box ***
@@ -159,12 +178,18 @@ jQuery(function($){
         opts.range = true;
         opts.slide = function(event, ui) {
             $('span.value', _this).text(ui.values[0] + ' - ' + ui.values[1]);
+            $('input.min',_this).val(ui.values[0]);
+            $('input.max',_this).val(ui.values[1]);
         }
         if ($(_this).attr('step')) opts.step = parseInt($(_this).attr('step'));
-        opts.values = [$('input.min', _this).val(), $('input.max', _this).val()];
+        var min_val = $('input.min', _this).val() ? $('input.min', _this).val() : opts.min;
+        var max_val = $('input.max', _this).val() ? $('input.max', _this).val() : opts.max;
+        opts.values = [min_val, max_val];
         $('span.bar', _this).slider(opts);
-        $('span.value', _this).text($('input.min', _this).val() + ' - ' + $('input.max', _this).val());
+        $('span.value', _this).text(min_val + ' - ' + max_val);
     });
+
+
     $('a.more').each(function(e){
         var _this = this, $more = $('div.more_options');
         var show = function(){
@@ -181,39 +206,4 @@ jQuery(function($){
             $(_this).toggle(hide, show);
         return false;
     });
-    // *** google map ***
-
-    function showAddresses(addresses) {
-        if (GBrowserIsCompatible()) {
-            // init the map within div element
-            map = new GMap2($('#googlemap').get(0));
-            // init the geo coder to get the geo point
-            geocoder = new GClientGeocoder();
-            geocoder.getLatLng(
-                'burwood, NSW',
-                function(point) {
-                    if (point) {
-                        // must set the center first
-                        map.setCenter(point, 15);
-                    }
-                });
-            var ui = map.getDefaultUI();
-            ui.controls.smallzoomcontrol3d = true;
-            map.setUI(ui);
-
-            // some more controllers
-            //map.addControl(new GMapTypeControl());
-            $(addresses).each(function(index, address) {
-                geocoder.getLatLng(
-                    address,
-                    function(point) {
-                        if (point) {
-                            var marker = new GMarker(point);
-                            map.addOverlay(marker);
-                        }
-                    });
-            });
-        }
-    }
-    showAddresses(['13-17 Oxford St, Burwood, NSW', 'Hornsey St, Burwood, NSW']);
 });

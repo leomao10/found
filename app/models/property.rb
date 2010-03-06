@@ -5,6 +5,5 @@ class Property < ActiveRecord::Base
 
   #Association
   has_one :post, :as => :postable
-  has_many :images, :as => :imagable
   #Name Scope
 end

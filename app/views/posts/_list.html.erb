@@ -1,14 +1,32 @@
-<div class="top">
-  <%= will_paginate posts %>
-</div>
-<ul class="list">
-  <% for post in posts %>
-    <li class="item">
-      <%= render :partial => "/posts/abstract", :locals => { :post => post } %>
-    </li>
-  <% end %>
-</ul>
-<div class="bottom">
-  <%= will_paginate posts %>
-</div>
 <div id="googlemap">google map</div>
+<div id="content">
+  <div class="top">
+    <div class="entries_info"><%= page_entries_info posts %></div>
+    <%= will_paginate posts, :class => "paginate"%>
+  </div>
+  <ul class="list">
+    <% for post in posts %>
+      <li class="item">
+        <%= render :partial => "/posts/abstract", :locals => { :post => post } %>
+      </li>
+    <% end %>
+  </ul>
+  <div class="bottom">
+    <%= will_paginate posts, :class => "paginate" %>
+  </div>
+</div>
+<script type="text/javascript">
+  $(".address").each(function(index, address){
+    showAddress([$(address).text()]);
+  });
+  $(".collapse").click(function(){
+    $(this).closest('.post').find('.middle').toggle();
+  })
+  
+  $('.slider').cycle({
+    speed:  'fast',
+    timeout: 0,
+    next:   '.next2',
+    prev:   '.prev2'
+  });
+</script>

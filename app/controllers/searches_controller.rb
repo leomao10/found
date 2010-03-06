@@ -2,23 +2,22 @@ class SearchesController < ApplicationController
   def new
     @search = Search.new
     @search.build_property_search
-    render "welcome/index"
+    render :template => "welcome/index", :locals  => { :search => @search }
   end
   
   def create
-    @search = Search.new(params[:search])
-    session[:search] = @search
+    session[:search] = params[:search]
     redirect_to :action => "show"
   end
 
   def show
-    if session[:search]
-      @search  = session[:search]
+    unless session[:search].nil?
+      @search  = Search.new(session[:search])
     else
       @search ||= Search.new
       @search.build_property_search
     end
     @posts = @search.posts.paginate :page => params[:page], :per_page => 1
-    render "welcome/index"
+    render :template => "welcome/index", :locals => { :search => @search }
   end
 end

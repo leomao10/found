@@ -3,6 +3,7 @@ class Search < ActiveRecord::Base
   accepts_nested_attributes_for :property_search
 
   def search_by_property
+    property_search ||= PropertySearch.new
     properties = property_search.properties
     property_ids = properties.each do |p|
       p.id

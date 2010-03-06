@@ -7,7 +7,7 @@
     <meta name="keywords" content="" />
     <%= stylesheet_link_tag 'application', 'jquery-ui-1.7.2.custom' %>
     <%= javascript_include_tag 'jquery-1.3.2.min',
-      'jquery-ui-1.7.2.custom.min',
+      'jquery-ui-1.7.2.custom.min','jquery.cycle.all.min',
       'application.js'%>
     <%= yield_authenticity_token %>
     <script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAAYLuaqB7qMuVmZct0bNAhVRToMsSLBLYOIGCFpHF2BQfOB79_-BR2PDljF3gNcHkI6rzbMOOf_XFw1g" type="text/javascript"></script>
@@ -40,13 +40,15 @@
     <div id="page_body">
       <div id="header">
         <div id="logo"></div>
-        <div class="text">
-          <h1>Welcome!<br />You're new, aren't you?</h1>
-          <h2>FOUND YOUR HOME is a respectful community of young people who look for their next home. We provide the best tools and resource to help you to find your next stay.</h2>
-          <h3>Go ahead, start looking...</h3>
-        </div>
+        <% unless current_user %>
+          <div class="text">
+            <h1>Welcome!<br />You're new, aren't you?</h1>
+            <h2>FOUND YOUR HOME is a respectful community of young people who look for their next home. We provide the best tools and resource to help you to find your next stay.</h2>
+            <h3>Go ahead, start looking...</h3>
+          </div>
+        <% end %>
       </div>
-      <div id="content">
+      <div id="content_body">
         <%= yield %>
       </div>
       <div id="footer">

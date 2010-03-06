@@ -1,7 +1,48 @@
-<h4 class="title"><%=h post.title %></h4>
-<% postable = post.postable %>
-<% unless postable.nil? %>
-  <% dir_name = postable.class.table_name %>
-  <% local = postable.class.class_name.downcase%>
-  <%= render :partial => "/" + dir_name + "/abstract", :locals => { local.to_sym => postable } %>
-<% end %>
+<div class="post">
+  <div class="top">
+    <div class="address">
+      <%= h post.address.to_s %>
+    </div>
+    <div class="collapse"><a href="#">Collapse</a></div>
+  </div>
+  <div class="middle">
+    <div class="image_slider">
+      <div class="slider">
+        <% if post.images.length > 0 %>
+          <% post.images.each do|image| %>
+            <%= image_tag image.photo.url(:thumb), :width=> "120px", :height=>"90px" %>
+          <% end %>
+        <% else %>
+          <%= image_tag "noimage_thumb.gif", :width=> "120px", :height=>"90px" %>
+        <% end %>
+      </div>
+      <% if post.images.length > 0 %>
+        <div class="image_nav">
+          <div>
+            <a class="prev2" href="#">Prev</a>
+            <a class="next2" href="#">Next</a>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <div class="right">
+      <div class="postable">
+        <% postable = post.postable %>
+        <% unless postable.nil? %>
+          <% dir_name = postable.class.table_name %>
+          <% local = postable.class.class_name.downcase%>
+          <%= render :partial => "/" + dir_name + "/abstract", :locals => { local.to_sym => postable } %>
+        <% end %>
+      </div>
+      <div class="description">
+        <%= h post.description %>
+      </div>
+    </div>
+    <div class="user">
+
+    </div>
+    <% if current_user %>
+      <%= link_to "Save" %>
+    <% end %>
+  </div>
+</div>

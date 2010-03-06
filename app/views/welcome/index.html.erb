@@ -9,17 +9,17 @@
     </ul>
   </div>
   <div class="search_panel">
-    <% form_for @search do |f| %>
+    <% form_for search do |f| %>
       <%= render :partial => "searches/form", :locals => { :f => f }%>
     <% end %>
   </div>
-  <% if not @posts.nil? %>
-    <div class="search_result">
+  <div class="search_result">
+    <% if not @posts.nil? %>
       <% if not @posts.empty? %>
         <%= render :partial => "posts/list", :locals => { :posts => @posts } %>
       <% else %>
         Could Not Found Any Record
       <% end %>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 </div>

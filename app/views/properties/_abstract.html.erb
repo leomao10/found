@@ -1,47 +1,12 @@
-<div class="preview">
-  <div class="picture">Some picture</div>
-  <div class="info"><ul>
-      <li><span class="label"></span><span class="value">$40 per week</span></li>
-      <li><span class="label"></span><span class="value">fasdfasdfasdfsadf</span></li>
-    </ul></div>
+<div class="price">
+  <%= number_to_currency(property.price) %>
 </div>
-<p>
-  <strong>Number Of Bedrooms:</strong>
+<div class="bedroom_num">
   <%=h property.number_of_bedrooms %>
-</p>
-<p>
-  <strong>Number Of Carparks:</strong>
+</div>
+<div class="carpark_num">
   <%=h property.number_of_carparks %>
-</p>
-<p>
-  <strong>Number Of Bathrooms:</strong>
+</div>
+<div class="bathroom_num">
   <%=h property.number_of_bathrooms %>
-</p>
-<p>
-  <strong>Price:</strong>
-  <%=h property.price %>
-</p>
-<p>
-  <strong>Bond:</strong>
-  <%=h property.bond %>
-</p>
-<p>
-  <strong>Max Tenants:</strong>
-  <%=h property.max_tenants %>
-</p>
-<p>
-  <strong>Number Of Current Tenants:</strong>
-  <%=h property.number_of_current_tenants %>
-</p>
-<p>
-  <strong>Furnished:</strong>
-  <%=h property.furnished %>
-</p>
-<p>
-  <strong>Purpose:</strong>
-  <%=h property.purpose %>
-</p>
-<p>
-  <strong>Type:</strong>
-  <%=h property.prop_type %>
-</p>
+</div>

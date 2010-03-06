@@ -8,7 +8,7 @@
 Suburb.delete_all
 open("db/suburbs.csv") do |suburbs|
   suburbs.read.each_line do |suburb|
-    id,postcode,suburb, aus_post_name, state, latitude,longitude = suburb.chomp.split("|")
-    Suburb.create!(:name => aus_post_name, :state => state, :postcode => postcode)
+    id,postcode,suburb, state = suburb.chomp.split("|")
+    Suburb.create!(:name => suburb, :state => state, :postcode => postcode)
   end
 end
