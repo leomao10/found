@@ -1,5 +1,5 @@
 /nbproject/*
-/log/*.log
+
 /tmp/**/*
 /db/schema.db
 /.git
