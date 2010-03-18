@@ -1,18 +1,8 @@
 <% title "Welcomes" %>
 <div id="search">
-  <div class="tabs">
-    <ul>
-      <li class="highlight"><a href="#"><span>Rent</span></a></li>
-      <li><a href="#"><span>Share</span></a></li>
-      <li><a href="#"><span>Furniture</span></a></li>
-      <li><a href="#"><span>Carspace</span></a></li>
-    </ul>
-  </div>
-  <div class="search_panel">
-    <% form_for search do |f| %>
-      <%= render :partial => "searches/form", :locals => { :f => f }%>
-    <% end %>
-  </div>
+  <% form_for search do |f| %>
+    <%= render :partial => "searches/form", :locals => { :f => f }%>
+  <% end %>
   <div class="search_result">
     <% if not @posts.nil? %>
       <% if not @posts.empty? %>

@@ -4,7 +4,9 @@ class PostsController < ApplicationController
   end
   
   def show
+    @search = Search.new
     @post = Post.find(params[:id])
+    render :template => 'posts/show', :locals => { :search => @search, :post => @post }
   end
   
   def new

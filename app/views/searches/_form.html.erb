@@ -1,14 +1,24 @@
-<div class="inner">
-  <%= f.error_messages %>
-  <div class="main">
-    <%= f.text_field :keyword, :class=>"keywords" %>
-    <%= f.submit "Search", :class=>"search" %>
+<div class="tabs">
+  <ul>
+    <li class="highlight"><a href="#"><span>Rent</span></a></li>
+    <li><a href="#"><span>Share</span></a></li>
+    <li><a href="#"><span>Furniture</span></a></li>
+    <li><a href="#"><span>Carspace</span></a></li>
+  </ul>
+</div>
+<div class="search_panel">
+  <div class="inner">
+    <%= f.error_messages %>
+    <div class="main">
+      <%= f.text_field :keyword, :class=>"keywords" %>
+      <%= f.submit "Search", :class=>"search" %>
+    </div>
+    <label><input type="checkbox" class="checkbox" /> Include surrounding suburbs</label>
+    <div class="more_options">
+      <% f.fields_for :property_search do |property_form| %>
+        <%= render :partial => "property_searches/form", :locals => { :f => property_form } %>
+      <% end %>
+    </div>
+    <a href="#" class="more" hide="Hide search criterias" show="Show more search criterias">Show more search criterias</a>
   </div>
-  <label><input type="checkbox" class="checkbox" /> Include surrounding suburbs</label>
-  <div class="more_options">
-    <% f.fields_for :property_search do |property_form| %>
-      <%= render :partial => "property_searches/form", :locals => { :f => property_form } %>
-    <% end %>
-  </div>
-  <a href="#" class="more" hide="Hide search criterias" show="Show more search criterias">Show more search criterias</a>
 </div>

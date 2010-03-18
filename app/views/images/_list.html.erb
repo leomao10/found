@@ -1,0 +1,19 @@
+<div class="image_slider">
+  <div class="slider">
+    <% if images.length > 0 %>
+      <% images.each do|image| %>
+        <%= image_tag image.photo.url(size)%>
+      <% end %>
+    <% else %>
+      <%= image_tag "noimage_thumb.gif" %>
+    <% end %>
+  </div>
+  <% if images.length > 0 %>
+    <div class="image_nav">
+      <div>
+        <a class="prev2">Prev</a>
+        <a class="next2">Next</a>
+      </div>
+    </div>
+  <% end %>
+</div>

@@ -1,5 +1,5 @@
-<div id="googlemap">google map</div>
-<div id="content">
+<div id="googlemap" class="right half">google map</div>
+<div id="content" class="half">
   <div class="top">
     <div class="entries_info"><%= page_entries_info posts %></div>
     <%= will_paginate posts, :class => "paginate"%>
@@ -15,9 +15,10 @@
     <%= will_paginate posts, :class => "paginate" %>
   </div>
 </div>
+
 <script type="text/javascript">
   $(".address").each(function(index, address){
-    showAddress([$(address).text()]);
+    $("#googlemap").show_address([$(address).text()]);
   });
   $(".collapse").click(function(){
     $(this).closest('.post').find('.middle').toggle();

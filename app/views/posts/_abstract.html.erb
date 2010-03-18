@@ -1,31 +1,15 @@
 <div class="post">
   <div class="top">
     <div class="address">
-      <%= h post.address.to_s %>
+      <%= link_to "#{h post.address.to_s}", post_path(post) %>
     </div>
-    <div class="collapse"><a href="#">Collapse</a></div>
+    <div class="collapse"><a>Collapse</a></div>
   </div>
-  <div class="middle">
-    <div class="image_slider">
-      <div class="slider">
-        <% if post.images.length > 0 %>
-          <% post.images.each do|image| %>
-            <%= image_tag image.photo.url(:thumb), :width=> "120px", :height=>"90px" %>
-          <% end %>
-        <% else %>
-          <%= image_tag "noimage_thumb.gif", :width=> "120px", :height=>"90px" %>
-        <% end %>
-      </div>
-      <% if post.images.length > 0 %>
-        <div class="image_nav">
-          <div>
-            <a class="prev2" href="#">Prev</a>
-            <a class="next2" href="#">Next</a>
-          </div>
-        </div>
-      <% end %>
+  <div class="middle container">
+    <div class="left">
+      <%= render :partial => "/images/list", :locals => { :images => post.images, :size => :thumb } %>
     </div>
-    <div class="right">
+    <div class="abstract">
       <div class="postable">
         <% postable = post.postable %>
         <% unless postable.nil? %>

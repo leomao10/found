@@ -129,12 +129,12 @@ input {
 }
 div#top_bar {
     background-color: #EBF2F8;
-	text-align: center;
+    text-align: center;
 }
 div#top_bar div.inner {
     margin: auto;
     width: 800px;
-	padding-left: 80px;
+    padding-left: 80px;
 }
 div#top_bar div.general_nav {
     display: inline-block;
@@ -174,9 +174,9 @@ div#logo {
     background: url(../images/logo.png) left center no-repeat;
     width: 323px;
     height: 200px;
-	position: relative;
-	top: -70px;
-	left: -100px;
+    position: relative;
+    top: -70px;
+    left: -100px;
 }
 div#header div.text {
     display: inline-block;
@@ -195,9 +195,6 @@ div#header div.text h2 {
 div#header div.text h3 {
     font-size: 14px;
     color: #F37D11;
-}
-div#content {
-    min-height: 500px;
 }
 
 /* search section */
@@ -259,6 +256,11 @@ div#search div.search_panel div.inner {
 div#search div.search_panel div.inner div.main {
     padding: 6px 0 14px;
 }
+
+div#search div.search_panel div.inner div.option label {
+    width: 250px;
+}
+
 div#search div.search_panel a.more {
     display: inline-block;
     background: url(../images/arrow_right.png) left no-repeat;
@@ -303,31 +305,26 @@ div.search_result {
 
 div#page_body {
     width: 960px;
-	margin: auto;
+    margin: auto;
 }
 
 #page_body #content_body{
-	background: #ffffff;
-	padding: 15px;
-	min-height: 550px;
-}
-
-#page_body #content {
-	margin-right: 47%;
+    background: #ffffff;
+    padding: 15px;
+    min-height: 550px;
 }
 
 #page_body .entries_info {
-	background: #dcdcdc;
-	padding: 10px 15px 10px 15px;
-	border: 1px #aaaaaa solid;
+    background: #dcdcdc;
+    padding: 10px 15px 10px 15px;
+    border-bottom: 1px #aaaaaa solid;
 }
 
 #page_body .paginate {
-	padding: 8px 10px 8px 10px;
-	border: 1px #aaaaaa solid;
-	border-top: none;
-	border-bottom: none;
-	background: #dcdcdc;
+    padding: 8px 10px 8px 10px;
+    border-top: none;
+    border-bottom: none;
+    background: #dcdcdc;
 }
 
 #page_body #content_body .full_container input {
@@ -340,151 +337,182 @@ div#page_body {
     background: #FFFFFF;
 }
 
-#page_body  #content_body .full_container .form_line .field_20 {
+.container .field_20
+{
     float: left;
-    height: 40px;
     margin-right: 10px;
+    width: 20%;
 }
 
-#page_body  #content_body .full_container .form_line .field_20 {width: 20%;}
-
-#page_body  #content_body .full_container .form_line {
-    float: left;
-    height: 40px;
-    width: 100%;
-}
 
 ul.list{
-	margin: 0;
-	padding: 0;
-	list-style: none;
+    margin: 0;
+    padding: 0;
+    list-style: none;
 }
 
-li.item .post .top{
-	background: url(../images/post_top_bg.png) repeat-x;
-	height: 35px;
-	border: 1px solid #a6d0e6;
+/* post */
+
+.post .top{
+    background: url(../images/post_top_bg.png) repeat-x;
+    height: 35px;
+    border: 1px solid #a6d0e6;
 }
 
-li.item .post .top .address{
-	display: inline-block;
-	width: 78%;
-	padding: 10px;
-	font-size: 11px;
-	font-weight: bold;
+.post .top .address{
+    display: inline-block;
+    width: 78%;
+    padding: 10px;
+    font-size: 11px;
+    font-weight: bold;
 }
 
-li.item .post .top .collapse{
-	display: inline-block;
+.post .top .collapse{
+    display: inline-block;
 }
 
-li.item .post .top .collapse a{
-	text-decoration: none;
-	color: #02adf2;
-	font-size: 9px;
-	background: url(../images/collapse_arrow.png) top left no-repeat;
-	padding-left: 15px;
+.post .top .collapse a{
+    text-decoration: none;
+    color: #02adf2;
+    font-size: 9px;
+    background: url(../images/collapse_arrow.png) top left no-repeat;
+    padding-left: 15px;
 }
 
-li.item .post .top .collapse a:hover{
-	text-decoration: none;
+.post .top .collapse a:hover{
+    text-decoration: none;
 }
 
-li.item .post .middle
+.post .middle
 {
-	padding: 10px;
-	border: 1px #aaaaaa solid;
-	border-top: none;
-	border-bottom: none;
-	min-height: 120px;
+    padding: 10px;
+    border-top: none;
+    border-bottom: none;
+    min-height: 120px;
 }
-
-li.item .post .middle .image_slider
+/* end post */
+.small_img
 {
-	float: left;
-	width: 120px;
-	border: 1px #aaaaaa solid;
-	background: #eeeeee;
-	padding: 5px;
+    width: 120px;
 }
 
-li.item .post .middle .image_slider .image_nav
+.image_slider
+{    
+    border: 1px #aaaaaa solid;
+    background: #eeeeee;
+    padding: 5px;
+}
+
+.image_slider .slider
 {
-	padding: 5px;
-	text-align: center;
+    text-align: center;
 }
 
-li.item .post .middle .right
+.image_slider .image_nav
 {
-	margin-left: 150px;
+    padding: 5px;
+    text-align: center;
 }
 
-li.item .post .middle .postable .price
+li.item .post .middle .abstract
 {
-	font-size: 20px;
-	color: #02adf2;
-	display: inline-block;
-	width: 60%;
+    margin-left: 120px;
 }
 
-li.item .post .middle .postable .bedroom_num{
-	background: url(../images/bedroom.png) top left no-repeat;
-	display: inline-block;
-	padding-left: 25px;
-	color: #777777;
-	font-size: 12px;
-	font-weight: bold;
+/* postable */
+.postable .price
+{
+    font-size: 20px;
+    color: #02adf2;
+    display: inline-block;
+    width: 60%;
 }
 
-li.item .post .middle .postable .carpark_num{
-	background: url(../images/carpark.png) top left no-repeat;
-	display: inline-block;
-	padding-left: 25px;
-	color: #777777;
-	font-size: 12px;
-	font-weight: bold;
+.postable .bedroom_num{
+    background: url(../images/bedroom.png) top left no-repeat;
+    display: inline-block;
+    padding-left: 25px;
+    color: #777777;
+    font-size: 12px;
+    font-weight: bold;
 }
 
-li.item .post .middle .postable .bathroom_num{
-	background: url(../images/bathroom.png) top left no-repeat;
-	display: inline-block;
-	padding-left: 25px;
-	color: #777777;
-	font-size: 12px;
-	font-weight: bold;
+.postable .carpark_num{
+    background: url(../images/carpark.png) top left no-repeat;
+    display: inline-block;
+    padding-left: 25px;
+    color: #777777;
+    font-size: 12px;
+    font-weight: bold;
 }
 
-li.item .post .middle .postable .description{
-	padding: 15px 0px 15px 0px;
+.postable .bathroom_num{
+    background: url(../images/bathroom.png) top left no-repeat;
+    display: inline-block;
+    padding-left: 25px;
+    color: #777777;
+    font-size: 12px;
+    font-weight: bold;
 }
 
+.postable .description{
+    padding: 15px 0px 15px 0px;
+}
+/* end postable */
 li.item .post .middle .user_area{
-	margin-left: 150px;
+    margin-left: 150px;
 }
 
 li.item .post .middle .user_area .user{
-	width: 180px;
-	height: 50px;
-	display: inline-block;
-	border: 1px #eeeeee dashed;
+    width: 180px;
+    height: 50px;
+    display: inline-block;
+    border: 1px #eeeeee dashed;
 }
 
 li.item .post .middle .user_area .action{
-	display: inline-block;
-	vertical-align: top;
-	padding: 5px;
+    display: inline-block;
+    vertical-align: top;
+    padding: 5px;
 }
 
-div#googlemap {
+#content_body #content {
+    min-height: 500px;    
+    border: 1px #aaaaaa solid;    
+}
+
+.container {
+    -moz-border-radius:5px 5px 5px 5px;
+    border: 1px #aaaaaa solid;
+    background:none repeat scroll 0 0 #FFFFFF;
+}
+
+.container .left {
     vertical-align: top;
-    display: inline-block;
-    width: 45%;
+    display: inline-block;   
+    -moz-border-radius: 5px;
+    float: left;
+}
+
+.container .half {
+    width: 49%;
+    -moz-border-radius:5px 5px 5px 5px;
+}
+
+.container .right {
+    vertical-align: top;
+    display: inline-block;   
+    -moz-border-radius: 5px;
+    float: right;
+}
+
+#content_body div#googlemap
+{
     min-height: 500px;
     background: #ECF1F4;
-    -moz-border-radius: 5px;
-	float: right;
-	border: 1px #aaaaaa solid;
+    border: 1px #aaaaaa solid;
 }
+
 
 label {
     font-family: Arial, Helvetica, sans-serif;
@@ -497,29 +525,26 @@ label {
     padding-left: 3px;
 }
 
-#page_body  #content .full_container .form_line label {
+#page_body  #content .full_container .line label {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 11px;
     font-weight: bold;
-   
+
     text-decoration: none;
     display: block;
     padding-left: 3px;
 }
 
-.form_line {
-    float: left;
-    min-height: 30px;
-    padding-bottom: 5px;
-    width: 100%;
+.line {
+
 }
 
 
 /* footer section */
 div#footer {
-	clear: both;
+    clear: both;
     text-align: center;
-	margin-top: 20px;
+    margin-top: 20px;
 }
 div#footer ul {
     padding: 10px 0;
