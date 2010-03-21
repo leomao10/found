@@ -4,11 +4,12 @@ set :repository,  "git@github.com:leomao10/found.git"
 set :scm, :git
 set :scm_username, "leomao10"
 set :scm_passphrase, "leo1022"
+set :scm_verbose, true
 
 set :use_sudo,false
 set :user, "chentian"
 set :branch, "master"
-set :repository_cache, "git_cache"
+
 set :deploy_via, :copy
 
 set :deploy_to, "~/var/found"
