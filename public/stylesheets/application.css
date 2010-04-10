@@ -123,7 +123,7 @@ label.property_type {
     background: url(../images/property_type.png) left -2px no-repeat;
 }
 input {
-    border: 0;
+    border: 1px solid gray;
     margin: 0;
     background: none;
 }
@@ -484,7 +484,7 @@ li.item .post .middle .user_area .action{
 
 .container {
     -moz-border-radius:5px 5px 5px 5px;
-    border: 1px #aaaaaa solid;
+
     background:none repeat scroll 0 0 #FFFFFF;
 }
 
@@ -568,3 +568,85 @@ div#footer a:hover {
     color:#999999 !important
 
 }
+
+#content_body   #page_title {
+    width: 100%;
+    height: 40px;
+    float:left;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    line-height: 30px;
+    color: #2C2C2C;
+    margin-left: 1%;
+    font-weight:bold;
+}
+
+
+#content_body   .page_content {
+    width: auto;
+    float:left;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    color: #2C2C2C;
+    margin-left: 1%;
+    font-weight:bold;
+}
+#content_body  #post_nav   .active {
+    width: auto;
+    float:left;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    color: #2db5e2;
+    margin-left: 1%;
+    font-weight:bold;
+}
+
+#content_body   .row_break {
+    clear:both;
+}
+
+
+#content_body   .options {
+    float: right;
+    display:inline;
+}
+
+#content_body   .bar_container {
+    font-family:Arial, Helvetica, sans-serif;
+    color: #232323;
+    background-image:url(/images/container_bg1.png);
+    background-repeat:repeat;
+    width: 96%;
+    float: left;
+    padding: 1%;
+    min-height: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.right{
+    float:right !important;
+}
+
+#content_body   .button_sub{
+    font-family:Arial, Helvetica, sans-serif;
+    color: #232323;
+    width: 17%;
+    float: right;
+    padding: 1%;
+    min-height: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    margin-bottom: 10px;
+    background-color: #33bce9
+}
+#content_body  input[type=submit] {
+  width:auto;
+  height:auto;
+  float:right;
+  cursor:pointer;
+}
+
+
+

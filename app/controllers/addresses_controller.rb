@@ -16,8 +16,8 @@ class AddressesController < ApplicationController
     @address = Address.new(params[:address])
     if @address.save
       flash[:notice] = "Successfully created address."
-      respond_to do |f|
-        f.js
+      respond_to do |format|
+        format.js
       end
     else
       render :action => 'new'

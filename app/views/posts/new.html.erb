@@ -1,33 +1,109 @@
-<% title "New Post" %>
-<div class="address_field">
-  <div class="session_header">
+<div id="page_title" style="font-size:23px;">BUILD YOUR RESIDENTIAL FOR RENT AD</div>
+<div class="page_content" style="color:#555151;margin-bottom: 20px;">FOUND YOUR HOME is a respectful community of young people who look for their next home. We provide the best tools and resource to help you to find your next stay.</div>
+<div id="post_nav">
+  <div class="page_content active" style="margin-bottom: 20px;">1. Build Your AD</div>
+  <div class="page_content" style="color:#555151;margin-left: 10%;">2. Proview and Confirm  </div>
+  <div class="page_content " style="color:#555151;margin-left: 10%;">3. Pay for AD</div>
+</div>
+<div class="row_break"></div>
+<div class="page_content " style="color:#000000;">Build Your Ad Below</div>
+<div class="row_break"></div>
+
+<div id="build_new_post">
+  <div class="bar_container">
+    <div class="toggle_div" toggle_id_name="address_details" style="cursor: pointer;">
+      <div  class="options" style="float:right"}
+      <%= image_tag('collapse_arrow.png')%>
+    </div>
     <h1>Property Address</h1>
   </div>
+</div>
+
+
+<div id="address_details" style="width:94%;display:none;float: left;">
   <div id="aa">
-  <% form_for @address, :html=> {:class =>"ajaxForm",:id=>"edit_address_form_1"} do |address_form| %>
-    <%= render "addresses/form", :f =>address_form %>
-    <%= submit_tag "Submit" %>
-  <%end%>
+    <% form_for @address, :html=> {:class =>"ajaxForm",:id=>"edit_address_form_1"} do |address_form| %>
+      <%= render "addresses/form", :f =>address_form %>
+      <%= submit_tag "Submit" %>
+    <%end%>
+    <br style="clear: both"></br>
   </div>
 </div>
-<div class="images">
-  <div class="session_header">
-    <h1>Upload Photo</h1>
+
+
+<div class="bar_container">
+  <div class="toggle_div" toggle_id_name="images_field" style="cursor: pointer;">
+    <div  class="options" style="float:right"}
+    <%= image_tag('collapse_arrow.png')%>
+  </div>
+  <h1>Upload Photo</h1>
+</div>
+</div>
+
+<div id="images_field" style="width:94%;display:none;float: left;">
+  <div id="aa">
+    sssss
   </div>
 </div>
-<div class="contact_details">
-  <div class="session_header">
-    <h1>Contact Details</h1>
+
+
+
+
+
+<div class="bar_container">
+  <div class="toggle_div" toggle_id_name="contact_details" style="cursor: pointer;">
+    <div  class="options" style="float:right"}
+    <%= image_tag('collapse_arrow.png')%>
+  </div>
+  <h1>Contact Details</h1>
+</div>
+</div>
+
+<div id="contact_details" style="width:94%;display:none;float: left;">
+  <div id="aa">
+    sssss
   </div>
 </div>
-<div class="property_field">
-  <div class="session_header">
-    <h1>Property details</h1>
-  </div>  
-  <% form_for :property, post.property,:url =>post_property_url(post) do |property_form| %>
-    <%= render "properties/form", :f =>property_form %>
-    <%= property_form.submit "Submit" %>
-  <%end%>
+
+
+<div class="bar_container">
+  <div class="toggle_div" toggle_id_name="property_details" style="cursor: pointer;">
+    <div  class="options" style="float:right"}
+    <%= image_tag('collapse_arrow.png')%>
+  </div>
+  <h1>Property details</h1>
 </div>
-<%= render :partial => 'form', :locals => {:post => post }%>
-<%= submit_tag "Continue to next step" %>
+</div>
+
+<div id="property_details" style="width:94%;display:none;float: left;">
+  <div id="aa">
+    <% form_for :property, post.property,:url =>post_property_url(post) do |property_form| %>
+      <%= render "properties/form", :f =>property_form %>
+      <%= property_form.submit "Submit" %>
+    <%end%>
+  </div>
+</div>
+
+
+
+<div class="bar_container">
+  <div class="toggle_div" toggle_id_name="post_extra_details" style="cursor: pointer;">
+    <div  class="options" style="float:right"}
+    <%= image_tag('collapse_arrow.png')%>
+  </div>
+  <h1>Property details</h1>
+</div>
+</div>
+
+<div id="post_extra_details" style="width:94%;display:none;float: left;">
+  <div id="aa">
+    <%= render :partial => 'form', :locals => {:post => post }%>
+  </div>
+</div>
+
+<div class="button_sub" >
+  <%= submit_tag "Continue to next step" , :style=>"font-weight:bold;font-size:12px;color:white;"%>
+</div>
+</div>
+
+<br style="clear: both;"></br>
