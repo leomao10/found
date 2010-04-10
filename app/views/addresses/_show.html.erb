@@ -1,0 +1,15 @@
+<% title "Address" %>
+
+<p>
+  <strong>Line1:</strong>
+  <%=h @address.line1 %>
+</p>
+<p>
+  <strong>Line2:</strong>
+  <%=h @address.line2 %>
+</p>
+<%unless @address.suburb.nil?%>
+  <fieldset>
+    <%= render :partial=>"suburbs/detail", :locals => {:suburb => @address.suburb}  %>
+  </fieldset>
+<% end %>

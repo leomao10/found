@@ -9,7 +9,7 @@ class Address < ActiveRecord::Base
   belongs_to :post
   belongs_to :suburb
 
-  before_validation :geocode_address
+  #before_validation :geocode_address
 
   def full_address
     [line1,line2,suburb].reject{|s| s.blank?}.join(",")

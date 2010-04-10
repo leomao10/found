@@ -10,3 +10,5 @@
   <%= f.label :suburb %>
   <%= f.collection_select :suburb_id, Suburb.all, :id, :name, {:prompt => true} %>
 </p>
+<%=@post.id%>
+<input type="text" name="address[post_id]" value="<%= @post.id %>"></input>
