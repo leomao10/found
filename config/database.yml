@@ -40,6 +40,6 @@ production:
   reconnect: false
   database: found_production
   pool: 5
-  username: chentian@localhost
+  username: root
   password: 
   host: localhost

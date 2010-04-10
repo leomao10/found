@@ -1,6 +1,23 @@
 <div class ="full_container post_form">
-  <% form_for @post do |f| %>
+  <div class="address_field">
+    <h1>Address</h1>
+    <% form_for([:post, :post.address]) do |address_form| %>
+      <%= render "addresses/form", :f =>address_form %>
+      <%= f.submit "Submit" %>
+    <%end%>
+  </div>
+  <% form_for :post do |f| %>
     <%= f.error_messages %>
+    <div class="property_field">
+      <h1>Property</h1>
+      <% f.fields_for :property do |property_form| %>
+        <%= render "properties/form", :f =>property_form %>
+      <%end%>
+    </div>
+    <div class="images">
+      <h1>Images</h1>
+    </div>
+
     <div class="line">
       <div class="field_20">
         <%= f.label :title %>
@@ -30,21 +47,18 @@
         <%= f.label :inspection_time %> <%= f.text_field :inspection_time %>
       </div>
     </div>
-  <div class="line" >
-      
-       <label>negotiable </label>
-        <%= f.check_box :negotiable %>
-     
+    <div class="line" >
+      <label>negotiable </label>
+      <%= f.check_box :negotiable %>
     </div>
-     <div class="line">
+    <div class="line">
       <div class="field_20">
-        <label></label>
-      <%= f.submit "Submit" %>
+        <%= f.submit "Submit" %>
       </div>
     </div>
   </div>
 <% end %>
 
 <script type="text/javascript">
-    $('.post_form :checkbox').iphoneStyle();
+  $('.post_form :checkbox').iphoneStyle();
 </script>

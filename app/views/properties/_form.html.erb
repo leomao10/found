@@ -1,44 +1,40 @@
-<% form_for @property do |f| %>
-  <%= f.error_messages %>
-  <p>
-    <%= f.label :number_of_bedrooms %><br />
-    <%= f.text_field :number_of_bedrooms %>
-  </p>
-  <p>
-    <%= f.label :number_of_carparks %><br />
-    <%= f.text_field :number_of_carparks %>
-  </p>
-  <p>
-    <%= f.label :number_of_bathrooms %><br />
-    <%= f.text_field :number_of_bathrooms %>
-  </p>
-  <p>
-    <%= f.label :price %><br />
-    <%= f.text_field :price %>
-  </p>
-  <p>
-    <%= f.label :bond %><br />
-    <%= f.text_field :bond %>
-  </p>
-  <p>
-    <%= f.label :max_tenants %><br />
-    <%= f.text_field :max_tenants %>
-  </p>
-  <p>
-    <%= f.label :number_of_current_tenants %><br />
-    <%= f.text_field :number_of_current_tenants %>
-  </p>
-  <p>
-    <%= f.label :furnished %><br />
-    <%= f.check_box :furnished %>
-  </p>
-  <p>
-    <%= f.label :purpose %><br />
-    <%= f.collection_select :purpose, Property::PURPOSES, :to_s, :humanize %>
-  </p>
-  <p>
-    <%= f.label :prop_type %><br />
-    <%= f.collection_select :prop_type, Property::TYPES, :to_s, :humanize %>
-  </p>
-  <p><%= f.submit "Submit" %></p>
-<% end %>
+<p>
+  <%= f.label :number_of_bedrooms %><br />
+  <%= f.text_field :number_of_bedrooms %>
+</p>
+<p>
+  <%= f.label :number_of_carparks %><br />
+  <%= f.text_field :number_of_carparks %>
+</p>
+<p>
+  <%= f.label :number_of_bathrooms %><br />
+  <%= f.text_field :number_of_bathrooms %>
+</p>
+<p>
+  <%= f.label :price %><br />
+  <%= f.text_field :price %>
+</p>
+<p>
+  <%= f.label :bond %><br />
+  <%= f.text_field :bond %>
+</p>
+<p>
+  <%= f.label :max_tenants %><br />
+  <%= f.text_field :max_tenants %>
+</p>
+<p>
+  <%= f.label :number_of_current_tenants %><br />
+  <%= f.text_field :number_of_current_tenants %>
+</p>
+<p>
+  <%= f.label :furnished %><br />
+  <%= f.check_box :furnished %>
+</p>
+<p>
+  <%= f.label :purpose %><br />
+  <%= f.collection_select :purpose, Property::PURPOSES, :to_s, :humanize %>
+</p>
+<p>
+  <%= f.label :prop_type %><br />
+  <%= f.collection_select :prop_type, Property::TYPES, :to_s, :humanize %>
+</p>

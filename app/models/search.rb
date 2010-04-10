@@ -12,7 +12,7 @@ class Search < ActiveRecord::Base
     property_ids = properties.each{ |p|
       p.id
     }
-    Post.postable_type_eq("Property").postable_id_eq_any(property_ids)
+    Post.id_eq_any(property_ids)
   end
 
   def search_address_like(arg)

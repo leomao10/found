@@ -7771,3 +7771,2711 @@ ActionController::UnknownAction (No action responded to ui. Actions: create, des
   
 
 Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (125.0ms)[0m   [0mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (266.0ms)[0m   [0;1mCREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (20100124054035)
+  [4;35;1mSQL (78.0ms)[0m   [0mCREATE TABLE `users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `username` varchar(255), `email` varchar(255), `crypted_password` varchar(255), `password_salt` varchar(255), `persistence_token` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (156.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100124054035')[0m
+Migrating to CreateSuburbs (20100124060306)
+  [4;35;1mSQL (110.0ms)[0m   [0mCREATE TABLE `suburbs` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `area` varchar(255), `state` varchar(255), `postcode` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (46.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100124060306')[0m
+Migrating to AddUsersPasswordResetField (20100124073325)
+  [4;35;1mSQL (250.0ms)[0m   [0mALTER TABLE `users` ADD `perishable_token` varchar(255) DEFAULT '' NOT NULL[0m
+  [4;36;1mSQL (265.0ms)[0m   [0;1mCREATE INDEX `index_users_on_perishable_token` ON `users` (`perishable_token`)[0m
+  [4;35;1mSQL (282.0ms)[0m   [0mCREATE INDEX `index_users_on_email` ON `users` (`email`)[0m
+  [4;36;1mSQL (78.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100124073325')[0m
+Migrating to CreatePosts (20100124111816)
+  [4;35;1mSQL (94.0ms)[0m   [0mCREATE TABLE `posts` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `title` varchar(255), `description` text, `available_from` date, `expiry_date` date, `inspection_time` varchar(255), `negotiable` tinyint(1), `postable_id` int(11), `postable_type` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (47.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100124111816')[0m
+Migrating to CreateProperties (20100124112416)
+  [4;35;1mSQL (109.0ms)[0m   [0mCREATE TABLE `properties` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `number_of_bedrooms` int(11), `number_of_carparks` int(11), `number_of_bathrooms` int(11), `price` float, `bond` float, `max_tenants` int(11), `number_of_current_tenants` int(11), `furnished` tinyint(1), `purpose` varchar(255), `type` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (47.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100124112416')[0m
+Migrating to CreateCarparks (20100124114337)
+  [4;35;1mSQL (110.0ms)[0m   [0mCREATE TABLE `carparks` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `price` float, `bond` float, `type` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (78.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100124114337')[0m
+Migrating to CreateAddresses (20100124114554)
+  [4;35;1mSQL (94.0ms)[0m   [0mCREATE TABLE `addresses` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `line1` varchar(255), `line2` varchar(255), `addressable_id` int(11), `addressable_type` varchar(255), `suburb_id` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (110.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100124114554')[0m
+Migrating to AddNameToSuburb (20100124115827)
+  [4;35;1mSQL (250.0ms)[0m   [0mALTER TABLE `suburbs` ADD `name` varchar(255)[0m
+  [4;36;1mSQL (63.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100124115827')[0m
+Migrating to CreatePropertySearches (20100126044312)
+  [4;35;1mSQL (94.0ms)[0m   [0mCREATE TABLE `property_searches` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `keywords` varchar(255), `min_price` int(11), `max_price` int(11), `num_of_bedrooms` int(11), `num_of_bathrooms` int(11), `num_of_carparks` int(11), `property_type` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (78.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100126044312')[0m
+Migrating to ChangeColumnForProperty (20100126073625)
+  [4;35;1mSQL (16.0ms)[0m   [0mSHOW FIELDS FROM `properties`[0m
+  [4;36;1mSQL (15.0ms)[0m   [0;1mSHOW COLUMNS FROM `properties` LIKE 'type'[0m
+  [4;35;1mSQL (156.0ms)[0m   [0mALTER TABLE `properties` CHANGE `type` `prop_type` varchar(255) DEFAULT NULL[0m
+  [4;36;1mSQL (78.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100126073625')[0m
+Migrating to CreateImages (20100127235412)
+  [4;35;1mSQL (93.0ms)[0m   [0mCREATE TABLE `images` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `photo_file_name` varchar(255), `photo_content_type` varchar(255), `photo_file_size` int(11), `photo_updated_at` datetime, `imagable_id` int(11), `imagable_type` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (63.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100127235412')[0m
+Migrating to ChangeColumnsOfPropertySearch (20100209125159)
+  [4;35;1mSQL (250.0ms)[0m   [0mALTER TABLE `property_searches` ADD `min_of_bathrooms` int(11)[0m
+  [4;36;1mSQL (234.0ms)[0m   [0;1mALTER TABLE `property_searches` ADD `max_of_bathrooms` int(11)[0m
+  [4;35;1mSQL (328.0ms)[0m   [0mALTER TABLE `property_searches` ADD `min_of_bedrooms` int(11)[0m
+  [4;36;1mSQL (313.0ms)[0m   [0;1mALTER TABLE `property_searches` ADD `max_of_bedrooms` int(11)[0m
+  [4;35;1mSQL (312.0ms)[0m   [0mALTER TABLE `property_searches` ADD `min_of_carparks` int(11)[0m
+  [4;36;1mSQL (297.0ms)[0m   [0;1mALTER TABLE `property_searches` ADD `max_of_carparks` int(11)[0m
+  [4;35;1mSQL (235.0ms)[0m   [0mALTER TABLE `property_searches` DROP `num_of_bathrooms`[0m
+  [4;36;1mSQL (234.0ms)[0m   [0;1mALTER TABLE `property_searches` DROP `num_of_bedrooms`[0m
+  [4;35;1mSQL (187.0ms)[0m   [0mALTER TABLE `property_searches` DROP `num_of_carparks`[0m
+  [4;36;1mSQL (63.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100209125159')[0m
+Migrating to ChangeReferenceForAddress (20100216103345)
+  [4;35;1mSQL (265.0ms)[0m   [0mALTER TABLE `addresses` DROP `addressable_id`[0m
+  [4;36;1mSQL (172.0ms)[0m   [0;1mALTER TABLE `addresses` DROP `addressable_type`[0m
+  [4;35;1mSQL (63.0ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100216103345')[0m
+Migrating to CreateSearches (20100216113117)
+  [4;36;1mSQL (94.0ms)[0m   [0;1mCREATE TABLE `searches` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `keyword` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;35;1mSQL (62.0ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100216113117')[0m
+Migrating to AddReferenceForAddress (20100216122556)
+  [4;36;1mSQL (250.0ms)[0m   [0;1mALTER TABLE `addresses` ADD `post_id` int(11)[0m
+  [4;35;1mSQL (46.0ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100216122556')[0m
+Migrating to ChangeReferenceToImage (20100301065823)
+  [4;36;1mSQL (250.0ms)[0m   [0;1mALTER TABLE `images` DROP `imagable_id`[0m
+  [4;35;1mSQL (250.0ms)[0m   [0mALTER TABLE `images` DROP `imagable_type`[0m
+  [4;36;1mSQL (203.0ms)[0m   [0;1mALTER TABLE `images` ADD `post_id` int(11)[0m
+  [4;35;1mSQL (62.0ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100301065823')[0m
+Migrating to AddReferenceToPropertySearch (20100306062514)
+  [4;36;1mSQL (203.0ms)[0m   [0;1mALTER TABLE `property_searches` ADD `search_id` int(11)[0m
+  [4;35;1mSQL (265.0ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100306062514')[0m
+Migrating to CreateSessions (20100306072215)
+  [4;36;1mSQL (78.0ms)[0m   [0;1mCREATE TABLE `sessions` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `session_id` varchar(255) NOT NULL, `data` text, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;35;1mSQL (172.0ms)[0m   [0mCREATE INDEX `index_sessions_on_session_id` ON `sessions` (`session_id`)[0m
+  [4;36;1mSQL (203.0ms)[0m   [0;1mCREATE INDEX `index_sessions_on_updated_at` ON `sessions` (`updated_at`)[0m
+  [4;35;1mSQL (47.0ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100306072215')[0m
+  [4;36;1mSQL (16.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (15.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (16.0ms)[0m   [0mSHOW FIELDS FROM `addresses`[0m
+  [4;36;1mSQL (16.0ms)[0m   [0;1mdescribe `addresses`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW KEYS FROM `addresses`[0m
+  [4;36;1mSQL (15.0ms)[0m   [0;1mSHOW FIELDS FROM `carparks`[0m
+  [4;35;1mSQL (16.0ms)[0m   [0mdescribe `carparks`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW KEYS FROM `carparks`[0m
+  [4;35;1mSQL (15.0ms)[0m   [0mSHOW FIELDS FROM `images`[0m
+  [4;36;1mSQL (16.0ms)[0m   [0;1mdescribe `images`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW KEYS FROM `images`[0m
+  [4;36;1mSQL (16.0ms)[0m   [0;1mSHOW FIELDS FROM `posts`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mdescribe `posts`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW KEYS FROM `posts`[0m
+  [4;35;1mSQL (16.0ms)[0m   [0mSHOW FIELDS FROM `properties`[0m
+  [4;36;1mSQL (15.0ms)[0m   [0;1mdescribe `properties`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW KEYS FROM `properties`[0m
+  [4;36;1mSQL (16.0ms)[0m   [0;1mSHOW FIELDS FROM `property_searches`[0m
+  [4;35;1mSQL (15.0ms)[0m   [0mdescribe `property_searches`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW KEYS FROM `property_searches`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW FIELDS FROM `searches`[0m
+  [4;36;1mSQL (16.0ms)[0m   [0;1mdescribe `searches`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW KEYS FROM `searches`[0m
+  [4;36;1mSQL (15.0ms)[0m   [0;1mSHOW FIELDS FROM `sessions`[0m
+  [4;35;1mSQL (16.0ms)[0m   [0mdescribe `sessions`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW KEYS FROM `sessions`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW FIELDS FROM `suburbs`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mdescribe `suburbs`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW KEYS FROM `suburbs`[0m
+  [4;36;1mSQL (15.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mSQL (16.0ms)[0m   [0mdescribe `users`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW KEYS FROM `users`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mAddress Columns (16.0ms)[0m   [0;1mSHOW FIELDS FROM `addresses`[0m
+  [4;35;1mSQL (15.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (20100124054035)
+Migrating to CreateSuburbs (20100124060306)
+Migrating to AddUsersPasswordResetField (20100124073325)
+Migrating to CreatePosts (20100124111816)
+Migrating to CreateProperties (20100124112416)
+Migrating to CreateCarparks (20100124114337)
+Migrating to CreateAddresses (20100124114554)
+Migrating to AddNameToSuburb (20100124115827)
+Migrating to CreatePropertySearches (20100126044312)
+Migrating to ChangeColumnForProperty (20100126073625)
+Migrating to CreateImages (20100127235412)
+Migrating to ChangeColumnsOfPropertySearch (20100209125159)
+Migrating to ChangeReferenceForAddress (20100216103345)
+Migrating to CreateSearches (20100216113117)
+Migrating to AddReferenceForAddress (20100216122556)
+Migrating to ChangeReferenceToImage (20100301065823)
+Migrating to AddReferenceToPropertySearch (20100306062514)
+Migrating to CreateSessions (20100306072215)
+Migrating to AddLadLanToAddress (20100404051547)
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (16.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (20100124054035)
+Migrating to CreateSuburbs (20100124060306)
+Migrating to AddUsersPasswordResetField (20100124073325)
+Migrating to CreatePosts (20100124111816)
+Migrating to CreateProperties (20100124112416)
+Migrating to CreateCarparks (20100124114337)
+Migrating to CreateAddresses (20100124114554)
+Migrating to AddNameToSuburb (20100124115827)
+Migrating to CreatePropertySearches (20100126044312)
+Migrating to ChangeColumnForProperty (20100126073625)
+Migrating to CreateImages (20100127235412)
+Migrating to ChangeColumnsOfPropertySearch (20100209125159)
+Migrating to ChangeReferenceForAddress (20100216103345)
+Migrating to CreateSearches (20100216113117)
+Migrating to AddReferenceForAddress (20100216122556)
+Migrating to ChangeReferenceToImage (20100301065823)
+Migrating to AddReferenceToPropertySearch (20100306062514)
+Migrating to CreateSessions (20100306072215)
+Migrating to AddLadLanToAddress (20100404051547)
+  [4;36;1mSQL (172.0ms)[0m   [0;1mALTER TABLE `addresses` ADD `lat` float[0m
+  [4;35;1mSQL (265.0ms)[0m   [0mALTER TABLE `addresses` ADD `lng` float[0m
+  [4;36;1mSQL (47.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100404051547')[0m
+  [4;35;1mSQL (16.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (15.0ms)[0m   [0;1mSHOW FIELDS FROM `addresses`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mdescribe `addresses`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW KEYS FROM `addresses`[0m
+  [4;35;1mSQL (16.0ms)[0m   [0mSHOW FIELDS FROM `carparks`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mdescribe `carparks`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW KEYS FROM `carparks`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW FIELDS FROM `images`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mdescribe `images`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW KEYS FROM `images`[0m
+  [4;35;1mSQL (16.0ms)[0m   [0mSHOW FIELDS FROM `posts`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mdescribe `posts`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW KEYS FROM `posts`[0m
+  [4;36;1mSQL (15.0ms)[0m   [0;1mSHOW FIELDS FROM `properties`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mdescribe `properties`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW KEYS FROM `properties`[0m
+  [4;35;1mSQL (16.0ms)[0m   [0mSHOW FIELDS FROM `property_searches`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mdescribe `property_searches`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW KEYS FROM `property_searches`[0m
+  [4;36;1mSQL (16.0ms)[0m   [0;1mSHOW FIELDS FROM `searches`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mdescribe `searches`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW KEYS FROM `searches`[0m
+  [4;35;1mSQL (15.0ms)[0m   [0mSHOW FIELDS FROM `sessions`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mdescribe `sessions`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW KEYS FROM `sessions`[0m
+  [4;36;1mSQL (16.0ms)[0m   [0;1mSHOW FIELDS FROM `suburbs`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mdescribe `suburbs`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW KEYS FROM `suburbs`[0m
+  [4;35;1mSQL (16.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mdescribe `users`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW KEYS FROM `users`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (297.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (16.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (15.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to AddLatLngToAddress (20100404051547)
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to AddLatLngToAddress (20100404051547)
+  [4;36;1mSQL (265.0ms)[0m   [0;1mALTER TABLE `addresses` DROP `lat`[0m
+  [4;35;1mSQL (219.0ms)[0m   [0mALTER TABLE `addresses` DROP `lng`[0m
+  [4;36;1mSQL (109.0ms)[0m   [0;1mDELETE FROM schema_migrations WHERE version = '20100404051547'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (16.0ms)[0m   [0;1mSHOW FIELDS FROM `addresses`[0m
+  [4;35;1mSQL (16.0ms)[0m   [0mdescribe `addresses`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW KEYS FROM `addresses`[0m
+  [4;35;1mSQL (31.0ms)[0m   [0mSHOW FIELDS FROM `carparks`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mdescribe `carparks`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW KEYS FROM `carparks`[0m
+  [4;36;1mSQL (15.0ms)[0m   [0;1mSHOW FIELDS FROM `images`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mdescribe `images`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW KEYS FROM `images`[0m
+  [4;35;1mSQL (16.0ms)[0m   [0mSHOW FIELDS FROM `posts`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mdescribe `posts`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW KEYS FROM `posts`[0m
+  [4;36;1mSQL (16.0ms)[0m   [0;1mSHOW FIELDS FROM `properties`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mdescribe `properties`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW KEYS FROM `properties`[0m
+  [4;35;1mSQL (31.0ms)[0m   [0mSHOW FIELDS FROM `property_searches`[0m
+  [4;36;1mSQL (16.0ms)[0m   [0;1mdescribe `property_searches`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW KEYS FROM `property_searches`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW FIELDS FROM `searches`[0m
+  [4;35;1mSQL (15.0ms)[0m   [0mdescribe `searches`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW KEYS FROM `searches`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW FIELDS FROM `sessions`[0m
+  [4;36;1mSQL (16.0ms)[0m   [0;1mdescribe `sessions`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW KEYS FROM `sessions`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW FIELDS FROM `suburbs`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mdescribe `suburbs`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW KEYS FROM `suburbs`[0m
+  [4;35;1mSQL (15.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mdescribe `users`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW KEYS FROM `users`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (15.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (20100124054035)
+Migrating to CreateSuburbs (20100124060306)
+Migrating to AddUsersPasswordResetField (20100124073325)
+Migrating to CreatePosts (20100124111816)
+Migrating to CreateProperties (20100124112416)
+Migrating to CreateCarparks (20100124114337)
+Migrating to CreateAddresses (20100124114554)
+Migrating to AddNameToSuburb (20100124115827)
+Migrating to CreatePropertySearches (20100126044312)
+Migrating to ChangeColumnForProperty (20100126073625)
+Migrating to CreateImages (20100127235412)
+Migrating to ChangeColumnsOfPropertySearch (20100209125159)
+Migrating to ChangeReferenceForAddress (20100216103345)
+Migrating to CreateSearches (20100216113117)
+Migrating to AddReferenceForAddress (20100216122556)
+Migrating to ChangeReferenceToImage (20100301065823)
+Migrating to AddReferenceToPropertySearch (20100306062514)
+Migrating to CreateSessions (20100306072215)
+Migrating to AddLatLngToAddress (20100404051547)
+  [4;36;1mSQL (203.0ms)[0m   [0;1mALTER TABLE `addresses` ADD `lat` float[0m
+  [4;35;1mSQL (203.0ms)[0m   [0mALTER TABLE `addresses` ADD `lng` float[0m
+  [4;36;1mSQL (78.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100404051547')[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (16.0ms)[0m   [0;1mSHOW FIELDS FROM `addresses`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mdescribe `addresses`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW KEYS FROM `addresses`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW FIELDS FROM `carparks`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mdescribe `carparks`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW KEYS FROM `carparks`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW FIELDS FROM `images`[0m
+  [4;35;1mSQL (16.0ms)[0m   [0mdescribe `images`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW KEYS FROM `images`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW FIELDS FROM `posts`[0m
+  [4;36;1mSQL (16.0ms)[0m   [0;1mdescribe `posts`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW KEYS FROM `posts`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW FIELDS FROM `properties`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mdescribe `properties`[0m
+  [4;36;1mSQL (15.0ms)[0m   [0;1mSHOW KEYS FROM `properties`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW FIELDS FROM `property_searches`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mdescribe `property_searches`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW KEYS FROM `property_searches`[0m
+  [4;36;1mSQL (16.0ms)[0m   [0;1mSHOW FIELDS FROM `searches`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mdescribe `searches`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW KEYS FROM `searches`[0m
+  [4;35;1mSQL (15.0ms)[0m   [0mSHOW FIELDS FROM `sessions`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mdescribe `sessions`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW KEYS FROM `sessions`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW FIELDS FROM `suburbs`[0m
+  [4;35;1mSQL (16.0ms)[0m   [0mdescribe `suburbs`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW KEYS FROM `suburbs`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mSQL (16.0ms)[0m   [0;1mdescribe `users`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW KEYS FROM `users`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mAddress Columns (62.0ms)[0m   [0;1mSHOW FIELDS FROM `addresses`[0m
+  [4;35;1mSQL (203.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSuburb Columns (31.0ms)[0m   [0;1mSHOW FIELDS FROM `suburbs`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mBEGIN[0m
+  [4;36;1mSuburb Create (0.0ms)[0m   [0;1mINSERT INTO `suburbs` (`name`, `updated_at`, `postcode`, `area`, `state`, `created_at`) VALUES('Burwood', '2010-04-06 12:55:00', 2134, NULL, 'N.S.W', '2010-04-06 12:55:00')[0m
+  [4;35;1mSQL (62.0ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSuburb Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `suburbs`[0m
+  [4;35;1mAddress Columns (15.0ms)[0m   [0mSHOW FIELDS FROM `addresses`[0m
+  [4;36;1mAddress Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `addresses`[0m
+  [4;35;1mSuburb Columns (16.0ms)[0m   [0mSHOW FIELDS FROM `suburbs`[0m
+  [4;36;1mSuburb Load (0.0ms)[0m   [0;1mSELECT * FROM `suburbs` LIMIT 1[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mAddress Columns (16.0ms)[0m   [0mSHOW FIELDS FROM `addresses`[0m
+  [4;36;1mAddress Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `addresses`[0m
+  [4;35;1mSuburb Load (0.0ms)[0m   [0mSELECT * FROM `suburbs` LIMIT 1[0m
+  [4;36;1mSuburb Columns (15.0ms)[0m   [0;1mSHOW FIELDS FROM `suburbs`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mAddress Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `addresses`[0m
+  [4;36;1mSuburb Load (0.0ms)[0m   [0;1mSELECT * FROM `suburbs` LIMIT 1[0m
+  [4;35;1mSuburb Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `suburbs`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mAddress Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `addresses`[0m
+  [4;35;1mSuburb Load (0.0ms)[0m   [0mSELECT * FROM `suburbs` LIMIT 1[0m
+  [4;36;1mSuburb Columns (15.0ms)[0m   [0;1mSHOW FIELDS FROM `suburbs`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mAddress Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `addresses`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mAddress Columns (16.0ms)[0m   [0;1mSHOW FIELDS FROM `addresses`[0m
+  [4;35;1mSuburb Load (0.0ms)[0m   [0mSELECT * FROM `suburbs` LIMIT 1[0m
+  [4;36;1mSuburb Columns (16.0ms)[0m   [0;1mSHOW FIELDS FROM `suburbs`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mAddress Columns (16.0ms)[0m   [0mSHOW FIELDS FROM `addresses`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mAddress Columns (16.0ms)[0m   [0mSHOW FIELDS FROM `addresses`[0m
+  [4;36;1mSuburb Load (0.0ms)[0m   [0;1mSELECT * FROM `suburbs` LIMIT 1[0m
+  [4;35;1mSuburb Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `suburbs`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mBEGIN[0m
+Google geocoding. Address: Burwood,N.S.W,Australia. Result: <?xml version="1.0" encoding="UTF-8" ?>
+<kml xmlns="http://earth.google.com/kml/2.0"><Response>
+  <name>Burwood,N.S.W,Australia</name>
+  <Status>
+    <code>200</code>
+    <request>geocode</request>
+  </Status>
+  <Placemark id="p1">
+    <address>Burwood NSW, Australia</address>
+    <AddressDetails Accuracy="4" xmlns="urn:oasis:names:tc:ciq:xsdschema:xAL:2.0"><Country><CountryNameCode>AU</CountryNameCode><CountryName>Australia</CountryName><AdministrativeArea><AdministrativeAreaName>NSW</AdministrativeAreaName><Locality><LocalityName>Burwood</LocalityName></Locality></AdministrativeArea></Country></AddressDetails>
+    <ExtendedData>
+      <LatLonBox north="-33.8681588" south="-33.8866862" east="151.1196894" west="151.0876746" />
+    </ExtendedData>
+    <Point><coordinates>151.1036820,-33.8774230,0</coordinates></Point>
+  </Placemark>
+</Response></kml>
+  [4;35;1mAddress Create (0.0ms)[0m   [0mINSERT INTO `addresses` (`line1`, `line2`, `updated_at`, `suburb_id`, `post_id`, `lng`, `lat`, `created_at`) VALUES(NULL, NULL, '2010-04-06 13:12:42', 1, NULL, 151.103682, -33.877423, '2010-04-06 13:12:42')[0m
+  [4;36;1mSQL (63.0ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mBEGIN[0m
+Google geocoding. Address: 13-17, Oxford Street,Burwood,N.S.W,Australia. Result: <?xml version="1.0" encoding="UTF-8" ?>
+<kml xmlns="http://earth.google.com/kml/2.0"><Response>
+  <name>13-17, Oxford Street,Burwood,N.S.W,Australia</name>
+  <Status>
+    <code>200</code>
+    <request>geocode</request>
+  </Status>
+  <Placemark id="p1">
+    <address>13-17 Oxford St, Burwood NSW 2134, Australia</address>
+    <AddressDetails Accuracy="8" xmlns="urn:oasis:names:tc:ciq:xsdschema:xAL:2.0"><Country><CountryNameCode>AU</CountryNameCode><CountryName>Australia</CountryName><AdministrativeArea><AdministrativeAreaName>NSW</AdministrativeAreaName><Locality><LocalityName>Burwood</LocalityName><Thoroughfare><ThoroughfareName>13-17 Oxford St</ThoroughfareName></Thoroughfare><PostalCode><PostalCodeNumber>2134</PostalCodeNumber></PostalCode></Locality></AdministrativeArea></Country></AddressDetails>
+    <ExtendedData>
+      <LatLonBox north="-33.8742424" south="-33.8805376" east="151.1008056" west="151.0945104" />
+    </ExtendedData>
+    <Point><coordinates>151.0976580,-33.8773900,0</coordinates></Point>
+  </Placemark>
+</Response></kml>
+  [4;36;1mAddress Update (15.0ms)[0m   [0;1mUPDATE `addresses` SET `lat` = -33.87739, `lng` = 151.097658, `line1` = '13-17, Oxford Street', `updated_at` = '2010-04-06 13:13:14' WHERE `id` = 1[0m
+  [4;35;1mSQL (78.0ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mBEGIN[0m
+Google geocoding. Address: 13-17 Oxford Street,Burwood,N.S.W,Australia. Result: <?xml version="1.0" encoding="UTF-8" ?>
+<kml xmlns="http://earth.google.com/kml/2.0"><Response>
+  <name>13-17 Oxford Street,Burwood,N.S.W,Australia</name>
+  <Status>
+    <code>200</code>
+    <request>geocode</request>
+  </Status>
+  <Placemark id="p1">
+    <address>13-17 Oxford St, Burwood NSW 2134, Australia</address>
+    <AddressDetails Accuracy="8" xmlns="urn:oasis:names:tc:ciq:xsdschema:xAL:2.0"><Country><CountryNameCode>AU</CountryNameCode><CountryName>Australia</CountryName><AdministrativeArea><AdministrativeAreaName>NSW</AdministrativeAreaName><Locality><LocalityName>Burwood</LocalityName><Thoroughfare><ThoroughfareName>13-17 Oxford St</ThoroughfareName></Thoroughfare><PostalCode><PostalCodeNumber>2134</PostalCodeNumber></PostalCode></Locality></AdministrativeArea></Country></AddressDetails>
+    <ExtendedData>
+      <LatLonBox north="-33.8742424" south="-33.8805376" east="151.1008056" west="151.0945104" />
+    </ExtendedData>
+    <Point><coordinates>151.0976580,-33.8773900,0</coordinates></Point>
+  </Placemark>
+</Response></kml>
+  [4;35;1mAddress Update (0.0ms)[0m   [0mUPDATE `addresses` SET `line1` = '13-17 Oxford Street', `updated_at` = '2010-04-06 13:13:39' WHERE `id` = 1[0m
+  [4;36;1mSQL (78.0ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mAddress Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `addresses`[0m
+  [4;36;1mSuburb Load (0.0ms)[0m   [0;1mSELECT * FROM `suburbs` LIMIT 1[0m
+  [4;35;1mSuburb Columns (16.0ms)[0m   [0mSHOW FIELDS FROM `suburbs`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mBEGIN[0m
+Google geocoding. Address: Burwood,N.S.W,Australia. Result: <?xml version="1.0" encoding="UTF-8" ?>
+<kml xmlns="http://earth.google.com/kml/2.0"><Response>
+  <name>Burwood,N.S.W,Australia</name>
+  <Status>
+    <code>200</code>
+    <request>geocode</request>
+  </Status>
+  <Placemark id="p1">
+    <address>Burwood NSW, Australia</address>
+    <AddressDetails Accuracy="4" xmlns="urn:oasis:names:tc:ciq:xsdschema:xAL:2.0"><Country><CountryNameCode>AU</CountryNameCode><CountryName>Australia</CountryName><AdministrativeArea><AdministrativeAreaName>NSW</AdministrativeAreaName><Locality><LocalityName>Burwood</LocalityName></Locality></AdministrativeArea></Country></AddressDetails>
+    <ExtendedData>
+      <LatLonBox north="-33.8681588" south="-33.8866862" east="151.1196894" west="151.0876746" />
+    </ExtendedData>
+    <Point><coordinates>151.1036820,-33.8774230,0</coordinates></Point>
+  </Placemark>
+</Response></kml>
+  [4;35;1mAddress Create (0.0ms)[0m   [0mINSERT INTO `addresses` (`line1`, `line2`, `updated_at`, `suburb_id`, `post_id`, `lng`, `lat`, `created_at`) VALUES(NULL, NULL, '2010-04-06 13:15:07', 1, NULL, 151.103682, -33.877423, '2010-04-06 13:15:07')[0m
+  [4;36;1mSQL (63.0ms)[0m   [0;1mCOMMIT[0m
+Google geocoding. Address: 2134. Result: <?xml version="1.0" encoding="UTF-8" ?>
+<kml xmlns="http://earth.google.com/kml/2.0"><Response>
+  <name>2134</name>
+  <Status>
+    <code>200</code>
+    <request>geocode</request>
+  </Status>
+  <Placemark id="p1">
+    <address>2134 Sződ, Hungary</address>
+    <AddressDetails Accuracy="5" xmlns="urn:oasis:names:tc:ciq:xsdschema:xAL:2.0"><Country><CountryNameCode>HU</CountryNameCode><CountryName>Magyarország</CountryName><AdministrativeArea><AdministrativeAreaName>Pest</AdministrativeAreaName><Locality><LocalityName>Szõd</LocalityName><PostalCode><PostalCodeNumber>2134</PostalCodeNumber></PostalCode></Locality></AdministrativeArea></Country></AddressDetails>
+    <ExtendedData>
+      <LatLonBox north="47.7290206" south="47.7078373" east="19.2033311" west="19.1490604" />
+    </ExtendedData>
+    <Point><coordinates>19.1761957,47.7184290,0</coordinates></Point>
+  </Placemark>
+  <Placemark id="p2">
+    <address>New South Wales 2134, Australia</address>
+    <AddressDetails Accuracy="5" xmlns="urn:oasis:names:tc:ciq:xsdschema:xAL:2.0"><Country><CountryNameCode>AU</CountryNameCode><CountryName>Australia</CountryName><PostalCode><PostalCodeNumber>2134</PostalCodeNumber></PostalCode></Country></AddressDetails>
+    <ExtendedData>
+      <LatLonBox north="-33.8663878" south="-33.8933860" east="151.1126498" west="151.0937206" />
+    </ExtendedData>
+    <Point><coordinates>151.1031852,-33.8798869,0</coordinates></Point>
+  </Placemark>
+</Response></kml>
+  [4;35;1mAddress Load (0.0ms)[0m   [0mSELECT *, 
+ (ACOS(least(1,COS(0.832843699929145)*COS(0.334687752971779)*COS(RADIANS(addresses.lat))*COS(RADIANS(addresses.lng))+
+ COS(0.832843699929145)*SIN(0.334687752971779)*COS(RADIANS(addresses.lat))*SIN(RADIANS(addresses.lng))+
+ SIN(0.832843699929145)*SIN(RADIANS(addresses.lat))))*3963.19)
+ AS distance FROM `addresses` [0m
+Google geocoding. Address: city,Sydney. Result: <?xml version="1.0" encoding="UTF-8" ?>
+<kml xmlns="http://earth.google.com/kml/2.0"><Response>
+  <name>city,Sydney</name>
+  <Status>
+    <code>200</code>
+    <request>geocode</request>
+  </Status>
+  <Placemark id="p1">
+    <address>Sydney NSW 2000, Australia</address>
+    <AddressDetails Accuracy="4" xmlns="urn:oasis:names:tc:ciq:xsdschema:xAL:2.0"><Country><CountryNameCode>AU</CountryNameCode><CountryName>Australia</CountryName><AdministrativeArea><AdministrativeAreaName>NSW</AdministrativeAreaName><Locality><LocalityName>Sydney</LocalityName></Locality></AdministrativeArea></Country></AddressDetails>
+    <ExtendedData>
+      <LatLonBox north="-33.8578737" south="-33.8764033" east="151.2231214" west="151.1911066" />
+    </ExtendedData>
+    <Point><coordinates>151.2071140,-33.8671390,0</coordinates></Point>
+  </Placemark>
+</Response></kml>
+  [4;36;1mAddress Load (0.0ms)[0m   [0;1mSELECT *, 
+ (ACOS(least(1,COS(-0.59109308378058)*COS(2.63906199173841)*COS(RADIANS(addresses.lat))*COS(RADIANS(addresses.lng))+
+ COS(-0.59109308378058)*SIN(2.63906199173841)*COS(RADIANS(addresses.lat))*SIN(RADIANS(addresses.lng))+
+ SIN(-0.59109308378058)*SIN(RADIANS(addresses.lat))))*3963.19)
+ AS distance FROM `addresses` [0m
+Google geocoding. Address: city,Sydney. Result: <?xml version="1.0" encoding="UTF-8" ?>
+<kml xmlns="http://earth.google.com/kml/2.0"><Response>
+  <name>city,Sydney</name>
+  <Status>
+    <code>200</code>
+    <request>geocode</request>
+  </Status>
+  <Placemark id="p1">
+    <address>Sydney NSW 2000, Australia</address>
+    <AddressDetails Accuracy="4" xmlns="urn:oasis:names:tc:ciq:xsdschema:xAL:2.0"><Country><CountryNameCode>AU</CountryNameCode><CountryName>Australia</CountryName><AdministrativeArea><AdministrativeAreaName>NSW</AdministrativeAreaName><Locality><LocalityName>Sydney</LocalityName></Locality></AdministrativeArea></Country></AddressDetails>
+    <ExtendedData>
+      <LatLonBox north="-33.8578737" south="-33.8764033" east="151.2231214" west="151.1911066" />
+    </ExtendedData>
+    <Point><coordinates>151.2071140,-33.8671390,0</coordinates></Point>
+  </Placemark>
+</Response></kml>
+Google geocoding. Address: city,Sydney. Result: <?xml version="1.0" encoding="UTF-8" ?>
+<kml xmlns="http://earth.google.com/kml/2.0"><Response>
+  <name>city,Sydney</name>
+  <Status>
+    <code>200</code>
+    <request>geocode</request>
+  </Status>
+  <Placemark id="p1">
+    <address>Sydney NSW 2000, Australia</address>
+    <AddressDetails Accuracy="4" xmlns="urn:oasis:names:tc:ciq:xsdschema:xAL:2.0"><Country><CountryNameCode>AU</CountryNameCode><CountryName>Australia</CountryName><AdministrativeArea><AdministrativeAreaName>NSW</AdministrativeAreaName><Locality><LocalityName>Sydney</LocalityName></Locality></AdministrativeArea></Country></AddressDetails>
+    <ExtendedData>
+      <LatLonBox north="-33.8578737" south="-33.8764033" east="151.2231214" west="151.1911066" />
+    </ExtendedData>
+    <Point><coordinates>151.2071140,-33.8671390,0</coordinates></Point>
+  </Placemark>
+</Response></kml>
+  [4;35;1mAddress Load (0.0ms)[0m   [0mSELECT *, 
+ (ACOS(least(1,COS(-0.59109308378058)*COS(2.63906199173841)*COS(RADIANS(addresses.lat))*COS(RADIANS(addresses.lng))+
+ COS(-0.59109308378058)*SIN(2.63906199173841)*COS(RADIANS(addresses.lat))*SIN(RADIANS(addresses.lng))+
+ SIN(-0.59109308378058)*SIN(RADIANS(addresses.lat))))*3963.19)
+ AS distance FROM `addresses` WHERE (`addresses`.`id` = '--- :within\n') [0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mAddress Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `addresses`[0m
+  [4;35;1mSuburb Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `suburbs`[0m
+  [4;36;1mSuburb Load (0.0ms)[0m   [0;1mSELECT * FROM `suburbs` LIMIT 1[0m
+  [4;35;1mSuburb Load (0.0ms)[0m   [0mSELECT * FROM `suburbs` LIMIT 1[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSuburb Load (0.0ms)[0m   [0;1mSELECT * FROM `suburbs` LIMIT 1[0m
+  [4;35;1mSuburb Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `suburbs`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSuburb Load (0.0ms)[0m   [0;1mSELECT * FROM `suburbs` LIMIT 1[0m
+  [4;35;1mSuburb Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `suburbs`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSuburb Load (0.0ms)[0m   [0;1mSELECT * FROM `suburbs` LIMIT 1[0m
+  [4;35;1mSuburb Columns (15.0ms)[0m   [0mSHOW FIELDS FROM `suburbs`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (15.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSuburb Load (0.0ms)[0m   [0;1mSELECT * FROM `suburbs` LIMIT 1[0m
+  [4;35;1mSuburb Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `suburbs`[0m
+  [4;36;1mAddress Columns (16.0ms)[0m   [0;1mSHOW FIELDS FROM `addresses`[0m
+  [4;36;1mSQL (16.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (15.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (20100124054035)
+Migrating to CreateSuburbs (20100124060306)
+Migrating to AddUsersPasswordResetField (20100124073325)
+Migrating to CreatePosts (20100124111816)
+Migrating to CreateProperties (20100124112416)
+Migrating to CreateCarparks (20100124114337)
+Migrating to CreateAddresses (20100124114554)
+Migrating to AddNameToSuburb (20100124115827)
+Migrating to CreatePropertySearches (20100126044312)
+Migrating to ChangeColumnForProperty (20100126073625)
+Migrating to CreateImages (20100127235412)
+Migrating to ChangeColumnsOfPropertySearch (20100209125159)
+Migrating to ChangeReferenceForAddress (20100216103345)
+Migrating to CreateSearches (20100216113117)
+Migrating to AddReferenceForAddress (20100216122556)
+Migrating to ChangeReferenceToImage (20100301065823)
+Migrating to AddReferenceToPropertySearch (20100306062514)
+Migrating to CreateSessions (20100306072215)
+Migrating to AddLatLngToAddress (20100404051547)
+Migrating to AddLatLngToSuburb (20100406134506)
+  [4;36;1mSQL (281.0ms)[0m   [0;1mALTER TABLE `suburbs` ADD `lat` float[0m
+  [4;35;1mSQL (297.0ms)[0m   [0mALTER TABLE `suburbs` ADD `lng` float[0m
+  [4;36;1mSQL (63.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100406134506')[0m
+  [4;35;1mSQL (15.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW FIELDS FROM `addresses`[0m
+  [4;35;1mSQL (16.0ms)[0m   [0mdescribe `addresses`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW KEYS FROM `addresses`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW FIELDS FROM `carparks`[0m
+  [4;36;1mSQL (15.0ms)[0m   [0;1mdescribe `carparks`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW KEYS FROM `carparks`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW FIELDS FROM `images`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mdescribe `images`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW KEYS FROM `images`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW FIELDS FROM `posts`[0m
+  [4;36;1mSQL (16.0ms)[0m   [0;1mdescribe `posts`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW KEYS FROM `posts`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW FIELDS FROM `properties`[0m
+  [4;35;1mSQL (15.0ms)[0m   [0mdescribe `properties`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW KEYS FROM `properties`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW FIELDS FROM `property_searches`[0m
+  [4;36;1mSQL (16.0ms)[0m   [0;1mdescribe `property_searches`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW KEYS FROM `property_searches`[0m
+  [4;36;1mSQL (16.0ms)[0m   [0;1mSHOW FIELDS FROM `searches`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mdescribe `searches`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW KEYS FROM `searches`[0m
+  [4;35;1mSQL (15.0ms)[0m   [0mSHOW FIELDS FROM `sessions`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mdescribe `sessions`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW KEYS FROM `sessions`[0m
+  [4;36;1mSQL (16.0ms)[0m   [0;1mSHOW FIELDS FROM `suburbs`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mdescribe `suburbs`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW KEYS FROM `suburbs`[0m
+  [4;35;1mSQL (15.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mdescribe `users`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW KEYS FROM `users`[0m
+Google geocoding. Address: 2134. Result: <?xml version="1.0" encoding="UTF-8" ?>
+<kml xmlns="http://earth.google.com/kml/2.0"><Response>
+  <name>2134</name>
+  <Status>
+    <code>200</code>
+    <request>geocode</request>
+  </Status>
+  <Placemark id="p1">
+    <address>2134 Sződ, Hungary</address>
+    <AddressDetails Accuracy="5" xmlns="urn:oasis:names:tc:ciq:xsdschema:xAL:2.0"><Country><CountryNameCode>HU</CountryNameCode><CountryName>Magyarország</CountryName><AdministrativeArea><AdministrativeAreaName>Pest</AdministrativeAreaName><Locality><LocalityName>Szõd</LocalityName><PostalCode><PostalCodeNumber>2134</PostalCodeNumber></PostalCode></Locality></AdministrativeArea></Country></AddressDetails>
+    <ExtendedData>
+      <LatLonBox north="47.7290206" south="47.7078373" east="19.2033311" west="19.1490604" />
+    </ExtendedData>
+    <Point><coordinates>19.1761957,47.7184290,0</coordinates></Point>
+  </Placemark>
+  <Placemark id="p2">
+    <address>New South Wales 2134, Australia</address>
+    <AddressDetails Accuracy="5" xmlns="urn:oasis:names:tc:ciq:xsdschema:xAL:2.0"><Country><CountryNameCode>AU</CountryNameCode><CountryName>Australia</CountryName><PostalCode><PostalCodeNumber>2134</PostalCodeNumber></PostalCode></Country></AddressDetails>
+    <ExtendedData>
+      <LatLonBox north="-33.8663878" south="-33.8933860" east="151.1126498" west="151.0937206" />
+    </ExtendedData>
+    <Point><coordinates>151.1031852,-33.8798869,0</coordinates></Point>
+  </Placemark>
+</Response></kml>
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSuburb Columns (16.0ms)[0m   [0;1mSHOW FIELDS FROM `suburbs`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mSuburb Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `suburbs`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mBEGIN[0m
+Google geocoding. Address: Australia. Result: <?xml version="1.0" encoding="UTF-8" ?>
+<kml xmlns="http://earth.google.com/kml/2.0"><Response>
+  <name>Australia</name>
+  <Status>
+    <code>200</code>
+    <request>geocode</request>
+  </Status>
+  <Placemark id="p1">
+    <address>Australia</address>
+    <AddressDetails Accuracy="1" xmlns="urn:oasis:names:tc:ciq:xsdschema:xAL:2.0"><Country><CountryNameCode>AU</CountryNameCode><CountryName>Australia</CountryName></Country></AddressDetails>
+    <ExtendedData>
+      <LatLonBox north="-3.2829969" south="-43.9215535" east="166.5583399" west="100.9919321" />
+    </ExtendedData>
+    <Point><coordinates>133.7751360,-25.2743980,0</coordinates></Point>
+  </Placemark>
+</Response></kml>
+  [4;35;1mSuburb Create (0.0ms)[0m   [0mINSERT INTO `suburbs` (`name`, `updated_at`, `postcode`, `lng`, `area`, `lat`, `state`, `created_at`) VALUES(NULL, '2010-04-06 13:58:59', NULL, 133.775136, NULL, -25.274398, NULL, '2010-04-06 13:58:59')[0m
+  [4;36;1mSQL (78.0ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSuburb Load (0.0ms)[0m   [0mSELECT * FROM `suburbs` [0m
+Google geocoding. Address: 2134. Result: <?xml version="1.0" encoding="UTF-8" ?>
+<kml xmlns="http://earth.google.com/kml/2.0"><Response>
+  <name>2134</name>
+  <Status>
+    <code>200</code>
+    <request>geocode</request>
+  </Status>
+  <Placemark id="p1">
+    <address>2134 Sződ, Hungary</address>
+    <AddressDetails Accuracy="5" xmlns="urn:oasis:names:tc:ciq:xsdschema:xAL:2.0"><Country><CountryNameCode>HU</CountryNameCode><CountryName>Magyarország</CountryName><AdministrativeArea><AdministrativeAreaName>Pest</AdministrativeAreaName><Locality><LocalityName>Szõd</LocalityName><PostalCode><PostalCodeNumber>2134</PostalCodeNumber></PostalCode></Locality></AdministrativeArea></Country></AddressDetails>
+    <ExtendedData>
+      <LatLonBox north="47.7290206" south="47.7078373" east="19.2033311" west="19.1490604" />
+    </ExtendedData>
+    <Point><coordinates>19.1761957,47.7184290,0</coordinates></Point>
+  </Placemark>
+  <Placemark id="p2">
+    <address>New South Wales 2134, Australia</address>
+    <AddressDetails Accuracy="5" xmlns="urn:oasis:names:tc:ciq:xsdschema:xAL:2.0"><Country><CountryNameCode>AU</CountryNameCode><CountryName>Australia</CountryName><PostalCode><PostalCodeNumber>2134</PostalCodeNumber></PostalCode></Country></AddressDetails>
+    <ExtendedData>
+      <LatLonBox north="-33.8663878" south="-33.8933860" east="151.1126498" west="151.0937206" />
+    </ExtendedData>
+    <Point><coordinates>151.1031852,-33.8798869,0</coordinates></Point>
+  </Placemark>
+</Response></kml>
+  [4;36;1mSuburb Load (0.0ms)[0m   [0;1mSELECT *, 
+ (ACOS(least(1,COS(0.832843699929145)*COS(0.334687752971779)*COS(RADIANS(suburbs.lat))*COS(RADIANS(suburbs.lng))+
+ COS(0.832843699929145)*SIN(0.334687752971779)*COS(RADIANS(suburbs.lat))*SIN(RADIANS(suburbs.lng))+
+ SIN(0.832843699929145)*SIN(RADIANS(suburbs.lat))))*3963.19)
+ AS distance FROM `suburbs` [0m
+Geocoder.us geocoding. Address: 2134. Result: 2: couldn't find this address! sorry
+geocoder.us was unable to geocode address: 2134
+Google geocoding. Address: 2134,Au. Result: <?xml version="1.0" encoding="UTF-8" ?>
+<kml xmlns="http://earth.google.com/kml/2.0"><Response>
+  <name>2134,Au</name>
+  <Status>
+    <code>200</code>
+    <request>geocode</request>
+  </Status>
+  <Placemark id="p1">
+    <address>2134, Australia</address>
+    <AddressDetails Accuracy="5" xmlns="urn:oasis:names:tc:ciq:xsdschema:xAL:2.0"><Country><CountryNameCode>AU</CountryNameCode><CountryName>Australia</CountryName><PostalCode><PostalCodeNumber>2134</PostalCodeNumber></PostalCode></Country></AddressDetails>
+    <ExtendedData>
+      <LatLonBox north="-33.8663878" south="-33.8933860" east="151.1126498" west="151.0937206" />
+    </ExtendedData>
+    <Point><coordinates>151.1031852,-33.8798869,0</coordinates></Point>
+  </Placemark>
+</Response></kml>
+  [4;35;1mSuburb Load (0.0ms)[0m   [0mSELECT *, 
+ (ACOS(least(1,COS(-0.591315576608295)*COS(2.63724809199077)*COS(RADIANS(suburbs.lat))*COS(RADIANS(suburbs.lng))+
+ COS(-0.591315576608295)*SIN(2.63724809199077)*COS(RADIANS(suburbs.lat))*SIN(RADIANS(suburbs.lng))+
+ SIN(-0.591315576608295)*SIN(RADIANS(suburbs.lat))))*3963.19)
+ AS distance FROM `suburbs` WHERE (((suburbs.lat>-33.8798869 AND suburbs.lat<-33.8798869 AND suburbs.lng>151.1031852 AND suburbs.lng<151.1031852)) AND (
+ (ACOS(least(1,COS(-0.591315576608295)*COS(2.63724809199077)*COS(RADIANS(suburbs.lat))*COS(RADIANS(suburbs.lng))+
+ COS(-0.591315576608295)*SIN(2.63724809199077)*COS(RADIANS(suburbs.lat))*SIN(RADIANS(suburbs.lng))+
+ SIN(-0.591315576608295)*SIN(RADIANS(suburbs.lat))))*3963.19)
+ <= 0)) [0m
+Google geocoding. Address: 2134,Au. Result: <?xml version="1.0" encoding="UTF-8" ?>
+<kml xmlns="http://earth.google.com/kml/2.0"><Response>
+  <name>2134,Au</name>
+  <Status>
+    <code>200</code>
+    <request>geocode</request>
+  </Status>
+  <Placemark id="p1">
+    <address>2134, Australia</address>
+    <AddressDetails Accuracy="5" xmlns="urn:oasis:names:tc:ciq:xsdschema:xAL:2.0"><Country><CountryNameCode>AU</CountryNameCode><CountryName>Australia</CountryName><PostalCode><PostalCodeNumber>2134</PostalCodeNumber></PostalCode></Country></AddressDetails>
+    <ExtendedData>
+      <LatLonBox north="-33.8663878" south="-33.8933860" east="151.1126498" west="151.0937206" />
+    </ExtendedData>
+    <Point><coordinates>151.1031852,-33.8798869,0</coordinates></Point>
+  </Placemark>
+</Response></kml>
+  [4;36;1mSuburb Load (0.0ms)[0m   [0;1mSELECT *, 
+ (ACOS(least(1,COS(-0.591315576608295)*COS(2.63724809199077)*COS(RADIANS(suburbs.lat))*COS(RADIANS(suburbs.lng))+
+ COS(-0.591315576608295)*SIN(2.63724809199077)*COS(RADIANS(suburbs.lat))*SIN(RADIANS(suburbs.lng))+
+ SIN(-0.591315576608295)*SIN(RADIANS(suburbs.lat))))*3963.19)
+ AS distance FROM `suburbs` [0m
+Google geocoding. Address: Burwood,Au. Result: <?xml version="1.0" encoding="UTF-8" ?>
+<kml xmlns="http://earth.google.com/kml/2.0"><Response>
+  <name>Burwood,Au</name>
+  <Status>
+    <code>200</code>
+    <request>geocode</request>
+  </Status>
+  <Placemark id="p1">
+    <address>Burwood NSW, Australia</address>
+    <AddressDetails Accuracy="4" xmlns="urn:oasis:names:tc:ciq:xsdschema:xAL:2.0"><Country><CountryNameCode>AU</CountryNameCode><CountryName>Australia</CountryName><AdministrativeArea><AdministrativeAreaName>NSW</AdministrativeAreaName><Locality><LocalityName>Burwood</LocalityName></Locality></AdministrativeArea></Country></AddressDetails>
+    <ExtendedData>
+      <LatLonBox north="-33.8681588" south="-33.8866862" east="151.1196894" west="151.0876746" />
+    </ExtendedData>
+    <Point><coordinates>151.1036820,-33.8774230,0</coordinates></Point>
+  </Placemark>
+</Response></kml>
+  [4;35;1mSuburb Load (0.0ms)[0m   [0mSELECT *, 
+ (ACOS(least(1,COS(-0.591272573440855)*COS(2.63725676278649)*COS(RADIANS(suburbs.lat))*COS(RADIANS(suburbs.lng))+
+ COS(-0.591272573440855)*SIN(2.63725676278649)*COS(RADIANS(suburbs.lat))*SIN(RADIANS(suburbs.lng))+
+ SIN(-0.591272573440855)*SIN(RADIANS(suburbs.lat))))*3963.19)
+ AS distance FROM `suburbs` [0m
+  [4;36;1mSuburb Load (0.0ms)[0m   [0;1mSELECT * FROM `suburbs` LIMIT 1[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mBEGIN[0m
+Google geocoding. Address: Burwood,N.S.W,Australia,2134. Result: <?xml version="1.0" encoding="UTF-8" ?>
+<kml xmlns="http://earth.google.com/kml/2.0"><Response>
+  <name>Burwood,N.S.W,Australia,2134</name>
+  <Status>
+    <code>200</code>
+    <request>geocode</request>
+  </Status>
+  <Placemark id="p1">
+    <address>Burwood NSW, Australia</address>
+    <AddressDetails Accuracy="4" xmlns="urn:oasis:names:tc:ciq:xsdschema:xAL:2.0"><Country><CountryNameCode>AU</CountryNameCode><CountryName>Australia</CountryName><AdministrativeArea><AdministrativeAreaName>NSW</AdministrativeAreaName><Locality><LocalityName>Burwood</LocalityName></Locality></AdministrativeArea></Country></AddressDetails>
+    <ExtendedData>
+      <LatLonBox north="-33.8681588" south="-33.8866862" east="151.1196894" west="151.0876746" />
+    </ExtendedData>
+    <Point><coordinates>151.1036820,-33.8774230,0</coordinates></Point>
+  </Placemark>
+</Response></kml>
+  [4;36;1mSuburb Update (0.0ms)[0m   [0;1mUPDATE `suburbs` SET `lat` = -33.877423, `lng` = 151.103682, `updated_at` = '2010-04-06 14:02:59' WHERE `id` = 1[0m
+  [4;35;1mSQL (94.0ms)[0m   [0mCOMMIT[0m
+Google geocoding. Address: Burwood,Au. Result: <?xml version="1.0" encoding="UTF-8" ?>
+<kml xmlns="http://earth.google.com/kml/2.0"><Response>
+  <name>Burwood,Au</name>
+  <Status>
+    <code>200</code>
+    <request>geocode</request>
+  </Status>
+  <Placemark id="p1">
+    <address>Burwood NSW, Australia</address>
+    <AddressDetails Accuracy="4" xmlns="urn:oasis:names:tc:ciq:xsdschema:xAL:2.0"><Country><CountryNameCode>AU</CountryNameCode><CountryName>Australia</CountryName><AdministrativeArea><AdministrativeAreaName>NSW</AdministrativeAreaName><Locality><LocalityName>Burwood</LocalityName></Locality></AdministrativeArea></Country></AddressDetails>
+    <ExtendedData>
+      <LatLonBox north="-33.8681588" south="-33.8866862" east="151.1196894" west="151.0876746" />
+    </ExtendedData>
+    <Point><coordinates>151.1036820,-33.8774230,0</coordinates></Point>
+  </Placemark>
+</Response></kml>
+  [4;36;1mSuburb Load (0.0ms)[0m   [0;1mSELECT *, 
+ (ACOS(least(1,COS(-0.591272573440855)*COS(2.63725676278649)*COS(RADIANS(suburbs.lat))*COS(RADIANS(suburbs.lng))+
+ COS(-0.591272573440855)*SIN(2.63725676278649)*COS(RADIANS(suburbs.lat))*SIN(RADIANS(suburbs.lng))+
+ SIN(-0.591272573440855)*SIN(RADIANS(suburbs.lat))))*3963.19)
+ AS distance FROM `suburbs` [0m
+Google geocoding. Address: Burwood,Au. Result: <?xml version="1.0" encoding="UTF-8" ?>
+<kml xmlns="http://earth.google.com/kml/2.0"><Response>
+  <name>Burwood,Au</name>
+  <Status>
+    <code>200</code>
+    <request>geocode</request>
+  </Status>
+  <Placemark id="p1">
+    <address>Burwood NSW, Australia</address>
+    <AddressDetails Accuracy="4" xmlns="urn:oasis:names:tc:ciq:xsdschema:xAL:2.0"><Country><CountryNameCode>AU</CountryNameCode><CountryName>Australia</CountryName><AdministrativeArea><AdministrativeAreaName>NSW</AdministrativeAreaName><Locality><LocalityName>Burwood</LocalityName></Locality></AdministrativeArea></Country></AddressDetails>
+    <ExtendedData>
+      <LatLonBox north="-33.8681588" south="-33.8866862" east="151.1196894" west="151.0876746" />
+    </ExtendedData>
+    <Point><coordinates>151.1036820,-33.8774230,0</coordinates></Point>
+  </Placemark>
+</Response></kml>
+  [4;35;1mSuburb Load (0.0ms)[0m   [0mSELECT *, 
+ (ACOS(least(1,COS(-0.591272573440855)*COS(2.63725676278649)*COS(RADIANS(suburbs.lat))*COS(RADIANS(suburbs.lng))+
+ COS(-0.591272573440855)*SIN(2.63725676278649)*COS(RADIANS(suburbs.lat))*SIN(RADIANS(suburbs.lng))+
+ SIN(-0.591272573440855)*SIN(RADIANS(suburbs.lat))))*3963.19)
+ AS distance FROM `suburbs` WHERE (((suburbs.lat>-33.9497079264268 AND suburbs.lat<-33.8051380735732 AND suburbs.lng>151.016616084124 AND suburbs.lng<151.190747915876)) AND (
+ (ACOS(least(1,COS(-0.591272573440855)*COS(2.63725676278649)*COS(RADIANS(suburbs.lat))*COS(RADIANS(suburbs.lng))+
+ COS(-0.591272573440855)*SIN(2.63725676278649)*COS(RADIANS(suburbs.lat))*SIN(RADIANS(suburbs.lng))+
+ SIN(-0.591272573440855)*SIN(RADIANS(suburbs.lat))))*3963.19)
+ <= 5)) [0m
+Google geocoding. Address: 2134. Result: <?xml version="1.0" encoding="UTF-8" ?>
+<kml xmlns="http://earth.google.com/kml/2.0"><Response>
+  <name>2134</name>
+  <Status>
+    <code>200</code>
+    <request>geocode</request>
+  </Status>
+  <Placemark id="p1">
+    <address>2134, Australia</address>
+    <AddressDetails Accuracy="5" xmlns="urn:oasis:names:tc:ciq:xsdschema:xAL:2.0"><Country><CountryNameCode>AU</CountryNameCode><CountryName>Australia</CountryName><PostalCode><PostalCodeNumber>2134</PostalCodeNumber></PostalCode></Country></AddressDetails>
+    <ExtendedData>
+      <LatLonBox north="-33.8663878" south="-33.8933860" east="151.1126498" west="151.0937206" />
+    </ExtendedData>
+    <Point><coordinates>151.1031852,-33.8798869,0</coordinates></Point>
+  </Placemark>
+</Response></kml>
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSuburb Load (0.0ms)[0m   [0;1mSELECT * FROM `suburbs` [0m
+  [4;35;1mSuburb Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `suburbs`[0m
+  [4;36;1mSuburb Load (0.0ms)[0m   [0;1mSELECT * FROM `suburbs` [0m
+Google geocoding. Address: 2134. Result: <?xml version="1.0" encoding="UTF-8" ?>
+<kml xmlns="http://earth.google.com/kml/2.0"><Response>
+  <name>2134</name>
+  <Status>
+    <code>200</code>
+    <request>geocode</request>
+  </Status>
+  <Placemark id="p1">
+    <address>2134, Australia</address>
+    <AddressDetails Accuracy="5" xmlns="urn:oasis:names:tc:ciq:xsdschema:xAL:2.0"><Country><CountryNameCode>AU</CountryNameCode><CountryName>Australia</CountryName><PostalCode><PostalCodeNumber>2134</PostalCodeNumber></PostalCode></Country></AddressDetails>
+    <ExtendedData>
+      <LatLonBox north="-33.8663878" south="-33.8933860" east="151.1126498" west="151.0937206" />
+    </ExtendedData>
+    <Point><coordinates>151.1031852,-33.8798869,0</coordinates></Point>
+  </Placemark>
+</Response></kml>
+  [4;35;1mSuburb Load (0.0ms)[0m   [0mSELECT * FROM `suburbs` WHERE (
+ (ACOS(least(1,COS(-0.591315576608295)*COS(2.63724809199077)*COS(RADIANS(suburbs.lat))*COS(RADIANS(suburbs.lng))+
+ COS(-0.591315576608295)*SIN(2.63724809199077)*COS(RADIANS(suburbs.lat))*SIN(RADIANS(suburbs.lng))+
+ SIN(-0.591315576608295)*SIN(RADIANS(suburbs.lat))))*3963.19)
+ < 5) [0m
+Google geocoding. Address: Hurstville. Result: <?xml version="1.0" encoding="UTF-8" ?>
+<kml xmlns="http://earth.google.com/kml/2.0"><Response>
+  <name>Hurstville</name>
+  <Status>
+    <code>200</code>
+    <request>geocode</request>
+  </Status>
+  <Placemark id="p1">
+    <address>Hurstville NSW, Australia</address>
+    <AddressDetails Accuracy="4" xmlns="urn:oasis:names:tc:ciq:xsdschema:xAL:2.0"><Country><CountryNameCode>AU</CountryNameCode><CountryName>Australia</CountryName><AdministrativeArea><AdministrativeAreaName>NSW</AdministrativeAreaName><Locality><LocalityName>Hurstville</LocalityName></Locality></AdministrativeArea></Country></AddressDetails>
+    <ExtendedData>
+      <LatLonBox north="-33.9566684" south="-33.9751766" east="151.1171914" west="151.0851766" />
+    </ExtendedData>
+    <Point><coordinates>151.1011840,-33.9659230,0</coordinates></Point>
+  </Placemark>
+</Response></kml>
+  [4;36;1mSuburb Load (0.0ms)[0m   [0;1mSELECT * FROM `suburbs` WHERE (
+ (ACOS(least(1,COS(-0.59281718982887)*COS(2.63721316446178)*COS(RADIANS(suburbs.lat))*COS(RADIANS(suburbs.lng))+
+ COS(-0.59281718982887)*SIN(2.63721316446178)*COS(RADIANS(suburbs.lat))*SIN(RADIANS(suburbs.lng))+
+ SIN(-0.59281718982887)*SIN(RADIANS(suburbs.lat))))*3963.19)
+ < 5) [0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PostsController#new (for 127.0.0.1 at 2010-04-10 11:46:10) [GET]
+  [4;36;1mPost Columns (62.0ms)[0m   [0;1mSHOW FIELDS FROM `posts`[0m
+Rendering template within layouts/application
+Rendering posts/new
+ERROR: compiling _run_erb_app47views47posts47_form46html46erb_locals_form_object RAISED compile error
+e:/found/app/views/posts/_form.html.erb:4: syntax error, unexpected ')'
+...r :address do |address_form| ).to_s); @output_buffer.concat ...
+                              ^
+e:/found/app/views/posts/_form.html.erb:49: syntax error, unexpected kEND, expecting ')'
+ end ; @output_buffer.concat "\n"
+    ^
+e:/found/app/views/posts/_form.html.erb:54: syntax error, unexpected kENSURE, expecting ')'
+e:/found/app/views/posts/_form.html.erb:56: syntax error, unexpected kEND, expecting ')'
+Function body:           def _run_erb_app47views47posts47_form46html46erb_locals_form_object(local_assigns)
+            old_output_buffer = output_buffer;object = local_assigns[:object];form = local_assigns[:form];;@output_buffer = '';  __in_erb_template=true ; @output_buffer.concat "<div class =\"full_container post_form\">\n"
+@output_buffer.concat "  ";  form_for @post do |f| ; @output_buffer.concat "\n"
+@output_buffer.concat "    "; @output_buffer.concat(( f.error_messages ).to_s); @output_buffer.concat "\n"
+@output_buffer.concat "    "; @output_buffer.concat(( f.fields_for :address do |address_form| ).to_s); @output_buffer.concat "\n"
+@output_buffer.concat "      "; @output_buffer.concat(( render :partial => "addresses/form", :locals => { address => :address } ).to_s); @output_buffer.concat "\n"
+@output_buffer.concat "    "; end; @output_buffer.concat "\n"
+@output_buffer.concat "    <div class=\"line\">\n"
+@output_buffer.concat "      <div class=\"field_20\">\n"
+@output_buffer.concat "        "; @output_buffer.concat(( f.label :title ).to_s); @output_buffer.concat "\n"
+@output_buffer.concat "        "; @output_buffer.concat(( f.text_field :title ).to_s); @output_buffer.concat "\n"
+@output_buffer.concat "      </div>\n"
+@output_buffer.concat "    </div>\n"
+@output_buffer.concat "    <div class=\"line\" style=\"height: 320px;\">\n"
+@output_buffer.concat "      <div class=\"field_20\">\n"
+@output_buffer.concat "        "; @output_buffer.concat(( f.label :description ).to_s); @output_buffer.concat "\n"
+@output_buffer.concat "        "; @output_buffer.concat(( f.text_area :description ).to_s); @output_buffer.concat "\n"
+@output_buffer.concat "      </div>\n"
+@output_buffer.concat "    </div>\n"
+@output_buffer.concat "    <div class=\"line\">\n"
+@output_buffer.concat "      <div class=\"field_20\">\n"
+@output_buffer.concat "        "; @output_buffer.concat(( f.label :available_from ).to_s); @output_buffer.concat "\n"
+@output_buffer.concat "        "; @output_buffer.concat(( f.text_field :available_from , :class => "startdatepick",:id => "post_start_date", :end_date => "post_end_date").to_s); @output_buffer.concat "\n"
+@output_buffer.concat "      </div>\n"
+@output_buffer.concat "    </div>\n"
+@output_buffer.concat "    <div class=\"line\">\n"
+@output_buffer.concat "      <div class=\"field_20\">\n"
+@output_buffer.concat "        "; @output_buffer.concat(( f.label :expiry_date ).to_s); @output_buffer.concat "\n"
+@output_buffer.concat "        "; @output_buffer.concat(( f.text_field :expiry_date, :class => "enddatepick",:id => "post_end_date", :end_date => "post_start_date").to_s); @output_buffer.concat "\n"
+@output_buffer.concat "      </div>\n"
+@output_buffer.concat "    </div>\n"
+@output_buffer.concat "    <div class=\"line\">\n"
+@output_buffer.concat "      <div class=\"field_20\">\n"
+@output_buffer.concat "        "; @output_buffer.concat(( f.label :inspection_time ).to_s); @output_buffer.concat " "; @output_buffer.concat(( f.text_field :inspection_time ).to_s); @output_buffer.concat "\n"
+@output_buffer.concat "      </div>\n"
+@output_buffer.concat "    </div>\n"
+@output_buffer.concat "  <div class=\"line\" >\n"
+@output_buffer.concat "      \n"
+@output_buffer.concat "       <label>negotiable </label>\n"
+@output_buffer.concat "        "; @output_buffer.concat(( f.check_box :negotiable ).to_s); @output_buffer.concat "\n"
+@output_buffer.concat "     \n"
+@output_buffer.concat "    </div>\n"
+@output_buffer.concat "     <div class=\"line\">\n"
+@output_buffer.concat "      <div class=\"field_20\">\n"
+@output_buffer.concat "        <label></label>\n"
+@output_buffer.concat "      "; @output_buffer.concat(( f.submit "Submit" ).to_s); @output_buffer.concat "\n"
+@output_buffer.concat "      </div>\n"
+@output_buffer.concat "    </div>\n"
+@output_buffer.concat "  </div>\n"
+ end ; @output_buffer.concat "\n"
+@output_buffer.concat "\n"
+@output_buffer.concat "<script type=\"text/javascript\">\n"
+@output_buffer.concat "    $('.post_form :checkbox').iphoneStyle();\n"
+@output_buffer.concat "</script>"; @output_buffer
+          ensure
+            self.output_buffer = old_output_buffer
+          end
+Backtrace: e:/found/app/views/posts/_form.html.erb:56:in `compile!'
+c:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_view/renderable.rb:61:in `compile'
+c:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_view/renderable.rb:28:in `render'
+c:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_view/renderable_partial.rb:20:in `render'
+c:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/benchmarking.rb:26:in `benchmark'
+c:/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.3.5/lib/active_support/core_ext/benchmark.rb:17:in `ms'
+c:/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.3.5/lib/active_support/core_ext/benchmark.rb:10:in `realtime'
+c:/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.3.5/lib/active_support/core_ext/benchmark.rb:17:in `ms'
+c:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/benchmarking.rb:26:in `benchmark'
+c:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_view/renderable_partial.rb:19:in `render'
+c:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_view/template.rb:205:in `render_template'
+c:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_view/renderable_partial.rb:44:in `render_partial'
+c:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_view/partials.rb:184:in `render_partial'
+c:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_view/base.rb:267:in `render'
+e:/found/app/views/posts/new.html.erb:3:in `_run_erb_app47views47posts47new46html46erb'
+c:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_view/renderable.rb:34:in `send'
+c:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_view/renderable.rb:34:in `render'
+c:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_view/base.rb:306:in `with_template'
+c:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_view/renderable.rb:30:in `render'
+c:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_view/template.rb:205:in `render_template'
+c:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_view/base.rb:265:in `render'
+c:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_view/base.rb:348:in `_render_with_layout'
+c:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_view/base.rb:262:in `render'
+c:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/base.rb:1250:in `render_for_file'
+c:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/base.rb:945:in `render_without_benchmark'
+c:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/benchmarking.rb:51:in `render'
+c:/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.3.5/lib/active_support/core_ext/benchmark.rb:17:in `ms'
+c:/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.3.5/lib/active_support/core_ext/benchmark.rb:10:in `realtime'
+c:/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.3.5/lib/active_support/core_ext/benchmark.rb:17:in `ms'
+c:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/benchmarking.rb:51:in `render'
+c:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/base.rb:1326:in `default_render'
+c:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/base.rb:1332:in `perform_action_without_filters'
+c:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/filters.rb:617:in `call_filters'
+c:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/filters.rb:610:in `perform_action_without_benchmark'
+c:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+c:/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.3.5/lib/active_support/core_ext/benchmark.rb:17:in `ms'
+c:/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.3.5/lib/active_support/core_ext/benchmark.rb:10:in `realtime'
+c:/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.3.5/lib/active_support/core_ext/benchmark.rb:17:in `ms'
+c:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+c:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/rescue.rb:160:in `perform_action_without_flash'
+c:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/flash.rb:146:in `perform_action'
+c:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/base.rb:532:in `send'
+c:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/base.rb:532:in `process_without_filters'
+c:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/filters.rb:606:in `process'
+c:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/base.rb:391:in `process'
+c:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/base.rb:386:in `call'
+c:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/routing/route_set.rb:437:in `call'
+c:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/dispatcher.rb:87:in `dispatch'
+c:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/dispatcher.rb:121:in `_call'
+c:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/dispatcher.rb:130:in `build_middleware_stack'
+c:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/string_coercion.rb:25:in `call'
+c:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/string_coercion.rb:25:in `call'
+c:/Ruby/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/head.rb:9:in `call'
+c:/Ruby/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/methodoverride.rb:24:in `call'
+c:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/params_parser.rb:15:in `call'
+c:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/session/abstract_store.rb:122:in `call'
+c:/Ruby/lib/ruby/gems/1.8/gems/activerecord-2.3.5/lib/active_record/query_cache.rb:29:in `call'
+c:/Ruby/lib/ruby/gems/1.8/gems/activerecord-2.3.5/lib/active_record/connection_adapters/abstract/query_cache.rb:34:in `cache'
+c:/Ruby/lib/ruby/gems/1.8/gems/activerecord-2.3.5/lib/active_record/query_cache.rb:9:in `cache'
+c:/Ruby/lib/ruby/gems/1.8/gems/activerecord-2.3.5/lib/active_record/query_cache.rb:28:in `call'
+c:/Ruby/lib/ruby/gems/1.8/gems/activerecord-2.3.5/lib/active_record/connection_adapters/abstract/connection_pool.rb:361:in `call'
+c:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/failsafe.rb:26:in `call'
+c:/Ruby/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/lock.rb:11:in `call'
+c:/Ruby/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/lock.rb:11:in `synchronize'
+c:/Ruby/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/lock.rb:11:in `call'
+c:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/dispatcher.rb:114:in `call'
+c:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/reloader.rb:34:in `run'
+c:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/dispatcher.rb:108:in `call'
+c:/Ruby/lib/ruby/gems/1.8/gems/rails-2.3.5/lib/rails/rack/static.rb:31:in `call'
+c:/Ruby/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/urlmap.rb:46:in `call'
+c:/Ruby/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/urlmap.rb:40:in `each'
+c:/Ruby/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/urlmap.rb:40:in `call'
+c:/Ruby/lib/ruby/gems/1.8/gems/rails-2.3.5/lib/rails/rack/log_tailer.rb:17:in `call'
+c:/Ruby/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/content_length.rb:13:in `call'
+c:/Ruby/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/chunked.rb:15:in `call'
+c:/Ruby/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/handler/mongrel.rb:64:in `process'
+c:/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel.rb:159:in `process_client'
+c:/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel.rb:158:in `each'
+c:/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel.rb:158:in `process_client'
+c:/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel.rb:285:in `run'
+c:/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel.rb:285:in `initialize'
+c:/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel.rb:285:in `new'
+c:/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel.rb:285:in `run'
+c:/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel.rb:268:in `initialize'
+c:/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel.rb:268:in `new'
+c:/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel.rb:268:in `run'
+c:/Ruby/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/handler/mongrel.rb:34:in `run'
+c:/Ruby/lib/ruby/gems/1.8/gems/rails-2.3.5/lib/commands/server.rb:111
+c:/Ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+c:/Ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `require'
+script/server:3
+
+ActionView::TemplateError (compile error
+e:/found/app/views/posts/_form.html.erb:4: syntax error, unexpected ')'
+...r :address do |address_form| ).to_s); @output_buffer.concat ...
+                              ^
+e:/found/app/views/posts/_form.html.erb:49: syntax error, unexpected kEND, expecting ')'
+ end ; @output_buffer.concat "\n"
+    ^
+e:/found/app/views/posts/_form.html.erb:54: syntax error, unexpected kENSURE, expecting ')'
+e:/found/app/views/posts/_form.html.erb:56: syntax error, unexpected kEND, expecting ')') on line #4 of app/views/posts/_form.html.erb:
+1: <div class ="full_container post_form">
+2:   <% form_for @post do |f| %>
+3:     <%= f.error_messages %>
+4:     <%= f.fields_for :address do |address_form| %>
+5:       <%= render :partial => "addresses/form", :locals => { address => :address } %>
+6:     <%end%>
+7:     <div class="line">
+
+    app/views/posts/_form.html.erb:56:in `compile!'
+    app/views/posts/new.html.erb:3
+
+Rendered rescues/_trace (125.0ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WelcomeController#index (for 127.0.0.1 at 2010-04-10 12:03:57) [GET]
+Redirected to http://localhost:3000/searches/new
+Completed in 16ms (DB: 0) | 302 Found [http://localhost/]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SearchesController#new (for 127.0.0.1 at 2010-04-10 12:03:57) [GET]
+  [4;35;1mSearch Columns (63.0ms)[0m   [0mSHOW FIELDS FROM `searches`[0m
+  [4;36;1mPropertySearch Columns (31.0ms)[0m   [0;1mSHOW FIELDS FROM `property_searches`[0m
+Rendering template within layouts/application
+Rendering welcome/index
+Rendered property_searches/_form (62.0ms)
+Rendered searches/_form (219.0ms)
+  [4;35;1mUser Columns (78.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+Completed in 1093ms (View: 594, DB: 250) | 200 OK [http://localhost/searches/new]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ImagesController#ui to png (for 127.0.0.1 at 2010-04-10 12:04:00) [GET]
+  Parameters: {"id"=>"ui-bg_flat_75_ffffff_40x100"}
+
+ActionController::UnknownAction (No action responded to ui. Actions: create, destroy, edit, index, new, show, and update):
+  
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PostsController#index (for 127.0.0.1 at 2010-04-10 12:04:04) [GET]
+  [4;36;1mPost Load (0.0ms)[0m   [0;1mSELECT * FROM `posts` LIMIT 0, 1[0m
+Rendering template within layouts/application
+Rendering posts/index
+Rendered posts/_list (31.0ms)
+  [4;35;1mUser Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+Completed in 125ms (View: 110, DB: 0) | 200 OK [http://localhost/posts]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ImagesController#ui to png (for 127.0.0.1 at 2010-04-10 12:04:05) [GET]
+  Parameters: {"id"=>"ui-bg_flat_75_ffffff_40x100"}
+
+ActionController::UnknownAction (No action responded to ui. Actions: create, destroy, edit, index, new, show, and update):
+  
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PostsController#new (for 127.0.0.1 at 2010-04-10 12:04:18) [GET]
+  [4;36;1mPost Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `posts`[0m
+Rendering template within layouts/application
+Rendering posts/new
+Rendered posts/_form (47.0ms)
+  [4;35;1mUser Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+Completed in 141ms (View: 109, DB: 0) | 200 OK [http://localhost/posts/new]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ImagesController#ui to png (for 127.0.0.1 at 2010-04-10 12:04:18) [GET]
+  Parameters: {"id"=>"ui-bg_flat_75_ffffff_40x100"}
+
+ActionController::UnknownAction (No action responded to ui. Actions: create, destroy, edit, index, new, show, and update):
+  
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WelcomeController#index (for 127.0.0.1 at 2010-04-10 12:10:28) [GET]
+Redirected to http://localhost:3000/searches/new
+Completed in 0ms (DB: 0) | 302 Found [http://localhost/]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SearchesController#new (for 127.0.0.1 at 2010-04-10 12:10:29) [GET]
+  [4;36;1mSearch Columns (16.0ms)[0m   [0;1mSHOW FIELDS FROM `searches`[0m
+  [4;35;1mPropertySearch Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `property_searches`[0m
+Rendering template within layouts/application
+Rendering welcome/index
+Rendered property_searches/_form (47.0ms)
+Rendered searches/_form (47.0ms)
+  [4;36;1mUser Columns (16.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+Completed in 235ms (View: 172, DB: 32) | 200 OK [http://localhost/searches/new]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ImagesController#ui to png (for 127.0.0.1 at 2010-04-10 12:10:30) [GET]
+  Parameters: {"id"=>"ui-bg_flat_75_ffffff_40x100"}
+
+ActionController::UnknownAction (No action responded to ui. Actions: create, destroy, edit, index, new, show, and update):
+  
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PostsController#new (for 127.0.0.1 at 2010-04-10 12:10:38) [GET]
+  [4;35;1mPost Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `posts`[0m
+
+NoMethodError (undefined method `build' for nil:NilClass):
+  app/models/post.rb:12:in `setup'
+  app/controllers/posts_controller.rb:13:in `new'
+
+Rendered rescues/_trace (78.0ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PostsController#new (for 127.0.0.1 at 2010-04-10 12:12:58) [GET]
+  [4;36;1mPost Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `posts`[0m
+  [4;35;1mAddress Columns (78.0ms)[0m   [0mSHOW FIELDS FROM `addresses`[0m
+Rendering template within layouts/application
+Rendering posts/new
+
+ActionView::TemplateError (undefined local variable or method `address' for #<ActionView::Base:0x46e1e88>) on line #5 of app/views/posts/_form.html.erb:
+2:   <% form_for @post do |f| %>
+3:     <%= f.error_messages %>
+4:     <% f.fields_for :address do |address_form| %>
+5:       <%= render :partial => "addresses/form", :locals => { address => :address,form =>address_form } %>
+6:     <%end%>
+7:     <div class="line">
+8:       <div class="field_20">
+
+    app/views/posts/_form.html.erb:5
+    searchlogic (2.4.12) lib/searchlogic/rails_helpers.rb:72:in `fields_for'
+    app/views/posts/_form.html.erb:4
+    searchlogic (2.4.12) lib/searchlogic/rails_helpers.rb:72:in `fields_for'
+    searchlogic (2.4.12) lib/searchlogic/rails_helpers.rb:61:in `form_for'
+    app/views/posts/_form.html.erb:2
+    app/views/posts/new.html.erb:3
+
+Rendered rescues/_trace (235.0ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PostsController#new (for 127.0.0.1 at 2010-04-10 12:26:39) [GET]
+  [4;36;1mPost Columns (15.0ms)[0m   [0;1mSHOW FIELDS FROM `posts`[0m
+  [4;35;1mAddress Columns (16.0ms)[0m   [0mSHOW FIELDS FROM `addresses`[0m
+Rendering template within layouts/application
+Rendering posts/new
+
+ActionView::TemplateError (undefined local variable or method `address' for #<ActionView::Base:0x47fca20>) on line #5 of app/views/posts/_form.html.erb:
+2:   <% form_for @post do |f| %>
+3:     <%= f.error_messages %>
+4:     <% f.fields_for :address do |address_form| %>
+5:       <%= render :partial => "addresses/form", :locals => { address => :address,form =>address_form } %>
+6:     <%end%>
+7:     <div class="line">
+8:       <div class="field_20">
+
+    app/views/posts/_form.html.erb:5
+    searchlogic (2.4.12) lib/searchlogic/rails_helpers.rb:72:in `fields_for'
+    app/views/posts/_form.html.erb:4
+    searchlogic (2.4.12) lib/searchlogic/rails_helpers.rb:72:in `fields_for'
+    searchlogic (2.4.12) lib/searchlogic/rails_helpers.rb:61:in `form_for'
+    app/views/posts/_form.html.erb:2
+    app/views/posts/new.html.erb:3
+
+Rendered rescues/_trace (125.0ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PostsController#new (for 127.0.0.1 at 2010-04-10 12:27:37) [GET]
+  [4;36;1mPost Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `posts`[0m
+  [4;35;1mAddress Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `addresses`[0m
+Rendering template within layouts/application
+Rendering posts/new
+
+ActionView::TemplateError (undefined method `_run_erb_app47views47addresses47_form46html46erb_locals_#<ActionView::Helpers::FormBuilder:0x48cd83c>_form_object' for #<ActionView::Base:0x4948fa0>) on line #5 of app/views/addresses/_form.html.erb:
+2: <p>
+3:   <%= f.label :line1 %><br />
+4:   <%= f.text_field :line1 %>
+5: </p>
+6: <p>
+7:   <%= f.label :line2 %><br />
+8:   <%= f.text_field :line2 %>
+
+    app/views/posts/_form.html.erb:5
+    searchlogic (2.4.12) lib/searchlogic/rails_helpers.rb:72:in `fields_for'
+    app/views/posts/_form.html.erb:4
+    searchlogic (2.4.12) lib/searchlogic/rails_helpers.rb:72:in `fields_for'
+    searchlogic (2.4.12) lib/searchlogic/rails_helpers.rb:61:in `form_for'
+    app/views/posts/_form.html.erb:2
+    app/views/posts/new.html.erb:3
+
+Rendered rescues/_trace (141.0ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PostsController#new (for 127.0.0.1 at 2010-04-10 12:29:45) [GET]
+  [4;36;1mPost Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `posts`[0m
+  [4;35;1mAddress Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `addresses`[0m
+Rendering template within layouts/application
+Rendering posts/new
+
+ActionView::TemplateError (undefined method `_run_erb_app47views47addresses47_form46html46erb_locals_#<ActionView::Helpers::FormBuilder:0x4960d1c>_form_object' for #<ActionView::Base:0x4603110>) on line #5 of app/views/addresses/_form.html.erb:
+2:   <%= f.label :line1 %><br />
+3:   <%= f.text_field :line1 %>
+4: </p>
+5: <p>
+6:   <%= f.label :line2 %><br />
+7:   <%= f.text_field :line2 %>
+8: </p>
+
+    app/views/posts/_form.html.erb:5
+    searchlogic (2.4.12) lib/searchlogic/rails_helpers.rb:72:in `fields_for'
+    app/views/posts/_form.html.erb:4
+    searchlogic (2.4.12) lib/searchlogic/rails_helpers.rb:72:in `fields_for'
+    searchlogic (2.4.12) lib/searchlogic/rails_helpers.rb:61:in `form_for'
+    app/views/posts/_form.html.erb:2
+    app/views/posts/new.html.erb:3
+
+Rendered rescues/_trace (125.0ms)
+Rendered rescues/_request_and_response (15.0ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PostsController#new (for 127.0.0.1 at 2010-04-10 12:29:47) [GET]
+  [4;36;1mPost Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `posts`[0m
+  [4;35;1mAddress Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `addresses`[0m
+Rendering template within layouts/application
+Rendering posts/new
+
+ActionView::TemplateError (undefined method `_run_erb_app47views47addresses47_form46html46erb_locals_#<ActionView::Helpers::FormBuilder:0x4633590>_form_object' for #<ActionView::Base:0x466c480>) on line #5 of app/views/addresses/_form.html.erb:
+2:   <%= f.label :line1 %><br />
+3:   <%= f.text_field :line1 %>
+4: </p>
+5: <p>
+6:   <%= f.label :line2 %><br />
+7:   <%= f.text_field :line2 %>
+8: </p>
+
+    app/views/posts/_form.html.erb:5
+    searchlogic (2.4.12) lib/searchlogic/rails_helpers.rb:72:in `fields_for'
+    app/views/posts/_form.html.erb:4
+    searchlogic (2.4.12) lib/searchlogic/rails_helpers.rb:72:in `fields_for'
+    searchlogic (2.4.12) lib/searchlogic/rails_helpers.rb:61:in `form_for'
+    app/views/posts/_form.html.erb:2
+    app/views/posts/new.html.erb:3
+
+Rendered rescues/_trace (141.0ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PostsController#new (for 127.0.0.1 at 2010-04-10 12:30:18) [GET]
+  [4;36;1mPost Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `posts`[0m
+  [4;35;1mAddress Columns (16.0ms)[0m   [0mSHOW FIELDS FROM `addresses`[0m
+Rendering template within layouts/application
+Rendering posts/new
+
+ActionView::TemplateError (undefined local variable or method `f' for #<ActionView::Base:0x46c0b84>) on line #2 of app/views/addresses/_form.html.erb:
+1: <p>
+2:   <%= f.label :line1 %><br />
+3:   <%= f.text_field :line1 %>
+4: </p>
+5: <p>
+
+    app/views/addresses/_form.html.erb:2
+    app/views/posts/_form.html.erb:5
+    searchlogic (2.4.12) lib/searchlogic/rails_helpers.rb:72:in `fields_for'
+    app/views/posts/_form.html.erb:4
+    searchlogic (2.4.12) lib/searchlogic/rails_helpers.rb:72:in `fields_for'
+    searchlogic (2.4.12) lib/searchlogic/rails_helpers.rb:61:in `form_for'
+    app/views/posts/_form.html.erb:2
+    app/views/posts/new.html.erb:3
+
+Rendered rescues/_trace (250.0ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PostsController#new (for 127.0.0.1 at 2010-04-10 12:30:48) [GET]
+  [4;36;1mPost Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `posts`[0m
+  [4;35;1mAddress Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `addresses`[0m
+Rendering template within layouts/application
+Rendering posts/new
+Rendered addresses/_form (0.0ms)
+
+ActionView::TemplateError (undefined method `title' for #<Address:0x47422ec>) on line #10 of app/views/posts/_form.html.erb:
+7:     <div class="line">
+8:       <div class="field_20">
+9:         <%= f.label :title %>
+10:         <%= f.text_field :title %>
+11:       </div>
+12:     </div>
+13:     <div class="line" style="height: 320px;">
+
+    app/views/posts/_form.html.erb:10
+    searchlogic (2.4.12) lib/searchlogic/rails_helpers.rb:72:in `fields_for'
+    searchlogic (2.4.12) lib/searchlogic/rails_helpers.rb:61:in `form_for'
+    app/views/posts/_form.html.erb:2
+    app/views/posts/new.html.erb:3
+
+Rendered rescues/_trace (250.0ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PostsController#new (for 127.0.0.1 at 2010-04-10 12:31:50) [GET]
+  [4;36;1mPost Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `posts`[0m
+  [4;35;1mAddress Columns (16.0ms)[0m   [0mSHOW FIELDS FROM `addresses`[0m
+Rendering template within layouts/application
+Rendering posts/new
+ERROR: compiling _run_erb_app47views47posts47_form46html46erb_locals_form_object RAISED compile error
+e:/found/app/views/posts/_form.html.erb:4: syntax error, unexpected ')'
+...r :address do |address_form| ).to_s); @output_buffer.concat ...
+                              ^
+e:/found/app/views/posts/_form.html.erb:47: syntax error, unexpected kEND, expecting ')'
+ end ; @output_buffer.concat "\n"
+    ^
+e:/found/app/views/posts/_form.html.erb:52: syntax error, unexpected kENSURE, expecting ')'
+e:/found/app/views/posts/_form.html.erb:54: syntax error, unexpected kEND, expecting ')'
+Function body:           def _run_erb_app47views47posts47_form46html46erb_locals_form_object(local_assigns)
+            old_output_buffer = output_buffer;object = local_assigns[:object];form = local_assigns[:form];;@output_buffer = '';  __in_erb_template=true ; @output_buffer.concat "<div class =\"full_container post_form\">\n"
+@output_buffer.concat "  ";  form_for @post do |f| ; @output_buffer.concat "\n"
+@output_buffer.concat "    "; @output_buffer.concat(( f.error_messages ).to_s); @output_buffer.concat "\n"
+@output_buffer.concat "    "; @output_buffer.concat(( f.fields_for :address do |address_form| ).to_s); @output_buffer.concat "\n"
+@output_buffer.concat "      "; @output_buffer.concat(( render "addresses/form", :f =>address_form ).to_s); @output_buffer.concat "\n"
+@output_buffer.concat "    "; end; @output_buffer.concat "\n"
+@output_buffer.concat "    <div class=\"line\">\n"
+@output_buffer.concat "      <div class=\"field_20\">\n"
+@output_buffer.concat "        "; @output_buffer.concat(( f.label :title ).to_s); @output_buffer.concat "\n"
+@output_buffer.concat "        "; @output_buffer.concat(( f.text_field :title ).to_s); @output_buffer.concat "\n"
+@output_buffer.concat "      </div>\n"
+@output_buffer.concat "    </div>\n"
+@output_buffer.concat "    <div class=\"line\" style=\"height: 320px;\">\n"
+@output_buffer.concat "      <div class=\"field_20\">\n"
+@output_buffer.concat "        "; @output_buffer.concat(( f.label :description ).to_s); @output_buffer.concat "\n"
+@output_buffer.concat "        "; @output_buffer.concat(( f.text_area :description ).to_s); @output_buffer.concat "\n"
+@output_buffer.concat "      </div>\n"
+@output_buffer.concat "    </div>\n"
+@output_buffer.concat "    <div class=\"line\">\n"
+@output_buffer.concat "      <div class=\"field_20\">\n"
+@output_buffer.concat "        "; @output_buffer.concat(( f.label :available_from ).to_s); @output_buffer.concat "\n"
+@output_buffer.concat "        "; @output_buffer.concat(( f.text_field :available_from , :class => "startdatepick",:id => "post_start_date", :end_date => "post_end_date").to_s); @output_buffer.concat "\n"
+@output_buffer.concat "      </div>\n"
+@output_buffer.concat "    </div>\n"
+@output_buffer.concat "    <div class=\"line\">\n"
+@output_buffer.concat "      <div class=\"field_20\">\n"
+@output_buffer.concat "        "; @output_buffer.concat(( f.label :expiry_date ).to_s); @output_buffer.concat "\n"
+@output_buffer.concat "        "; @output_buffer.concat(( f.text_field :expiry_date, :class => "enddatepick",:id => "post_end_date", :end_date => "post_start_date").to_s); @output_buffer.concat "\n"
+@output_buffer.concat "      </div>\n"
+@output_buffer.concat "    </div>\n"
+@output_buffer.concat "    <div class=\"line\">\n"
+@output_buffer.concat "      <div class=\"field_20\">\n"
+@output_buffer.concat "        "; @output_buffer.concat(( f.label :inspection_time ).to_s); @output_buffer.concat " "; @output_buffer.concat(( f.text_field :inspection_time ).to_s); @output_buffer.concat "\n"
+@output_buffer.concat "      </div>\n"
+@output_buffer.concat "    </div>\n"
+@output_buffer.concat "    <div class=\"line\" >\n"
+@output_buffer.concat "      <label>negotiable </label>\n"
+@output_buffer.concat "      "; @output_buffer.concat(( f.check_box :negotiable ).to_s); @output_buffer.concat "\n"
+@output_buffer.concat "    </div>\n"
+@output_buffer.concat "    <div class=\"line\">\n"
+@output_buffer.concat "      <div class=\"field_20\">\n"
+@output_buffer.concat "        <label></label>\n"
+@output_buffer.concat "        "; @output_buffer.concat(( f.submit "Submit" ).to_s); @output_buffer.concat "\n"
+@output_buffer.concat "      </div>\n"
+@output_buffer.concat "    </div>\n"
+@output_buffer.concat "  </div>\n"
+ end ; @output_buffer.concat "\n"
+@output_buffer.concat "\n"
+@output_buffer.concat "<script type=\"text/javascript\">\n"
+@output_buffer.concat "  $('.post_form :checkbox').iphoneStyle();\n"
+@output_buffer.concat "</script>"; @output_buffer
+          ensure
+            self.output_buffer = old_output_buffer
+          end
+Backtrace: e:/found/app/views/posts/_form.html.erb:54:in `compile!'
+c:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_view/renderable.rb:61:in `compile'
+c:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_view/renderable.rb:28:in `render'
+c:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_view/renderable_partial.rb:20:in `render'
+c:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/benchmarking.rb:26:in `benchmark'
+c:/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.3.5/lib/active_support/core_ext/benchmark.rb:17:in `ms'
+c:/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.3.5/lib/active_support/core_ext/benchmark.rb:10:in `realtime'
+c:/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.3.5/lib/active_support/core_ext/benchmark.rb:17:in `ms'
+c:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/benchmarking.rb:26:in `benchmark'
+c:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_view/renderable_partial.rb:19:in `render'
+c:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_view/template.rb:205:in `render_template'
+c:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_view/renderable_partial.rb:44:in `render_partial'
+c:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_view/partials.rb:184:in `render_partial'
+c:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_view/base.rb:267:in `render'
+e:/found/app/views/posts/new.html.erb:3:in `_run_erb_app47views47posts47new46html46erb'
+c:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_view/renderable.rb:34:in `send'
+c:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_view/renderable.rb:34:in `render'
+c:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_view/base.rb:306:in `with_template'
+c:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_view/renderable.rb:30:in `render'
+c:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_view/template.rb:205:in `render_template'
+c:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_view/base.rb:265:in `render'
+c:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_view/base.rb:348:in `_render_with_layout'
+c:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_view/base.rb:262:in `render'
+c:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/base.rb:1250:in `render_for_file'
+c:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/base.rb:945:in `render_without_benchmark'
+c:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/benchmarking.rb:51:in `render'
+c:/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.3.5/lib/active_support/core_ext/benchmark.rb:17:in `ms'
+c:/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.3.5/lib/active_support/core_ext/benchmark.rb:10:in `realtime'
+c:/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.3.5/lib/active_support/core_ext/benchmark.rb:17:in `ms'
+c:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/benchmarking.rb:51:in `render'
+c:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/base.rb:1326:in `default_render'
+c:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/base.rb:1332:in `perform_action_without_filters'
+c:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/filters.rb:617:in `call_filters'
+c:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/filters.rb:610:in `perform_action_without_benchmark'
+c:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+c:/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.3.5/lib/active_support/core_ext/benchmark.rb:17:in `ms'
+c:/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.3.5/lib/active_support/core_ext/benchmark.rb:10:in `realtime'
+c:/Ruby/lib/ruby/gems/1.8/gems/activesupport-2.3.5/lib/active_support/core_ext/benchmark.rb:17:in `ms'
+c:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+c:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/rescue.rb:160:in `perform_action_without_flash'
+c:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/flash.rb:146:in `perform_action'
+c:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/base.rb:532:in `send'
+c:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/base.rb:532:in `process_without_filters'
+c:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/filters.rb:606:in `process'
+c:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/base.rb:391:in `process'
+c:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/base.rb:386:in `call'
+c:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/routing/route_set.rb:437:in `call'
+c:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/dispatcher.rb:87:in `dispatch'
+c:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/dispatcher.rb:121:in `_call'
+c:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/dispatcher.rb:130:in `build_middleware_stack'
+c:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/string_coercion.rb:25:in `call'
+c:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/string_coercion.rb:25:in `call'
+c:/Ruby/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/head.rb:9:in `call'
+c:/Ruby/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/methodoverride.rb:24:in `call'
+c:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/params_parser.rb:15:in `call'
+c:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/session/abstract_store.rb:122:in `call'
+c:/Ruby/lib/ruby/gems/1.8/gems/activerecord-2.3.5/lib/active_record/query_cache.rb:29:in `call'
+c:/Ruby/lib/ruby/gems/1.8/gems/activerecord-2.3.5/lib/active_record/connection_adapters/abstract/query_cache.rb:34:in `cache'
+c:/Ruby/lib/ruby/gems/1.8/gems/activerecord-2.3.5/lib/active_record/query_cache.rb:9:in `cache'
+c:/Ruby/lib/ruby/gems/1.8/gems/activerecord-2.3.5/lib/active_record/query_cache.rb:28:in `call'
+c:/Ruby/lib/ruby/gems/1.8/gems/activerecord-2.3.5/lib/active_record/connection_adapters/abstract/connection_pool.rb:361:in `call'
+c:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/failsafe.rb:26:in `call'
+c:/Ruby/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/lock.rb:11:in `call'
+c:/Ruby/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/lock.rb:11:in `synchronize'
+c:/Ruby/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/lock.rb:11:in `call'
+c:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/dispatcher.rb:114:in `call'
+c:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/reloader.rb:34:in `run'
+c:/Ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/dispatcher.rb:108:in `call'
+c:/Ruby/lib/ruby/gems/1.8/gems/rails-2.3.5/lib/rails/rack/static.rb:31:in `call'
+c:/Ruby/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/urlmap.rb:46:in `call'
+c:/Ruby/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/urlmap.rb:40:in `each'
+c:/Ruby/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/urlmap.rb:40:in `call'
+c:/Ruby/lib/ruby/gems/1.8/gems/rails-2.3.5/lib/rails/rack/log_tailer.rb:17:in `call'
+c:/Ruby/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/content_length.rb:13:in `call'
+c:/Ruby/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/chunked.rb:15:in `call'
+c:/Ruby/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/handler/mongrel.rb:64:in `process'
+c:/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel.rb:159:in `process_client'
+c:/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel.rb:158:in `each'
+c:/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel.rb:158:in `process_client'
+c:/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel.rb:285:in `run'
+c:/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel.rb:285:in `initialize'
+c:/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel.rb:285:in `new'
+c:/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel.rb:285:in `run'
+c:/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel.rb:268:in `initialize'
+c:/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel.rb:268:in `new'
+c:/Ruby/lib/ruby/gems/1.8/gems/mongrel-1.1.5-x86-mswin32-60/lib/mongrel.rb:268:in `run'
+c:/Ruby/lib/ruby/gems/1.8/gems/rack-1.0.1/lib/rack/handler/mongrel.rb:34:in `run'
+c:/Ruby/lib/ruby/gems/1.8/gems/rails-2.3.5/lib/commands/server.rb:111
+c:/Ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+c:/Ruby/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `require'
+script/server:3
+
+ActionView::TemplateError (compile error
+e:/found/app/views/posts/_form.html.erb:4: syntax error, unexpected ')'
+...r :address do |address_form| ).to_s); @output_buffer.concat ...
+                              ^
+e:/found/app/views/posts/_form.html.erb:47: syntax error, unexpected kEND, expecting ')'
+ end ; @output_buffer.concat "\n"
+    ^
+e:/found/app/views/posts/_form.html.erb:52: syntax error, unexpected kENSURE, expecting ')'
+e:/found/app/views/posts/_form.html.erb:54: syntax error, unexpected kEND, expecting ')') on line #4 of app/views/posts/_form.html.erb:
+1: <div class ="full_container post_form">
+2:   <% form_for @post do |f| %>
+3:     <%= f.error_messages %>
+4:     <%= f.fields_for :address do |address_form| %>
+5:       <%= render "addresses/form", :f =>address_form %>
+6:     <%end%>
+7:     <div class="line">
+
+    app/views/posts/_form.html.erb:54:in `compile!'
+    app/views/posts/new.html.erb:3
+
+Rendered rescues/_trace (125.0ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PostsController#new (for 127.0.0.1 at 2010-04-10 12:32:15) [GET]
+  [4;36;1mPost Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `posts`[0m
+  [4;35;1mAddress Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `addresses`[0m
+Rendering template within layouts/application
+Rendering posts/new
+
+ActionView::TemplateError (undefined method `title' for #<Address:0x49a46c0>) on line #8 of app/views/posts/_form.html.erb:
+5:     <div class="line">
+6:       <div class="field_20">
+7:         <%= f.label :title %>
+8:         <%= f.text_field :title %>
+9:       </div>
+10:     </div>
+11:     <div class="line" style="height: 320px;">
+
+    app/views/posts/_form.html.erb:8
+    searchlogic (2.4.12) lib/searchlogic/rails_helpers.rb:72:in `fields_for'
+    searchlogic (2.4.12) lib/searchlogic/rails_helpers.rb:61:in `form_for'
+    app/views/posts/_form.html.erb:2
+    app/views/posts/new.html.erb:3
+
+Rendered rescues/_trace (125.0ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PostsController#new (for 127.0.0.1 at 2010-04-10 12:34:30) [GET]
+  [4;36;1mPost Columns (15.0ms)[0m   [0;1mSHOW FIELDS FROM `posts`[0m
+  [4;35;1mAddress Columns (16.0ms)[0m   [0mSHOW FIELDS FROM `addresses`[0m
+Rendering template within layouts/application
+Rendering posts/new
+Rendered addresses/_form (0.0ms)
+
+ActionView::TemplateError (undefined method `title' for #<Address:0x468f200>) on line #10 of app/views/posts/_form.html.erb:
+7:     <div class="line">
+8:       <div class="field_20">
+9:         <%= f.label :title %>
+10:         <%= f.text_field :title %>
+11:       </div>
+12:     </div>
+13:     <div class="line" style="height: 320px;">
+
+    app/views/posts/_form.html.erb:10
+    searchlogic (2.4.12) lib/searchlogic/rails_helpers.rb:72:in `fields_for'
+    searchlogic (2.4.12) lib/searchlogic/rails_helpers.rb:61:in `form_for'
+    app/views/posts/_form.html.erb:2
+    app/views/posts/new.html.erb:3
+
+Rendered rescues/_trace (250.0ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (188.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (32.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (20100124054035)
+Migrating to CreateSuburbs (20100124060306)
+Migrating to AddUsersPasswordResetField (20100124073325)
+Migrating to CreatePosts (20100124111816)
+Migrating to CreateProperties (20100124112416)
+Migrating to CreateCarparks (20100124114337)
+Migrating to CreateAddresses (20100124114554)
+Migrating to AddNameToSuburb (20100124115827)
+Migrating to CreatePropertySearches (20100126044312)
+Migrating to ChangeColumnForProperty (20100126073625)
+Migrating to CreateImages (20100127235412)
+Migrating to ChangeColumnsOfPropertySearch (20100209125159)
+Migrating to ChangeReferenceForAddress (20100216103345)
+Migrating to CreateSearches (20100216113117)
+Migrating to AddReferenceForAddress (20100216122556)
+Migrating to ChangeReferenceToImage (20100301065823)
+Migrating to AddReferenceToPropertySearch (20100306062514)
+Migrating to CreateSessions (20100306072215)
+Migrating to AddLatLngToAddress (20100404051547)
+Migrating to AddLatLngToSuburb (20100406134506)
+Migrating to AddUserReferenceToPost (20100410013248)
+  [4;36;1mSQL (282.0ms)[0m   [0;1mALTER TABLE `posts` ADD `user_id` int(11)[0m
+  [4;35;1mSQL (78.0ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100410013248')[0m
+Migrating to RemovePostableFromPost (20100410024706)
+  [4;36;1mSQL (297.0ms)[0m   [0;1mALTER TABLE `posts` DROP `postable_id`[0m
+  [4;35;1mSQL (343.0ms)[0m   [0mALTER TABLE `posts` DROP `postable_type`[0m
+  [4;36;1mSQL (63.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100410024706')[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (16.0ms)[0m   [0;1mSHOW FIELDS FROM `addresses`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mdescribe `addresses`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW KEYS FROM `addresses`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW FIELDS FROM `carparks`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mdescribe `carparks`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW KEYS FROM `carparks`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW FIELDS FROM `images`[0m
+  [4;35;1mSQL (15.0ms)[0m   [0mdescribe `images`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW KEYS FROM `images`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW FIELDS FROM `posts`[0m
+  [4;36;1mSQL (16.0ms)[0m   [0;1mdescribe `posts`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW KEYS FROM `posts`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW FIELDS FROM `properties`[0m
+  [4;35;1mSQL (16.0ms)[0m   [0mdescribe `properties`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW KEYS FROM `properties`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW FIELDS FROM `property_searches`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mdescribe `property_searches`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW KEYS FROM `property_searches`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW FIELDS FROM `searches`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mdescribe `searches`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW KEYS FROM `searches`[0m
+  [4;35;1mSQL (16.0ms)[0m   [0mSHOW FIELDS FROM `sessions`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mdescribe `sessions`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW KEYS FROM `sessions`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW FIELDS FROM `suburbs`[0m
+  [4;35;1mSQL (15.0ms)[0m   [0mdescribe `suburbs`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW KEYS FROM `suburbs`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mSQL (16.0ms)[0m   [0;1mdescribe `users`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW KEYS FROM `users`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (20100124054035)
+Migrating to CreateSuburbs (20100124060306)
+Migrating to AddUsersPasswordResetField (20100124073325)
+Migrating to CreatePosts (20100124111816)
+Migrating to CreateProperties (20100124112416)
+Migrating to CreateCarparks (20100124114337)
+Migrating to CreateAddresses (20100124114554)
+Migrating to AddNameToSuburb (20100124115827)
+Migrating to CreatePropertySearches (20100126044312)
+Migrating to ChangeColumnForProperty (20100126073625)
+Migrating to CreateImages (20100127235412)
+Migrating to ChangeColumnsOfPropertySearch (20100209125159)
+Migrating to ChangeReferenceForAddress (20100216103345)
+Migrating to CreateSearches (20100216113117)
+Migrating to AddReferenceForAddress (20100216122556)
+Migrating to ChangeReferenceToImage (20100301065823)
+Migrating to AddReferenceToPropertySearch (20100306062514)
+Migrating to CreateSessions (20100306072215)
+Migrating to AddLatLngToAddress (20100404051547)
+Migrating to AddLatLngToSuburb (20100406134506)
+Migrating to AddUserReferenceToPost (20100410013248)
+Migrating to RemovePostableFromPost (20100410024706)
+Migrating to AddPostToProperty (20100410025005)
+  [4;36;1mSQL (250.0ms)[0m   [0;1mALTER TABLE `properties` ADD `post_id` int(11)[0m
+  [4;35;1mSQL (63.0ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100410025005')[0m
+  [4;36;1mSQL (15.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW FIELDS FROM `addresses`[0m
+  [4;36;1mSQL (16.0ms)[0m   [0;1mdescribe `addresses`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW KEYS FROM `addresses`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW FIELDS FROM `carparks`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mdescribe `carparks`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW KEYS FROM `carparks`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW FIELDS FROM `images`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mdescribe `images`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW KEYS FROM `images`[0m
+  [4;36;1mSQL (15.0ms)[0m   [0;1mSHOW FIELDS FROM `posts`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mdescribe `posts`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW KEYS FROM `posts`[0m
+  [4;35;1mSQL (16.0ms)[0m   [0mSHOW FIELDS FROM `properties`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mdescribe `properties`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW KEYS FROM `properties`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW FIELDS FROM `property_searches`[0m
+  [4;35;1mSQL (16.0ms)[0m   [0mdescribe `property_searches`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW KEYS FROM `property_searches`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW FIELDS FROM `searches`[0m
+  [4;36;1mSQL (15.0ms)[0m   [0;1mdescribe `searches`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW KEYS FROM `searches`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW FIELDS FROM `sessions`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mdescribe `sessions`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW KEYS FROM `sessions`[0m
+  [4;35;1mSQL (16.0ms)[0m   [0mSHOW FIELDS FROM `suburbs`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mdescribe `suburbs`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW KEYS FROM `suburbs`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mSQL (15.0ms)[0m   [0mdescribe `users`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW KEYS FROM `users`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mPost Columns (15.0ms)[0m   [0;1mSHOW FIELDS FROM `posts`[0m
+  [4;35;1mProperty Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `properties`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mProperty Create (0.0ms)[0m   [0mINSERT INTO `properties` (`prop_type`, `purpose`, `updated_at`, `number_of_bedrooms`, `price`, `bond`, `max_tenants`, `post_id`, `number_of_current_tenants`, `number_of_carparks`, `furnished`, `number_of_bathrooms`, `created_at`) VALUES(NULL, NULL, '2010-04-10 02:57:43', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2010-04-10 02:57:43')[0m
+  [4;36;1mSQL (78.0ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mAddress Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `addresses`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mBEGIN[0m
+Google geocoding. Address: . Result: <?xml version="1.0" encoding="UTF-8" ?>
+<kml xmlns="http://earth.google.com/kml/2.0"><Response>
+  <name>0.000000,0.000000</name>
+  <Status>
+    <code>400</code>
+    <request>geocode</request>
+  </Status>
+</Response></kml>
+Google was unable to geocode address: 
+  [4;35;1mAddress Create (0.0ms)[0m   [0mINSERT INTO `addresses` (`line1`, `line2`, `updated_at`, `suburb_id`, `post_id`, `lng`, `lat`, `created_at`) VALUES(NULL, NULL, '2010-04-10 02:58:15', NULL, NULL, NULL, NULL, '2010-04-10 02:58:15')[0m
+  [4;36;1mSQL (156.0ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mBEGIN[0m
+Google geocoding. Address: . Result: <?xml version="1.0" encoding="UTF-8" ?>
+<kml xmlns="http://earth.google.com/kml/2.0"><Response>
+  <name>0.000000,0.000000</name>
+  <Status>
+    <code>400</code>
+    <request>geocode</request>
+  </Status>
+</Response></kml>
+Google was unable to geocode address: 
+  [4;36;1mPost Create (0.0ms)[0m   [0;1mINSERT INTO `posts` (`available_from`, `updated_at`, `title`, `inspection_time`, `expiry_date`, `description`, `negotiable`, `user_id`, `created_at`) VALUES(NULL, '2010-04-10 02:58:36', NULL, NULL, NULL, NULL, NULL, NULL, '2010-04-10 02:58:36')[0m
+  [4;35;1mAddress Update (0.0ms)[0m   [0mUPDATE `addresses` SET `updated_at` = '2010-04-10 02:58:36', `post_id` = 1 WHERE `id` = 3[0m
+  [4;36;1mProperty Update (0.0ms)[0m   [0;1mUPDATE `properties` SET `updated_at` = '2010-04-10 02:58:36', `post_id` = 1 WHERE `id` = 1[0m
+  [4;35;1mSQL (62.0ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mPost Load (0.0ms)[0m   [0;1mSELECT * FROM `posts` WHERE (posts.id = 1) [0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WelcomeController#index (for 127.0.0.1 at 2010-04-10 13:06:59) [GET]
+Redirected to http://localhost:3000/searches/new
+Completed in 16ms (DB: 0) | 302 Found [http://localhost/]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SearchesController#new (for 127.0.0.1 at 2010-04-10 13:06:59) [GET]
+  [4;36;1mSearch Columns (15.0ms)[0m   [0;1mSHOW FIELDS FROM `searches`[0m
+  [4;35;1mPropertySearch Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `property_searches`[0m
+Rendering template within layouts/application
+Rendering welcome/index
+Rendered property_searches/_form (47.0ms)
+Rendered searches/_form (47.0ms)
+  [4;36;1mUser Columns (15.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+Completed in 156ms (View: 94, DB: 30) | 200 OK [http://localhost/searches/new]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ImagesController#ui to png (for 127.0.0.1 at 2010-04-10 13:07:00) [GET]
+  Parameters: {"id"=>"ui-bg_flat_75_ffffff_40x100"}
+
+ActionController::UnknownAction (No action responded to ui. Actions: create, destroy, edit, index, new, show, and update):
+  
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SearchesController#create (for 127.0.0.1 at 2010-04-10 13:07:03) [POST]
+  Parameters: {"search"=>{"property_search_attributes"=>{"min_of_bedrooms"=>"", "max_of_bathrooms"=>"", "max_of_bedrooms"=>"", "property_type"=>"", "min_of_carparks"=>"", "max_of_carparks"=>"", "max_price"=>"", "min_price"=>"", "min_of_bathrooms"=>""}, "keyword"=>""}, "commit"=>"Search", "authenticity_token"=>"k0BGMHaFyZExPjDJaxy2EFSmmgwtvnUs2BuoMskrodk="}
+Redirected to http://localhost:3000/searches/show
+Completed in 0ms (DB: 0) | 302 Found [http://localhost/searches]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SearchesController#show (for 127.0.0.1 at 2010-04-10 13:07:03) [GET]
+  Parameters: {"id"=>"show"}
+  [4;35;1mSearch Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `searches`[0m
+  [4;36;1mPropertySearch Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `property_searches`[0m
+  [4;35;1mPost Load (0.0ms)[0m   [0mSELECT * FROM `posts` [0m
+  [4;36;1mProperty Columns (16.0ms)[0m   [0;1mSHOW FIELDS FROM `properties`[0m
+  [4;35;1mProperty Load (0.0ms)[0m   [0mSELECT * FROM `properties` [0m
+  [4;36;1mPost Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `posts`[0m
+  [4;35;1mPost Load (0.0ms)[0m   [0mSELECT * FROM `posts` WHERE (posts.id = 1) [0m
+Rendering template within layouts/application
+Rendering welcome/index
+Rendered property_searches/_form (16.0ms)
+Rendered searches/_form (31.0ms)
+  [4;36;1mAddress Load (0.0ms)[0m   [0;1mSELECT * FROM `addresses` WHERE (`addresses`.post_id = 1) LIMIT 1[0m
+  [4;35;1mAddress Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `addresses`[0m
+  [4;36;1mImage Load (0.0ms)[0m   [0;1mSELECT * FROM `images` WHERE (`images`.post_id = 1) [0m
+Rendered images/_list (0.0ms)
+
+ActionView::TemplateError (undefined method `postable' for #<Post:0x4842ca0>) on line #14 of app/views/posts/_abstract.html.erb:
+11:     </div>
+12:     <div class="abstract">
+13:       <div class="postable">
+14:         <% postable = post.postable %>
+15:         <% unless postable.nil? %>
+16:           <% dir_name = postable.class.table_name %>
+17:           <% local = postable.class.class_name.downcase%>
+
+    app/views/posts/_abstract.html.erb:14
+    app/views/posts/_list.html.erb:10
+    app/views/posts/_list.html.erb:8:in `each'
+    app/views/posts/_list.html.erb:8
+    app/views/welcome/index.html.erb:9
+    app/controllers/searches_controller.rb:19:in `show'
+
+Rendered rescues/_trace (250.0ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SearchesController#show (for 127.0.0.1 at 2010-04-10 13:09:32) [GET]
+  Parameters: {"id"=>"show"}
+  [4;35;1mSearch Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `searches`[0m
+  [4;36;1mPropertySearch Columns (16.0ms)[0m   [0;1mSHOW FIELDS FROM `property_searches`[0m
+  [4;35;1mPost Load (0.0ms)[0m   [0mSELECT * FROM `posts` [0m
+  [4;36;1mProperty Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `properties`[0m
+  [4;35;1mProperty Load (0.0ms)[0m   [0mSELECT * FROM `properties` [0m
+  [4;36;1mPost Columns (15.0ms)[0m   [0;1mSHOW FIELDS FROM `posts`[0m
+  [4;35;1mPost Load (0.0ms)[0m   [0mSELECT * FROM `posts` WHERE (posts.id = 1) [0m
+Rendering template within layouts/application
+Rendering welcome/index
+Rendered property_searches/_form (16.0ms)
+Rendered searches/_form (16.0ms)
+  [4;36;1mAddress Load (0.0ms)[0m   [0;1mSELECT * FROM `addresses` WHERE (`addresses`.post_id = 1) LIMIT 1[0m
+  [4;35;1mAddress Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `addresses`[0m
+  [4;36;1mImage Load (0.0ms)[0m   [0;1mSELECT * FROM `images` WHERE (`images`.post_id = 1) [0m
+Rendered images/_list (0.0ms)
+  [4;35;1mProperty Load (0.0ms)[0m   [0mSELECT * FROM `properties` WHERE (`properties`.post_id = 1) LIMIT 1[0m
+Rendered properties/_abstract (0.0ms)
+  [4;36;1mUser Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+Rendered posts/_abstract (125.0ms)
+Rendered posts/_list (140.0ms)
+Completed in 313ms (View: 188, DB: 31) | 200 OK [http://localhost/searches/show]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ImagesController#ui to png (for 127.0.0.1 at 2010-04-10 13:09:34) [GET]
+  Parameters: {"id"=>"ui-bg_flat_75_ffffff_40x100"}
+
+ActionController::UnknownAction (No action responded to ui. Actions: create, destroy, edit, index, new, show, and update):
+  
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing WelcomeController#index (for 127.0.0.1 at 2010-04-10 13:12:14) [GET]
+Redirected to http://localhost:3000/searches/new
+Completed in 0ms (DB: 0) | 302 Found [http://localhost/]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SearchesController#new (for 127.0.0.1 at 2010-04-10 13:12:14) [GET]
+  [4;35;1mSearch Columns (15.0ms)[0m   [0mSHOW FIELDS FROM `searches`[0m
+  [4;36;1mPropertySearch Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `property_searches`[0m
+Rendering template within layouts/application
+Rendering welcome/index
+Rendered property_searches/_form (47.0ms)
+Rendered searches/_form (47.0ms)
+  [4;35;1mUser Columns (15.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+Completed in 156ms (View: 94, DB: 30) | 200 OK [http://localhost/searches/new]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ImagesController#ui to png (for 127.0.0.1 at 2010-04-10 13:12:15) [GET]
+  Parameters: {"id"=>"ui-bg_flat_75_ffffff_40x100"}
+
+ActionController::UnknownAction (No action responded to ui. Actions: create, destroy, edit, index, new, show, and update):
+  
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSuburb Load (0.0ms)[0m   [0mSELECT * FROM `suburbs` LIMIT 1[0m
+  [4;36;1mSuburb Columns (16.0ms)[0m   [0;1mSHOW FIELDS FROM `suburbs`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mBEGIN[0m
+Google geocoding. Address: 13-17, Oxford Street,Burwood,N.S.W,Australia,2134. Result: <?xml version="1.0" encoding="UTF-8" ?>
+<kml xmlns="http://earth.google.com/kml/2.0"><Response>
+  <name>13-17, Oxford Street,Burwood,N.S.W,Australia,2134</name>
+  <Status>
+    <code>200</code>
+    <request>geocode</request>
+  </Status>
+  <Placemark id="p1">
+    <address>13-17 Oxford St, Burwood NSW 2134, Australia</address>
+    <AddressDetails Accuracy="8" xmlns="urn:oasis:names:tc:ciq:xsdschema:xAL:2.0"><Country><CountryNameCode>AU</CountryNameCode><CountryName>Australia</CountryName><AdministrativeArea><AdministrativeAreaName>NSW</AdministrativeAreaName><Locality><LocalityName>Burwood</LocalityName><Thoroughfare><ThoroughfareName>13-17 Oxford St</ThoroughfareName></Thoroughfare><PostalCode><PostalCodeNumber>2134</PostalCodeNumber></PostalCode></Locality></AdministrativeArea></Country></AddressDetails>
+    <ExtendedData>
+      <LatLonBox north="-33.8742424" south="-33.8805376" east="151.1008056" west="151.0945104" />
+    </ExtendedData>
+    <Point><coordinates>151.0976580,-33.8773900,0</coordinates></Point>
+  </Placemark>
+</Response></kml>
+  [4;36;1mAddress Update (0.0ms)[0m   [0;1mUPDATE `addresses` SET `suburb_id` = 1, `lat` = -33.87739, `lng` = 151.097658, `line1` = '13-17, Oxford Street', `updated_at` = '2010-04-10 03:13:42' WHERE `id` = 3[0m
+  [4;35;1mSQL (94.0ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SearchesController#create (for 127.0.0.1 at 2010-04-10 13:13:49) [POST]
+  Parameters: {"search"=>{"property_search_attributes"=>{"min_of_bedrooms"=>"", "max_of_bathrooms"=>"", "max_of_bedrooms"=>"", "property_type"=>"", "min_of_carparks"=>"", "max_of_carparks"=>"", "max_price"=>"", "min_price"=>"", "min_of_bathrooms"=>""}, "keyword"=>"2134"}, "commit"=>"Search", "authenticity_token"=>"k0BGMHaFyZExPjDJaxy2EFSmmgwtvnUs2BuoMskrodk="}
+Redirected to http://localhost:3000/searches/show
+Completed in 0ms (DB: 0) | 302 Found [http://localhost/searches]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SearchesController#show (for 127.0.0.1 at 2010-04-10 13:13:49) [GET]
+  Parameters: {"id"=>"show"}
+  [4;36;1mSearch Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `searches`[0m
+  [4;35;1mPropertySearch Columns (16.0ms)[0m   [0mSHOW FIELDS FROM `property_searches`[0m
+  [4;36;1mPost Columns (15.0ms)[0m   [0;1mSHOW FIELDS FROM `posts`[0m
+  [4;35;1mAddress Columns (15.0ms)[0m   [0mSHOW FIELDS FROM `addresses`[0m
+  [4;36;1mSuburb Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `suburbs`[0m
+  [4;35;1mProperty Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `properties`[0m
+  [4;36;1mProperty Load (0.0ms)[0m   [0;1mSELECT * FROM `properties` [0m
+  [4;35;1mPost Load (0.0ms)[0m   [0mSELECT `posts`.* FROM `posts` INNER JOIN `addresses` ON addresses.post_id = posts.id INNER JOIN `suburbs` ON `suburbs`.id = `addresses`.suburb_id WHERE ((suburbs.name LIKE '%2134%') OR (suburbs.area LIKE '%2134%') OR (suburbs.state LIKE '%2134%') OR (suburbs.postcode LIKE '%2134%')) [0m
+  [4;36;1mPost Load (0.0ms)[0m   [0;1mSELECT * FROM `posts` WHERE (posts.id = 1) [0m
+Rendering template within layouts/application
+Rendering welcome/index
+Rendered property_searches/_form (16.0ms)
+Rendered searches/_form (16.0ms)
+  [4;35;1mAddress Load (0.0ms)[0m   [0mSELECT * FROM `addresses` WHERE (`addresses`.post_id = 1) LIMIT 1[0m
+  [4;36;1mSuburb Load (0.0ms)[0m   [0;1mSELECT * FROM `suburbs` WHERE (`suburbs`.`id` = 1) [0m
+  [4;35;1mImage Load (0.0ms)[0m   [0mSELECT * FROM `images` WHERE (`images`.post_id = 1) [0m
+Rendered images/_list (0.0ms)
+  [4;36;1mProperty Load (0.0ms)[0m   [0;1mSELECT * FROM `properties` WHERE (`properties`.post_id = 1) LIMIT 1[0m
+Rendered properties/_abstract (16.0ms)
+  [4;35;1mUser Columns (16.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+Rendered posts/_abstract (78.0ms)
+Rendered posts/_list (78.0ms)
+Completed in 532ms (View: 109, DB: 62) | 200 OK [http://localhost/searches/show]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ImagesController#ui to png (for 127.0.0.1 at 2010-04-10 13:13:51) [GET]
+  Parameters: {"id"=>"ui-bg_flat_75_ffffff_40x100"}
+
+ActionController::UnknownAction (No action responded to ui. Actions: create, destroy, edit, index, new, show, and update):
+  
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PostsController#show (for 127.0.0.1 at 2010-04-10 13:13:59) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mSearch Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `searches`[0m
+  [4;35;1mPropertySearch Columns (16.0ms)[0m   [0mSHOW FIELDS FROM `property_searches`[0m
+  [4;36;1mPost Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `posts`[0m
+  [4;35;1mPost Load (15.0ms)[0m   [0mSELECT * FROM `posts` WHERE (`posts`.`id` = 1) [0m
+Rendering template within layouts/application
+Rendering posts/show
+Rendered property_searches/_form (156.0ms)
+Rendered searches/_form (156.0ms)
+  [4;36;1mAddress Load (0.0ms)[0m   [0;1mSELECT * FROM `addresses` WHERE (`addresses`.post_id = 1) LIMIT 1[0m
+  [4;35;1mAddress Columns (16.0ms)[0m   [0mSHOW FIELDS FROM `addresses`[0m
+  [4;36;1mSuburb Columns (15.0ms)[0m   [0;1mSHOW FIELDS FROM `suburbs`[0m
+  [4;35;1mSuburb Load (0.0ms)[0m   [0mSELECT * FROM `suburbs` WHERE (`suburbs`.`id` = 1) [0m
+  [4;36;1mProperty Load (0.0ms)[0m   [0;1mSELECT * FROM `properties` WHERE (`properties`.post_id = 1) LIMIT 1[0m
+
+ActionView::TemplateError (Missing template /property/_abstract.erb in view path app/views) on line #4 of app/views/posts/_detail.html.erb:
+1: <div class="postable">
+2:   <% property = post.property %>
+3:   <% unless property.nil? %>
+4:     <%= render :partial => "/property/abstract", :locals => { :property => property } %>
+5:   <% end %>
+6: </div>
+7: <div class="title">
+
+    app/views/posts/_detail.html.erb:4
+    app/views/posts/show.html.erb:20
+    app/controllers/posts_controller.rb:9:in `show'
+
+Rendered rescues/_trace (125.0ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PostsController#show (for 127.0.0.1 at 2010-04-10 13:14:26) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mSearch Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `searches`[0m
+  [4;36;1mPropertySearch Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `property_searches`[0m
+  [4;35;1mPost Columns (15.0ms)[0m   [0mSHOW FIELDS FROM `posts`[0m
+  [4;36;1mPost Load (0.0ms)[0m   [0;1mSELECT * FROM `posts` WHERE (`posts`.`id` = 1) [0m
+Rendering template within layouts/application
+Rendering posts/show
+Rendered property_searches/_form (63.0ms)
+Rendered searches/_form (79.0ms)
+  [4;35;1mAddress Load (0.0ms)[0m   [0mSELECT * FROM `addresses` WHERE (`addresses`.post_id = 1) LIMIT 1[0m
+  [4;36;1mAddress Columns (16.0ms)[0m   [0;1mSHOW FIELDS FROM `addresses`[0m
+  [4;35;1mSuburb Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `suburbs`[0m
+  [4;36;1mSuburb Load (0.0ms)[0m   [0;1mSELECT * FROM `suburbs` WHERE (`suburbs`.`id` = 1) [0m
+  [4;35;1mProperty Load (0.0ms)[0m   [0mSELECT * FROM `properties` WHERE (`properties`.post_id = 1) LIMIT 1[0m
+  [4;36;1mProperty Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `properties`[0m
+Rendered properties/_abstract (15.0ms)
+Rendered posts/_detail (31.0ms)
+  [4;35;1mImage Load (0.0ms)[0m   [0mSELECT * FROM `images` WHERE (`images`.post_id = 1) [0m
+Rendered images/_list (0.0ms)
+  [4;36;1mUser Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+Completed in 703ms (View: 484, DB: 31) | 200 OK [http://localhost/posts/1]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ImagesController#ui to png (for 127.0.0.1 at 2010-04-10 13:14:28) [GET]
+  Parameters: {"id"=>"ui-bg_flat_75_ffffff_40x100"}
+
+ActionController::UnknownAction (No action responded to ui. Actions: create, destroy, edit, index, new, show, and update):
+  
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PostsController#new (for 127.0.0.1 at 2010-04-10 13:15:27) [GET]
+  [4;35;1mPost Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `posts`[0m
+  [4;36;1mAddress Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `addresses`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mBEGIN[0m
+Google geocoding. Address: . Result: <?xml version="1.0" encoding="UTF-8" ?>
+<kml xmlns="http://earth.google.com/kml/2.0"><Response>
+  <name>0.000000,0.000000</name>
+  <Status>
+    <code>400</code>
+    <request>geocode</request>
+  </Status>
+</Response></kml>
+Google was unable to geocode address: 
+  [4;36;1mAddress Create (0.0ms)[0m   [0;1mINSERT INTO `addresses` (`line1`, `line2`, `updated_at`, `suburb_id`, `post_id`, `lng`, `lat`, `created_at`) VALUES(NULL, NULL, '2010-04-10 03:15:27', NULL, NULL, NULL, NULL, '2010-04-10 03:15:27')[0m
+  [4;35;1mSQL (94.0ms)[0m   [0mCOMMIT[0m
+  [4;36;1mProperty Columns (15.0ms)[0m   [0;1mSHOW FIELDS FROM `properties`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mBEGIN[0m
+  [4;36;1mProperty Create (0.0ms)[0m   [0;1mINSERT INTO `properties` (`prop_type`, `purpose`, `updated_at`, `number_of_bedrooms`, `price`, `bond`, `max_tenants`, `post_id`, `number_of_current_tenants`, `number_of_carparks`, `furnished`, `number_of_bathrooms`, `created_at`) VALUES(NULL, NULL, '2010-04-10 03:15:27', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2010-04-10 03:15:27')[0m
+  [4;35;1mSQL (78.0ms)[0m   [0mCOMMIT[0m
+Rendering template within layouts/application
+Rendering posts/new
+
+ActionView::TemplateError (undefined local variable or method `post' for #<ActionView::Base:0x475e834>) on line #2 of app/views/posts/_form.html.erb:
+1: <div class ="full_container post_form">
+2:   <% form_for post do |f| %>
+3:     <%= f.error_messages %>
+4:     <% f.fields_for :address do |address_form| %>
+5:       <%= render "addresses/form", :f =>address_form %>
+
+    app/views/posts/_form.html.erb:2
+    app/views/posts/new.html.erb:3
+    app/controllers/posts_controller.rb:14:in `new'
+
+Rendered rescues/_trace (219.0ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PostsController#new (for 127.0.0.1 at 2010-04-10 13:16:44) [GET]
+  [4;36;1mPost Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `posts`[0m
+  [4;35;1mAddress Columns (16.0ms)[0m   [0mSHOW FIELDS FROM `addresses`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mBEGIN[0m
+Google geocoding. Address: . Result: <?xml version="1.0" encoding="UTF-8" ?>
+<kml xmlns="http://earth.google.com/kml/2.0"><Response>
+  <name>0.000000,0.000000</name>
+  <Status>
+    <code>400</code>
+    <request>geocode</request>
+  </Status>
+</Response></kml>
+Google was unable to geocode address: 
+  [4;35;1mAddress Create (0.0ms)[0m   [0mINSERT INTO `addresses` (`line1`, `line2`, `updated_at`, `suburb_id`, `post_id`, `lng`, `lat`, `created_at`) VALUES(NULL, NULL, '2010-04-10 03:16:45', NULL, NULL, NULL, NULL, '2010-04-10 03:16:45')[0m
+  [4;36;1mSQL (93.0ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mProperty Columns (16.0ms)[0m   [0mSHOW FIELDS FROM `properties`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mProperty Create (0.0ms)[0m   [0mINSERT INTO `properties` (`prop_type`, `purpose`, `updated_at`, `number_of_bedrooms`, `price`, `bond`, `max_tenants`, `post_id`, `number_of_current_tenants`, `number_of_carparks`, `furnished`, `number_of_bathrooms`, `created_at`) VALUES(NULL, NULL, '2010-04-10 03:16:45', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2010-04-10 03:16:45')[0m
+  [4;36;1mSQL (62.0ms)[0m   [0;1mCOMMIT[0m
+Rendering template within layouts/application
+Rendering posts/new
+
+ActionView::TemplateError (undefined local variable or method `post' for #<ActionView::Base:0x47cb128>) on line #2 of app/views/posts/_form.html.erb:
+1: <div class ="full_container post_form">
+2:   <% form_for post do |f| %>
+3:     <%= f.error_messages %>
+4:     <% f.fields_for :address do |address_form| %>
+5:       <%= render "addresses/form", :f =>address_form %>
+
+    app/views/posts/_form.html.erb:2
+    app/views/posts/new.html.erb:3
+    app/controllers/posts_controller.rb:14:in `new'
+
+Rendered rescues/_trace (234.0ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PostsController#new (for 127.0.0.1 at 2010-04-10 13:17:26) [GET]
+  [4;35;1mPost Columns (16.0ms)[0m   [0mSHOW FIELDS FROM `posts`[0m
+  [4;36;1mAddress Columns (15.0ms)[0m   [0;1mSHOW FIELDS FROM `addresses`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mBEGIN[0m
+Google geocoding. Address: . Result: <?xml version="1.0" encoding="UTF-8" ?>
+<kml xmlns="http://earth.google.com/kml/2.0"><Response>
+  <name>0.000000,0.000000</name>
+  <Status>
+    <code>400</code>
+    <request>geocode</request>
+  </Status>
+</Response></kml>
+Google was unable to geocode address: 
+  [4;36;1mAddress Create (0.0ms)[0m   [0;1mINSERT INTO `addresses` (`line1`, `line2`, `updated_at`, `suburb_id`, `post_id`, `lng`, `lat`, `created_at`) VALUES(NULL, NULL, '2010-04-10 03:17:26', NULL, NULL, NULL, NULL, '2010-04-10 03:17:26')[0m
+  [4;35;1mSQL (141.0ms)[0m   [0mCOMMIT[0m
+  [4;36;1mProperty Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `properties`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mBEGIN[0m
+  [4;36;1mProperty Create (0.0ms)[0m   [0;1mINSERT INTO `properties` (`prop_type`, `purpose`, `updated_at`, `number_of_bedrooms`, `price`, `bond`, `max_tenants`, `post_id`, `number_of_current_tenants`, `number_of_carparks`, `furnished`, `number_of_bathrooms`, `created_at`) VALUES(NULL, NULL, '2010-04-10 03:17:26', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2010-04-10 03:17:26')[0m
+  [4;35;1mSQL (140.0ms)[0m   [0mCOMMIT[0m
+Rendering template within layouts/application
+Rendering posts/new
+
+ActionView::TemplateError (undefined local variable or method `post' for #<ActionView::Base:0x490e2c4>) on line #2 of app/views/posts/_form.html.erb:
+1: <div class ="full_container post_form">
+2:   <% form_for post do |f| %>
+3:     <%= f.error_messages %>
+4:     <% f.fields_for :address do |address_form| %>
+5:       <%= render "addresses/form", :f =>address_form %>
+
+    app/views/posts/_form.html.erb:2
+    app/views/posts/new.html.erb:3
+    app/controllers/posts_controller.rb:14:in `new'
+
+Rendered rescues/_trace (110.0ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PostsController#new (for 127.0.0.1 at 2010-04-10 13:18:06) [GET]
+  [4;36;1mPost Columns (16.0ms)[0m   [0;1mSHOW FIELDS FROM `posts`[0m
+  [4;35;1mAddress Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `addresses`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mBEGIN[0m
+Google geocoding. Address: . Result: <?xml version="1.0" encoding="UTF-8" ?>
+<kml xmlns="http://earth.google.com/kml/2.0"><Response>
+  <name>0.000000,0.000000</name>
+  <Status>
+    <code>400</code>
+    <request>geocode</request>
+  </Status>
+</Response></kml>
+Google was unable to geocode address: 
+  [4;35;1mAddress Create (0.0ms)[0m   [0mINSERT INTO `addresses` (`line1`, `line2`, `updated_at`, `suburb_id`, `post_id`, `lng`, `lat`, `created_at`) VALUES(NULL, NULL, '2010-04-10 03:18:06', NULL, NULL, NULL, NULL, '2010-04-10 03:18:06')[0m
+  [4;36;1mSQL (78.0ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mProperty Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `properties`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mProperty Create (0.0ms)[0m   [0mINSERT INTO `properties` (`prop_type`, `purpose`, `updated_at`, `number_of_bedrooms`, `price`, `bond`, `max_tenants`, `post_id`, `number_of_current_tenants`, `number_of_carparks`, `furnished`, `number_of_bathrooms`, `created_at`) VALUES(NULL, NULL, '2010-04-10 03:18:06', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2010-04-10 03:18:06')[0m
+  [4;36;1mSQL (78.0ms)[0m   [0;1mCOMMIT[0m
+Rendering template within layouts/application
+Rendering posts/new
+Rendered addresses/_form (0.0ms)
+Rendered posts/_form (16.0ms)
+  [4;35;1mUser Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+Completed in 875ms (View: 93, DB: 172) | 200 OK [http://localhost/posts/new]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ImagesController#ui to png (for 127.0.0.1 at 2010-04-10 13:18:07) [GET]
+  Parameters: {"id"=>"ui-bg_flat_75_ffffff_40x100"}
+
+ActionController::UnknownAction (No action responded to ui. Actions: create, destroy, edit, index, new, show, and update):
+  
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PostsController#new (for 127.0.0.1 at 2010-04-10 13:21:22) [GET]
+  [4;36;1mPost Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `posts`[0m
+  [4;35;1mAddress Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `addresses`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mBEGIN[0m
+Google geocoding. Address: . Result: <?xml version="1.0" encoding="UTF-8" ?>
+<kml xmlns="http://earth.google.com/kml/2.0"><Response>
+  <name>0.000000,0.000000</name>
+  <Status>
+    <code>400</code>
+    <request>geocode</request>
+  </Status>
+</Response></kml>
+Google was unable to geocode address: 
+  [4;35;1mAddress Create (0.0ms)[0m   [0mINSERT INTO `addresses` (`line1`, `line2`, `updated_at`, `suburb_id`, `post_id`, `lng`, `lat`, `created_at`) VALUES(NULL, NULL, '2010-04-10 03:21:22', NULL, NULL, NULL, NULL, '2010-04-10 03:21:22')[0m
+  [4;36;1mSQL (110.0ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mProperty Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `properties`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mProperty Create (0.0ms)[0m   [0mINSERT INTO `properties` (`prop_type`, `purpose`, `updated_at`, `number_of_bedrooms`, `price`, `bond`, `max_tenants`, `post_id`, `number_of_current_tenants`, `number_of_carparks`, `furnished`, `number_of_bathrooms`, `created_at`) VALUES(NULL, NULL, '2010-04-10 03:21:22', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2010-04-10 03:21:22')[0m
+  [4;36;1mSQL (109.0ms)[0m   [0;1mCOMMIT[0m
+Rendering template within layouts/application
+Rendering posts/new
+Rendered addresses/_form (0.0ms)
+
+ActionView::TemplateError (Called id for nil, which would mistakenly be 4 -- if you really wanted the id of nil, use object_id) on line #1 of app/views/properties/_form.html.erb:
+1: <% form_for @property do |f| %>
+2:   <%= f.error_messages %>
+3:   <p>
+4:     <%= f.label :number_of_bedrooms %><br />
+
+    searchlogic (2.4.12) lib/searchlogic/rails_helpers.rb:61:in `form_for'
+    app/views/properties/_form.html.erb:1
+    app/views/posts/_form.html.erb:13
+    searchlogic (2.4.12) lib/searchlogic/rails_helpers.rb:72:in `fields_for'
+    app/views/posts/_form.html.erb:12
+    searchlogic (2.4.12) lib/searchlogic/rails_helpers.rb:72:in `fields_for'
+    searchlogic (2.4.12) lib/searchlogic/rails_helpers.rb:61:in `form_for'
+    app/views/posts/_form.html.erb:2
+    app/views/posts/new.html.erb:3
+    app/controllers/posts_controller.rb:14:in `new'
+
+Rendered rescues/_trace (266.0ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PostsController#new (for 127.0.0.1 at 2010-04-10 13:22:07) [GET]
+  [4;35;1mPost Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `posts`[0m
+  [4;36;1mAddress Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `addresses`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mBEGIN[0m
+Google geocoding. Address: . Result: <?xml version="1.0" encoding="UTF-8" ?>
+<kml xmlns="http://earth.google.com/kml/2.0"><Response>
+  <name>0.000000,0.000000</name>
+  <Status>
+    <code>400</code>
+    <request>geocode</request>
+  </Status>
+</Response></kml>
+Google was unable to geocode address: 
+  [4;36;1mAddress Create (0.0ms)[0m   [0;1mINSERT INTO `addresses` (`line1`, `line2`, `updated_at`, `suburb_id`, `post_id`, `lng`, `lat`, `created_at`) VALUES(NULL, NULL, '2010-04-10 03:22:07', NULL, NULL, NULL, NULL, '2010-04-10 03:22:07')[0m
+  [4;35;1mSQL (94.0ms)[0m   [0mCOMMIT[0m
+  [4;36;1mProperty Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `properties`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mBEGIN[0m
+  [4;36;1mProperty Create (0.0ms)[0m   [0;1mINSERT INTO `properties` (`prop_type`, `purpose`, `updated_at`, `number_of_bedrooms`, `price`, `bond`, `max_tenants`, `post_id`, `number_of_current_tenants`, `number_of_carparks`, `furnished`, `number_of_bathrooms`, `created_at`) VALUES(NULL, NULL, '2010-04-10 03:22:07', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2010-04-10 03:22:07')[0m
+  [4;35;1mSQL (63.0ms)[0m   [0mCOMMIT[0m
+Rendering template within layouts/application
+Rendering posts/new
+Rendered addresses/_form (0.0ms)
+Rendered properties/_form (32.0ms)
+Rendered posts/_form (62.0ms)
+  [4;36;1mUser Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+Completed in 703ms (View: 94, DB: 172) | 200 OK [http://localhost/posts/new]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ImagesController#ui to png (for 127.0.0.1 at 2010-04-10 13:22:08) [GET]
+  Parameters: {"id"=>"ui-bg_flat_75_ffffff_40x100"}
+
+ActionController::UnknownAction (No action responded to ui. Actions: create, destroy, edit, index, new, show, and update):
+  
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PostsController#new (for 127.0.0.1 at 2010-04-10 13:28:48) [GET]
+  [4;35;1mPost Columns (15.0ms)[0m   [0mSHOW FIELDS FROM `posts`[0m
+  [4;36;1mAddress Columns (15.0ms)[0m   [0;1mSHOW FIELDS FROM `addresses`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mBEGIN[0m
+Google geocoding. Address: . Result: <?xml version="1.0" encoding="UTF-8" ?>
+<kml xmlns="http://earth.google.com/kml/2.0"><Response>
+  <name>0.000000,0.000000</name>
+  <Status>
+    <code>400</code>
+    <request>geocode</request>
+  </Status>
+</Response></kml>
+Google was unable to geocode address: 
+  [4;36;1mAddress Create (0.0ms)[0m   [0;1mINSERT INTO `addresses` (`line1`, `line2`, `updated_at`, `suburb_id`, `post_id`, `lng`, `lat`, `created_at`) VALUES(NULL, NULL, '2010-04-10 03:28:49', NULL, NULL, NULL, NULL, '2010-04-10 03:28:49')[0m
+  [4;35;1mSQL (172.0ms)[0m   [0mCOMMIT[0m
+  [4;36;1mProperty Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `properties`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mBEGIN[0m
+  [4;36;1mProperty Create (0.0ms)[0m   [0;1mINSERT INTO `properties` (`prop_type`, `purpose`, `updated_at`, `number_of_bedrooms`, `price`, `bond`, `max_tenants`, `post_id`, `number_of_current_tenants`, `number_of_carparks`, `furnished`, `number_of_bathrooms`, `created_at`) VALUES(NULL, NULL, '2010-04-10 03:28:49', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2010-04-10 03:28:49')[0m
+  [4;35;1mSQL (94.0ms)[0m   [0mCOMMIT[0m
+Rendering template within layouts/application
+Rendering posts/new
+  [4;36;1mSuburb Load (0.0ms)[0m   [0;1mSELECT * FROM `suburbs` [0m
+  [4;35;1mSuburb Columns (16.0ms)[0m   [0mSHOW FIELDS FROM `suburbs`[0m
+Rendered addresses/_form (62.0ms)
+Rendered properties/_form (16.0ms)
+Rendered posts/_form (94.0ms)
+  [4;36;1mUser Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+Completed in 812ms (View: 140, DB: 312) | 200 OK [http://localhost/posts/new]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ImagesController#ui to png (for 127.0.0.1 at 2010-04-10 13:28:50) [GET]
+  Parameters: {"id"=>"ui-bg_flat_75_ffffff_40x100"}
+
+ActionController::UnknownAction (No action responded to ui. Actions: create, destroy, edit, index, new, show, and update):
+  
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ImagesController#index (for 127.0.0.1 at 2010-04-10 13:34:21) [GET]
+  [4;35;1mImage Load (0.0ms)[0m   [0mSELECT * FROM `images` [0m
+Rendering template within layouts/application
+Rendering images/index
+  [4;36;1mUser Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+Completed in 110ms (View: 78, DB: 0) | 200 OK [http://localhost/images]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ImagesController#ui to png (for 127.0.0.1 at 2010-04-10 13:34:22) [GET]
+  Parameters: {"id"=>"ui-bg_flat_75_ffffff_40x100"}
+
+ActionController::UnknownAction (No action responded to ui. Actions: create, destroy, edit, index, new, show, and update):
+  
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ImagesController#new (for 127.0.0.1 at 2010-04-10 13:34:26) [GET]
+  [4;35;1mImage Columns (15.0ms)[0m   [0mSHOW FIELDS FROM `images`[0m
+Rendering template within layouts/application
+Rendering images/new
+Rendered images/_form (16.0ms)
+  [4;36;1mUser Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+Completed in 125ms (View: 78, DB: 31) | 200 OK [http://localhost/images/new]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ImagesController#ui to png (for 127.0.0.1 at 2010-04-10 13:34:28) [GET]
+  Parameters: {"id"=>"ui-bg_flat_75_ffffff_40x100"}
+
+ActionController::UnknownAction (No action responded to ui. Actions: create, destroy, edit, index, new, show, and update):
+  
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ImagesController#create (for 127.0.0.1 at 2010-04-10 13:34:49) [POST]
+  Parameters: {"commit"=>"Submit", "authenticity_token"=>"k0BGMHaFyZExPjDJaxy2EFSmmgwtvnUs2BuoMskrodk=", "image"=>{"photo"=>#<File:E:/DOCUME~1/ADMINI~1/LOCALS~1/Temp/RackMultipart.1180.0>}}
+  [4;35;1mImage Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `images`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mImage Create (0.0ms)[0m   [0mINSERT INTO `images` (`photo_file_name`, `photo_file_size`, `updated_at`, `photo_updated_at`, `post_id`, `photo_content_type`, `created_at`) VALUES('IMG_0927.JPG', 3064361, '2010-04-10 03:34:57', '2010-04-10 03:34:50', NULL, 'image/jpeg', '2010-04-10 03:34:57')[0m
+[paperclip] Saving attachments.
+[paperclip] saving e:/found/public/system/photos/1/original/IMG_0927.JPG
+[paperclip] saving e:/found/public/system/photos/1/medium/IMG_0927.JPG
+[paperclip] saving e:/found/public/system/photos/1/thumb/IMG_0927.JPG
+  [4;36;1mSQL (109.0ms)[0m   [0;1mCOMMIT[0m
+Redirected to http://localhost:3000/images/1
+Completed in 7750ms (DB: 109) | 302 Found [http://localhost/images]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ImagesController#show (for 127.0.0.1 at 2010-04-10 13:34:57) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mImage Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `images`[0m
+  [4;36;1mImage Load (0.0ms)[0m   [0;1mSELECT * FROM `images` WHERE (`images`.`id` = 1) [0m
+Rendering template within layouts/application
+Rendering images/show
+  [4;35;1mUser Columns (15.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+Completed in 109ms (View: 63, DB: 15) | 200 OK [http://localhost/images/1]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ImagesController#ui to png (for 127.0.0.1 at 2010-04-10 13:34:59) [GET]
+  Parameters: {"id"=>"ui-bg_flat_75_ffffff_40x100"}
+
+ActionController::UnknownAction (No action responded to ui. Actions: create, destroy, edit, index, new, show, and update):
+  
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ImagesController#destroy (for 127.0.0.1 at 2010-04-10 13:35:10) [DELETE]
+  Parameters: {"authenticity_token"=>"k0BGMHaFyZExPjDJaxy2EFSmmgwtvnUs2BuoMskrodk=", "id"=>"1"}
+  [4;36;1mImage Columns (16.0ms)[0m   [0;1mSHOW FIELDS FROM `images`[0m
+  [4;35;1mImage Load (0.0ms)[0m   [0mSELECT * FROM `images` WHERE (`images`.`id` = 1) [0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mBEGIN[0m
+[paperclip] Deleting attachments.
+[paperclip] deleting e:/found/public/system/photos/1/original/IMG_0927.JPG
+[paperclip] deleting e:/found/public/system/photos/1/medium/IMG_0927.JPG
+[paperclip] deleting e:/found/public/system/photos/1/thumb/IMG_0927.JPG
+  [4;35;1mImage Destroy (0.0ms)[0m   [0mDELETE FROM `images` WHERE `id` = 1[0m
+  [4;36;1mSQL (171.0ms)[0m   [0;1mCOMMIT[0m
+Redirected to http://localhost:3000/images
+Completed in 218ms (DB: 187) | 302 Found [http://localhost/images/1]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ImagesController#index (for 127.0.0.1 at 2010-04-10 13:35:11) [GET]
+  [4;35;1mImage Load (0.0ms)[0m   [0mSELECT * FROM `images` [0m
+Rendering template within layouts/application
+Rendering images/index
+  [4;36;1mUser Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+Completed in 78ms (View: 62, DB: 0) | 200 OK [http://localhost/images]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ImagesController#ui to png (for 127.0.0.1 at 2010-04-10 13:35:13) [GET]
+  Parameters: {"id"=>"ui-bg_flat_75_ffffff_40x100"}
+
+ActionController::UnknownAction (No action responded to ui. Actions: create, destroy, edit, index, new, show, and update):
+  
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mPost Load (0.0ms)[0m   [0;1mSELECT * FROM `posts` LIMIT 1[0m
+  [4;35;1mPost Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `posts`[0m
+  [4;36;1mAddress Load (0.0ms)[0m   [0;1mSELECT * FROM `addresses` WHERE (`addresses`.post_id = 1) LIMIT 1[0m
+  [4;35;1mAddress Columns (16.0ms)[0m   [0mSHOW FIELDS FROM `addresses`[0m
+  [4;36;1mProperty Load (16.0ms)[0m   [0;1mSELECT * FROM `properties` WHERE (`properties`.post_id = 1) LIMIT 1[0m
+  [4;35;1mProperty Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `properties`[0m
+  [4;36;1mImage Load (0.0ms)[0m   [0;1mSELECT * FROM `images` LIMIT 1[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mROLLBACK[0m
+  [4;35;1mImage Load (0.0ms)[0m   [0mSELECT * FROM `images` LIMIT 1[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ImagesController#new (for 127.0.0.1 at 2010-04-10 13:44:28) [GET]
+  [4;35;1mImage Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `images`[0m
+Rendering template within layouts/application
+Rendering images/new
+Rendered images/_form (16.0ms)
+  [4;36;1mUser Columns (15.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+Completed in 125ms (View: 63, DB: 15) | 200 OK [http://localhost/images/new]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ImagesController#ui to png (for 127.0.0.1 at 2010-04-10 13:44:38) [GET]
+  Parameters: {"id"=>"ui-bg_flat_75_ffffff_40x100"}
+
+ActionController::UnknownAction (No action responded to ui. Actions: create, destroy, edit, index, new, show, and update):
+  
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ImagesController#create (for 127.0.0.1 at 2010-04-10 13:44:46) [POST]
+  Parameters: {"commit"=>"Submit", "authenticity_token"=>"k0BGMHaFyZExPjDJaxy2EFSmmgwtvnUs2BuoMskrodk=", "image"=>{"photo"=>#<File:E:/DOCUME~1/ADMINI~1/LOCALS~1/Temp/RackMultipart.1180.0>}}
+  [4;35;1mImage Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `images`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mImage Create (0.0ms)[0m   [0mINSERT INTO `images` (`photo_file_name`, `photo_file_size`, `updated_at`, `photo_updated_at`, `post_id`, `photo_content_type`, `created_at`) VALUES('IMG_0927.JPG', 3064361, '2010-04-10 03:44:52', '2010-04-10 03:44:47', NULL, 'image/jpeg', '2010-04-10 03:44:52')[0m
+[paperclip] Saving attachments.
+[paperclip] saving e:/found/public/system/photos/2/original/IMG_0927.JPG
+[paperclip] saving e:/found/public/system/photos/2/medium/IMG_0927.JPG
+[paperclip] saving e:/found/public/system/photos/2/thumb/IMG_0927.JPG
+  [4;36;1mSQL (156.0ms)[0m   [0;1mCOMMIT[0m
+Redirected to http://localhost:3000/images/2
+Completed in 5594ms (DB: 156) | 302 Found [http://localhost/images]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ImagesController#show (for 127.0.0.1 at 2010-04-10 13:44:52) [GET]
+  Parameters: {"id"=>"2"}
+  [4;35;1mImage Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `images`[0m
+  [4;36;1mImage Load (16.0ms)[0m   [0;1mSELECT * FROM `images` WHERE (`images`.`id` = 2) [0m
+Rendering template within layouts/application
+Rendering images/show
+  [4;35;1mUser Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+Completed in 94ms (View: 62, DB: 16) | 200 OK [http://localhost/images/2]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ImagesController#ui to png (for 127.0.0.1 at 2010-04-10 13:44:53) [GET]
+  Parameters: {"id"=>"ui-bg_flat_75_ffffff_40x100"}
+
+ActionController::UnknownAction (No action responded to ui. Actions: create, destroy, edit, index, new, show, and update):
+  
+
+Rendering rescues/layout (not_found)
+  [4;36;1mImage Load (0.0ms)[0m   [0;1mSELECT * FROM `images` LIMIT 1[0m
+  [4;35;1mImage Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `images`[0m
+  [4;36;1mImage Load (0.0ms)[0m   [0;1mSELECT * FROM `images` LIMIT 1[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mBEGIN[0m
+  [4;36;1mImage Update (0.0ms)[0m   [0;1mUPDATE `images` SET `updated_at` = '2010-04-10 03:45:20', `post_id` = 1 WHERE `id` = 2[0m
+[paperclip] Saving attachments.
+  [4;35;1mSQL (109.0ms)[0m   [0mCOMMIT[0m
+  [4;36;1mImage Load (0.0ms)[0m   [0;1mSELECT * FROM `images` WHERE (`images`.post_id = 1) [0m
+  [4;35;1mSQL (0.0ms)[0m   [0mBEGIN[0m
+  [4;36;1mAddress Destroy (0.0ms)[0m   [0;1mDELETE FROM `addresses` WHERE `id` = 3[0m
+  [4;35;1mProperty Destroy (0.0ms)[0m   [0mDELETE FROM `properties` WHERE `id` = 1[0m
+[paperclip] Deleting attachments.
+[paperclip] deleting e:/found/public/system/photos/2/original/IMG_0927.JPG
+[paperclip] deleting e:/found/public/system/photos/2/medium/IMG_0927.JPG
+[paperclip] deleting e:/found/public/system/photos/2/thumb/IMG_0927.JPG
+  [4;36;1mImage Destroy (0.0ms)[0m   [0;1mDELETE FROM `images` WHERE `id` = 2[0m
+  [4;35;1mPost Destroy (0.0ms)[0m   [0mDELETE FROM `posts` WHERE `id` = 1[0m
+  [4;36;1mSQL (94.0ms)[0m   [0;1mCOMMIT[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PostsController#show (for 127.0.0.1 at 2010-04-10 13:49:22) [GET]
+  Parameters: {"id"=>"ew"}
+  [4;36;1mSearch Columns (16.0ms)[0m   [0;1mSHOW FIELDS FROM `searches`[0m
+  [4;35;1mPropertySearch Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `property_searches`[0m
+  [4;36;1mPost Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `posts`[0m
+  [4;35;1mPost Load (0.0ms)[0m   [0mSELECT * FROM `posts` WHERE (`posts`.`id` = 0) [0m
+
+ActiveRecord::RecordNotFound (Couldn't find Post with ID=ew):
+  app/controllers/posts_controller.rb:8:in `show'
+
+Rendered rescues/_trace (78.0ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PostsController#new (for 127.0.0.1 at 2010-04-10 13:49:26) [GET]
+  [4;36;1mPost Columns (16.0ms)[0m   [0;1mSHOW FIELDS FROM `posts`[0m
+  [4;35;1mAddress Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `addresses`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mBEGIN[0m
+Google geocoding. Address: . Result: <?xml version="1.0" encoding="UTF-8" ?>
+<kml xmlns="http://earth.google.com/kml/2.0"><Response>
+  <name>0.000000,0.000000</name>
+  <Status>
+    <code>400</code>
+    <request>geocode</request>
+  </Status>
+</Response></kml>
+Google was unable to geocode address: 
+  [4;35;1mAddress Create (0.0ms)[0m   [0mINSERT INTO `addresses` (`line1`, `line2`, `updated_at`, `suburb_id`, `post_id`, `lng`, `lat`, `created_at`) VALUES(NULL, NULL, '2010-04-10 03:49:26', NULL, NULL, NULL, NULL, '2010-04-10 03:49:26')[0m
+  [4;36;1mSQL (125.0ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mProperty Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `properties`[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mProperty Create (0.0ms)[0m   [0mINSERT INTO `properties` (`prop_type`, `purpose`, `updated_at`, `number_of_bedrooms`, `price`, `bond`, `max_tenants`, `post_id`, `number_of_current_tenants`, `number_of_carparks`, `furnished`, `number_of_bathrooms`, `created_at`) VALUES(NULL, NULL, '2010-04-10 03:49:26', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2010-04-10 03:49:26')[0m
+  [4;36;1mSQL (79.0ms)[0m   [0;1mCOMMIT[0m
+Rendering template within layouts/application
+Rendering posts/new
+
+ActionView::TemplateError (undefined method `line1' for :address:Symbol) on line #3 of app/views/addresses/_form.html.erb:
+1: <p>
+2:   <%= f.label :line1 %><br />
+3:   <%= f.text_field :line1 %>
+4: </p>
+5: <p>
+6:   <%= f.label :line2 %><br />
+
+    app/views/addresses/_form.html.erb:3
+    app/views/posts/_form.html.erb:5
+    searchlogic (2.4.12) lib/searchlogic/rails_helpers.rb:72:in `fields_for'
+    searchlogic (2.4.12) lib/searchlogic/rails_helpers.rb:61:in `form_for'
+    app/views/posts/_form.html.erb:4
+    app/views/posts/new.html.erb:3
+    app/controllers/posts_controller.rb:14:in `new'
+
+Rendered rescues/_trace (281.0ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PostsController#new (for 127.0.0.1 at 2010-04-10 14:21:35) [GET]
+  [4;35;1mPost Columns (16.0ms)[0m   [0mSHOW FIELDS FROM `posts`[0m
+  [4;36;1mAddress Columns (15.0ms)[0m   [0;1mSHOW FIELDS FROM `addresses`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mBEGIN[0m
+Google geocoding. Address: . Result: <?xml version="1.0" encoding="UTF-8" ?>
+<kml xmlns="http://earth.google.com/kml/2.0"><Response>
+  <name>0.000000,0.000000</name>
+  <Status>
+    <code>400</code>
+    <request>geocode</request>
+  </Status>
+</Response></kml>
+Google was unable to geocode address: 
+  [4;36;1mAddress Create (0.0ms)[0m   [0;1mINSERT INTO `addresses` (`line1`, `line2`, `updated_at`, `suburb_id`, `post_id`, `lng`, `lat`, `created_at`) VALUES(NULL, NULL, '2010-04-10 04:21:35', NULL, NULL, NULL, NULL, '2010-04-10 04:21:35')[0m
+  [4;35;1mSQL (62.0ms)[0m   [0mCOMMIT[0m
+  [4;36;1mProperty Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `properties`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mBEGIN[0m
+  [4;36;1mProperty Create (16.0ms)[0m   [0;1mINSERT INTO `properties` (`prop_type`, `purpose`, `updated_at`, `number_of_bedrooms`, `price`, `bond`, `max_tenants`, `post_id`, `number_of_current_tenants`, `number_of_carparks`, `furnished`, `number_of_bathrooms`, `created_at`) VALUES(NULL, NULL, '2010-04-10 04:21:35', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2010-04-10 04:21:35')[0m
+  [4;35;1mSQL (78.0ms)[0m   [0mCOMMIT[0m
+Rendering template within layouts/application
+Rendering posts/new
+
+ActionView::TemplateError (undefined method `address' for :post:Symbol) on line #4 of app/views/posts/_form.html.erb:
+1: <div class ="full_container post_form">
+2:   <div class="address_field">
+3:     <h1>Address</h1>
+4:     <% form_for([:post, :post.address]) do |address_form| %>
+5:       <%= render "addresses/form", :f =>address_form %>
+6:       <%= f.submit "Submit" %>
+7:     <%end%>
+
+    app/views/posts/_form.html.erb:4
+    app/views/posts/new.html.erb:3
+    app/controllers/posts_controller.rb:14:in `new'
+
+Rendered rescues/_trace (250.0ms)
+Rendered rescues/_request_and_response (0.0ms)
+Rendering rescues/layout (internal_server_error)

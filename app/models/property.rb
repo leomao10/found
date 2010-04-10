@@ -4,6 +4,6 @@ class Property < ActiveRecord::Base
   TYPES = %w[unit acreage townhouse terrace house]
 
   #Association
-  has_one :post, :as => :postable
+  belongs_to :post
   #Name Scope
 end

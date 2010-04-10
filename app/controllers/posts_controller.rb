@@ -10,7 +10,8 @@ class PostsController < ApplicationController
   end
   
   def new
-    @post = Post.new
+    post = Post.setup
+    render :template => 'posts/new', :locals => { :post => post }
   end
   
   def create

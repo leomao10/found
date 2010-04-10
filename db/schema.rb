@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100306072215) do
+ActiveRecord::Schema.define(:version => 20100410025005) do
 
   create_table "addresses", :force => true do |t|
     t.string   "line1"
@@ -18,6 +18,8 @@ ActiveRecord::Schema.define(:version => 20100306072215) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "post_id"
+    t.float    "lat"
+    t.float    "lng"
   end
 
   create_table "carparks", :force => true do |t|
@@ -45,10 +47,9 @@ ActiveRecord::Schema.define(:version => 20100306072215) do
     t.date     "expiry_date"
     t.string   "inspection_time"
     t.boolean  "negotiable"
-    t.integer  "postable_id"
-    t.string   "postable_type"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
   create_table "properties", :force => true do |t|
@@ -64,6 +65,7 @@ ActiveRecord::Schema.define(:version => 20100306072215) do
     t.string   "prop_type"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "post_id"
   end
 
   create_table "property_searches", :force => true do |t|
@@ -105,6 +107,8 @@ ActiveRecord::Schema.define(:version => 20100306072215) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "name"
+    t.float    "lat"
+    t.float    "lng"
   end
 
   create_table "users", :force => true do |t|

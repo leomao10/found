@@ -1,12 +1,12 @@
-<% form_for @address do |f| %>
-  <%= f.error_messages %>
-  <p>
-    <%= f.label :line1 %><br />
-    <%= f.text_field :line1 %>
-  </p>
-  <p>
-    <%= f.label :line2 %><br />
-    <%= f.text_field :line2 %>
-  </p>
-  <p><%= f.submit "Submit" %></p>
-<% end %>
+<p>
+  <%= f.label :line1 %><br />
+  <%= f.text_field :line1 %>
+</p>
+<p>
+  <%= f.label :line2 %><br />
+  <%= f.text_field :line2 %>
+</p>
+<p>
+  <%= f.label :suburb %>
+  <%= f.collection_select :suburb_id, Suburb.all, :id, :name, {:prompt => true} %>
+</p>

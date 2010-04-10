@@ -1,9 +1,7 @@
 <div class="postable">
-  <% postable = post.postable %>
-  <% unless postable.nil? %>
-    <% dir_name = postable.class.table_name %>
-    <% local = postable.class.class_name.downcase%>
-    <%= render :partial => "/" + dir_name + "/abstract", :locals => { local.to_sym => postable } %>
+  <% property = post.property %>
+  <% unless property.nil? %>
+    <%= render :partial => "/properties/abstract", :locals => { :property => property } %>
   <% end %>
 </div>
 <div class="title">

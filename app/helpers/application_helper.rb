@@ -11,5 +11,4 @@ module ApplicationHelper
         </script>"
     end
   end
-
 end
