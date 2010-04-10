@@ -1,4 +1,3 @@
-include
 class Address < ActiveRecord::Base
   #Attribute accessiblity
   attr_accessible :line1, :line2, :suburb

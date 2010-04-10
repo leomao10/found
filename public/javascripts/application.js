@@ -181,6 +181,9 @@ jQuery(function($){
 });
 
 
+jQuery(function($){
+    $('#new_key').watermark('Enter Suburn or Post Code Here');
+});
 
 
 
