@@ -8,7 +8,7 @@ body {
     font-family: Verdana, Helvetica, Arial;
     font-size: 14px;
     margin: 0;
-    background-color: #5ED3FF;
+    background-color: #97DAF3;
 }
 
 a img {
@@ -171,7 +171,7 @@ div#top_bar a:hover {
 /* header section */
 div#logo {
     display: inline-block;
-    background: url(../images/logo.png) left center no-repeat;
+    background: url(../images/logo_new.png) left center no-repeat;
     width: 323px;
     height: 200px;
     position: relative;
@@ -186,7 +186,8 @@ div#header div.text {
 div#header div.text h1 {
     font-size: 28px;
     text-transform: uppercase;
-    color: #1B96C0;
+    /*color: #1B96C0;*/
+    color:#000000;
 }
 div#header div.text h2 {
     font-size: 16px;

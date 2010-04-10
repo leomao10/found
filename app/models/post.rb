@@ -7,12 +7,10 @@ class Post < ActiveRecord::Base
   
   belongs_to :user
 
-  accepts_nested_attributes_for :address, :images,:property
-
   def self.setup
     post = Post.new
-    post.create_address
-    post.create_property
+    
     post.save
+    return post
   end
 end

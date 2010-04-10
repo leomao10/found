@@ -1,23 +1,5 @@
-<div class ="full_container post_form">
-  <div class="address_field">
-    <h1>Address</h1>
-    <% form_for([:post, :post.address]) do |address_form| %>
-      <%= render "addresses/form", :f =>address_form %>
-      <%= f.submit "Submit" %>
-    <%end%>
-  </div>
+<div class ="full_container post_form"> 
   <% form_for :post do |f| %>
-    <%= f.error_messages %>
-    <div class="property_field">
-      <h1>Property</h1>
-      <% f.fields_for :property do |property_form| %>
-        <%= render "properties/form", :f =>property_form %>
-      <%end%>
-    </div>
-    <div class="images">
-      <h1>Images</h1>
-    </div>
-
     <div class="line">
       <div class="field_20">
         <%= f.label :title %>

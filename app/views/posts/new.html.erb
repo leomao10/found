@@ -1,5 +1,33 @@
 <% title "New Post" %>
-
-<%= render :partial => 'form' %>
-
-<p><%= link_to "Back to List", posts_path %></p>
+<div class="address_field">
+  <div class="session_header">
+    <h1>Property Address</h1>
+  </div>
+  <div id="aa">
+  <% form_for @address, :html=> {:class =>"ajaxForm",:id=>"edit_address_form_1"} do |address_form| %>
+    <%= render "addresses/form", :f =>address_form %>
+    <%= submit_tag "Submit" %>
+  <%end%>
+  </div>
+</div>
+<div class="images">
+  <div class="session_header">
+    <h1>Upload Photo</h1>
+  </div>
+</div>
+<div class="contact_details">
+  <div class="session_header">
+    <h1>Contact Details</h1>
+  </div>
+</div>
+<div class="property_field">
+  <div class="session_header">
+    <h1>Property details</h1>
+  </div>  
+  <% form_for :property, post.property,:url =>post_property_url(post) do |property_form| %>
+    <%= render "properties/form", :f =>property_form %>
+    <%= property_form.submit "Submit" %>
+  <%end%>
+</div>
+<%= render :partial => 'form', :locals => {:post => post }%>
+<%= submit_tag "Continue to next step" %>
