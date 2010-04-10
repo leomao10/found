@@ -10,7 +10,7 @@
   <div class="inner">
     <%= f.error_messages %>
     <div class="main">
-      <%= f.text_field :keyword, :class=>"keywords" %>
+      <%= f.text_field :keyword, :class=>"keywords watermark", :id => "new_key" %>
       <%= f.submit "Search", :class=>"search" %>
     </div>
     <label><input type="checkbox" class="checkbox" /> Include surrounding suburbs</label>
