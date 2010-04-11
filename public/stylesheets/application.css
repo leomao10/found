@@ -497,6 +497,7 @@ li.item .post .middle .user_area .action{
 
 .container .half {
     width: 49%;
+    display: inline-block;
     -moz-border-radius:5px 5px 5px 5px;
 }
 

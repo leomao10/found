@@ -5,7 +5,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :carparks
   map.resources :addresses
   map.resources :properties
-  map.resources :posts, :has_one => [:address, :property]
+  map.resources :posts, :has_one => [:address, :property, :enquery]
   map.resources :password_resets  
   map.resources :user_sessions
   map.resources :suburbs

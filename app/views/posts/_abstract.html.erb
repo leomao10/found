@@ -1,7 +1,7 @@
 <div class="post">
   <div class="top">
     <div class="address">
-      <%= link_to "#{h post.address.to_s}", post_path(post) %>
+      <%= link_to "#{h post.address.to_s(:short)}", post_path(post) %>
     </div>
     <div class="collapse"><a>Collapse</a></div>
   </div>

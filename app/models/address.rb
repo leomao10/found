@@ -8,14 +8,14 @@ class Address < ActiveRecord::Base
   belongs_to :post
   belongs_to :suburb
 
-  #before_validation :geocode_address
+  before_validation :geocode_address
 
   def full_address
     [line1,line2,suburb].reject{|s| s.blank?}.join(",")
   end
 
-  def to_s
-    [line1,line2,suburb].reject{|s| s.blank?}.join(",")
+  def to_s(format = "")
+    [line1,line2,suburb.to_s(format)].reject{|s| s.blank?}.join(",")
   end
 
   private

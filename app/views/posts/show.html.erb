@@ -5,10 +5,9 @@
     <%= render :partial => "searches/form", :locals => { :f => f }%>
   <% end %>
   <div class="controller">
-    TODO: This is the controller
-    <%= link_to "Back to List" %>
-    <%= link_to "Prev Property" %>
-    <%= link_to "Next Property" %>
+    <%= button_to "Back to List", "/searches/show"%>
+    <%= button_to "Prev Property", prev_post_path(search.posts, post) %>
+    <%= button_to "Next Property", next_post_path(search.posts, post) %>
   </div>
   <div class="post container">
     <div class="line top">
@@ -16,14 +15,16 @@
         <%= h post.address.to_s %>
       </div>
     </div>
-    <div class="right half">
-      <%= render :partial => "detail", :locals => { :post => @post} %>
-    </div>
-    <div class="half">
+    <div class="left half">
       <div class="images">
         <%= render :partial => "/images/list", :locals => { :images => post.images, :size => :medium } %>
       </div>
       <div id="googlemap">google map</div>
+    </div>
+    <div class="half">
+      <%= render :partial => "detail", :locals => { :post => @post, :enquery => Enquery.new(@post)} %>
+      <h1>Email Landlord/Agent</h1>
+      <%= render :partial => "enqueries/form", :locals => {:post => @post} %>
     </div>
   </div>
 </div>

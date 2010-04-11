@@ -11,4 +11,16 @@ module ApplicationHelper
         </script>"
     end
   end
+
+  def prev_post_path(posts, post)
+    index = posts.index(post)
+    result = index.nil? ? posts.first : posts[index -1]
+    post_url(result) unless result.nil?
+  end
+
+  def next_post_path(posts, post)
+    index = posts.index(post)
+    result = index.nil? ? posts.first : posts[index -1]
+    post_url(result) unless result.nil?
+  end
 end

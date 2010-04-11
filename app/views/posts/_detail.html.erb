@@ -1,7 +1,7 @@
 <div class="postable">
   <% property = post.property %>
   <% unless property.nil? %>
-    <%= render :partial => "/properties/abstract", :locals => { :property => property } %>
+    <%= render :partial => "/properties/detail", :locals => { :property => property } %>
   <% end %>
 </div>
 <div class="title">

@@ -4,7 +4,11 @@ class PostsController < ApplicationController
   end
   
   def show
-    @search = Search.new
+    unless session[:search].nil?
+      @search  = Search.new(session[:search])
+    else
+      @search ||= Search.new
+    end
     @post = Post.find(params[:id])
     render :template => 'posts/show', :locals => { :search => @search, :post => @post }
   end
