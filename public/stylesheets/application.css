@@ -247,15 +247,15 @@ div#search div.tabs ul li.highlight a span {
 }
 div#search div.search_panel {
     background: #E4E9EC;
-    padding: 15px 30px;
+    padding: 27px 30px;
     -moz-border-radius: 0 5px 5px 5px;
 }
 div#search div.search_panel div.inner {
-    padding: 0 5px 12px 15px;
+    padding: 0 135px 14px 9px;
     background: url(../images/search_background.jpg) left top no-repeat;
 }
 div#search div.search_panel div.inner div.main {
-    padding: 6px 0 14px;
+    padding: 12px 3px 30px;
 	margin-bottom: 5px;
 }
 
@@ -278,7 +278,7 @@ div#search div.search_panel input.checkbox {
 div#search div.search_panel div.main input.keywords {
     font-size: 18px;
     color: #737574;
-    width: 565px;
+    width: 81%;
 	height: 30px;
     margin-right: 20px;
 	border: none;
@@ -288,7 +288,7 @@ div#search div.search_panel div.main input.search {
     font-size: 18px;
     font-weight: bold;
     color: #FFFCF9;
-    height: 40px;
+    height: 26px;
     width: 108px;
     text-transform: uppercase;
     cursor: pointer;
