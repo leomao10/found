@@ -256,6 +256,7 @@ div#search div.search_panel div.inner {
 }
 div#search div.search_panel div.inner div.main {
     padding: 6px 0 14px;
+	margin-bottom: 5px;
 }
 
 div#search div.search_panel div.inner div.option label {
@@ -272,12 +273,16 @@ div#search div.search_panel a.more {
 }
 div#search div.search_panel input.checkbox {
     vertical-align: bottom;
+	border: none;
 }
 div#search div.search_panel div.main input.keywords {
     font-size: 18px;
     color: #737574;
     width: 565px;
+	height: 30px;
     margin-right: 20px;
+	border: none;
+	margin-top: 5px;
 }
 div#search div.search_panel div.main input.search {
     font-size: 18px;
@@ -287,6 +292,8 @@ div#search div.search_panel div.main input.search {
     width: 108px;
     text-transform: uppercase;
     cursor: pointer;
+	border: none;
+	margin-right: 130px;
 }
 div#search div.search_panel div.more_options {
     display: none;

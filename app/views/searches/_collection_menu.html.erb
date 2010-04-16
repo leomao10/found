@@ -1,0 +1,12 @@
+<div id="collection_menu">
+  <% link_to "/searches/show", :id => "back_to_list" do %>
+    <%= image_tag("go_back.png")%> Back To List
+  <% end %>
+  <% link_to prev_post_path(search.posts, post), :id => "prev" do %>
+    <%= image_tag("prev.png")%> Prev Property
+  <% end %>
+  <% link_to next_post_path(search.posts, post), :id => "next" do %>
+    <%= image_tag("next.png")%>
+    Next Property
+  <% end %>
+</div>

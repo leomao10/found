@@ -3,7 +3,8 @@ class Post < ActiveRecord::Base
 
   has_one :address, :dependent => :destroy
   has_one :property, :dependent => :destroy
-  has_many :images, :dependent => :destroy
+  has_one :contact, :as => :contactable
+  has_many :images, :dependent => :destroy 
   
   belongs_to :user
 

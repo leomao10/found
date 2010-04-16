@@ -5,9 +5,7 @@
     <%= render :partial => "searches/form", :locals => { :f => f }%>
   <% end %>
   <div class="controller">
-    <%= button_to "Back to List", "/searches/show"%>
-    <%= button_to "Prev Property", prev_post_path(search.posts, post) %>
-    <%= button_to "Next Property", next_post_path(search.posts, post) %>
+    <%= render :partial => "searches/collection_menu", :locals => { :search => search, :post => post }%>
   </div>
   <div class="post container">
     <div class="line top">
@@ -29,15 +27,19 @@
   </div>
 </div>
 
-<script type="text/javascript">
-  $(".address").each(function(index, address){
-    $("#googlemap").show_address([$(address).text()]);
-  });
+<% content_for :script do %>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $(".address").each(function(index, address){
+        $("#googlemap").show_address([$(address).text()]);
+      });
   
-  $('.slider').cycle({
-    speed:  'fast',
-    timeout: 0,
-    next:   '.next2',
-    prev:   '.prev2'
-  });
-</script>
+      $('.slider').cycle({
+        speed:  'fast',
+        timeout: 0,
+        next:   '.next2',
+        prev:   '.prev2'
+      });
+    });
+  </script>
+<% end %>

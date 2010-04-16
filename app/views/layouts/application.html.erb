@@ -7,7 +7,6 @@
     <meta name="keywords" content="" />
     <%= stylesheet_link_tag 'application','style' ,'jquery-ui-1.8.custom'%>
     <%= javascript_include_tag 'jquery-1.4.2.min',
-     
       'jquery-ui-1.8.custom.min',
       'jquery.cycle.all.min',
       'iphone-style-checkboxes',
@@ -17,15 +16,17 @@
       'application'%>
     <%= yield_authenticity_token %>
     <script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAAYLuaqB7qMuVmZct0bNAhVRToMsSLBLYOIGCFpHF2BQfOB79_-BR2PDljF3gNcHkI6rzbMOOf_XFw1g" type="text/javascript"></script>
-  </head>
-
+    <%= yield :script %>
+  </head>  
   <body id="body" onload="window.focus();">
     <div id="top_bar">
       <div class="inner">
         <div class="general_nav">
           <ul>
             <li><%= link_to "Home", :controller => "welcome", :action => "index" %></li>
-            <li><%= link_to "Place An Ad", new_post_path %></li>
+            <% if current_user %>
+              <li><%= link_to "Place An Ad", new_post_path %></li>
+            <% end %>
             <li><a href="#">Rental Guides</a></li>
           </ul>
         </div>

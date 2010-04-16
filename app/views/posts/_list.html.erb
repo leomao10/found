@@ -16,18 +16,22 @@
   </div>
 </div>
 
-<script type="text/javascript">
-  $(".address").each(function(index, address){
-    $("#googlemap").show_address([$(address).text()]);
-  });
-  $(".collapse").click(function(){
-    $(this).closest('.post').find('.middle').toggle();
-  })
-  
-  $('.slider').cycle({
-    speed:  'fast',
-    timeout: 0,
-    next:   '.next2',
-    prev:   '.prev2'
-  });
-</script>
+<% content_for :script do %>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('.address').each(function(index, address){
+        $('#googlemap').show_address([$(address).text()]);
+      });
+      $('.collapse').click(function(){
+        $(this).closest('.post').find('.middle').toggle();
+      });
+
+      $('.slider').cycle({
+        speed:  'fast',
+        timeout: 0,
+        next:   '.next2',
+        prev:   '.prev2'
+      });
+    });
+  </script>
+<% end %>

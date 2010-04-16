@@ -41,6 +41,11 @@
   </div>
 <% end %>
 
-<script type="text/javascript">
-  $('.post_form :checkbox').iphoneStyle();
-</script>
+<% content_for :script do %>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('.post_form :checkbox').iphoneStyle();
+    });
+  </script>
+<% end %>
+
