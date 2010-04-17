@@ -50,12 +50,12 @@
         <% unless current_user %>
           <div class="text">
             <h1>Welcome!<br />You're new, aren't you?</h1>
-            <h2>FOUND YOUR HOME is a respectful community of young people who look for their next home. We provide the best tools and resource to help you to find your next stay.</h2>
-            <h3>Go ahead, start looking...</h3>
+            <h2 style="line-height: 1.5em;">FOUND YOUR HOME is a respectful community of young people who look for their next home. We provide the best tools and resource to help you to find your next stay.</h2>
+            <h3 style="line-height: 1.5em;">Go ahead, start looking...</h3>
           </div>
         <% end %>
       </div>
-      <div id="content_body" class="container">
+      <div id="content_body" class="container" style ="min-height: 228px;">
         <%= yield %>
       </div>
       <div id="footer">

@@ -9,13 +9,13 @@
 <div class="page_content " style="color:#000000;">Build Your Ad Below</div>
 <div class="row_break"></div>
 
-<div id="build_new_post">
-  <div class="bar_container">
+<div id="build_new_post" style="border: 1px solid #F0F0F0;">
+  <div class="bar_container" style="-moz-border-radius-topleft:10px;-moz-border-radius-topright:10px;">
     <div class="toggle_div" toggle_id_name="address_details" style="cursor: pointer;">
       <div  class="options" style="float:right"}
       <%= image_tag('collapse_arrow.png')%>
     </div>
-    <h1>Property Address</h1>
+      <h1>Property Address</h1>
   </div>
 </div>
 
@@ -23,7 +23,7 @@
 <div id="address_details" style="width:94%;display:none;float: left;">
   <div id="aa">
     <% form_for @address, :html=> {:class =>"ajaxForm",:id=>"edit_address_form_1"} do |address_form| %>
-      <%= render "addresses/form", :f =>address_form %>
+      <%= render "addresses/new_address_form", :f =>address_form %>
       <%= submit_tag "Submit" %>
     <%end%>
     <br style="clear: both"></br>
@@ -100,10 +100,14 @@
     <%= render :partial => 'form', :locals => {:post => post }%>
   </div>
 </div>
+<br style="clear:both"></br>
+
+</div>
+
 
 <div class="button_sub" >
   <%= submit_tag "Continue to next step" , :style=>"font-weight:bold;font-size:12px;color:white;"%>
 </div>
-</div>
+
 
 <br style="clear: both;"></br>

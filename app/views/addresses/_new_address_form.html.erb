@@ -1,0 +1,47 @@
+<div class="container">
+  <div class="form_line">
+    <%= f.label :building_name %>
+
+    <div class="input_content" style="width: 60%;">
+    <%= f.text_field :building_name %>
+    <div class="display_field"></div>
+    </div>
+  </div>
+  <div class="form_line">
+    <%= f.label :suite_unit %>
+    <%= f.text_field :suite_unit %>
+  </div>
+  <div class="form_line">
+    <%= f.label :street_number %>
+    <%= f.text_field :street_number %>
+  </div>
+
+  <div class="form_line">
+    <%= f.label :street_name %>
+    <%= f.text_field :street_name %>
+  </div>
+
+  <div class="form_line">
+    <%= f.label :town %>
+    <%= f.text_field :town %>
+  </div>
+
+  <div class="form_line">
+    <%= f.label :state %>
+    <%= f.text_field :state %>
+  </div>
+
+  <div class="form_line">
+    <%= f.label :postcode %>
+    <%= f.text_field :postcode %>
+  </div>
+
+  <div class="form_line">
+    <%= f.label :state %>
+    <%= f.text_field :state %>
+  </div>
+  <div class="form_line">
+    <input type="text" name="address[post_id]" value="<%= @post.id %>"></input>
+  </div>
+</div>
+

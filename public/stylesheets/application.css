@@ -93,7 +93,7 @@ a {
 
 label {
     display: block;
-    padding: 3px 8px;
+  /*  padding: 3px 8px;*/
     margin-bottom: 5px;
     font-weight: bold;
     color: #737574;
@@ -132,13 +132,14 @@ div#top_bar {
     text-align: center;
 }
 div#top_bar div.inner {
-    margin: auto;
-    width: 800px;
-    padding-left: 80px;
+
+    width: 100%;
+
 }
 div#top_bar div.general_nav {
     display: inline-block;
-    width: 69%;
+    width: 52%;
+    float: left;
 }
 div#top_bar div.member_nav {
     display: inline-block;
@@ -162,10 +163,11 @@ div#top_bar div.member_nav ul li {
 div#top_bar a {
     font-weight: bold;
     text-decoration: none;
-    color: #7C8083;
+
+    color: #239dcb;
 }
 div#top_bar a:hover {
-    color: #5ED3FF;
+    color: #7C8083;
 }
 
 /* header section */
@@ -175,7 +177,6 @@ div#logo {
     width: 323px;
     height: 200px;
     position: relative;
-    top: -70px;
     left: -100px;
 }
 div#header div.text {
@@ -184,14 +185,16 @@ div#header div.text {
     width: 590px;
 }
 div#header div.text h1 {
-    font-size: 28px;
+    font-size: 30px;
     text-transform: uppercase;
     /*color: #1B96C0;*/
     color:#000000;
+    font-family: arial;
 }
 div#header div.text h2 {
-    font-size: 16px;
-    color: #FEFDFF;
+    font-size: 13px;
+    color: #000000;
+    font-family: arial;
 }
 div#header div.text h3 {
     font-size: 14px;
@@ -248,7 +251,9 @@ div#search div.tabs ul li.highlight a span {
 div#search div.search_panel {
     background: #E4E9EC;
     padding: 27px 30px;
-    -moz-border-radius: 0 5px 5px 5px;
+    -moz-border-radius: 0 15px 15px 15px;
+    border-radius: 0 15px 15px 15px;
+
 }
 div#search div.search_panel div.inner {
     padding: 0 135px 14px 9px;
@@ -256,7 +261,7 @@ div#search div.search_panel div.inner {
 }
 div#search div.search_panel div.inner div.main {
     padding: 12px 3px 30px;
-	margin-bottom: 5px;
+    margin-bottom: 5px;
 }
 
 div#search div.search_panel div.inner div.option label {
@@ -273,16 +278,15 @@ div#search div.search_panel a.more {
 }
 div#search div.search_panel input.checkbox {
     vertical-align: bottom;
-	border: none;
+    border: none;
 }
 div#search div.search_panel div.main input.keywords {
     font-size: 18px;
     color: #737574;
     width: 81%;
-	height: 30px;
-    margin-right: 20px;
-	border: none;
-	margin-top: 5px;
+    height: 30px;
+    border: none;
+
 }
 div#search div.search_panel div.main input.search {
     font-size: 18px;
@@ -292,8 +296,7 @@ div#search div.search_panel div.main input.search {
     width: 108px;
     text-transform: uppercase;
     cursor: pointer;
-	border: none;
-	margin-right: 130px;
+    border: none;
 }
 div#search div.search_panel div.more_options {
     display: none;
@@ -320,6 +323,9 @@ div#page_body {
     background: #ffffff;
     padding: 15px;
     min-height: 550px;
+    -moz-border-radius:20px;
+    border-radius:25px;
+    -webkit-border-radius:20px;
 }
 
 #page_body .entries_info {
@@ -523,16 +529,7 @@ li.item .post .middle .user_area .action{
 }
 
 
-label {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 11px;
-    font-weight: bold;
-    line-height: 9px;
-    color: #666;
-    text-decoration: none;
-    display: block;
-    padding-left: 3px;
-}
+
 
 #page_body  #content .full_container .line label {
     font-family: Arial, Helvetica, sans-serif;
@@ -624,12 +621,14 @@ div#footer a:hover {
     color: #232323;
     background-image:url(/images/container_bg1.png);
     background-repeat:repeat;
-    width: 96%;
+    width: 98%;
     float: left;
-    padding: 1%;
+    padding: 10px;
     min-height: 10px;
-    -moz-border-radius: 10px;
-    -webkit-border-radius: 10px;
+    -moz-box-shadow: 5px 5px 5px #ccc;
+
+    /* -moz-border-radius: 10px;
+     -webkit-border-radius: 10px;*/
     margin-bottom: 10px;
 }
 
@@ -650,11 +649,116 @@ div#footer a:hover {
     background-color: #33bce9
 }
 #content_body  input[type=submit] {
-  width:auto;
-  height:auto;
-  float:right;
-  cursor:pointer;
+    width:auto;
+    height:auto;
+    float:right;
+    cursor:pointer;
+}
+
+#content_body .bar_container h1
+{
+    font-size:13px;
 }
 
 
 
+/*form use do not delete*/
+
+.form_line {
+    float: left;
+    min-height: 30px;
+    padding-bottom: 5px;
+    width: 100%;
+}
+
+.form_line label {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 11px;
+    font-weight: bold;
+    line-height: 12px;
+    color: #666;
+    text-decoration: none;
+    display: inline;
+    padding-left: 3px;
+    margin-bottom: 0px;
+}
+
+.form_line input {
+    width:50%;
+     height:35px;
+}
+
+.form_line .field_2,
+.form_line .field_5,
+.form_line .field_10,
+.form_line .field_15,
+.form_line .field_20,
+.form_line .field_25,
+.form_line .field_23,
+.form_line .field_27,
+.form_line .field_30,
+.form_line .field_33,
+.form_line .field_34,
+.form_line .field_35,
+.form_line .field_40,
+.form_line .field_45,
+.form_line .field_50,
+.form_line .field_55,
+.form_line .field_60,
+.form_line .field_66,
+.form_line .field_70,
+.form_line .field_75,
+.form_line .field_80,
+.form_line .field_85 {
+    float: left;
+    height: 40px;
+    margin-right: 10px;
+}
+.form_line .field_2 {width: 2%;}
+.form_line .field_5 {width: 5%;}
+.form_line .field_10 {width: 10%;}
+.form_line .field_15 {width: 15%;}
+.form_line .field_20 {width: 20%;}
+.form_line .field_23 {width: 23%;}
+.form_line .field_25 {width: 25%;}
+.form_line .field_27 {width: 27%;}
+.form_line .field_30 {width: 30%;}
+.form_line .field_33 {width: 33%;}
+.form_line .field_34 {width: 34%;}
+.form_line .field_35 {width: 35%;}
+.form_line .field_40 {width: 40%;}
+.form_line .field_45 {width: 45%;}
+.form_line .field_50 {width: 50%;}
+.form_line .field_55 {width: 55%;}
+.form_line .field_60 {width: 60%;}
+.form_line .field_66 {width: 66%;}
+.form_line .field_70 {width: 70%;}
+.form_line .field_75 {width: 75%;}
+.form_line .field_80 {width: 80%;}
+.form_line .field_85 {width: 85%;}
+
+
+.display_field_bg {
+    -moz-border-radius-topright:5px;
+    -moz-border-radius-bottomright:5px;
+    -webkit-border-top-right-radius:5px;
+    -webkit-border-bottom-right-radius:5px;
+    border-radius: 5px;
+    color: #f2f2f1;
+    background-image:url(/images/display_field_bg.png);
+    background-repeat: repeat-y;
+    font-family:Arial,Helvetica,sans-serif;
+    font-size:14px;
+    line-height: 14px;
+    height:35px;
+    padding: 5px 0px 5px 10px;
+    text-decoration:none;
+    /*background-position: right;*/
+    width:30%;
+}
+
+.input_content{
+
+display: inline;
+    
+}
