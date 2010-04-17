@@ -93,7 +93,7 @@ a {
 
 label {
     display: block;
-  /*  padding: 3px 8px;*/
+    /*  padding: 3px 8px;*/
     margin-bottom: 5px;
     font-weight: bold;
     color: #737574;
@@ -621,9 +621,9 @@ div#footer a:hover {
     color: #232323;
     background-image:url(/images/container_bg1.png);
     background-repeat:repeat;
-    width: 98%;
+    width: 99.5%;
     float: left;
-    padding: 10px;
+    padding: 3px;
     min-height: 10px;
     -moz-box-shadow: 5px 5px 5px #ccc;
 
@@ -681,11 +681,17 @@ div#footer a:hover {
     display: inline;
     padding-left: 3px;
     margin-bottom: 0px;
+    float: left;
+    padding-top: 7px;
+    width: 131px;
 }
 
-.form_line input {
-    width:50%;
-     height:35px;
+.form_line input[type="text"]  {
+    width:269px;
+    height:29px;
+    float:left;
+    font-size: 16px;
+    font-weight: bolder;
 }
 
 .form_line .field_2,
@@ -759,6 +765,24 @@ div#footer a:hover {
 
 .input_content{
 
-display: inline;
-    
+    display: inline;
+
+}
+
+.form_line .post_content label{
+
+
+    font-size:17px;;
+
+}
+
+.form_line input[type="submit"] {
+    width:269px;
+    height:29px;
+    float:left;
+    font-size: 13px;
+    font-weight: bolder;
+    background-color: #fafafa;
+    -moz-border-radius:5px;
+    padding: 10px;
 }

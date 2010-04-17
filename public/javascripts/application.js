@@ -195,18 +195,19 @@ $(function() {
 
     $(".toggle_div").live('click', function(){
         $('#'+$(this).attr('toggle_id_name')).toggle('blind');
-//        var current_image;
-//        if ($(this).attr('expand_with_arrow') == "true"){
-//            current_image = $(this).find('img[alt=Expand]');
-//        }else{
-//            current_image = $(this).find('img');
-//        }
-//
-//        if (current_image.attr('src').indexOf('expand') > 0){
-//            current_image.attr('src','/images/Icons/System/collapse.png');
-//        }else{
-//            current_image.attr('src','/images/Icons/System/expand.png');
-//        }
+        //        var current_image;
+        //        if ($(this).attr('expand_with_arrow') == "true"){
+        //            current_image = $(this).find('img[alt=Expand]');
+        //        }else{
+        //            current_image = $(this).find('img');
+        //        }
+        //
+        //        if (current_image.attr('src').indexOf('expand') > 0){
+        //            current_image.attr('src','/images/Icons/System/collapse.png');
+        //        }else{
+        //            current_image.attr('src','/images/Icons/System/expand.png');
+        //        }
+        return false
     });
 
 });
