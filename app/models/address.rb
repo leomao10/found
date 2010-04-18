@@ -1,6 +1,6 @@
 class Address < ActiveRecord::Base
   #Attribute accessiblity
-  attr_accessible :line1, :line2, :suburb
+  attr_accessible :building_name,:suite_unit,:street_number, :street_name, :town, :state, :country, :postcode
 
   acts_as_mappable
   
@@ -8,34 +8,33 @@ class Address < ActiveRecord::Base
   belongs_to :post
   belongs_to :suburb
 
-#  before_validation :geocode_address
+  #Named Scope
+  named_scope :distance, lambda { |loc, distance|
+    geo = Geokit::Geocoders::GoogleGeocoder.geocode(loc, :bias => :au)
+    { :conditions => ["#{Address.distance_sql(geo)} < #{distance}"] }
+  }
 
-  def suburb_name=(name)
-    suburbs = Suburb.keyword_has(name)
-    
-    unless(suburbs.length <= 0)
-      errors.add(:address, "Can not find suburb")
-    end
+  Address.alias_scope :keyword_has, lambda { |keyword| town_or_state_or_postcode_like(keyword)}
 
-    suburb = suburbs.first
-  end
+  before_validation :geocode_address
 
-  def suburb_name
-    suburb.name
-  end
-
-  def full_address
-    [line1,line2,suburb].reject{|s| s.blank?}.join(",")
+  def country
+    "Australia"
   end
 
   def to_s(format = "")
-    [line1,line2,suburb.to_s(format)].reject{|s| s.blank?}.join(",")
+    return [street_number,street_name, town].reject{|s| s.blank?}.join(",") if(format == :short)
+    return [building_name,suite_unit,street_number,street_name, town, state, country, postcode].reject{|s| s.blank?}.join(",")
   end
-
+  
   private
   def geocode_address
-    geo=Geokit::Geocoders::GoogleGeocoder.geocode(full_address, :bias => :au)
+    geo=Geokit::Geocoders::GoogleGeocoder.geocode(self.to_s, :bias => :au)
     errors.add(:address, "Could not Geocode address") if !geo.success
-    self.lat, self.lng = geo.lat,geo.lng if geo.success
+    if geo.success
+      self.lat, self.lng = geo.lat,geo.lng 
+      self.town = geo.city
+      self.state = geo.state
+    end
   end
 end

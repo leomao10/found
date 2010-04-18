@@ -1,13 +1,28 @@
 <% form_for :address, post.address, :url => post_address_path(post), :html=>{:class =>"ajaxForm",:id=>"address_form"} do |f| %>
   <label>
     <span class="label">Unit No.</span>
-    <span class="input"><%= f.text_field :line1,:class=>"text" %></span>
-    <span class="hint"><span class="hint_icon" ></span>must be numbers</span>
+    <span class="input"><%= f.text_field :suite_unit,:class=>"text" %></span>
+    <span class="hint"><span class="hint_icon" ></span>???</span>
   </label>
   <label>
     <span class="label">Street No.</span>
-    <span class="input"><%= f.text_field :line2, :class=>"text" %></span>
-    <span class="hint"><span class="hint_icon" ></span>must be 6 or more characters</span>
+    <span class="input"><%= f.text_field :street_number,:class=>"text" %></span>
+    <span class="hint"><span class="hint_icon" ></span>???</span>
+  </label>
+  <label>
+    <span class="label">Street Name</span>
+    <span class="input"><%= f.text_field :street_name,:class=>"text" %></span>
+    <span class="hint"><span class="hint_icon" ></span>???</span>
+  </label>
+  <label>
+    <span class="label">Suburb</span>
+    <span class="input"><%= f.text_field :town, :class=>"text" %></span>
+    <span class="hint"><span class="hint_icon" ></span>???</span>
+  </label>
+  <label>
+    <span class="label">Postcode</span>
+    <span class="input"><%= f.text_field :postcode, :class=>"text" %></span>
+    <span class="hint"><span class="hint_icon" ></span>???</span>
   </label>
   <label><span class="label"></span><%= f.submit "Save", :class=>"save" %></label>
 <%end%>

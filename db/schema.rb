@@ -9,17 +9,24 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100411090251) do
+ActiveRecord::Schema.define(:version => 20100416183702) do
 
   create_table "addresses", :force => true do |t|
-    t.string   "line1"
-    t.string   "line2"
-    t.integer  "suburb_id"
+    t.integer  "post_id"
+    t.string   "building_name"
+    t.string   "suite_unit"
+    t.string   "street_number"
+    t.string   "street_name"
+    t.string   "town"
+    t.string   "state"
+    t.string   "country"
+    t.integer  "postcode"
+    t.decimal  "lat",           :precision => 15, :scale => 10
+    t.decimal  "lng",           :precision => 15, :scale => 10
+    t.integer  "creator_id"
+    t.integer  "updater_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "post_id"
-    t.float    "lat"
-    t.float    "lng"
   end
 
   create_table "carparks", :force => true do |t|
@@ -109,17 +116,6 @@ ActiveRecord::Schema.define(:version => 20100411090251) do
 
   add_index "sessions", ["session_id"], :name => "index_sessions_on_session_id"
   add_index "sessions", ["updated_at"], :name => "index_sessions_on_updated_at"
-
-  create_table "suburbs", :force => true do |t|
-    t.string   "area"
-    t.string   "state"
-    t.integer  "postcode"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "name"
-    t.float    "lat"
-    t.float    "lng"
-  end
 
   create_table "users", :force => true do |t|
     t.string   "username"

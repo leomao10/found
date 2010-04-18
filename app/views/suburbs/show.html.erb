@@ -1,9 +1,0 @@
-<% title "Suburb" %>
-
-<%= render :partial=>"detail", :locals => {:suburb => @suburb}  %>
-
-<p>
-  <%= link_to "Edit", edit_suburb_path(@suburb) %> |
-  <%= link_to "Destroy", @suburb, :confirm => 'Are you sure?', :method => :delete %> |
-  <%= link_to "View All", suburbs_path %>
-</p>
