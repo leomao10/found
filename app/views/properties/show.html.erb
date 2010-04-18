@@ -1,9 +1,0 @@
-<% title "Property" %>
-
-<%= render :partial => "detail", :locals => { :property => @property } %>
-
-<p>
-  <%= link_to "Edit", edit_property_path(@property) %> |
-  <%= link_to "Destroy", @property, :confirm => 'Are you sure?', :method => :delete %> |
-  <%= link_to "View All", properties_path %>
-</p>

@@ -1,3 +1,2 @@
-$("#aa").html('<%=escape_javascript(render(:partial => "addresses/show"))%>');
-
-
+$("#address_details").find(".section_body").html('<%=escape_javascript(render :partial => "addresses/form", :locals => { :post => @post })%>');
+$("#address_details").find(".section_body").toggle('blind');

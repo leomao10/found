@@ -15,22 +15,24 @@ class PostsController < ApplicationController
   
   def new
     @post = Post.setup
-    @address = Address.new
+    @post.address = Address.new
+    @post.contact = Contact.new
+    @post.property = Property.new
     render :template => 'posts/new', :locals => { :post => @post }
   end
-  
-  def create
-    @post = Post.new(params[:post])
-    if @post.save
-      flash[:notice] = "Successfully created post."
-      redirect_to @post
-    else
-      render :action => 'new'
-    end
+
+  def preview
+    @post = Post.find(params[:id])
+    render :template => 'posts/preview', :locals => { :post => @post }
+  end
+
+  def confirm
+    redirect_to root_url
   end
   
   def edit
     @post = Post.find(params[:id])
+    render :template => 'posts/new', :locals => { :post => @post }
   end
   
   def update

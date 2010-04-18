@@ -1,0 +1,73 @@
+#build_new_post div{
+    font-family: "Lucid Sans Unicode", Verdana;
+    font-size: 13px;
+}
+#build_new_post div.page_title * {
+    display: inline-block;
+    margin-right: 10px;
+}
+#build_new_post div.page_title h1 {
+    text-transform: uppercase;
+    font-family: Verdana;
+    font-size: 18px;
+    color: #121212;
+    margin: 0 10px 0 0;
+
+}
+#build_new_post div.page_title h1.build {
+    background: url('../images/property_build_icon.png') no-repeat left top;
+    padding: 3px 0 25px 38px;
+}
+
+#build_new_post h4 {
+    font-family: Verdana;
+    font-size: 16px;
+    font-weight: bold;
+    color: #121212;
+}
+
+#build_new_post ul li {
+    list-style: url('../images/list_arrow.png') inside circle;
+    padding: 5px 0;
+}
+
+#build_new_post ul.steps {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+#build_new_post ul.steps li {
+    display: inline-block;
+    font-size: 16px;
+    font-weight: bold;
+    margin-right: 25px;
+}
+#build_new_post ul.steps li span.num {
+    display: inline-block;
+    padding: 6px 0;
+    margin-right: 5px;
+    width: 33px;
+    background: url('../images/list_icon_grey.png') no-repeat top center;
+    text-align: center;
+    color: #FFFFFF;
+}
+#build_new_post ul.steps li.current span.text {
+    color: #0F9FCF;
+}
+#build_new_post ul.steps li.current span.num {
+    background: url('../images/list_icon_blue.png') no-repeat top center;
+}
+
+#build_new_post .button_sub{
+    font-family:Arial, Helvetica, sans-serif;
+    display: inline-block;
+    color: #232323;
+    width: 17%;
+    float: right;
+    padding: 1%;
+    min-height: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    margin-bottom: 10px;
+    background-color: #33bce9
+}

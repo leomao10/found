@@ -1,0 +1,20 @@
+body {
+    font-family: Verdana, Helvetica, Arial;
+    font-size: 14px;
+    margin: 0;
+    background-color: #97DAF3;
+}
+
+a img {
+    border: none;
+}
+
+a {
+    color: #0000FF;
+}
+
+.clear {
+    clear: both;
+    height: 0;
+    overflow: hidden;
+}

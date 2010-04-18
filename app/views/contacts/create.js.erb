@@ -1,0 +1,2 @@
+$("#contact_details").find(".section_body").html('<%=escape_javascript(render :partial => "contacts/form", :locals => { :post => @post })%>');
+$("#contact_details").find(".section_body").toggle('blind');

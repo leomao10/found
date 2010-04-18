@@ -1,36 +1,25 @@
-<div class ="full_container">
-  <% form_for @user do |f| %>
-    <%= f.error_messages %>
-    <div class="line">
-      <div class="field_20">
-        <%= f.label :username %>
-        <%= f.text_field :username %>
-      </div>
-    </div>
-    <div class="line">
-      <div class="field_20">
-        <%= f.label :email %>
-        <%= f.text_field :email %>
-      </div>
-    </div>
-    <div class="line">
-      <div class="field_20">
-        <%= f.label :password %>
-        <%= f.password_field :password %>
-      </div>
-    </div>
-    <div class="line">
-      <div class="field_20">
-        <%= f.label :password_confirmation %>
-        <%= f.password_field :password_confirmation %>
-      </div>
-    </div>
-    <div class="line">
-      <div class="field_20">
-        <label></label>
-        <%= f.submit "Submit" %>
-      </div>
-    </div>
-  <%- end %>
-
-</div>
+<% form_for @user do |f| %>
+  <div class="form_section no_background">
+    <label>
+      <span class="label">Full Name</span>
+      <span class="input"><%= f.text_field :username, :class=> 'text' %></span>
+      <span class="hint"><span class="hint_icon"></span>must be 6 or more characters</span>
+    </label>
+    <label>
+      <span class="label">Email</span>
+      <span class="input"><%= f.text_field :email,:class=> 'text' %></span>
+      <span class="hint"><span class="hint_icon"></span>we wil sent you confirmation email</span>
+    </label>
+    <label>
+      <span class="label">Password</span>
+      <span class="input"><%= f.password_field :password, :class=>'text' %></span>
+      <span class="hint"><span class="hint_icon"></span>must be 6 or more characters</span>
+    </label>
+    <label><span class="label">Type the words above</span>
+      <span class="input"><%= f.password_field :password_confirmation, :class=>'text' %></span>
+      <span class="ok"><span class="ok_icon"></span>ok</span>
+    </label>
+    <%= render :partial => '/users/term' %>
+    <label><span class="label"></span><%= f.submit "Create Account", :class=>"create" %></label>
+  </div>
+<% end %>

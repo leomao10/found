@@ -3,9 +3,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :property_searches
   map.resources :searches
   map.resources :carparks
-  map.resources :addresses
-  map.resources :properties
-  map.resources :posts, :has_one => [:address, :property, :enquery]
+  map.resources :posts, :has_one => [:address, :contact, :property, :enquery], :member => { :preview => :get, :confirm => :get }
   map.resources :password_resets  
   map.resources :user_sessions
   map.resources :suburbs

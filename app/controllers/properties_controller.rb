@@ -1,44 +1,26 @@
 class PropertiesController < ApplicationController
-  def index
-    @properties = Property.all
-  end
-  
+  before_filter :get_post
+
   def show
-    @property = Property.find(params[:id])
+    @post.property
   end
-  
-  def new
-    @property = Property.new
-  end
-  
+
   def create
     @property = Property.new(params[:property])
+
     if @property.save
-      flash[:notice] = "Successfully created property."
-      redirect_to @property
+      @post.property = @property
+      flash[:notice] = "Successfully created address."
     else
-      render :action => 'new'
+      flash[:notice] = "Fail to create address."
+    end
+
+    respond_to do |f|
+      f.js
     end
   end
-  
-  def edit
-    @property = Property.find(params[:id])
-  end
-  
-  def update
-    @property = Property.find(params[:id])
-    if @property.update_attributes(params[:property])
-      flash[:notice] = "Successfully updated property."
-      redirect_to @property
-    else
-      render :action => 'edit'
-    end
-  end
-  
-  def destroy
-    @property = Property.find(params[:id])
-    @property.destroy
-    flash[:notice] = "Successfully destroyed property."
-    redirect_to properties_url
+
+  def get_post
+    @post = Post.find(params[:post_id])
   end
 end

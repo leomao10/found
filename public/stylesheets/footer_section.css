@@ -1,0 +1,21 @@
+div#footer {
+    clear: both;
+    text-align: center;
+    margin-top: 20px;
+}
+div#footer ul {
+    padding: 10px 0;
+    margin: 0;
+}
+div#footer ul li {
+    list-style: none;
+    display: inline-block;
+    margin: 0 8px;
+}
+div#footer a {
+    text-decoration: none;
+    color: #FEFDFF;
+}
+div#footer a:hover {
+    color: #7C8083;
+}

@@ -19,31 +19,7 @@
     <%= yield :script %>
   </head>  
   <body id="body" onload="window.focus();">
-    <div id="top_bar">
-      <div class="inner">
-        <div class="general_nav">
-          <ul>
-            <li><%= link_to "Home", :controller => "welcome", :action => "index" %></li>
-            <% if current_user %>
-              <li><%= link_to "Place An Ad", new_post_path %></li>
-            <% end %>
-            <li><a href="#">Rental Guides</a></li>
-          </ul>
-        </div>
-        <div class="member_nav">
-          <ul>
-            <% if current_user %>
-              <li><a href="#">My Account</a></li>
-              <li><%= link_to "Edit Profile", edit_user_path(:current) %></li>
-              <li><%= link_to "Logout", logout_path %></li>
-            <% else %>
-              <li><%= link_to "Already a member?", login_path %></li>
-              <li><%= link_to "Sign in", new_user_path %></li>
-            <% end %>
-          </ul>
-        </div>
-      </div>
-    </div>
+    <%= render :partial => "/layouts/navigator" %>
     <div id="page_body">
       <div id="header">
         <div id="logo"></div>
@@ -58,19 +34,7 @@
       <div id="content_body" class="container">
         <%= yield %>
       </div>
-      <div id="footer">
-        <ul>
-          <li><a href="#">Agent Admin</a></li>
-          <li><a href="#">Sign up Your Agency</a></li>
-          <li><a href="#">About Us</a></li>
-          <li><a href="#">Search Real Estate Agents</a></li>
-          <li><a href="#">Contact Us</a></li>
-          <li><a href="#">Advertising</a></li>
-          <li><a href="#">Privacy Policy</a></li>
-          <li><a href="#">Terms &amp; Conditions</a></li>
-          <li><a href="#">Disclaimer</a></li>
-        </ul>
-      </div>
+      <%= render :partial => "/layouts/footer" %>
     </div>
   </body>
 </html>

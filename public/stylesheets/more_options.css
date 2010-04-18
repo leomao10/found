@@ -1,0 +1,45 @@
+div.more_options label {
+    display: block;
+    padding: 3px 8px;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #737574;
+}
+
+div.more_options label span.bar {
+    display: block;
+    width: 200px;
+    margin: 5px 23px 8px;
+}
+
+div.more_options label span.select {
+    display: block;
+}
+
+div.more_options label span.text {
+    display: inline-block;
+    width: 160px;
+}
+div.more_options label.bedroom {
+    background: url(../images/bedroom.png) left -2px no-repeat;
+}
+div.more_options label.bathroom {
+    background: url(../images/bathroom.png) left -2px no-repeat;
+}
+div.more_options label.carpark {
+    background: url(../images/carpark.png) left -2px no-repeat;
+}
+div.more_options label.property_type {
+    background: url(../images/property_type.png) left -2px no-repeat;
+}
+
+div.more_options label {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 11px;
+    font-weight: bold;
+    line-height: 9px;
+    color: #666;
+    text-decoration: none;
+    display: block;
+    padding-left: 3px;
+}

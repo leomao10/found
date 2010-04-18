@@ -1,52 +1,25 @@
 class AddressesController < ApplicationController
- # before_filter :get_post
-  def index
-    @addresses = Address.all
-  end
-  
+  before_filter :get_post
+    
   def show
-    @address = Address.find(params[:id])
-  end
-  
-  def new
-    @address = Address.new
+    @post.address
   end
   
   def create
     @address = Address.new(params[:address])
-    if @address.save
-      flash[:notice] = "Successfully created address."
-      respond_to do |f|
-        f.js
-      end
-    else
-      render :action => 'new'
-    end
-  end
-  
-  def edit
-    @address = @post.address
-  end
-  
-  def update
-    @address = @post.address
-    if @address.update_attributes(params[:address])
-      flash[:notice] = "Successfully updated address."
-      respond_to do |f|
-        f.js
-      end
-    else
-      render :action => 'edit'
-    end
-  end
-  
-  def destroy
-    @address = @post.address
-    @address.destroy
-    flash[:notice] = "Successfully destroyed address."
-    redirect_to addresses_url
-  end
 
+    if @address.save
+      @post.address = @address
+      flash[:notice] = "Successfully created address."
+    else
+      flash[:notice] = "Fail to create address."
+    end
+
+    respond_to do |f|
+      f.js
+    end
+  end
+  
   def get_post
     @post = Post.find(params[:post_id])
   end

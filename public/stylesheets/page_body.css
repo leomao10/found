@@ -1,0 +1,33 @@
+div#page_body {
+    width: 960px;
+    margin: auto;
+}
+
+#page_body #content_body{
+    background: #ffffff;
+    padding: 15px;
+    min-height: 550px;
+}
+
+#page_body .entries_info {
+    background: #dcdcdc;
+    padding: 10px 15px 10px 15px;
+    border-bottom: 1px #aaaaaa solid;
+}
+
+#page_body .paginate {
+    padding: 8px 10px 8px 10px;
+    border-top: none;
+    border-bottom: none;
+    background: #dcdcdc;
+}
+
+#page_body #content_body .full_container input {
+    font-size:14px;
+    font-family:Arial, Helvetica, sans-serif;
+    line-height:16px;
+    width: 96%;
+    height: 18px;
+    border:1px groove;
+    background: #FFFFFF;
+}

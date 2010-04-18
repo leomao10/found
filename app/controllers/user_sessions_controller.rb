@@ -6,11 +6,12 @@ class UserSessionsController < ApplicationController
   def create
     @user_session = UserSession.new(params[:user_session])
     if @user_session.save    
-      flash[:notice] = "Successfully Logged in."
-      redirect_to root_url
+      flash[:notice] = "Successfully Logged in."      
     else
-      render :action => 'new'
+      flash[:notice] = "Oops! You could not login."
     end
+    
+    redirect_to root_url
   end
   
   def destroy

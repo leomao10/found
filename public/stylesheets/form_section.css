@@ -1,0 +1,238 @@
+div.form_section {
+    clear: both;
+    background: white no-repeat left top;
+    background-image: url('../images/section_head.png');
+    border-width: medium;
+}
+div.form_section.no_background {
+    background-image: none;
+}
+div.form_section.first_section, div.form_section.first_section div.section_head {
+    background-image: url('../images/section_head_first.png');
+}
+div.form_section.last_section, div.form_section.last_section div.section_head {
+    background-image: url('../images/section_head_last.png');
+}
+div.form_section div.section_head {
+    height: 39px;
+    margin-left: 5px;
+    background: white no-repeat right top;
+    background-image: url('../images/section_head.png');
+}
+div.form_section div.section_head div.title {
+    margin-left: 10px;
+    float: left;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 39px;
+}
+div.form_section.section_finished div.section_head div.title {
+    padding-right: 28px;
+    background: no-repeat right center;
+    background-image: url('../images/section_finished.png');
+}
+div.form_section div.section_head div.buttons {
+    float: right;
+    line-height: 39px;
+    padding-right: 15px;
+}
+div.form_section div.section_head div.buttons a.modified {
+    padding-left: 18px;
+    background: url('../images/modified.png') no-repeat left center;
+}
+div.form_section div.section_body {
+    clear: both;
+    padding: 20px 0;
+}
+div.form_section label, div.form_section div.label {
+    clear: both;
+    display: block;
+    padding: 3px;
+}
+
+div.form_section a {
+    color: #0F9FCF;
+    text-decoration: none;
+}
+
+div.form_section a:hover {
+    text-decoration: underline;
+}
+
+div.form_section div.label label {
+    clear: both;
+    display: block;
+    padding: 0px;
+}
+div.form_section > label:after, div.form_section div.label:after {
+    color: #FFF;
+    content: '.';
+    height: 1px;
+    line-height: 1px;
+    clear: both;
+}
+div.form_section span.label {
+    display: block;
+    margin-right: 15px;
+    width: 250px;
+    height: 45px;
+    line-height: 45px;
+    text-align: right;
+    float: left;
+    font-size: 14px;
+    font-weight: bold;
+    color: #656565;
+}
+div.form_section span.input {
+    display: block;
+    float: left;
+	height: 45px;
+	width: 270px;
+    z-index: 1;
+}
+div.form_section input.text {
+    display: block;
+    padding: 0px 15px;
+	height: 45px;
+    border: none;
+    color: #000;
+    background: url('../images/form_input_text.png') no-repeat 1px top;
+    font-size: 14px;
+    font-weight: bold;
+    z-index: 1;
+}
+
+div.form_section span.to {
+    display: block;
+    width: 26px;
+    height: 45px;
+    line-height: 45px;
+    text-align: center;
+    float: left;
+    font-weight: bold;
+}
+div.form_section input.from {
+    display: block;
+    width: 124px;
+    height: 45px;
+    padding: 0px 15px;
+    border: none;
+    color: #000;
+    float: left;
+    background: url('../images/form_input_text_from.png') no-repeat left top;
+    font-size: 14px;
+    font-weight: bold;
+    z-index: 1;
+}
+div.form_section input.to {
+    display: block;
+    width: 125px;
+    height: 45px;
+    padding: 0px 15px;
+    border: none;
+    color: #000;
+    float: left;
+    background: url('../images/form_input_text_to.png') no-repeat left top;
+    font-size: 14px;
+    font-weight: bold;
+    z-index: 1;
+}
+div.form_section input.text:hover, div.form_section input.text:focus {
+    background: url('../images/form_input_text_focus.png') no-repeat left -1px;
+}
+div.form_section span.hint, div.form_section span.ok, div.form_section span.error {
+    display: block;
+    width: 275px;
+    height: 45px;
+    line-height: 45px;
+    float: left;
+    padding-left: 8px;
+    margin-left: -4px;
+    font-size: 12px;
+}
+div.form_section span.hint {
+    background: url('../images/form_hint.png') no-repeat -9px top;
+}
+div.form_section span.ok {
+    background: url('../images/form_ok.png') no-repeat -9px top;
+}
+div.form_section span.error {
+    background: url('../images/form_error.png') no-repeat -9px top;
+}
+div.form_section span.hint_icon, div.form_section span.ok_icon, div.form_section span.error_icon {
+    width: 16px;
+    height: 45px;
+    margin-right: 3px;
+    display: block;
+    float: left;
+}
+div.form_section span.hint_icon {
+    background: url('../images/icon_hint.png') no-repeat center center;
+}
+div.form_section span.ok_icon {
+    background: url('../images/icon_ok.png') no-repeat center center;
+}
+div.form_section span.error_icon {
+    background: url('../images/icon_error.png') no-repeat center center;
+}
+div.form_section input.save {
+    background: url('../images/save_button.png') no-repeat left -1px;
+    border: none;
+    width: 72px;
+    height: 42px;
+    font-weight: bold;
+    padding-left: 25px;
+    font-size: 14px;
+}
+div.form_section input.create {
+    background: url('../images/form_button_create.png') no-repeat left top;
+    border: none;
+    width: 156px;
+    height: 42px;
+    font-weight: bold;
+    padding-left: 8px;
+    font-size: 14px;
+}
+div.form_section span.title {
+    display: block;
+    width: 243px;
+    height: 45px;
+    line-height: 45px;
+    margin-left: 265px;
+    padding: 0px 15px;
+    float: left;
+    border: none;
+    background: url('../images/form_title.png') no-repeat left 0;
+    font-size: 14px;
+    color: #000;
+    z-index: 1;
+}
+div.form_section span.desc {
+    display: block;
+    padding: 5px 0;
+    float: left;
+    margin-left: 270px;
+    font-weight: bold;
+}
+div.form_section span.term {
+    display: block;
+    background: url('../images/form_term.png') no-repeat left top;
+    font-family: "Courier New";
+    font-size: 12px;
+    float: left;
+    padding: 10px 15px;
+    width: 511px;
+    height: 129px;
+}
+div.form_section input.checkbox, div.form_section input.radio {
+    vertical-align: center;
+    padding: 0;
+    margin: 0;
+}
+span.grey {
+    color: #999999;
+    font-style: italic;
+}
+div.clear {
+    clear: both;
+}

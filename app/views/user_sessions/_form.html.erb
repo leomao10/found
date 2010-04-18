@@ -1,0 +1,9 @@
+<% form_for @user_session do |f| %>
+  <label>Username <%= f.text_field :username, :class=>"text" %></label>
+  <label>Password <%= f.password_field :password, :class=>"text" %></label>
+  <label class="remember_me"><input type="checkbox" class="checkbox" /> remember me</label>
+  <%= f.submit "SIGN IN", :class=>"submit" %>
+  <ul class="links">
+    <li><%= link_to "forgot password?", new_password_reset_path %></li>
+  </ul>
+<% end %>

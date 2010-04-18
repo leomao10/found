@@ -7,39 +7,5 @@
   <div class="controller">
     <%= render :partial => "searches/collection_menu", :locals => { :search => search, :post => post }%>
   </div>
-  <div class="post container">
-    <div class="line top">
-      <div class="address">
-        <%= h post.address.to_s %>
-      </div>
-    </div>
-    <div class="left half">
-      <div class="images">
-        <%= render :partial => "/images/list", :locals => { :images => post.images, :size => :medium } %>
-      </div>
-      <div id="googlemap">google map</div>
-    </div>
-    <div class="half">
-      <%= render :partial => "detail", :locals => { :post => @post, :enquery => Enquery.new(@post)} %>
-      <h1>Email Landlord/Agent</h1>
-      <%= render :partial => "enqueries/form", :locals => {:post => @post} %>
-    </div>
-  </div>
+  <%= render :partial => "posts/detail", :locals => {:post => post } %>
 </div>
-
-<% content_for :script do %>
-  <script type="text/javascript">
-    $(document).ready(function() {
-      $(".address").each(function(index, address){
-        $("#googlemap").show_address([$(address).text()]);
-      });
-  
-      $('.slider').cycle({
-        speed:  'fast',
-        timeout: 0,
-        next:   '.next2',
-        prev:   '.prev2'
-      });
-    });
-  </script>
-<% end %>

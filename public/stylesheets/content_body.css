@@ -1,0 +1,67 @@
+#content_body   #page_title {
+    width: 100%;
+    height: 40px;
+    float:left;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    line-height: 30px;
+    color: #2C2C2C;
+    margin-left: 1%;
+    font-weight:bold;
+}
+
+#content_body   .page_content {
+    width: auto;
+    float:left;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    color: #2C2C2C;
+    margin-left: 1%;
+    font-weight:bold;
+}
+
+#content_body  #post_nav   .active {
+    width: auto;
+    float:left;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    color: #2db5e2;
+    margin-left: 1%;
+    font-weight:bold;
+}
+
+#content_body .row_break {
+    clear:both;
+}
+
+#content_body .options {
+    float: right;
+    display:inline;
+}
+
+#content_body .bar_container {
+    font-family:Arial, Helvetica, sans-serif;
+    color: #232323;
+    background-image:url(/images/container_bg1.png);
+    background-repeat:repeat;
+    width: 96%;
+    float: left;
+    padding: 1%;
+    min-height: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+#content_body #content {
+    min-height: 500px;    
+    border: 1px #aaaaaa solid;    
+}
+
+/* Is it the best place for google map?? */
+#content_body div#googlemap
+{
+    min-height: 500px;
+    background: #ECF1F4;
+    border: 1px #aaaaaa solid;
+}

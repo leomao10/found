@@ -1,0 +1,22 @@
+.small_img
+{
+    width: 120px;
+}
+
+.image_slider
+{    
+    border: 1px #aaaaaa solid;
+    background: #eeeeee;
+    padding: 5px;
+}
+
+.image_slider .slider
+{
+    text-align: center;
+}
+
+.image_slider .image_nav
+{
+    padding: 5px;
+    text-align: center;
+}

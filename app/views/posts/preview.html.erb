@@ -1,0 +1,25 @@
+<div id="build_new_post">
+  <div class="page_title">
+    <h1 class="build">Build your Residential for Rent Ad</h1>
+  </div>
+  <p>
+    TSed a neque magna. Maecenas risus lacus, molestie vitae interdum vel, sodales quis lacus. Suspendisse sed turpis ac diam molestie dignissim.
+    Nunc convallis tellus ac nulla adipiscing ut dictum nibh pretium. Etiam a mauris diam, eu sagittis tellus.
+  </p>
+  <ul class="steps">
+    <li><span class="num">1</span><span class="text">Build your ad</span></li>
+    <li class="current"><span class="num">2</span><span class="text">Preview & confrim</span></li>
+    <li><span class="num">3</span><span class="text">Pay for your ad</span></li>
+  </ul>
+  <div class="preview">
+    <%= render :partial => "/posts/detail", :locals=>{:post => post} %>
+  </div>
+  <div>
+    <span class="button_sub">
+      <%= link_to "Confirm", confirm_post_path(@post), :style=>"font-weight:bold;font-size:12px;color:white;"%>
+    </span>
+    <span class="button_sub">
+      <%= link_to "Go Back", edit_post_path(@post), :style=>"font-weight:bold;font-size:12px;color:white;"%>
+    </span>
+  </div>
+</div>

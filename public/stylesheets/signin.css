@@ -1,0 +1,93 @@
+#login {
+	clear: both;
+    position: relative;
+    width: 80px;
+	font-family:Arial;
+	font-size:11px;
+}
+
+#login a.button {
+    background: url("../images/signin_link.png") no-repeat top left;
+    display: inline-block;
+    padding: 9px 30px 9px 12px;
+    color: white;
+    font-weight:normal;
+    text-decoration: none;
+    font-family:Arial;
+    font-size:11px;
+}
+
+#login div.more {
+    background: url("../images/signin_more.png") no-repeat top right;
+    position: absolute;
+    display: none;
+    right: 7px;
+    margin-top: -7px;
+    padding: 10px;
+}
+#login div.more label {
+    display: block;
+    color: #7D7D7D;
+    padding: 3px 8px;
+}
+#login div.more label.remember_me {
+    margin-top: 6px;
+    float: left;
+}
+#login div.more input.text {
+    background: url("../images/form_input.png") no-repeat -4px -3px;
+    display: block;
+    padding: 6px;
+    border: none;
+    width: 198px;
+}
+#login div.more input.checkbox {
+    vertical-align: middle;
+    margin: 0;
+    padding: 0;
+    color: #7D7D7D;
+}
+#login div.more input.submit {
+    float: right;
+    background: url("../images/form_button.png") no-repeat -3px -3px;
+    margin-top: 2px;
+    margin-right: 7px;
+    padding: 6px 10px;
+    font-family: Arial;
+    font-size: 11px;
+    font-weight: bold;
+    color: white;
+    border: none;
+}
+#login div.more ul.links {
+    clear: both;
+    list-style: none;
+    padding: 4px 0;
+    margin: 0;
+}
+
+login div.more ul li {
+list-style:circle inside url("../images/list_arrow.png");
+}
+
+#login div.more ul.links li {
+    padding: 4px 9px;
+    margin: 0;
+}
+#login div.more ul.links li a {
+    color: #058DC0;
+    text-decoration: none;
+}
+#login div.more ul.links li a:hover {
+    text-decoration: underline;
+}
+#login.open a.button {
+    background: url("../images/signin_open_link.png") no-repeat top left;
+    color: #058DC0;
+}
+
+
+
+#login.open div.more {
+    display: block;
+}

@@ -1,0 +1,2 @@
+$("#property_details").find(".section_body").html('<%=escape_javascript(render :partial => "properties/form", :locals => { :post => @post })%>');
+$("#property_details").find(".section_body").toggle('blind');

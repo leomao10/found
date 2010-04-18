@@ -1,40 +1,48 @@
-<p>
-  <%= f.label :number_of_bedrooms %><br />
-  <%= f.text_field :number_of_bedrooms %>
-</p>
-<p>
-  <%= f.label :number_of_carparks %><br />
-  <%= f.text_field :number_of_carparks %>
-</p>
-<p>
-  <%= f.label :number_of_bathrooms %><br />
-  <%= f.text_field :number_of_bathrooms %>
-</p>
-<p>
-  <%= f.label :price %><br />
-  <%= f.text_field :price %>
-</p>
-<p>
-  <%= f.label :bond %><br />
-  <%= f.text_field :bond %>
-</p>
-<p>
-  <%= f.label :max_tenants %><br />
-  <%= f.text_field :max_tenants %>
-</p>
-<p>
-  <%= f.label :number_of_current_tenants %><br />
-  <%= f.text_field :number_of_current_tenants %>
-</p>
-<p>
-  <%= f.label :furnished %><br />
-  <%= f.check_box :furnished %>
-</p>
-<p>
-  <%= f.label :purpose %><br />
-  <%= f.collection_select :purpose, Property::PURPOSES, :to_s, :humanize %>
-</p>
-<p>
-  <%= f.label :prop_type %><br />
-  <%= f.collection_select :prop_type, Property::TYPES, :to_s, :humanize %>
-</p>
+<% form_for :property, @post.property,:url => post_property_path(@post), :html=>{:class =>"ajaxForm",:id=>"contact_form"} do |f| %>
+  <label>
+    <span class="label">Number of Bedrooms</span>
+    <span class="input"><%= f.text_field :number_of_bedrooms ,:class=>"text"%></span>
+    <span class="hint"><span class="hint_icon" ></span>must be numbers</span>
+  </label>
+  <label>
+    <span class="label">Number of Carparks</span>
+    <span class="input"><%= f.text_field :number_of_carparks,:class=>"text" %></span>
+    <span class="hint"><span class="hint_icon" ></span></span>
+  </label>
+  <label>
+    <span class="label">Number of Bathrooms</span>
+    <span class="input"><%= f.text_field :number_of_bathrooms,:class=>"text" %></span>
+    <span class="hint"><span class="hint_icon" ></span></span>
+  </label>
+  <label>
+    <span class="label">Price</span>
+    <span class="input"><%= f.text_field :price,:class=>"text" %></span>
+    <span class="hint"><span class="hint_icon" ></span></span>
+  </label>
+  <label>
+    <span class="label">Bond</span>
+    <span class="input"><%= f.text_field :bond,:class=>"text" %></span>
+    <span class="hint"><span class="hint_icon" ></span></span>
+  </label>
+  <label>
+    <span class="label">Maximum Tenants</span>
+    <span class="input"><%= f.text_field :max_tenants,:class=>"text" %></span>
+    <span class="hint"><span class="hint_icon" ></span></span>
+  </label>
+  <label>
+    <span class="label">Current Tenants</span>
+    <span class="input"><%= f.text_field :number_of_current_tenants,:class=>"text" %></span>
+    <span class="hint"><span class="hint_icon" ></span></span>
+  </label>
+  <label>
+    <span class="label">Furniture Included?</span>
+    <span class="input"></span><%#= f.check_box :furnished,:class=>"text" %>
+    <span class="hint"><span class="hint_icon" ></span></span>
+  </label>
+  <label>
+    <span class="label">Property Type</span>
+    <span class="input"><%= f.collection_select :prop_type, Property::TYPES, :to_s, :humanize %></span>
+    <span class="hint"><span class="hint_icon" ></span></span>
+  </label>
+  <label><span class="label"></span><%= f.submit "Save", :class=>"save" %></label>
+<% end %>

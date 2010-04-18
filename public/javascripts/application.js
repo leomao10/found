@@ -45,11 +45,10 @@ Use the class ajaxForm in your form declaration
 */
 jQuery.fn.submitWithAjax = function() {
     this.unbind('submit', false);
-    this.submit(function() {
+    $(this).live('submit', function() {
         $.post(this.action, $(this).serialize(), null, "script");
         return false;
-    })
-
+    });
     return this;
 };
 
@@ -115,11 +114,14 @@ Ajaxify all the links on the page.
 This function is called when the page is loaded. You'll probaly need to call it again when you write render new datas that need to be ajaxyfied.'
 */
 function ajaxLinks(){
-    $('.ajaxForm').submitWithAjax();
     $('a.get').getWithAjax();
     $('a.post').postWithAjax();
     $('a.put').putWithAjax();
     $('a.delete').deleteWithAjax();
+}
+
+function ajaxForms(){
+    $('.ajaxForm').submitWithAjax();
 }
 
 $(document).ready(function() {
@@ -134,6 +136,7 @@ $(document).ready(function() {
     });
 
     ajaxLinks();
+    ajaxForms();
 });
  
 //side jquery content start from here
@@ -161,7 +164,6 @@ jQuery(function($){
         $('span.value', _this).text(min_val + ' - ' + max_val);
     });
 
-
     $('a.more').each(function(e){
         var _this = this, $more = $('div.more_options');
         var show = function(){
@@ -180,35 +182,14 @@ jQuery(function($){
     });
 });
 
-
 jQuery(function($){
     $('#new_key').watermark('Enter Suburn or Post Code Here');
 });
 
 jQuery(function($){
     $("input#new_key").autocomplete({
-        source: ["parramatta", "auburn", "burwood", "city", "chastwood", "town hall", "ruby"]
+        source: ["parramatta", "auburn", "burwood", "city", "chastwood", "town hall"]
     });
-});
-
-$(function() {
-
-    $(".toggle_div").live('click', function(){
-        $('#'+$(this).attr('toggle_id_name')).toggle('blind');
-//        var current_image;
-//        if ($(this).attr('expand_with_arrow') == "true"){
-//            current_image = $(this).find('img[alt=Expand]');
-//        }else{
-//            current_image = $(this).find('img');
-//        }
-//
-//        if (current_image.attr('src').indexOf('expand') > 0){
-//            current_image.attr('src','/images/Icons/System/collapse.png');
-//        }else{
-//            current_image.attr('src','/images/Icons/System/expand.png');
-//        }
-    });
-
 });
 
 

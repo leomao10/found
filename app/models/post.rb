@@ -10,7 +10,6 @@ class Post < ActiveRecord::Base
 
   def self.setup
     post = Post.new
-    
     post.save
     return post
   end

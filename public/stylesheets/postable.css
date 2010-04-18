@@ -1,0 +1,38 @@
+.postable .price
+{
+    font-size: 20px;
+    color: #02adf2;
+    display: inline-block;
+    width: 60%;
+}
+
+.postable .bedroom_num{
+    background: url(../images/bedroom.png) top left no-repeat;
+    display: inline-block;
+    padding-left: 25px;
+    color: #777777;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.postable .carpark_num{
+    background: url(../images/carpark.png) top left no-repeat;
+    display: inline-block;
+    padding-left: 25px;
+    color: #777777;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.postable .bathroom_num{
+    background: url(../images/bathroom.png) top left no-repeat;
+    display: inline-block;
+    padding-left: 25px;
+    color: #777777;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.postable .description{
+    padding: 15px 0px 15px 0px;
+}

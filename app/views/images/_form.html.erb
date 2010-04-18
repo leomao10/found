@@ -1,5 +1,9 @@
-<% form_for @image, :html => { :multipart => true } do |f| %>
-  <%= f.error_messages %>
-  <%= f.file_field :photo %>
-  <p><%= f.submit "Submit" %></p>
-<% end %>
+<label>
+  <span class="title">Browse images to start upload...</span>
+  <span class="hint"><span class="hint_icon"></span>Maximum 5 photos</span>
+</label>
+<label>
+  <span class="label"></span>
+  <%= f.file_field :photo, :class=>"text" %>
+</label>
+<label><span class="label"></span><%= f.submit "Save", :class=>"save" %></label>

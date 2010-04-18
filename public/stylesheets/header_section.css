@@ -1,0 +1,26 @@
+div#logo {
+    display: inline-block;
+    background: url(../images/logo_new.png) left center no-repeat;
+    width: 323px;
+    height: 200px;
+    position: relative;
+}
+div#header div.text {
+    display: inline-block;
+    padding: 0 20px;
+    width: 590px;
+}
+div#header div.text h1 {
+    font-size: 28px;
+    text-transform: uppercase;
+    /*color: #1B96C0;*/
+    color:#000000;
+}
+div#header div.text h2 {
+    font-size: 16px;
+    color: #FEFDFF;
+}
+div#header div.text h3 {
+    font-size: 14px;
+    color: #F37D11;
+}

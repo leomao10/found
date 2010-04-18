@@ -8,7 +8,21 @@ class Address < ActiveRecord::Base
   belongs_to :post
   belongs_to :suburb
 
-  before_validation :geocode_address
+#  before_validation :geocode_address
+
+  def suburb_name=(name)
+    suburbs = Suburb.keyword_has(name)
+    
+    unless(suburbs.length <= 0)
+      errors.add(:address, "Can not find suburb")
+    end
+
+    suburb = suburbs.first
+  end
+
+  def suburb_name
+    suburb.name
+  end
 
   def full_address
     [line1,line2,suburb].reject{|s| s.blank?}.join(",")

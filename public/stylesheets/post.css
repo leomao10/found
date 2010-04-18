@@ -1,0 +1,59 @@
+.post .top{
+    background: url(../images/post_top_bg.png) repeat-x;
+    height: 35px;
+    border: 1px solid #a6d0e6;
+}
+
+.post .top .address{
+    display: inline-block;
+    width: 78%;
+    padding: 10px;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.post .top .collapse{
+    display: inline-block;
+}
+
+.post .top .collapse a{
+    text-decoration: none;
+    color: #02adf2;
+    font-size: 9px;
+    background: url(../images/collapse_arrow.png) top left no-repeat;
+    padding-left: 15px;
+}
+
+.post .top .collapse a:hover{
+    text-decoration: none;
+}
+
+.post .middle
+{
+    padding: 10px;
+    border-top: none;
+    border-bottom: none;
+    min-height: 120px;
+}
+
+li.item .post .middle .abstract
+{
+    margin-left: 120px;
+}
+
+li.item .post .middle .user_area{
+    margin-left: 150px;
+}
+
+li.item .post .middle .user_area .user{
+    width: 180px;
+    height: 50px;
+    display: inline-block;
+    border: 1px #eeeeee dashed;
+}
+
+li.item .post .middle .user_area .action{
+    display: inline-block;
+    vertical-align: top;
+    padding: 5px;
+}

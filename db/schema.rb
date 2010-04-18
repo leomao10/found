@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100410025005) do
+ActiveRecord::Schema.define(:version => 20100411090251) do
 
   create_table "addresses", :force => true do |t|
     t.string   "line1"
@@ -26,6 +26,16 @@ ActiveRecord::Schema.define(:version => 20100410025005) do
     t.float    "price"
     t.float    "bond"
     t.string   "type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "contacts", :force => true do |t|
+    t.string   "phone"
+    t.string   "email"
+    t.boolean  "is_main"
+    t.integer  "contactable_id"
+    t.string   "contactable_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
