@@ -11,11 +11,14 @@ set :scm_username, "leomao10"
 set :scm_passphrase, "leo1022"
 
 set :scm, :git
-#set :deploy_via, :remote_cache
+set :deploy_via, :remote_cache
 # set :deploy_via, :export
+# set :deploy_via, :copy
+set :copy_strategy, :export
+set :copy_exclude, [".git/*", ".svn/*"]
 set :port, 2683
 set :deploy_to, "~/var/found"
-set :deploy_via, :copy
+
 
 default_run_options[:pty] = true
 
