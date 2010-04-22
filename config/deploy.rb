@@ -1,4 +1,4 @@
-require 'capistrano/ext/multistage'
+
 set :scm, :git
 #set :deploy_via, :remote_cache
 # set :deploy_via, :export
