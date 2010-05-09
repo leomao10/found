@@ -1,18 +1,38 @@
 set :application, "Found"
-set :repository,  "git@github.com:leomao10/found.git"
-# Or: `accurev`, `bzr`, `cvs`, `darcs`, `git`, `mercurial`, `perforce`, `subversion` or `none`
-set :scm, :git
-set :scm_username, "leomao10"
-set :scm_passphrase, "leo1022"
-set :scm_verbose, true
-
 set :use_sudo,false
 set :user, "chentian"
 set :branch, "master"
+set :runner, "chentian"
 
-set :deploy_via, :copy
+set :scm_verbose, true
 
+set :repository,  "git@github.com:leomao10/found.git"
+set :scm_username, "leomao10"
+set :scm_passphrase, "leo1022"
+
+set :scm, :git
+set :deploy_via, :remote_cache
+# set :deploy_via, :export
+# set :deploy_via, :copy
+set :copy_strategy, :export
+set :copy_exclude, [".git/*", ".svn/*"]
+set :port, 2683
 set :deploy_to, "~/var/found"
+
+
+default_run_options[:pty] = true
+
+
+
+# Or: `accurev`, `bzr`, `cvs`, `darcs`, `git`, `mercurial`, `perforce`, `subversion` or `none`
+
+
+
+
+
+
+
+
 
 role :web, "sh1node1.mel.hosting-services.net.au:2683"                          # Your HTTP server, Apache/etc
 role :app, "sh1node1.mel.hosting-services.net.au:2683"                          # This may be the same as your `Web` server

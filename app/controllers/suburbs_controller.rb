@@ -1,0 +1,2 @@
+class SuburbsController < ApplicationController
+end
