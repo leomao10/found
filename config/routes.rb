@@ -8,6 +8,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :user_sessions
   map.resources :suburbs
   map.resources :users
+  map.resources :addresses, :collection => {:postcode_check => :get, :get_post =>:get}
 
   map.login "/login", :controller => :user_sessions, :action => "new"
   map.logout "/logout", :controller => :user_sessions, :action => "destroy"

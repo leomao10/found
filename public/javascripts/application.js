@@ -195,6 +195,28 @@ jQuery(function($){
 
 
 
+postcode_checking=function(target){
+  link = $(this.el)
+ var suburb = $('#post_suburb').val();
+  if(link.val()!= ""){
+    $("#spinner").show();
+    $.ajax({
+      type: "GET",
+      url: "/addresses/postcode_check",
+      data: 'postcode='+target+'&suburb='+suburb,
+      dataType:"script"
+    });
+  }else{
+      
+}
+};
+
+$(document).ready(function(){
+  $(".postcode_check").typeWatch( {
+    callback: postcode_checking
+  } );
+});
+
 
 
 

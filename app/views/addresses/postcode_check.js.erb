@@ -1,0 +1,8 @@
+$("#spinner").hide();
+
+<%if @error_flag %>
+
+  $('.hint_text[field=ad_postcode]').html("postcode does not match the suburb").css('color','red');
+<%else%>
+  $('.hint_text[field=ad_postcode]').html("ok").css('color','green');
+<%end%>
