@@ -92,8 +92,8 @@ div.form_section span.input {
 }
 div.form_section input.text {
     display: block;
-    padding: 0px 15px;
-	height: 45px;
+    padding: 13px 15px;
+    /*height: 45px;comment - for the register input text focus not so big*/
     border: none;
     color: #000;
     background: url('../images/form_input_text.png') no-repeat 1px top;

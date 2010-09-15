@@ -1,5 +1,5 @@
 class AddressesController < ApplicationController
-  before_filter :get_post
+  before_filter :get_post,  :except => [:postcode_check]
     
   def show
     @post.address
@@ -23,4 +23,13 @@ class AddressesController < ApplicationController
   def get_post
     @post = Post.find(params[:post_id])
   end
+
+  def postcode_check
+    @suburb, @postcode = params[:suburb], params[:postcode]
+    @error_flag = Suburb.find(:all, :conditions => ["name=? AND postcode=?", @suburb, @postcode]).blank? ? true : false
+     respond_to do |f|
+      f.js
+    end
+  end
+
 end

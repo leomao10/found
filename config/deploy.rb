@@ -7,8 +7,6 @@ set :runner, "chentian"
 set :scm_verbose, true
 
 set :repository,  "git@github.com:leomao10/found.git"
-set :scm_username, "leomao10"
-set :scm_passphrase, "leo1022"
 
 set :scm, :git
 set :deploy_via, :remote_cache
