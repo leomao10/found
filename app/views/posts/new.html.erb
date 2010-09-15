@@ -2,7 +2,7 @@
   <div class="page_title">
     <h1 class="build">Build your Residential for Rent Ad</h1>
   </div>
-    <h1>Property Address</h1>
+  <h1>Property Address</h1>
   <p>
     TSed a neque magna. Maecenas risus lacus, molestie vitae interdum vel, sodales quis lacus. Suspendisse sed turpis ac diam molestie dignissim.
     Nunc convallis tellus ac nulla adipiscing ut dictum nibh pretium. Etiam a mauris diam, eu sagittis tellus.
@@ -26,8 +26,19 @@
 <% content_for :script do %>
   <script type="text/javascript">
     $(document).ready(function() {
-      $(".modified").live('click', function(){
-        $(this).closest('.form_section').find('.section_body').toggle('blind');
+      $("a.modified").bind('click', function(){
+        var $target= $(this).parents('div.form_section').find('div.section_body');
+        var $bodies= $('div.form_section div.section_body');
+        $bodies.each(function(){
+          if($bodies.index(this) == $bodies.index($target.get(0))){
+            if ($(this).is(':hidden')){
+              //alert($bodies.index(this) + ":" + $bodies.index($target.get(0)));
+              $(this).slideDown();
+            }
+          }else if (!$(this).is(':hidden')){
+            $(this).slideToggle();
+          }
+        });
       });
     });
   </script>

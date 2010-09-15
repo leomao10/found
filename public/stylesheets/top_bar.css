@@ -1,46 +1,50 @@
 #top_bar {
     font-family: Verdana, Helvetica, Arial;
     font-size: 11px;
-    min-height: 32px;
     vertical-align: text-bottom;
+    height: 32px;
 }
 
-div#top_bar {
+#top_bar {
     background-color: #EBF2F8;
     vertical-align: middle;
 }
 
-div#top_bar div.inner {
+#top_bar div.inner {
     margin: auto;
     width: 960px;
 }
-div#top_bar div.general_nav {
+#top_bar div.general_nav {
+    vertical-align: center;
     display: inline-block;
     width: 69%;
+    line-height: 30px;
 }
-div#top_bar div.member_nav {
+#top_bar div.member_nav {
     display: inline-block;
     width: 30%;
+    margin: auto;
+    line-height: 30px;
 }
 
-div#top_bar div.general_nav ul, div#top_bar div.member_nav ul {
-    margin: 0;
+#top_bar div.general_nav ul, #top_bar div.member_nav ul {
+    margin: auto;
 }
-div#top_bar div.general_nav ul li, div#top_bar div.member_nav ul li {
+#top_bar div.general_nav ul li, #top_bar div.member_nav ul li {
     list-style: none;
     display: inline-block;
 }
-div#top_bar div.general_nav ul li {
+#top_bar div.general_nav ul li {
     margin-right: 12px;
 }
-div#top_bar div.member_nav ul li {
+#top_bar div.member_nav ul li {
     margin-left: 12px;
 }
-div#top_bar a {
+#top_bar a {
     font-weight: bold;
     text-decoration: none;
     color: #7C8083;
 }
-div#top_bar a:hover {
+#top_bar a:hover {
     color: #5ED3FF;
 }

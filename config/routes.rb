@@ -6,7 +6,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :posts, :has_one => [:address, :contact, :property, :enquery], :member => { :preview => :get, :confirm => :get }
   map.resources :password_resets  
   map.resources :user_sessions
-  map.resources :suburbs
+  map.resources :suburbs, :collection => {:search =>:get}
   map.resources :users
 
   map.login "/login", :controller => :user_sessions, :action => "new"

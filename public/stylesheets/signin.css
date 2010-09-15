@@ -1,16 +1,17 @@
 #login {
-	clear: both;
+    clear: both;
     position: relative;
     width: 80px;
-	font-family:Arial;
-	font-size:11px;
+    font-family:Arial;
+    font-size:11px;
 }
 
 #login a.button {
-    background: url("../images/signin_link.png") no-repeat top left;
+    background: url("../images/signin_link.png") no-repeat -2px -1px;
     display: inline-block;
-    padding: 9px 30px 9px 12px;
+    padding-left: 12px;
     color: white;
+    width: 60px;
     font-weight:normal;
     text-decoration: none;
     font-family:Arial;
@@ -39,7 +40,7 @@
     display: block;
     padding: 6px;
     border: none;
-    width: 198px;
+    width: 188px;
 }
 #login div.more input.checkbox {
     vertical-align: middle;
@@ -67,7 +68,7 @@
 }
 
 login div.more ul li {
-list-style:circle inside url("../images/list_arrow.png");
+    list-style:circle inside url("../images/list_arrow.png");
 }
 
 #login div.more ul.links li {
@@ -82,7 +83,7 @@ list-style:circle inside url("../images/list_arrow.png");
     text-decoration: underline;
 }
 #login.open a.button {
-    background: url("../images/signin_open_link.png") no-repeat top left;
+    background: url("../images/signin_open_link.png") no-repeat -2px -1px;
     color: #058DC0;
 }
 

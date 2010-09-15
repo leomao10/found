@@ -188,7 +188,25 @@ jQuery(function($){
 
 jQuery(function($){
     $("input#new_key").autocomplete({
-        source: ["parramatta", "auburn", "burwood", "city", "chastwood", "town hall"]
+        source: function(request, response) {
+            $.ajax({
+                url: "/suburbs/search/",
+                data: {
+                    keyword: $("input#new_key").val(),
+                    limit: 3
+                },
+                success: function(data) {
+                    response($.map(data, function(item) {
+                        return {
+                            label: "<b>" + item.suburb.name + "</b>, <span style='font-size:smaller'>" + item.suburb.state + " " + item.suburb.postcode + "</span>",
+                            value: "" + item.suburb.name + ", " + item.suburb.state + " " + item.suburb.postcode + ";"
+                        }
+                    }))
+
+                },
+                dataType: "json"
+            })
+        }
     });
 });
 

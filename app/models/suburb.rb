@@ -12,6 +12,8 @@ class Suburb < ActiveRecord::Base
   #Validation
   before_validation :geocode_address
 
+  Suburb.alias_scope :has_keyword, lambda { |keyword| name_or_postcode_begins_with(keyword)}
+
   private
   def geocode_address
     geo=Geokit::Geocoders::GoogleGeocoder.geocode(self.to_s)
