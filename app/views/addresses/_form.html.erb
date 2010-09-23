@@ -1,56 +1,29 @@
 <% form_for :address, post.address, :url => post_address_path(post), :html=>{:class =>"ajaxForm",:id=>"address_form"} do |f| %>
   <label>
     <span class="label">Unit No.</span>
-    <span class="input"><%= f.text_field :suite_unit,:class=>"text number_field", :field=>"ad_address" %></span>
-    <span class="hint"><span class="hint_icon" ></span><span class="hint_text" field="ad_address">please enter you unit No.</span></span>
+    <span class="input"><%= f.text_field :suite_unit,:class=>"text", :field=>"ad_address" %></span>
+    <span class="hint"><span class="hint_icon" ></span></span>
   </label>
   <label>
     <span class="label">Street No.</span>
-    <span class="input"><%= f.text_field :street_number,:class=>"text number_field", :field=>"ad_street_number" %></span>
-    <span class="hint"><span class="hint_icon" ></span><span class="hint_text" field="ad_street_number">Must be Numbers.</span></span>
+    <span class="input"><%= f.text_field :street_number,:class=>"text", :field=>"ad_street_number" %></span>
+    <span class="hint"><span class="hint_icon" ></span></span>
   </label>
   <label>
     <span class="label">Street Name</span>
     <span class="input"><%= f.text_field :street_name,:class=>"text" %></span>
-    <span class="hint"><span class="hint_icon" ></span><span class="hint_text" field="ad_street_name">??</span></span>
+    <span class="hint"><span class="hint_icon" ></span></span>
   </label>
   <label>
     <span class="label">Suburb</span>
     <span class="input"><%= f.text_field :town, :class=>"text", :id =>"post_suburb" %></span>
-    <span class="hint"><span class="hint_icon" ></span>???</span>
+    <span class="hint"><span class="hint_icon" ></span></span>
   </label>
   <label>
     <span class="label">Postcode</span>
     <span class="input"><%= f.text_field :postcode, :class=>"text postcode_check" %></span>
-    
-    <span class="hint"><span class="hint_icon" ></span><span class="hint_text" field="ad_postcode">Must be Numbers.</span></span>
+    <span class="hint"><span class="hint_icon" ></span></span>
     <div id="spinner" style="height: 24px;float:left;display:none;background-image: url(/images/load.gif); background-repeat: no-repeat; background-position: center center; width: 50px; margin: 8px 0 0 -68px !important;"></div>
   </label>
   <label><span class="label"></span><%= f.submit "Save", :class=>"save" %></label>
 <%end%>
-
-<% content_for :script do %>
-  <script type="text/javascript">
-    number_check = function(link)
-    {
-      var field = link.attr('field');
-      _valid = /^(\d|,)*\.?\d*$/.test(link.val());
-      if(link.val()!=""){
-        if((!_valid) || link.val()<0){
-          link.focus();
-          link.val('');
-          $('.hint_text[field='+field+']').html("please enter the integer number").css('color','red');
-        }else{
-        $('.hint_text[field='+field+']').html("ok").css('color','green');
-      }
-      }
-      return false;
-    };
-
-    $(function(){
-      $(".number_field").live('keyup', function(){
-        number_check($(this));
-      });
-    });
-  </script>
-<% end %>

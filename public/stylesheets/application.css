@@ -1,43 +1,923 @@
 /* common */
-@import 'common.css';
+body {
+    font-family: Verdana, Helvetica, Arial;
+    font-size: 14px;
+    margin: 0;
+    background-color: #97DAF3;
+}
+
+a img {
+    border: none;
+}
+
+a {
+    color: #0000FF;
+}
+
+.clear {
+    clear: both;
+    height: 0;
+    overflow: hidden;
+}
 
 /* form section (for Build Advertise) */
-@import 'form_section.css';
+div.form_section {
+    clear: both;
+    background: white no-repeat left top;
+    background-image: url('../images/section_head.png');
+    border-width: medium;
+}
+div.form_section.no_background {
+    background-image: none;
+}
+div.form_section.first_section, div.form_section.first_section div.section_head {
+    background-image: url('../images/section_head_first.png');
+}
+div.form_section.last_section, div.form_section.last_section div.section_head {
+    background-image: url('../images/section_head_last.png');
+}
+div.form_section div.section_head {
+    height: 39px;
+    margin-left: 5px;
+    background: white no-repeat right top;
+    background-image: url('../images/section_head.png');
+}
+div.form_section div.section_head div.title {
+    margin-left: 10px;
+    float: left;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 39px;
+    padding:0;
+}
+div.form_section.section_finished div.section_head div.title {
+    padding-right: 28px;
+    background: no-repeat right center;
+    background-image: url('../images/section_finished.png');
+}
+div.form_section div.section_head div.buttons {
+    float: right;
+    line-height: 39px;
+    padding-right: 15px;
+}
+div.form_section div.section_head div.buttons a.modified {
+    padding-left: 18px;
+    background: url('../images/modified.png') no-repeat left center;
+}
+div.form_section div.section_body {
+    clear: both;
+    padding: 20px 0;
+}
+div.form_section label, div.form_section div.label {
+    clear: both;
+    display: block;
+    padding: 3px;
+}
+
+div.form_section a {
+    color: #0F9FCF;
+    text-decoration: none;
+}
+
+div.form_section a:hover {
+    text-decoration: underline;
+}
+
+div.form_section div.label label {
+    clear: both;
+    display: block;
+    padding: 0px;
+}
+div.form_section > label:after, div.form_section div.label:after {
+    color: #FFF;
+    content: '.';
+    height: 1px;
+    line-height: 1px;
+    clear: both;
+}
+div.form_section span.label {
+    display: block;
+    margin-right: 15px;
+    width: 250px;
+    height: 45px;
+    line-height: 45px;
+    text-align: right;
+    float: left;
+    font-size: 14px;
+    font-weight: bold;
+    color: #656565;
+}
+div.form_section span.input {
+    display: block;
+    float: left;
+	height: 45px;
+	width: 270px;
+    z-index: 1;
+}
+div.form_section input.text {
+    display: block;
+    padding: 13px 15px;
+    /*height: 45px;comment - for the register input text focus not so big*/
+    border: none;
+    color: #000;
+    background: url('../images/form_input_text.png') no-repeat 1px top;
+    font-size: 14px;
+    font-weight: bold;
+    z-index: 1;
+}
+
+div.form_section span.to {
+    display: block;
+    width: 26px;
+    height: 45px;
+    line-height: 45px;
+    text-align: center;
+    float: left;
+    font-weight: bold;
+}
+div.form_section input.from {
+    display: block;
+    width: 124px;
+    height: 45px;
+    padding: 0px 15px;
+    border: none;
+    color: #000;
+    float: left;
+    background: url('../images/form_input_text_from.png') no-repeat left top;
+    font-size: 14px;
+    font-weight: bold;
+    z-index: 1;
+}
+div.form_section input.to {
+    display: block;
+    width: 125px;
+    height: 45px;
+    padding: 0px 15px;
+    border: none;
+    color: #000;
+    float: left;
+    background: url('../images/form_input_text_to.png') no-repeat left top;
+    font-size: 14px;
+    font-weight: bold;
+    z-index: 1;
+}
+div.form_section input.text:hover, div.form_section input.text:focus {
+    background: url('../images/form_input_text_focus.png') no-repeat left -1px;
+}
+div.form_section span.hint, div.form_section span.ok, div.form_section span.error {
+    display: block;
+    width: 275px;
+    height: 45px;
+    line-height: 45px;
+    float: left;
+    padding-left: 8px;
+    margin-left: -4px;
+    font-size: 12px;
+}
+div.form_section span.hint {
+    background: url('../images/form_hint.png') no-repeat -9px top;
+}
+div.form_section span.ok {
+    background: url('../images/form_ok.png') no-repeat -9px top;
+}
+div.form_section span.error {
+    background: url('../images/form_error.png') no-repeat -9px top;
+}
+div.form_section span.hint_icon, div.form_section span.ok_icon, div.form_section span.error_icon {
+    width: 16px;
+    height: 45px;
+    margin-right: 3px;
+    display: block;
+    float: left;
+}
+div.form_section span.hint_icon {
+    background: url('../images/icon_hint.png') no-repeat center center;
+}
+div.form_section span.ok_icon {
+    background: url('../images/icon_ok.png') no-repeat center center;
+}
+div.form_section span.error_icon {
+    background: url('../images/icon_error.png') no-repeat center center;
+}
+div.form_section input.save {
+    background: url('../images/save_button.png') no-repeat left -1px;
+    border: none;
+    width: 72px;
+    height: 42px;
+    font-weight: bold;
+    padding-left: 25px;
+    font-size: 14px;
+}
+div.form_section input.create {
+    background: url('../images/form_button_create.png') no-repeat left top;
+    border: none;
+    width: 156px;
+    height: 42px;
+    font-weight: bold;
+    padding-left: 8px;
+    font-size: 14px;
+}
+div.form_section span.title {
+    display: block;
+    width: 243px;
+    height: 45px;
+    line-height: 45px;
+    margin-left: 265px;
+    padding: 0px 15px;
+    float: left;
+    border: none;
+    background: url('../images/form_title.png') no-repeat left 0;
+    font-size: 14px;
+    color: #000;
+    z-index: 1;
+}
+div.form_section span.desc {
+    display: block;
+    padding: 5px 0;
+    float: left;
+    margin-left: 270px;
+    font-weight: bold;
+}
+div.form_section span.term {
+    display: block;
+    background: url('../images/form_term.png') no-repeat left top;
+    font-family: "Courier New";
+    font-size: 12px;
+    float: left;
+    padding: 10px 15px;
+    width: 511px;
+    height: 129px;
+}
+div.form_section input.checkbox, div.form_section input.radio {
+    vertical-align: center;
+    padding: 0;
+    margin: 0;
+}
+span.grey {
+    color: #999999;
+    font-style: italic;
+}
+div.clear {
+    clear: both;
+}
 
 /* top bar */
-@import 'top_bar.css';
+#top_bar {
+    font-family: Verdana, Helvetica, Arial;
+    font-size: 11px;
+    vertical-align: text-bottom;
+    height: 32px;
+}
+
+#top_bar {
+    background-color: #EBF2F8;
+    vertical-align: middle;
+}
+
+#top_bar div.inner {
+    margin: auto;
+    width: 960px;
+}
+#top_bar div.general_nav {
+    vertical-align: center;
+    display: inline-block;
+    width: 69%;
+    line-height: 30px;
+}
+#top_bar div.member_nav {
+    display: inline-block;
+    width: 30%;
+    margin: auto;
+    line-height: 30px;
+}
+
+#top_bar div.general_nav ul, #top_bar div.member_nav ul {
+    margin: auto;
+}
+#top_bar div.general_nav ul li, #top_bar div.member_nav ul li {
+    list-style: none;
+    display: inline-block;
+}
+#top_bar div.general_nav ul li {
+    margin-right: 12px;
+}
+#top_bar div.member_nav ul li {
+    margin-left: 12px;
+}
+#top_bar a {
+    font-weight: bold;
+    text-decoration: none;
+    color: #7C8083;
+}
+#top_bar a:hover {
+    color: #5ED3FF;
+}
 
 /* sign in */
-@import 'signin.css';
+#login {
+    clear: both;
+    position: relative;
+    width: 80px;
+    font-family:Arial;
+    font-size:11px;
+}
+
+#login a.button {
+    background: url("../images/signin_link.png") no-repeat -2px -1px;
+    display: inline-block;
+    padding-left: 12px;
+    color: white;
+    width: 60px;
+    font-weight:normal;
+    text-decoration: none;
+    font-family:Arial;
+    font-size:11px;
+}
+
+#login div.more {
+    background: url("../images/signin_more.png") no-repeat top right;
+    position: absolute;
+    display: none;
+    right: 7px;
+    margin-top: -7px;
+    padding: 10px;
+}
+#login div.more label {
+    display: block;
+    color: #7D7D7D;
+    padding: 3px 8px;
+}
+#login div.more label.remember_me {
+    margin-top: 6px;
+    float: left;
+}
+#login div.more input.text {
+    background: url("../images/form_input.png") no-repeat -4px -3px;
+    display: block;
+    padding: 6px;
+    border: none;
+    width: 188px;
+}
+#login div.more input.checkbox {
+    vertical-align: middle;
+    margin: 0;
+    padding: 0;
+    color: #7D7D7D;
+}
+#login div.more input.submit {
+    float: right;
+    background: url("../images/form_button.png") no-repeat -3px -3px;
+    margin-top: 2px;
+    margin-right: 7px;
+    padding: 6px 10px;
+    font-family: Arial;
+    font-size: 11px;
+    font-weight: bold;
+    color: white;
+    border: none;
+}
+#login div.more ul.links {
+    clear: both;
+    list-style: none;
+    padding: 4px 0;
+    margin: 0;
+}
+
+login div.more ul li {
+    list-style:circle inside url("../images/list_arrow.png");
+}
+
+#login div.more ul.links li {
+    padding: 4px 9px;
+    margin: 0;
+}
+#login div.more ul.links li a {
+    color: #058DC0;
+    text-decoration: none;
+}
+#login div.more ul.links li a:hover {
+    text-decoration: underline;
+}
+#login.open a.button {
+    background: url("../images/signin_open_link.png") no-repeat -2px -1px;
+    color: #058DC0;
+}
+
+
+
+#login.open div.more {
+    display: block;
+}
 
 /* header section */
-@import 'header_section.css';
+div#logo {
+    display: inline-block;
+    background: url(../images/logo_new.png) left center no-repeat;
+    width: 323px;
+    height: 200px;
+    position: relative;
+}
+div#header div.text {
+    display: inline-block;
+    padding: 0 20px;
+    width: 590px;
+}
+div#header div.text h1 {
+    font-size: 28px;
+    text-transform: uppercase;
+    /*color: #1B96C0;*/
+    color:#000000;
+}
+div#header div.text h2 {
+    font-size: 16px;
+    color: #FEFDFF;
+}
+div#header div.text h3 {
+    font-size: 14px;
+    color: #F37D11;
+}
 
 /* search section */
-@import 'search_section.css';
+div#search label span.text {
+    padding-left: 17px;
+    width: 143px;
+    vertical-align: bottom;
+}
+div#search {
+    clear: both;
+    padding: 10px;
+    background-color: #FEFDFF;
+    -moz-border-radius: 5px;
+}
+div#search ul {
+    padding: 0;
+    margin: 0;
+}
+
+div#search input{
+	display: inline-block;
+}
+
+div#search input[type=submit]{
+
+	float: right;
+}
+
+div#search div.tabs ul li {
+    list-style: none;
+    display: inline-block;
+    margin: 0 5px 0 0;
+}
+div#search div.tabs ul li a {
+    display: block;
+    padding-left: 5px;
+    line-height: 33px;
+    background: url(../images/tab_left.jpg) left no-repeat #ECF1F4;
+    text-decoration: none;
+}
+div#search div.tabs ul li a span {
+    display: block;
+    padding: 0 20px 0 15px;
+    background: url(../images/tab_right.jpg) right no-repeat;
+    font-size: 14px;
+    font-weight: bold;
+    color: #737574;
+}
+div#search div.tabs ul li a:hover span {
+    color: #32B0D9;
+}
+div#search div.tabs ul li.highlight a {
+    background: url(../images/tab_left_highlight.jpg) left no-repeat #E4E9EC;
+}
+div#search div.tabs ul li.highlight a span {
+    background: url(../images/tab_right_highlight.jpg) right no-repeat;
+    color: #32B0D9;
+}
+div#search div.search_panel {
+    background: #E4E9EC;
+    padding: 27px 30px;
+    -moz-border-radius: 0 5px 5px 5px;
+}
+div#search div.search_panel div.inner {
+    padding: 0 135px 14px 9px;
+    background: url(../images/search_background.jpg) left top no-repeat;
+}
+div#search div.search_panel div.inner div.main {
+    padding: 12px 3px 30px;
+	margin-bottom: 5px;
+}
+
+div#search div.search_panel div.inner div.option label {
+    width: 250px;
+}
+
+div#search div.search_panel a.more {
+    display: inline-block;
+    background: url(../images/arrow_right.png) left no-repeat;
+    padding-left: 12px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #75C6DB;
+}
+div#search div.search_panel input.checkbox {
+    vertical-align: bottom;
+	border: none;
+}
+div#search div.search_panel div.main input.keywords {
+    font-size: 18px;
+    color: #737574;
+    width: 81%;
+	height: 30px;
+    margin-right: 20px;
+	border: none;
+}
+div#search div.search_panel div.main input.search {
+    font-size: 18px;
+    font-weight: bold;
+    color: #FFFCF9;
+    height: 26px;
+    width: 108px;
+    text-transform: uppercase;
+    cursor: pointer;
+	border: none;
+}
+div#search div.search_panel div.more_options {
+    display: none;
+    width: 568px;
+    background: #FFFFFF;
+    -moz-border-radius: 5px;
+    padding: 5px 13px;
+    margin-left: -13px;
+    margin-bottom: 3px;
+}
+
+div#search input {
+    border: 1px solid gray;
+    margin: 0;
+    background: none;
+}
+
+div.search_result {
+    -moz-border-radius: 5px;
+    margin-top: 10px;
+}
+
+.watermark{
+    color:#999999 !important
+}
 
 /* page_body section */
-@import 'page_body.css';
+div#page_body {
+    width: 960px;
+    margin: auto;
+}
+
+#page_body #content_body{
+    background: #ffffff;
+    padding: 15px;
+    min-height: 550px;
+}
+
+#page_body .entries_info {
+    background: #dcdcdc;
+    padding: 10px 15px 10px 15px;
+    border-bottom: 1px #aaaaaa solid;
+}
+
+#page_body .paginate {
+    padding: 8px 10px 8px 10px;
+    border-top: none;
+    border-bottom: none;
+    background: #dcdcdc;
+}
+
+#page_body #content_body .full_container input {
+    font-size:14px;
+    font-family:Arial, Helvetica, sans-serif;
+    line-height:16px;
+    width: 96%;
+    height: 18px;
+    border:1px groove;
+    background: #FFFFFF;
+}
 
 /* post */
-@import 'post.css';
+.post .top{
+    background: url(../images/post_top_bg.png) repeat-x;
+    height: 35px;
+    border: 1px solid #a6d0e6;
+}
+
+.post .top .address{
+    display: inline-block;
+    width: 78%;
+    padding: 10px;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.post .top .collapse{
+    display: inline-block;
+}
+
+.post .top .collapse a{
+    text-decoration: none;
+    color: #02adf2;
+    font-size: 9px;
+    background: url(../images/collapse_arrow.png) top left no-repeat;
+    padding-left: 15px;
+}
+
+.post .top .collapse a:hover{
+    text-decoration: none;
+}
+
+.post .middle
+{
+    padding: 10px;
+    border-top: none;
+    border-bottom: none;
+    min-height: 120px;
+}
+
+li.item .post .middle .abstract
+{
+    margin-left: 120px;
+}
+
+li.item .post .middle .user_area{
+    margin-left: 150px;
+}
+
+li.item .post .middle .user_area .user{
+    width: 180px;
+    height: 50px;
+    display: inline-block;
+    border: 1px #eeeeee dashed;
+}
+
+li.item .post .middle .user_area .action{
+    display: inline-block;
+    vertical-align: top;
+    padding: 5px;
+}
 
 /* postable */
-@import 'postable.css';
+.postable .price
+{
+    font-size: 20px;
+    color: #02adf2;
+    display: inline-block;
+    width: 60%;
+}
+
+.postable .bedroom_num{
+    background: url(../images/bedroom.png) top left no-repeat;
+    display: inline-block;
+    padding-left: 25px;
+    color: #777777;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.postable .carpark_num{
+    background: url(../images/carpark.png) top left no-repeat;
+    display: inline-block;
+    padding-left: 25px;
+    color: #777777;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.postable .bathroom_num{
+    background: url(../images/bathroom.png) top left no-repeat;
+    display: inline-block;
+    padding-left: 25px;
+    color: #777777;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.postable .description{
+    padding: 15px 0px 15px 0px;
+}
 
 /* build new post */
-@import 'build_new_post.css';
+#build_new_post div{
+    font-family: "Lucid Sans Unicode", Verdana;
+    font-size: 13px;
+}
+#build_new_post div.page_title * {
+    display: inline-block;
+    margin-right: 10px;
+}
+#build_new_post div.page_title h1 {
+    text-transform: uppercase;
+    font-family: Verdana;
+    font-size: 18px;
+    color: #121212;
+    margin: 0 10px 0 0;
+
+}
+#build_new_post div.page_title h1.build {
+    background: url('../images/property_build_icon.png') no-repeat left top;
+    padding: 3px 0 25px 38px;
+}
+
+#build_new_post h4 {
+    font-family: Verdana;
+    font-size: 16px;
+    font-weight: bold;
+    color: #121212;
+}
+
+#build_new_post ul li {
+    list-style: url('../images/list_arrow.png') inside circle;
+    padding: 5px 0;
+}
+
+#build_new_post ul.steps {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+#build_new_post ul.steps li {
+    display: inline-block;
+    font-size: 16px;
+    font-weight: bold;
+    margin-right: 25px;
+}
+#build_new_post ul.steps li span.num {
+    display: inline-block;
+    padding: 6px 0;
+    margin-right: 5px;
+    width: 33px;
+    background: url('../images/list_icon_grey.png') no-repeat top center;
+    text-align: center;
+    color: #FFFFFF;
+}
+#build_new_post ul.steps li.current span.text {
+    color: #0F9FCF;
+}
+#build_new_post ul.steps li.current span.num {
+    background: url('../images/list_icon_blue.png') no-repeat top center;
+}
+
+#build_new_post .button_sub{
+    -moz-border-radius:5px 5px 5px 5px;
+background-color:#33BCE9;
+color:#232323;
+display:inline-block;
+float:right;
+font-family:Arial,Helvetica,sans-serif;
+margin-bottom:10px;
+min-height:10px;
+padding:8px 12px;
+text-decoration:none;
+width:auto;
+}
+#build_new_post .button_sub a{
+    text-decoration: none;
+}
 
 /* content_body */
-@import 'content_body.css';
+#content_body   #page_title {
+    width: 100%;
+    height: 40px;
+    float:left;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    line-height: 30px;
+    color: #2C2C2C;
+    margin-left: 1%;
+    font-weight:bold;
+}
+
+#content_body   .page_content {
+    width: auto;
+    float:left;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    color: #2C2C2C;
+    margin-left: 1%;
+    font-weight:bold;
+}
+
+#content_body  #post_nav   .active {
+    width: auto;
+    float:left;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    color: #2db5e2;
+    margin-left: 1%;
+    font-weight:bold;
+}
+
+#content_body .row_break {
+    clear:both;
+}
+
+#content_body .options {
+    float: right;
+    display:inline;
+}
+
+#content_body .bar_container {
+    font-family:Arial, Helvetica, sans-serif;
+    color: #232323;
+    background-image:url(/images/container_bg1.png);
+    background-repeat:repeat;
+    width: 96%;
+    float: left;
+    padding: 1%;
+    min-height: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+#content_body #content {
+    min-height: 500px;
+    border: 1px #aaaaaa solid;
+}
+
+/* Is it the best place for google map?? */
+#content_body div#googlemap
+{
+    min-height: 500px;
+    background: #ECF1F4;
+    border: 1px #aaaaaa solid;
+}
 
 /* more options*/
-@import 'more_options.css';
+div.more_options label {
+    display: block;
+    padding: 3px 8px;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #737574;
+}
+
+div.more_options label span.bar {
+    display: block;
+    width: 200px;
+    margin: 5px 23px 8px;
+}
+
+div.more_options label span.select {
+    display: block;
+}
+
+div.more_options label span.text {
+    display: inline-block;
+    width: 160px;
+}
+div.more_options label.bedroom {
+    background: url(../images/bedroom.png) left -2px no-repeat;
+}
+div.more_options label.bathroom {
+    background: url(../images/bathroom.png) left -2px no-repeat;
+}
+div.more_options label.carpark {
+    background: url(../images/carpark.png) left -2px no-repeat;
+}
+div.more_options label.property_type {
+    background: url(../images/property_type.png) left -2px no-repeat;
+}
+
+div.more_options label {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 11px;
+    font-weight: bold;
+    line-height: 9px;
+    color: #666;
+    text-decoration: none;
+    display: block;
+    padding-left: 3px;
+}
 
 /* footer section */
-@import 'footer_section.css';
-
-
+div#footer {
+    clear: both;
+    text-align: center;
+    margin-top: 20px;
+}
+div#footer ul {
+    padding: 10px 0;
+    margin: 0;
+}
+div#footer ul li {
+    list-style: none;
+    display: inline-block;
+    margin: 0 8px;
+}
+div#footer a {
+    text-decoration: none;
+    color: #FEFDFF;
+}
+div#footer a:hover {
+    color: #7C8083;
+}
 
 #container {
     width: 75%;
@@ -135,7 +1015,7 @@ ul.list{
 }
 
 .container .half {
-    width: 49%;
+    width: 445px;
     display: inline-block;
     -moz-border-radius:5px 5px 5px 5px;
 }
@@ -149,4 +1029,56 @@ ul.list{
     text-decoration: none;
     display: block;
     padding-left: 3px;
+}
+.details.container .half{
+    padding-top: 10px;
+    width: 445px;
+    padding-left: 20px;
+}
+.details.container .half.left{
+    padding-left: 0;
+}
+.title {
+    padding: 5px 0;
+    font-size: 16px;
+    font-weight: bold;
+}
+.description{
+    padding: 5px 0;
+    font-size: 12px;
+}
+form.email label{
+    display: block;
+    padding-top: 5px;
+    font-size: 12px;
+}
+form.email input, form.email textarea{
+    width: 445px;
+    padding: 2px 0;
+}
+form.email div{
+    margin-bottom: 3px;
+}
+form.email .submit {
+    border: 0!important;
+    -moz-border-radius:5px;
+    background-color:#33BCE9!important;
+    color: white;
+    font-weight: bold;
+    width: 100px;
+}
+
+.padding5{
+    padding: 5px;
+}
+.paddingY5{
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+.hide{
+    display: none!important;
+}
+
+.preview{
+    border: 2px;
 }

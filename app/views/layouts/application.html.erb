@@ -16,8 +16,6 @@
       "jquery.watermark-2.0.min",
       'application'%>
     <%= yield_authenticity_token %>
-    <script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAAYLuaqB7qMuVmZct0bNAhVRToMsSLBLYOIGCFpHF2BQfOB79_-BR2PDljF3gNcHkI6rzbMOOf_XFw1g" type="text/javascript"></script>
-    <%= yield :script %>
   </head>  
   <body id="body" onload="window.focus();">
     <%= render :partial => "/layouts/navigator" %>
@@ -37,6 +35,7 @@
       </div>
       <%= render :partial => "/layouts/footer" %>
     </div>
+    <%= yield :script %>
   </body>
 </html>
 

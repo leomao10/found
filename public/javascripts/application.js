@@ -210,9 +210,6 @@ jQuery(function($){
     });
 });
 
-
-
-
 postcode_checking=function(target){
   link = $(this.el)
  var suburb = $('#post_suburb').val();

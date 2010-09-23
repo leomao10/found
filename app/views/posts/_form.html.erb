@@ -1,23 +1,12 @@
 <div class="form_section">
 <%# Property Address %>
-  <div id="address_details" class="form_section first_section section_finished">
+  <div id="address_details" class="form_section first_section ">
     <div class="section_head">
       <div class="title">Property address</div>
       <div class="buttons"><a href="javascript:void(0);" class="modified">modified</a></div>
     </div>
     <div class="section_body">
       <%= render "addresses/form", :post => @post %>
-    </div>
-  </div>
-
-<%# Contact Details %>
-  <div id="contact_details" class="form_section">
-    <div class="section_head">
-      <div class="title">Contact Details<span class="grey">(optional)</span></div>
-      <div class="buttons"><a href="javascript:void(0);" class="modified">modified</a></div>
-    </div>
-    <div class="section_body">
-      <%= render "contacts/form", :post => @post %>
     </div>
   </div>
 
@@ -29,6 +18,17 @@
     </div>
     <div class="section_body">
       <%= render "properties/form", :post => @post %>
+    </div>
+  </div>
+  
+<%# Contact Details %>
+  <div id="contact_details" class="form_section">
+    <div class="section_head">
+      <div class="title">Contact Details<span class="grey">(optional)</span></div>
+      <div class="buttons"><a href="javascript:void(0);" class="modified">modified</a></div>
+    </div>
+    <div class="section_body">
+      <%= render "contacts/form", :post => @post %>
     </div>
   </div>
 </div>

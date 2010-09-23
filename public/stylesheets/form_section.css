@@ -25,6 +25,7 @@ div.form_section div.section_head div.title {
     font-weight: bold;
     font-size: 14px;
     line-height: 39px;
+    padding:0;
 }
 div.form_section.section_finished div.section_head div.title {
     padding-right: 28px;

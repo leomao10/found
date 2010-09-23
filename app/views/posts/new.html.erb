@@ -15,7 +15,7 @@
   <div class="container">
     <%= render :partial=> "/posts/form" %>
   </div>
-  <div>
+  <div class="paddingY5">
     <span class="button_sub">
       <%= link_to "Continue to next step", preview_post_path(@post), :style=>"font-weight:bold;font-size:12px;color:white;"%>
     </span>
@@ -27,12 +27,24 @@
   <script type="text/javascript">
     $(document).ready(function() {
       $("a.modified").bind('click', function(){
-        var $target= $(this).parents('div.form_section').find('div.section_body');
+        var $target= $(this).parents('div.form_section');
+        var $targetBody = $target.find('div.section_body');
+
+        $target.removeClass("section_finished");        
+
+        var $targets = $('div.form_section');
+        $targets.each(function(){          
+          if($targets.index(this) != $targets.index($target)){
+            $(this).removeClass("first_section");
+          }else{
+            $(this).addClass("first_section");
+          }
+        });
+        
         var $bodies= $('div.form_section div.section_body');
         $bodies.each(function(){
-          if($bodies.index(this) == $bodies.index($target.get(0))){
+          if($bodies.index(this) == $bodies.index($targetBody.get(0))){
             if ($(this).is(':hidden')){
-              //alert($bodies.index(this) + ":" + $bodies.index($target.get(0)));
               $(this).slideDown();
             }
           }else if (!$(this).is(':hidden')){

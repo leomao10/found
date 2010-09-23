@@ -59,15 +59,18 @@
 }
 
 #build_new_post .button_sub{
-    font-family:Arial, Helvetica, sans-serif;
-    display: inline-block;
-    color: #232323;
-    width: 17%;
-    float: right;
-    padding: 1%;
-    min-height: 10px;
-    -moz-border-radius: 10px;
-    -webkit-border-radius: 10px;
-    margin-bottom: 10px;
-    background-color: #33bce9
+    -moz-border-radius:5px 5px 5px 5px;
+background-color:#33BCE9;
+color:#232323;
+display:inline-block;
+float:right;
+font-family:Arial,Helvetica,sans-serif;
+margin-bottom:10px;
+min-height:10px;
+padding:8px 12px;
+text-decoration:none;
+width:auto;
+}
+#build_new_post .button_sub a{
+    text-decoration: none;
 }

@@ -4,8 +4,6 @@
   <% form_for search do |f| %>
     <%= render :partial => "searches/form", :locals => { :f => f }%>
   <% end %>
-  <div class="controller">
-    <%= render :partial => "searches/collection_menu", :locals => { :search => search, :post => post }%>
-  </div>
+  <div class="padding5"></div>
   <%= render :partial => "posts/detail", :locals => {:post => post } %>
 </div>

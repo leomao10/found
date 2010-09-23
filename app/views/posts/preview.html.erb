@@ -10,15 +10,26 @@
     <li><span class="num">1</span><span class="text">Build your ad</span></li>
     <li class="current"><span class="num">2</span><span class="text">Preview & confrim</span></li>
   </ul>
+  <hr/>
   <div class="preview">
     <%= render :partial => "/posts/detail", :locals=>{:post => post} %>
   </div>
+  <hr/>
   <div>
     <span class="button_sub">
       <%= link_to "Confirm", confirm_post_path(@post), :style=>"font-weight:bold;font-size:12px;color:white;"%>
     </span>
-    <span class="button_sub">
+    <span class="button_sub" style="margin-right: 10px">
       <%= link_to "Go Back", edit_post_path(@post), :style=>"font-weight:bold;font-size:12px;color:white;"%>
     </span>
   </div>
+  <div class="clear"></div>
 </div>
+
+<% content_for :script do %>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $(".preview form.email input,textarea").attr("disabled", true);
+    });
+  </script>
+<% end %>

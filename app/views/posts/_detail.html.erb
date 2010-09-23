@@ -1,13 +1,10 @@
-<div class="post container">
+<div class="post container details">
   <div class="line top">
     <div class="address">
       <%= post.address.to_s %>
     </div>
   </div>
   <div class="left half">
-    <div class="images">
-      <%= render :partial => "/images/list", :locals => { :images => post.images, :size => :medium } %>
-    </div>
     <div id="googlemap">google map</div>
   </div>
   <div class="half">
@@ -18,35 +15,19 @@
       <% end %>
     </div>
     <div class="title">
-      <strong>Title:</strong>
+      105 ChurchStreet - Near New Apartment - Very Close To Station
       <%=h post.title %>
     </div>
     <div class="description">
-      <strong>Description:</strong>
       <%=h post.description %>
+      IntheHeart of Paramatta CBD.
     </div>
-    <div class="available_date">
-      <strong>Available From:</strong>
-      <%=h post.available_from %>
-    </div>
-    <div class="expiry_date">
-      <strong>Expiry Date:</strong>
-      <%=h post.expiry_date %>
-    </div>
-    <div class="inspection_time">
-      <strong>Inspection Time:</strong>
-      <%=h post.inspection_time %>
-    </div>
-    <div>
-      <strong>Negotiable:</strong>
-      <%=h post.negotiable %>
-    </div>
-    <h4>Email Landlord/Agent</h4>
-    <%= render :partial => "enqueries/form", :locals => {:post => @post} %>
   </div>
+  <div class="clear"></div>
 </div>
 
 <% content_for :script do %>
+  <script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAAYLuaqB7qMuVmZct0bNAhVRToMsSLBLYOIGCFpHF2BQfOB79_-BR2PDljF3gNcHkI6rzbMOOf_XFw1g" type="text/javascript"></script>
   <script type="text/javascript">
     $(document).ready(function() {
       $(".address").each(function(index, address){

@@ -1,4 +1,19 @@
-<p>
+<div>
+<div class="price">
+  <%= number_to_currency(property.price) %>
+</div>
+<div class="bedroom_num">
+  <%=h property.number_of_bedrooms %>
+</div>
+<div class="carpark_num">
+  <%=h property.number_of_carparks %>
+</div>
+<div class="bathroom_num">
+  <%=h property.number_of_bathrooms %>
+</div>
+  <div class="clear"></div>
+</div>
+  <!--p>
   <strong>Bond:</strong>
   <%=h property.bond %>
 </p>
@@ -21,4 +36,4 @@
 <p>
   <strong>Type:</strong>
   <%=h property.prop_type %>
-</p>
+</p-->

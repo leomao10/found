@@ -2,7 +2,7 @@
   <label>
     <span class="label">Number of Bedrooms</span>
     <span class="input"><%= f.text_field :number_of_bedrooms ,:class=>"text"%></span>
-    <span class="hint"><span class="hint_icon" ></span>must be numbers</span>
+    <span class="hint"><span class="hint_icon" ></span></span>
   </label>
   <label>
     <span class="label">Number of Carparks</span>
@@ -34,12 +34,12 @@
     <span class="input"><%= f.text_field :number_of_current_tenants,:class=>"text" %></span>
     <span class="hint"><span class="hint_icon" ></span></span>
   </label>
-  <label>
+  <label class="hide">
     <span class="label">Furniture Included?</span>
     <span class="input"></span><%#= f.check_box :furnished,:class=>"text" %>
     <span class="hint"><span class="hint_icon" ></span></span>
   </label>
-  <label>
+  <label class="hide">
     <span class="label">Property Type</span>
     <span class="input"><%= f.collection_select :prop_type, Property::TYPES, :to_s, :humanize %></span>
     <span class="hint"><span class="hint_icon" ></span></span>

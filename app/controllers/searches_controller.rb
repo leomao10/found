@@ -15,7 +15,7 @@ class SearchesController < ApplicationController
     else
       @search ||= Search.new
     end
-    @posts = @search.posts.paginate :page => params[:page], :per_page => 1
+    @posts = @search.posts.paginate :page => params[:page], :per_page => 2
     render :template => "welcome/index", :locals => { :search => @search }
   end
 end
