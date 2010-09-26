@@ -11,8 +11,9 @@ class SuburbsController < ApplicationController
   end
 
   def search
-    @keyword,@limit = params[:keyword],params[:limit]
-    @suburbs = Suburb.name_like(@keyword).paginate(:page=> 1, :per_page => @limit)
+    @keyword = params[:keyword]
+    @limit = params[:limit]
+    @suburbs = Suburb.has_name_like(@keyword).paginate(:page=> 1, :per_page => @limit)
     render :json => @suburbs.to_json
   end
 end

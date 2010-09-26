@@ -1,6 +1,6 @@
 <% title "Welcomes" %>
 <div id="search">
-  <% form_for search do |f| %>
+  <%= form_for search do |f| %>
     <%= render :partial => "searches/form", :locals => { :f => f }%>
   <% end %>
   <div class="search_result">

@@ -8,6 +8,10 @@ class Post < ActiveRecord::Base
   
   belongs_to :user
 
+  scope :address_contain_keyword, lambda { |keyword| 
+    joins(:address)&Address.contain_keyword(keyword)
+  }
+  
   def self.setup
     post = Post.new
     post.save

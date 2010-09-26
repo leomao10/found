@@ -3,7 +3,7 @@ class Search < ActiveRecord::Base
   accepts_nested_attributes_for :property_search, :allow_destroy => true
   attr_accessible :keyword,:property_search
 
-  def after_initialize
+  def self.after_initialize
     build_property_search if property_search.nil?
   end
 
@@ -20,7 +20,7 @@ class Search < ActiveRecord::Base
     if(arg.nil? || arg.empty?)
       Post.all
     else
-      Post.address_keyword_has(arg)
+      Post.address_contain_keyword(arg)
     end
   end
 

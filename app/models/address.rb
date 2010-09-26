@@ -9,12 +9,12 @@ class Address < ActiveRecord::Base
   belongs_to :suburb
 
   #Named Scope
-  named_scope :distance, lambda { |loc, distance|
+  scope :distance, lambda { |loc, distance|
     geo = Geokit::Geocoders::GoogleGeocoder.geocode(loc, :bias => :au)
     { :conditions => ["#{Address.distance_sql(geo)} < #{distance}"] }
   }
 
-  Address.alias_scope :keyword_has, lambda { |keyword| town_or_state_or_postcode_like(keyword)}
+  scope :contain_keyword, lambda { |keyword| where("addresses.town like :keyword or addresses.state like :keyword or addresses.postcode like :keyword",{:keyword =>keyword})}
 
   before_validation :geocode_address
 

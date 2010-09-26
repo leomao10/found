@@ -12,7 +12,9 @@ class Suburb < ActiveRecord::Base
   #Validation
   before_validation :geocode_address
 
-  Suburb.alias_scope :has_keyword, lambda { |keyword| name_or_postcode_begins_with(keyword)}
+  scope :has_name_like, lambda { |name| where("suburbs.name like ?", name) }
+
+  scope :has_keyword, lambda { |keyword| name_or_postcode_begins_with(keyword)}
 
   private
   def geocode_address
