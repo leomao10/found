@@ -3,17 +3,12 @@ class Search < ActiveRecord::Base
   accepts_nested_attributes_for :property_search, :allow_destroy => true
   attr_accessible :keyword,:property_search
 
-  def self.after_initialize
+  def after_initialize
     build_property_search if property_search.nil?
   end
 
   def search_by_property
-    properties = property_search.properties
-    return [] if properties.empty?
-    post_ids = properties.map{ |p|
-      p.post_id
-    }
-    Post.id_eq_any(post_ids)
+    Post.joins(:property).where(property_search.search)
   end
 
   def search_address_like(arg)
