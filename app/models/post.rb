@@ -11,10 +11,4 @@ class Post < ActiveRecord::Base
   scope :address_contain_keyword, lambda { |keyword| 
     joins(:address)&Address.contain_keyword(keyword)
   }
-  
-  def self.setup
-    post = Post.new
-    post.save
-    return post
-  end
 end

@@ -11,16 +11,7 @@
     <li class="current"><span class="num">1</span><span class="text">Build your ad</span></li>
     <li><span class="num">2</span><span class="text">Preview & confrim</span></li>
   </ul>
-  <h4>Buid your ad below:</h4>
-  <div class="container">
-    <%= render :partial=> "/posts/form" %>
-  </div>
-  <div class="paddingY5">
-    <span class="button_sub">
-      <%= link_to "Continue to next step", preview_post_path(@post), :style=>"font-weight:bold;font-size:12px;color:white;"%>
-    </span>
-    <br/><br/>
-  </div>
+  <%= render :partial => "/posts/form" %>
 </div>
 
 <% content_for :script do %>
@@ -30,10 +21,10 @@
         var $target= $(this).parents('div.form_section');
         var $targetBody = $target.find('div.section_body');
 
-        $target.removeClass("section_finished");        
+        $target.removeClass("section_finished");
 
         var $targets = $('div.form_section');
-        $targets.each(function(){          
+        $targets.each(function(){
           if($targets.index(this) != $targets.index($target)){
             $(this).removeClass("first_section");
           }else{

@@ -1,0 +1,26 @@
+  <label>
+    <span class="label">Unit No.</span>
+    <span class="input"><%= f.text_field :suite_unit,:class=>"text", :field=>"ad_address" %></span>
+    <span class="hint"><span class="hint_icon" ></span></span>
+  </label>
+  <label>
+    <span class="label">Street No.</span>
+    <span class="input"><%= f.text_field :street_number,:class=>"text", :field=>"ad_street_number" %></span>
+    <span class="hint"><span class="hint_icon" ></span></span>
+  </label>
+  <label>
+    <span class="label">Street Name</span>
+    <span class="input"><%= f.text_field :street_name,:class=>"text" %></span>
+    <span class="hint"><span class="hint_icon" ></span></span>
+  </label>
+  <label>
+    <span class="label">Suburb</span>
+    <span class="input"><%= f.text_field :town, :class=>"text", :id =>"post_suburb" %></span>
+    <span class="hint"><span class="hint_icon" ></span></span>
+  </label>
+  <label>
+    <span class="label">Postcode</span>
+    <span class="input"><%= f.text_field :postcode, :class=>"text postcode_check" %></span>
+    <span class="hint"><span class="hint_icon" ></span></span>
+    <div id="spinner" style="height: 24px;float:left;display:none;background-image: url(/images/load.gif); background-repeat: no-repeat; background-position: center center; width: 50px; margin: 8px 0 0 -68px !important;"></div>
+  </label>

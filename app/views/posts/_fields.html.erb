@@ -1,0 +1,38 @@
+<%# Property Address %>
+<div id="address_details" class="form_section first_section ">
+  <div class="section_head">
+    <div class="title">Property address</div>
+    <div class="buttons"><a href="javascript:void(0);" class="modified">modified</a></div>
+  </div>
+  <div class="section_body">
+    <%= f.fields_for post.address do |address_form|%>
+      <%= render "addresses/fields", :f => address_form %>
+    <% end %>
+  </div>
+</div>
+
+<%# Property Details %>
+<div id="property_details" class="form_section">
+  <div class="section_head">
+    <div class="title">Property details</div>
+    <div class="buttons"><a href="javascript:void(0);" class="modified">modified</a></div>
+  </div>
+  <div class="section_body">
+    <%= f.fields_for post.property do |property_form| %>
+      <%= render "properties/fields", :property_form => property_form %>
+    <% end %>
+  </div>
+</div>
+
+<%# Contact Details %>
+<div id="contact_details" class="form_section">
+  <div class="section_head">
+    <div class="title">Contact Details<span class="grey">(optional)</span></div>
+    <div class="buttons"><a href="javascript:void(0);" class="modified">modified</a></div>
+  </div>
+  <div class="section_body">
+    <%= f.fields_for post.contact do |contact_form| %>
+      <%= render "contacts/fields", :f => contact_form %>
+    <% end %>
+  </div>
+</div>

@@ -14,11 +14,16 @@ class PostsController < ApplicationController
   end
   
   def new
-    @post = Post.setup
+    @post = Post.new
     @post.address = Address.new
     @post.contact = Contact.new
     @post.property = Property.new
-    render :template => 'posts/new', :locals => { :post => @post }
+  end
+
+  def create
+    @post = Post.new(params[:post])
+    @post.save
+    render :action => "preview"
   end
 
   def preview

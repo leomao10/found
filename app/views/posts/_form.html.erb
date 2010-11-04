@@ -1,34 +1,14 @@
-<div class="form_section">
-<%# Property Address %>
-  <div id="address_details" class="form_section first_section ">
-    <div class="section_head">
-      <div class="title">Property address</div>
-      <div class="buttons"><a href="javascript:void(0);" class="modified">modified</a></div>
-    </div>
-    <div class="section_body">
-      <%= render "addresses/form", :post => @post %>
+<h4>Buid your ad below:</h4>
+<%= form_for @post do |f| %>
+  <div class="container">
+    <div class="form_section">
+      <%= render "/posts/fields", :f => f, :post => @post %>
     </div>
   </div>
-
-<%# Property Details %>
-  <div id="property_details" class="form_section">
-    <div class="section_head">
-      <div class="title">Property details</div>
-      <div class="buttons"><a href="javascript:void(0);" class="modified">modified</a></div>
-    </div>
-    <div class="section_body">
-      <%= render "properties/form", :post => @post %>
-    </div>
+  <div class="paddingY5">
+    <span class="button_sub">
+      <%= link_to "Continue to next step", @post,:method => :post,:style=>"font-weight:bold;font-size:12px;color:white;"%>
+    </span>
+    <br/><br/>
   </div>
-  
-<%# Contact Details %>
-  <div id="contact_details" class="form_section">
-    <div class="section_head">
-      <div class="title">Contact Details<span class="grey">(optional)</span></div>
-      <div class="buttons"><a href="javascript:void(0);" class="modified">modified</a></div>
-    </div>
-    <div class="section_body">
-      <%= render "contacts/form", :post => @post %>
-    </div>
-  </div>
-</div>
+<% end %>
