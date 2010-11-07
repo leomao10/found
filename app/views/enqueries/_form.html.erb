@@ -1,5 +1,4 @@
-
-<% form_for :enquery, :html=> {:class=>'email'}, :url=>post_enquery_path(post) do %>
+<%= form_for :enquery, :html=> {:class=>'email'}, :url=>post_enquery_path(post) do %>
   <div><%= label :enquery, :name %></div>
   <div><%= text_field :enquery, :name %></div>
   <div><%= label :enquery, :email %></div>
